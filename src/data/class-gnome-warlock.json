@@ -809,7 +809,7 @@
         1,
         4
       ],
-      "title": "Levels 1–4",
+      "title": "On your own",
       "steps": [
         "Shadow Bolt to pull.",
         "Immolate while the bolt is flying.",
@@ -825,7 +825,7 @@
         4,
         10
       ],
-      "title": "Levels 4–10",
+      "title": "With the Imp",
       "steps": [
         "Send the Imp in.",
         "Bane of Agony (from 8) and Corruption.",
@@ -843,7 +843,7 @@
         10,
         30
       ],
-      "title": "Levels 10–30 (Affliction)",
+      "title": "With the Voidwalker (Affliction)",
       "steps": [
         "Send the Voidwalker in and let it take a hit.",
         "Bane of Agony → Corruption → Immolate (if it's a tough mob) → Siphon Life once you have it.",
@@ -862,7 +862,7 @@
         30,
         60
       ],
-      "title": "Level 30+ (drain-tank)",
+      "title": "Drain-tanking",
       "steps": [
         "Demon in → Bane of Agony → Corruption → a curse (each Affliction effect makes your drains stronger).",
         "Channel Drain Life until the mob dies (wand if you're at full health).",

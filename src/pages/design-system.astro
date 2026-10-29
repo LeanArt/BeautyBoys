@@ -1,0 +1,762 @@
+---
+// Living style guide: tokens, and the real components rendered with fixture data in fixed states
+// (their `demo` prop drops data-lmin / data-step / data-group, so no page script rebinds them).
+// Linked only from the footer. Checklist demo buttons are inert: progress.ts does not run here.
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import OnThisPage from '../components/OnThisPage.astro';
+import Icon from '../components/Icon.astro';
+import Badge from '../components/Badge.astro';
+import Trust from '../components/Trust.astro';
+import Sources from '../components/Sources.astro';
+import Callout from '../components/Callout.astro';
+import RefItem from '../components/RefItem.astro';
+import WayButton from '../components/WayButton.astro';
+import StepCard from '../components/StepCard.astro';
+import Leg from '../components/Leg.astro';
+import ChecklistBar from '../components/ChecklistBar.astro';
+import LedgerItem from '../components/LedgerItem.astro';
+import GuideNav from '../components/GuideNav.astro';
+import { COLOR_GROUPS, TYPE_SCALE, SPACING, RADII } from '../lib/tokens';
+import { ICON_NAMES } from '../lib/icons';
+import { KIND } from '../lib/kinds';
+import { LABEL, CATEGORIES } from '../lib/bags';
+import { bags } from '../lib/data';
+import { guides } from '../lib/guides';
+import type { Step } from '../lib/data';
+
+const toc = [
+  { id: 'principles', label: 'Principles' },
+  { id: 'color', label: 'Color tokens' },
+  { id: 'type', label: 'Type' },
+  { id: 'space', label: 'Spacing, radii, elevation' },
+  { id: 'icons', label: 'Icons' },
+  { id: 'controls', label: 'Buttons and inputs' },
+  { id: 'status', label: 'Status: tags and trust' },
+  { id: 'callouts', label: 'Callouts' },
+  { id: 'refs', label: 'Refs and coordinates' },
+  { id: 'route', label: 'Route: the ley line' },
+  { id: 'checklist', label: 'Checklist bar' },
+  { id: 'tables', label: 'Tables' },
+  { id: 'bags', label: 'Bag advisor' },
+  { id: 'timeline', label: 'Timeline and road' },
+  { id: 'chrome', label: 'Page chrome' },
+];
+const VERDICTS = ['keep', 'sell', 'buy', 'auction', 'bank', 'use', 'destroy'] as const;
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const demoWay = '/way Loch Modan 37.2 46.1 Mountaineer Kadrell';
+
+// Fixture steps for the real StepCard (shape of route-*.json steps).
+const src = ['https://www.warcrafttavern.com/forever/guides/camping/'];
+const fx = (o: Pick<Step, 'id' | 'title' | 'kind' | 'level'> & Partial<Step>): Step => ({
+  zone: 'Loch Modan',
+  body: '',
+  confidence: 'beta-tested',
+  sources: src,
+  ...o,
+});
+const kadrell = { name: 'Rat Catching', wh: { type: 'quest' as const, id: 416 }, giver: 'Mountaineer Kadrell', zone: 'Loch Modan', coords: [37.2, 46.1] as [number, number] };
+const vidra = { name: 'Vidra Hearthstove', role: 'Innkeeper. Set your hearthstone here.', zone: 'Loch Modan', coords: [35.5, 48.4] as [number, number] };
+const S = {
+  done: fx({ id: 'ds-done', title: 'Done: into Loch Modan, Thelsamar', kind: 'travel', level: [12, 12], hub: 'Thelsamar', body: 'Folded: title and a Show details button.' }),
+  past: fx({ id: 'ds-past', title: 'Behind you, not ticked: the Stonesplinter camp', kind: 'quests', level: [10, 12], hub: 'Thelsamar', body: 'Solid travelled line, the ring stays open.' }),
+  next: fx({ id: 'ds-next', title: 'Next step: pick up every quest in Thelsamar', kind: 'quests', level: [12, 14], hub: 'Thelsamar',
+    body: 'Thelsamar is the town in the middle of the loch. Take everything on offer, then do the kill quests to the south first.', quests: [kadrell], npcs: [vidra] }),
+  lit: fx({ id: 'ds-lit', title: 'Lit (your level), just jumped to: train at level 14', kind: 'train', level: [14, 14], zone: 'Ironforge', body: 'The fel outline is the 1.6s flash after "Go to next step" or a journey link.' }),
+  ahead: fx({ id: 'ds-ahead', title: "Ahead, class quest (glyph in the guide's --class)", kind: 'class', level: [18, 20], optional: true, body: 'Dashed line ahead.' }),
+  theory: fx({ id: 'ds-theory', title: 'Ahead, untested (dashed ring, Theory seal)', kind: 'dungeon', level: [30, 35], zone: 'Stranglethorn Vale', confidence: 'theory', body: 'Nobody has played this yet.' }),
+  compact: fx({ id: 'ds-compact', title: 'Compact view: title, level tag, key waypoint', kind: 'quests', level: [12, 14], hub: 'Thelsamar', body: 'Hidden until Show details.', quests: [kadrell] }),
+  compactOpen: fx({ id: 'ds-compact-open', title: 'Compact view, opened with Show details', kind: 'quests', level: [12, 14], hub: 'Thelsamar', body: 'An opened step shows everything again.', quests: [kadrell] }),
+};
+const ledgerItem = bags()?.items.find((i) => (i.where?.length ?? 0) >= 2);
+const guide = guides.find((g) => g.status === 'ready');
+---
+
+<Base title="Design system" description="Waypoint's design system, Ley Line Atlas: tokens and every component in its states." rail="lg">
+  <Fragment slot="head">
+    <PageHead title="Design system: Ley Line Atlas" facts={[{ label: 'Docs', value: 'docs/DESIGN.md' }]}>
+      Every token and component of Waypoint, rendered from the live stylesheet. Switch the theme in the top bar to see the
+      night atlas.
+    </PageHead>
+  </Fragment>
+
+  <OnThisPage slot="rail" items={toc} />
+
+  <section id="principles">
+    <h2>Principles</h2>
+    <ol class="steps-list">
+      <li><strong>Glance first.</strong> In two seconds at arm's length a player finds what to do next, where it is (<code>/way</code>) and whether it suits their level.</li>
+      <li><strong>One meaning per hue.</strong> Fel is your next good move. Gold is a link. Ink is the primary action and "done". Quality colours are item links only; verdict colours are bag verdicts only. Confidence has no hue.</li>
+      <li><strong>Shape says what it is.</strong> Circles are places and progress on the map. 3px stamps are static status. 5px tools with a 44px target are things you press. 8px paper holds things. No pills.</li>
+      <li><strong>Dense, not cramped.</strong> 17px body, 19px step titles, 14px floor, 44px targets, rows instead of card grids.</li>
+      <li><strong>Night comfort.</strong> No pure white text, no pure black ground, glow only on the lit line and the next node.</li>
+    </ol>
+  </section>
+
+  <section id="color">
+    <h2>Color tokens</h2>
+    <p class="prose">Each swatch shows the day atlas (left) and the night atlas (right). Values come from <code>src/lib/tokens.ts</code>, which mirrors <code>src/styles/global.css</code>.</p>
+    {
+      COLOR_GROUPS.map((g) => (
+        <div class="ds-group">
+          <h3>{g.title}</h3>
+          {g.note && <p class="prose muted">{g.note}</p>}
+          <ul class="swatches">
+            {g.tokens.map((t) => (
+              <li class="swatch">
+                <span class="chips2" aria-hidden="true">
+                  <span style={`background:${t.light}`} />
+                  <span style={`background:${t.dark}`} />
+                </span>
+                <span class="sw-name">{t.name}</span>
+                <span class="sw-hex num">
+                  <span>Day {t.light}</span>
+                  <span>Night {t.dark}</span>
+                </span>
+                <span class="sw-use">{t.use}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </section>
+
+  <section id="type">
+    <h2>Type</h2>
+    <p class="prose">
+      Two Google Fonts: <strong>Texturina</strong> (600/700) for H1, H2 and the wordmark only, and <strong>Atkinson
+      Hyperlegible Next</strong> for everything else. No monospace anywhere: coordinates use tabular figures. Sentence case
+      everywhere, no tracked capitals.
+    </p>
+    <ul class="type-scale">
+      {
+        TYPE_SCALE.map((t) => (
+          <li>
+            <span
+              class="type-sample"
+              style={`font-size:var(${t.token});font-weight:${t.weight};font-family:${t.face === 'Texturina' ? 'var(--font-display)' : 'var(--font-body)'};line-height:1.2`}
+            >
+              {t.face === 'Texturina' ? 'Loch Modan & Redridge' : 'Pick up every quest in Thelsamar'}
+            </span>
+            <span class="type-meta">
+              <code>{t.token}</code> {t.size}, {t.weight}, {t.face}. {t.use}.
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+    <p>Numbers: <span class="num">Lv 12–20, 3 of 12 done, 28.6, 66.1, 1s 25c, 29 Oct 2026</span> use tabular lining figures. Keys: <kbd>M</kbd> <kbd>Esc</kbd>. Commands: <code>/way</code> <code>/ttpaste</code>. A <a class="term" href="/glossary/#aggro">term</a> links to the glossary.</p>
+  </section>
+
+  <section id="space">
+    <h2>Spacing, radii, elevation</h2>
+    <h3>Spacing (4px grid)</h3>
+    <ul class="space-scale">
+      {
+        SPACING.map(([t, px]) => (
+          <li>
+            <span class="bar" style={`width:${px}px`} />
+            <code>{t}</code> <span class="num">{px}px</span>
+          </li>
+        ))
+      }
+    </ul>
+    <h3>Radii</h3>
+    <ul class="radii">
+      {
+        RADII.map((r) => (
+          <li>
+            <span class="radius-box" style={`border-radius:var(${r.token})`} />
+            <span>
+              <code>{r.token}</code> {r.value}. {r.use}.
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+    <h3>Elevation</h3>
+    <p class="prose">Flat by default. Only the menu panel, the bottom sheet and the toast lift, with <code>--elev-pop</code>. Header and dock are opaque sheets with a 1px rule. No blur, no gradient washes, no hover lifts.</p>
+    <div class="elev-demo"><span>--elev-pop</span></div>
+  </section>
+
+  <section id="icons">
+    <h2>Icons</h2>
+    <p class="prose">Hand-drawn for Waypoint on a 24px grid: round caps, 1.75 stroke (2 at 16px), <code>currentColor</code>. A word always sits next to a meaningful icon.</p>
+    <ul class="icon-grid">
+      {
+        ICON_NAMES.map((n) => (
+          <li>
+            <span class="icon-pair">
+              <Icon name={n} size={24} />
+              <Icon name={n} />
+              <Icon name={n} size={16} />
+            </span>
+            <code>{n}</code>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section id="controls">
+    <h2>Buttons and inputs</h2>
+    <h3>Buttons</h3>
+    <div class="ds-row">
+      <button class="btn primary" type="button">Go to next step</button>
+      <button class="btn" type="button">Jump to my level</button>
+      <button class="btn quiet" type="button">Show details<Icon name="chevron-down" size={16} /></button>
+      <button class="btn danger" type="button">Untick everything</button>
+      <button class="btn icon" type="button" aria-label="Sections and options"><Icon name="list" /></button>
+      <button class="btn" type="button" disabled>Disabled</button>
+    </div>
+    <p class="muted">Primary: one per view. Labels are verb-first, sentence case, never end in an arrow. Every target is at least 44px.</p>
+
+    <h3>Fields</h3>
+    <div class="ds-fields">
+      <div class="field">
+        <label class="label" for="ds-q">Search your bags</label>
+        <span class="search-field">
+          <Icon name="search" />
+          <input type="search" id="ds-q" placeholder="Cloth, wand, crate…" value="wand" />
+          <button type="button" class="btn icon quiet clear" aria-label="Clear search"><Icon name="close" /></button>
+        </span>
+      </div>
+      <div class="field">
+        <label class="label" for="ds-cat">Category</label>
+        <span class="select-field">
+          <select id="ds-cat"><option>All categories</option><option>Reagents</option></select>
+          <Icon name="chevron-down" />
+        </span>
+      </div>
+      <div class="field">
+        <label class="label" for="ds-text">Character name</label>
+        <input type="text" id="ds-text" placeholder="Fizzwick" />
+        <span class="help">Help text sits under the field.</span>
+      </div>
+      <div class="field">
+        <label class="label" for="ds-bad">Backup code</label>
+        <input type="text" id="ds-bad" value="not-a-code" aria-invalid="true" />
+        <span class="help">That code is for a different checklist. Make the code on this page.</span>
+      </div>
+    </div>
+
+    <h3>Switches and segmented control</h3>
+    <div class="ds-fields">
+      <label class="switch"><input type="checkbox" role="switch" /><span>Only my level (off)</span><span class="track" aria-hidden="true"></span></label>
+      <label class="switch"><input type="checkbox" role="switch" checked /><span>Only my level (on)</span><span class="track" aria-hidden="true"></span></label>
+      <button class="switch-btn" type="button" aria-pressed="false">Hide done steps (off)<span class="track" aria-hidden="true"></span></button>
+      <button class="switch-btn" type="button" aria-pressed="true">Hide done steps (on)<span class="track" aria-hidden="true"></span></button>
+    </div>
+    <div class="ds-row">
+      <div class="seg" role="group" aria-label="View (demo)">
+        <button class="btn" type="button" aria-pressed="true">Full</button>
+        <button class="btn" type="button" aria-pressed="false">Compact</button>
+      </div>
+    </div>
+
+    <h3>My level</h3>
+    <div class="ds-row">
+      <div class="lvl" role="group" aria-label="My level (demo, set)">
+        <button type="button" class="lvl-btn" aria-label="Level down"><Icon name="minus" /></button>
+        <span class="lvl-field"><span class="lvl-prefix">Lv</span><input type="number" value="14" aria-label="Demo level" /></span>
+        <button type="button" class="lvl-btn" aria-label="Level up"><Icon name="plus" /></button>
+      </div>
+      <div class="lvl is-unset" role="group" aria-label="My level (demo, unset)">
+        <button type="button" class="lvl-btn" aria-label="Level down"><Icon name="minus" /></button>
+        <span class="lvl-field"><span class="lvl-prefix">Lv</span><input type="number" placeholder="?" aria-label="Demo level, unset" /></span>
+        <button type="button" class="lvl-btn" aria-label="Level up"><Icon name="plus" /></button>
+      </div>
+      <div class="lvl" role="group" aria-label="My level (demo, at 60)">
+        <button type="button" class="lvl-btn" aria-label="Level down"><Icon name="minus" /></button>
+        <span class="lvl-field"><span class="lvl-prefix">Lv</span><input type="number" value="60" aria-label="Demo level 60" /></span>
+        <button type="button" class="lvl-btn" aria-label="Level up" disabled><Icon name="plus" /></button>
+      </div>
+    </div>
+    <p class="muted">Set, unset (dashed fel border: setting your level is the first good move) and at the cap (plus disabled).</p>
+  </section>
+
+  <section id="status">
+    <h2>Status: tags and trust</h2>
+    <p class="prose">Status never looks like a control, and a control never looks like status.</p>
+    <h3>Tags</h3>
+    <div class="ds-row">
+      <span class="tag num">Lv 12–20</span>
+      <span class="tag next">Next step</span>
+      <span class="tag done">Done</span>
+      <span class="tag now show">Now</span>
+      <span class="tag optional">Optional</span>
+      <span class="count">3 of 12 done</span>
+    </div>
+    <h3>Difficulty ladder (route level tags)</h3>
+    <div class="ds-row">
+      <span class="tag num" data-ladder="too-hard">Lv 20–25 <span class="ladder">too hard</span></span>
+      <span class="tag num" data-ladder="hard">Lv 17–18 <span class="ladder">hard</span></span>
+      <span class="tag num" data-ladder="on-level">Lv 12–14 <span class="ladder">on level</span></span>
+      <span class="tag num" data-ladder="easy">Lv 8–11 <span class="ladder">easy</span></span>
+      <span class="tag num" data-ladder="trivial">Lv 1–4 <span class="ladder">trivial</span></span>
+    </div>
+    <p class="muted">Monster colours in prose: <span class="con grey">grey</span>, <span class="con green">green</span>, <span class="con yellow">yellow</span>, <span class="con orange">orange</span>, <span class="con red">red</span>.</p>
+    <h3>Confidence</h3>
+    <div class="ds-row">
+      <Badge c="official" /><Badge c="beta-tested" /><Badge c="community" /><Badge c="theory" />
+    </div>
+    <p class="muted">Static seals (above) for legends and tables. Interactive trust seals (below) open in flow with the meaning, sources and a report link.</p>
+    <div class="facts">
+      <Trust c="beta-tested" urls={['https://www.warcrafttavern.com/forever/guides/camping/']} report="design system demo" />
+      <Trust c="theory" urls={['https://www.warcrafttavern.com/forever/guides/camping/']} />
+    </div>
+    <div class="facts ds-open-trust">
+      <span class="tag num">Lv 5–6</span>
+      <Trust c="official" urls={['https://news.blizzard.com/en-us/article/24301516/gather-around-the-campfire-in-world-of-warcraft-forever', 'https://www.warcrafttavern.com/forever/guides/camping/']} report="design system demo" open />
+    </div>
+    <Sources urls={['https://warcraft.wiki.gg/wiki/World_of_Warcraft:_Forever']} />
+  </section>
+
+  <section id="callouts">
+    <h2>Callouts</h2>
+    <Callout variant="tip"><p>Run each dungeon once, with all its quests, then go back to questing.</p></Callout>
+    <Callout variant="info"><p>Do the steps roughly in order, but don't stress: skipping a step is fine.</p></Callout>
+    <Callout variant="warn"><p>Don't delete the letter: destroying a quest item abandons the quest.</p></Callout>
+    <Callout variant="danger"><p>Never buy gold, and don't accept gold from strangers.</p></Callout>
+    <Callout variant="untested"><p>Nobody has played past level 30 yet. Steps marked Theory are our best guess.</p></Callout>
+    <Callout variant="info" compact label="Compact"><p>The compact variant for tight spots, such as inside a waystone header.</p></Callout>
+  </section>
+
+  <section id="refs">
+    <h2>Refs and coordinates</h2>
+    <ul class="ref-list ds-sheet">
+      <li><RefItem r={{ name: 'Rat Catching', wh: { type: 'quest', id: 416 }, giver: 'Mountaineer Kadrell', zone: 'Loch Modan', coords: [37.2, 46.1] }} kind="quest" /></li>
+      <li><RefItem r={{ name: 'Vidra Hearthstove', role: 'Innkeeper. Set your hearthstone here.', zone: 'Loch Modan', coords: [35.5, 48.4] }} kind="npc" /></li>
+      <li><RefItem r={{ name: 'Innkeeper Belm', zone: 'Dun Morogh', coords: [47.4, 52.5] }} kind="vendor" price="25c" detail="Kharanos, Dun Morogh" /></li>
+      <li><RefItem r={{ name: 'Linen Cloth', wh: { type: 'item', id: 2589 }, note: 'Keep every piece: Tailoring eats it.' }} kind="item" /></li>
+    </ul>
+    <p>Inline ref: learn <RefItem r={{ name: 'Shadow Bolt', wh: { type: 'spell', id: 686 } }} variant="inline" /> at level 1.</p>
+    <h3>Coordinate button states</h3>
+    <div class="ds-row">
+      <WayButton way={demoWay} coords={[37.2, 46.1]} />
+      <button class="way" type="button" data-state="copied" aria-label="Copied (demo)"><Icon name="crosshair" size={16} /><span class="num">37.2, 46.1</span><Icon name="copy" size={16} class="way-copy" /><Icon name="check" size={16} class="way-ok" /></button>
+      <button class="way" type="button" data-state="failed" aria-label="Copy failed (demo)"><Icon name="crosshair" size={16} /><span class="num">37.2, 46.1</span><Icon name="copy" size={16} class="way-copy" /><Icon name="check" size={16} class="way-ok" /></button>
+    </div>
+    <p class="muted">Default, copied (check for 1.4s, width unchanged, toast) and failed (danger border, toast with a fix).</p>
+    <div class="toast ds-toast" data-show>Copied /way Loch Modan 37.2 46.1 Mountaineer Kadrell</div>
+  </section>
+
+  <section id="route">
+    <h2>Route: the ley line</h2>
+    <p class="prose">One 3px line: solid ink behind you, dashed ahead, lit with fel in your level range. Each step's waymark is its checkbox; each bracket is a diamond waystone. These are the real <code>Leg</code> and <code>StepCard</code> components with fixture data, in fixed states (demo checkboxes are disabled).</p>
+    <Leg id="ds-leg" level={[12, 20]} title="Loch Modan, Hall of Thanes & Redridge" zones={['Loch Modan', 'Dun Morogh', 'Ironforge']} total={12}
+      summary="Quest out of **Thelsamar**, run Hall of Thanes once with all five quests, then head for Redridge." heading="h3"
+      demo={{ now: 'current', done: 3, level: 14 }}>
+      <StepCard step={S.done} demo={{ done: true, now: 'past' }} />
+      <StepCard step={S.past} demo={{ now: 'past', ladder: 'easy' }} />
+      <StepCard step={S.next} demo={{ next: true, now: 'current', ladder: 'on-level' }} />
+      <StepCard step={S.lit} demo={{ now: 'current', ladder: 'on-level', flash: true }} />
+      <StepCard step={S.ahead} demo={{ now: 'future', ladder: 'hard' }} />
+      <StepCard step={S.theory} demo={{ now: 'future', ladder: 'too-hard' }} />
+    </Leg>
+    <h3>Compact view</h3>
+    <p class="muted">Full | Compact in the checklist bar. Compact keeps the node, title, level tag and key waypoint.</p>
+    <div class="leg view-compact">
+      <ol class="steps">
+        <StepCard step={S.compact} demo={{ now: 'current', ladder: 'on-level' }} />
+        <StepCard step={S.compactOpen} demo={{ now: 'current', ladder: 'on-level', open: true }} />
+      </ol>
+    </div>
+    <h3>Kind glyphs</h3>
+    <ul class="kinds">
+      {
+        Object.entries(KIND).map(([k, v]) => (
+          <li>
+            <span class="ring" aria-hidden="true"><Icon name={v.glyph} size={16} /></span>
+            {v.word}
+          </li>
+        ))
+      }
+    </ul>
+    <h3>Waystone states</h3>
+    <div class="ds-row stones">
+      <span><span class="leg" aria-hidden="true"><span class="stone"></span></span>Ahead</span>
+      <span><span class="leg" data-now="current" aria-hidden="true"><span class="stone"></span></span>Your level</span>
+      <span><span class="leg complete" aria-hidden="true"><span class="stone"></span></span>Complete</span>
+    </div>
+  </section>
+
+  <section id="checklist">
+    <h2>Checklist bar</h2>
+    <p class="prose">The real <code>ChecklistBar</code> with three sections. Below 900px it is the dock at the bottom of the screen (drawn inside this frame, with the "Sections and options" sheet open: tap the scrim or the list button to close it). From 900px the same element is the sticky rail. Resize the window to see the other one. Options come first, then sections, then backup and reset. Its buttons are inert on this page.</p>
+    <div class="ds-frame">
+      <ChecklistBar
+        demo={{ nextTitle: 'Pick up every quest in Thelsamar', way: demoWay, wayLabel: '37.2, 46.1' }}
+        sections={[
+          { id: 'route', label: 'Coldridge Valley', level: [1, 6], total: 6, demo: { done: 6, now: 'past' } },
+          { id: 'ds-leg', label: 'Loch Modan & Redridge', level: [12, 20], total: 12, demo: { done: 3, now: 'current' } },
+          { id: 'checklist', label: 'Blackfathom & Wetlands', level: [20, 25], total: 9, demo: { done: 0, now: 'future' } },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section id="tables">
+    <h2>Tables</h2>
+    <p class="prose">Real tables from 600px; below that, <code>table.data.stack</code> becomes two-line records. The row in your level range gets a fel inset edge and a "Now" tag.</p>
+    <div class="table-wrap">
+      <table class="data stack" role="table">
+        <thead role="rowgroup"><tr role="row"><th role="columnheader" scope="col">Level</th><th role="columnheader" scope="col">Talent</th><th role="columnheader" scope="col" class="c-num">Points</th><th role="columnheader" scope="col">Why</th></tr></thead>
+        <tbody role="rowgroup">
+          <tr role="row" data-now="past"><td role="cell" class="c-lv"><span class="tag num">Lv 10–14</span></td><td role="cell" class="c-main">Improved Corruption<span class="sub">Affliction</span></td><td role="cell" class="c-num num">5/5</td><td role="cell" class="c-why">Instant Corruption: cast it while running.</td></tr>
+          <tr role="row" data-now="current"><td role="cell" class="c-lv"><span class="tag num">Lv 15–16</span><span class="tag now">Now</span></td><td role="cell" class="c-main">Suppression<span class="sub">Affliction</span></td><td role="cell" class="c-num num">2/5</td><td role="cell" class="c-why">Fewer resisted spells.</td></tr>
+          <tr role="row"><td role="cell" class="c-lv"><span class="tag num">Lv 17–20</span></td><td role="cell" class="c-main">Improved Life Tap<span class="sub">Affliction</span></td><td role="cell" class="c-num num">2/2</td><td role="cell" class="c-why">More mana per tap.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="bags">
+    <h2>Bag advisor</h2>
+    <h3>Verdict chips (filter toggles)</h3>
+    <div class="chips">
+      {VERDICTS.map((v, i) => (
+        <button type="button" class={`chip act-${v}`} aria-pressed={i % 2 === 1 ? 'true' : 'false'}>
+          <Icon name={v} class="chip-icon" /><Icon name="check" class="chip-check" />{cap(v)} <span class="chip-count num">{12 - i}</span>
+        </button>
+      ))}
+    </div>
+    <p class="muted">Unpressed and pressed (solid verdict fill + check). Chips wrap; they never scroll sideways.</p>
+    <h3>Verdict stamps (static)</h3>
+    <div class="ds-row">
+      {VERDICTS.map((v) => <span class={`verdict act-${v}`}><Icon name={v} size={16} />{cap(v)}</span>)}
+    </div>
+    <h3>Ledger row</h3>
+    <p class="muted">The real <code>LedgerItem</code> with a real item from the bag data. From 900px the verdict stamps form their own column.</p>
+    {
+      ledgerItem && (
+        <div class="ledger">
+          <LedgerItem item={ledgerItem} verdict={LABEL[ledgerItem.action]} category={CATEGORIES[ledgerItem.category]} heading="h4" demo />
+        </div>
+      )
+    }
+    <h3>Status line and empty state</h3>
+    <p class="bag-status">Showing <strong>3</strong> of 78 items: Sell, level 14.</p>
+    <Callout variant="info">
+      <p>No items match “wand” at level 14. Clear the search or turn off Only my level.</p>
+      <button type="button" class="btn">Clear filters</button>
+    </Callout>
+  </section>
+
+  <section id="timeline">
+    <h2>Timeline and road</h2>
+    <ol class="timeline">
+      <li data-now="past"><span class="tl-lv">1–4</span><span class="tl-node" aria-hidden="true"></span><div class="tl-main"><div class="tl-title"><a href="#timeline">Past: your first demon</a></div><p class="tl-body">Filled node, solid line.</p></div></li>
+      <li data-now="current"><span class="tl-lv">14–20</span><span class="tl-node" aria-hidden="true"></span><div class="tl-main"><div class="tl-title"><a href="#timeline">Now: Cozy Sleeping Bag</a><span class="tag now">Now</span></div><p class="tl-body">Fel node with glow, "Now" tag.</p></div></li>
+      <li><span class="tl-lv">40</span><span class="tl-node" aria-hidden="true"></span><div class="tl-main"><div class="tl-title"><a href="#timeline">Ahead: mount and dual spec</a></div><p class="tl-body">Hollow node, dashed line.</p></div></li>
+    </ol>
+    <ol class="road ds-road">
+      <li data-now="past"><a href="#timeline"><span class="stone" aria-hidden="true"></span><span class="road-text"><span class="tag num">Lv 1–6</span><span class="road-name">Coldridge Valley</span></span></a></li>
+      <li data-now="current"><a href="#timeline"><span class="stone" aria-hidden="true"></span><span class="road-text"><span class="tag num">Lv 12–20</span><span class="road-name">Loch Modan &amp; Redridge</span><span class="road-here">You are here</span></span></a></li>
+      <li><a href="#timeline"><span class="stone" aria-hidden="true"></span><span class="road-text"><span class="tag num">Lv 20–25</span><span class="road-name">Blackfathom &amp; Wetlands</span></span></a></li>
+    </ol>
+  </section>
+
+  <section id="chrome">
+    <h2>Page chrome</h2>
+    <h3>Page head: breadcrumb, title, lede, facts and level prompt</h3>
+    <p class="muted">The real <code>PageHead</code>. The level prompt shows only while no level is set (kept visible here).</p>
+    <div class="ds-panel">
+      <PageHead title="Leveling route" trail={[{ href: '/guides/gnome-warlock/', label: 'Gnome Warlock guide' }]}
+        facts={[{ label: 'Updated', value: '29 Oct 2026' }, { label: 'Played in beta', value: 'Levels 1–30' }]} levelPrompt demo>
+        Hub by hub, with the quests that matter.
+      </PageHead>
+    </div>
+    {
+      guide && (
+        <Fragment>
+          <h3>Guide sub-nav</h3>
+          <p class="muted">The real <code>GuideNav</code>. On phones it scrolls sideways; an edge fades on the side with more links.</p>
+          <GuideNav guide={guide} />
+        </Fragment>
+      )
+    }
+    <h3>Site menu</h3>
+    <p class="muted">Below 1200px the top bar's Menu button opens a panel under the header (Esc, an outside tap or a link tap closes it). From 1200px the same links are the inline nav at the top of this page.</p>
+    <button type="button" class="btn ds-open-menu" data-ds-open-menu>Open the site menu</button>
+    <h3>Focus</h3>
+    <p class="muted">Every focusable element gets a 3px <code>--focus</code> ring with a 2px offset (shown here statically; press Tab to see it live).</p>
+    <div class="ds-row">
+      <button class="btn ds-focus" type="button" tabindex="-1">Jump to my level</button>
+      <WayButton way={demoWay} coords={[37.2, 46.1]} class="ds-focus" />
+    </div>
+    <h3>Pager</h3>
+    <nav class="pager" aria-label="Pager (demo)">
+      <a class="pager-prev" href="/guides/gnome-warlock/"><Icon name="chevron-left" /><span class="pager-text"><span class="pager-dir">Previous</span><span class="pager-name">Overview</span></span></a>
+      <a class="pager-next" href="/guides/gnome-warlock/talents/"><span class="pager-text"><span class="pager-dir">Next</span><span class="pager-name">Talents, spells &amp; demons</span></span><Icon name="chevron-right" /></a>
+    </nav>
+    <h3>Cards and rows</h3>
+    <div class="grid">
+      <div class="card"><h4>Card</h4><p>For groups that belong together: camping parts, demons, alternatives. Flat, 8px, 1px rule.</p></div>
+      <div class="card planned"><h4>Planned</h4><p>Dashed, quiet, no link.</p></div>
+    </div>
+    <ul class="rows">
+      <li><h4>Row</h4><p>Long uniform collections (racials, mistakes, glossary) are rows, not cards.</p><p class="for-you"><strong>For you:</strong> scannable, one rule between items.</p></li>
+    </ul>
+    <h3>Glossary entry</h3>
+    <dl class="gloss ds-gloss">
+      <div class="entry"><dt>Aggro</dt><dd>A monster's attention. Whoever has aggro gets attacked.</dd></div>
+      <div class="entry ds-target"><dt>Rested XP (as the :target)</dt><dd>Bonus XP you build while logged out in an inn.</dd></div>
+    </dl>
+  </section>
+</Base>
+
+<script>
+  // "Open the site menu": clicks the real Menu button. stopPropagation keeps menu.ts's outside-tap handler from closing it again.
+  document.querySelector('[data-ds-open-menu]')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    document.querySelector<HTMLButtonElement>('[data-action="menu"]')?.click();
+  });
+</script>
+
+<style>
+  section > h3 {
+    margin-top: var(--sp-8);
+  }
+  .ds-group h3 {
+    margin: var(--sp-8) 0 var(--sp-1);
+  }
+  .swatches {
+    list-style: none;
+    margin: var(--sp-3) 0 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  }
+  .swatch {
+    display: grid;
+    align-content: start;
+    gap: 2px;
+    margin: 0;
+    padding: 10px;
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-ctl);
+    font-size: var(--fs-sm);
+  }
+  .chips2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 44px;
+    margin-bottom: 6px;
+    border: 1px solid var(--edge);
+    border-radius: var(--r-tag);
+    overflow: hidden;
+  }
+  .sw-name {
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .sw-hex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 10px;
+    color: var(--ink-2);
+  }
+  .sw-use {
+    color: var(--ink-3);
+    font-size: var(--fs-xs);
+  }
+  .type-scale,
+  .space-scale,
+  .radii,
+  .icon-grid,
+  .kinds {
+    list-style: none;
+    margin: var(--sp-3) 0;
+    padding: 0;
+  }
+  .type-scale li {
+    display: grid;
+    gap: 4px;
+    margin: 0;
+    padding: 12px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .type-sample {
+    overflow-wrap: anywhere;
+  }
+  .type-meta {
+    font-size: var(--fs-sm);
+    color: var(--ink-3);
+  }
+  .space-scale li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 6px;
+    font-size: var(--fs-sm);
+  }
+  .space-scale .bar {
+    height: 12px;
+    background: var(--ink-2);
+    border-radius: 1px;
+    flex: none;
+  }
+  .radii li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 10px;
+    font-size: var(--fs-sm);
+  }
+  .radius-box {
+    width: 44px;
+    height: 44px;
+    flex: none;
+    border: 2px solid var(--edge);
+    background: var(--raised);
+  }
+  .elev-demo {
+    display: grid;
+    place-items: center;
+    width: 220px;
+    height: 80px;
+    background: var(--sheet);
+    border-radius: var(--r-sheet);
+    box-shadow: var(--elev-pop);
+    font-weight: 700;
+    margin: var(--sp-4) 0;
+  }
+  .icon-grid {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  }
+  .icon-grid li {
+    display: grid;
+    align-content: start;
+    justify-items: start;
+    gap: 6px;
+    margin: 0;
+    padding: 10px;
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-ctl);
+    color: var(--ink);
+  }
+  .icon-grid code {
+    font-size: var(--fs-xs);
+  }
+  .icon-pair {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ds-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 12px;
+    margin: var(--sp-3) 0;
+  }
+  .ds-fields {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    max-width: 420px;
+    margin: var(--sp-3) 0;
+  }
+  .lvl.is-unset {
+    border: 2px dashed var(--fel-line);
+  }
+  .ds-fields input[type='text'] {
+    width: 100%;
+  }
+  .ds-open-trust {
+    margin-top: 16px;
+  }
+  .ds-sheet {
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-sheet);
+    padding: 4px 16px;
+  }
+  .ds-toast {
+    position: static;
+    margin: var(--sp-4) 0 0;
+    transform: none;
+    width: auto;
+    display: inline-block;
+  }
+  .kinds {
+    display: grid;
+    gap: 8px 16px;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  }
+  .kinds li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    font-size: var(--fs-sm);
+  }
+  .stones > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-right: 16px;
+  }
+  .stones .leg {
+    display: inline-grid;
+    margin: 0;
+  }
+  .stones .stone {
+    margin: 0;
+  }
+  /* Checklist bar demo. Below 900px the transform makes this frame the containing block of the dock's
+     position: fixed, so the real dock and its open sheet draw inside the frame with no style overrides. */
+  .ds-frame {
+    margin: var(--sp-4) 0;
+  }
+  @media (max-width: 899px) {
+    .ds-frame {
+      position: relative;
+      transform: translateZ(0);
+      height: calc(75dvh + var(--jbar-h) + 64px);
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      border-radius: var(--r-sheet);
+      background: var(--ground);
+    }
+  }
+  @media (min-width: 900px) {
+    .ds-frame {
+      max-width: var(--rail-w);
+    }
+  }
+  .ds-panel {
+    padding: var(--sp-4);
+    border: 1px dashed var(--rule);
+    border-radius: var(--r-sheet);
+  }
+  .ds-panel :global(.page-head) {
+    margin: 0;
+  }
+  :global(.ds-focus) {
+    outline: var(--focus-w) solid var(--focus);
+    outline-offset: var(--focus-offset);
+  }
+  @media (min-width: 75em) {
+    .ds-open-menu {
+      display: none;
+    }
+  }
+  .ds-target {
+    background: var(--lit);
+    box-shadow: inset 4px 0 0 var(--fel-line);
+    padding-left: 12px;
+  }
+  @media (min-width: 900px) {
+    .ds-road {
+      grid-template-columns: repeat(3, minmax(0, 160px));
+    }
+  }
+</style>

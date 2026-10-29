@@ -1,18 +1,18 @@
 ---
+// Static confidence seal: pips + word. No hue except Theory. Use Trust.astro when sources should be reachable.
 import type { Confidence } from '../lib/data';
+import { CONFIDENCE } from '../lib/confidence';
 
 interface Props {
   c: Confidence;
 }
 
-const TITLES: Record<Confidence, string> = {
-  official: 'From Blizzard or in-game data',
-  'beta-tested': 'Seen in the beta by several players or guides',
-  community: 'One guide or player claim – not cross-checked yet',
-  theory: 'Not testable yet – the beta stopped at level 30',
-};
-
 const { c } = Astro.props;
+const info = CONFIDENCE[c];
 ---
 
-<span class={`pill badge-${c}`} title={TITLES[c]}>{c}</span>
+<span class={`seal ${c}`} title={info.meaning}
+  ><span class="pips" aria-hidden="true">{[0, 1, 2].map((i) => <i class={i < info.pips ? 'on' : undefined} />)}</span>{
+    info.word
+  }</span
+>

@@ -1,0 +1,38 @@
+---
+// Callout: a note with a label tab on its top-left edge. Variants: tip (fel), info, warn, danger, untested (dashed).
+import Icon from './Icon.astro';
+import type { IconName } from '../lib/icons';
+
+export type CalloutVariant = 'tip' | 'info' | 'warn' | 'danger' | 'untested';
+
+interface Props {
+  variant?: CalloutVariant;
+  label?: string;
+  compact?: boolean;
+  id?: string;
+  hidden?: boolean;
+  class?: string;
+}
+
+const LABEL: Record<CalloutVariant, string> = {
+  tip: 'Tip',
+  info: 'Good to know',
+  warn: 'Careful',
+  danger: 'Danger',
+  untested: 'Untested',
+};
+const ICON: Record<CalloutVariant, IconName> = {
+  tip: 'lantern',
+  info: 'info',
+  warn: 'warn',
+  danger: 'danger',
+  untested: 'unknown',
+};
+
+const { variant = 'info', label, compact = false, id, hidden, class: cls } = Astro.props;
+---
+
+<aside class:list={['callout', variant, { compact }, cls]} role="note" id={id} hidden={hidden}>
+  <p class="callout-label"><Icon name={ICON[variant]} size={16} />{label ?? LABEL[variant]}</p>
+  <slot />
+</aside>

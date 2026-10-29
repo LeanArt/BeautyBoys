@@ -1,110 +1,169 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
-import Badge from '../components/Badge.astro';
-import Sources from '../components/Sources.astro';
+import Trust from '../components/Trust.astro';
 import RefItem from '../components/RefItem.astro';
 import ChecklistBar from '../components/ChecklistBar.astro';
+import Callout from '../components/Callout.astro';
+import Waymark from '../components/Waymark.astro';
+import WayButton from '../components/WayButton.astro';
+import Icon from '../components/Icon.astro';
 import { libraryBooks } from '../lib/data';
-import { wayCommand } from '../lib/wow';
+import { wayCommand, coordLabel, formatDate } from '../lib/wow';
+import { md } from '../lib/md';
 
 const data = libraryBooks();
 const faction = 'alliance';
 const books = (data?.books ?? []).filter((b) => b.faction === 'both' || b.faction === faction);
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 // Group by zone, zones ordered by their lowest suggested level.
 const zones = [...new Set(books.map((b) => b.zone))]
   .map((zone) => {
     const list = books.filter((b) => b.zone === zone).sort((a, b) => (a.level ?? 0) - (b.level ?? 0));
-    return { zone, list, minLevel: Math.min(...list.map((b) => b.level ?? 60)) };
+    return { zone, id: `zone-${slug(zone)}`, list, minLevel: Math.min(...list.map((b) => b.level ?? 60)) };
   })
   .sort((a, b) => a.minLevel - b.minLevel || a.zone.localeCompare(b.zone));
+const sections = zones.map((z) => ({ id: z.id, label: z.zone, total: z.list.length }));
+const bookName = (b: (typeof books)[number]) => b.title ?? `Library book (${b.location})`;
 ---
 
-<Base title="Library books" description="Every WoW: Forever library book an Alliance player can collect, with coordinates and turn-in rewards.">
-  <PageHead eyebrow="Collect as you level" title="Library books">
-    Old books are scattered across Azeroth. Pick them up as you pass by and hand them in for a necklace, a ring and an
-    off-hand. Tick each one when you have it.
-  </PageHead>
+<Base
+  title="Library books"
+  description="Every WoW: Forever library book an Alliance player can collect, with coordinates and turn-in rewards."
+  rail="md"
+  dock
+>
+  <Fragment slot="head">
+    <PageHead
+      title="Library books"
+      facts={data ? [{ label: 'Books', value: `${books.length} for Alliance` }, { label: 'Updated', value: formatDate(data.updated) }] : []}
+    >
+      Old books are scattered across Azeroth. Pick them up as you pass by and hand them in for a necklace, a ring and an
+      off-hand. Tick each one when you have it.
+    </PageHead>
+    {
+      data && (
+        <div class="grid head-cards">
+          <section class="card" aria-labelledby="turn-in">
+            <h2 id="turn-in" class="h3">Where to hand them in</h2>
+            <ul class="ref-list">
+              {data.turnIn.map((n) => (
+                <li>
+                  <RefItem r={n} kind="npc" />
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section class="card" aria-labelledby="rewards">
+            <h2 id="rewards" class="h3">Rewards</h2>
+            <ul class="inline-refs rewards">
+              {data.rewards.map((r) => (
+                <li>
+                  <span class="tag num">{r.books} books</span>
+                  {r.level && <span class="muted num">level {r.level}+</span>}
+                  <span>
+                    {r.choices.map((c, i) => (
+                      <Fragment>{i > 0 && ' or '}<RefItem r={c} variant="inline" /></Fragment>
+                    ))}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </div>
+      )
+    }
+  </Fragment>
+
+  {data && <ChecklistBar slot="rail" sections={sections} levelJump={false} nextLabel="Next book" noun="books" />}
 
   {
     !data ? (
-      <div class="callout warn">
+      <Callout variant="warn">
         <p>The book list is being filled in. Check back soon.</p>
-      </div>
+      </Callout>
     ) : (
       <Fragment>
-        <div class="grid">
-          <div class="card">
-            <h3>Where to hand them in</h3>
-            <ul>
-              {data.turnIn.map((n) => (
-                <li>
-                  <RefItem r={n} />
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Rewards</h3>
-            <ul>
-              {data.rewards.map((r) => (
-                <li>
-                  <strong>{r.books} books</strong>
-                  {r.level && <span class="muted"> (level {r.level}+)</span>}:{' '}
-                  {r.choices.map((c, i) => (
-                    <Fragment>
-                      {i > 0 && ' or '}
-                      <RefItem r={c} />
-                    </Fragment>
-                  ))}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <ChecklistBar levelJump={false} />
-
-        <div class="callout small">
+        <Callout variant="tip">
           <p>
-            <strong>Tip:</strong> "Copy all" puts every waypoint for a zone on your clipboard. In game, type{' '}
-            <code>/ttpaste</code> (TomTom) and paste them all at once.
+            "Copy all" puts every waypoint for a zone on your clipboard. In game, type <code>/ttpaste</code> (TomTom) and
+            paste them all at once.
           </p>
-        </div>
+        </Callout>
 
-        {zones.map(({ zone, list }) => {
-          const all = list.map((b) => wayCommand(b.zone, b.coords, b.title ?? `Library book (${b.location})`)).join('\n');
+        {zones.map(({ zone, id, list }) => {
+          const all = list.map((b) => wayCommand(b.zone, b.coords, bookName(b))).join('\n');
           return (
-            <section class="zone" data-group>
-              <header>
-                <h2>{zone}</h2>
-                <span class="pill" data-group-count>
-                  0/{list.length}
-                </span>
-                <button type="button" class="btn small" data-copy={all}>
-                  Copy all /way
-                </button>
-              </header>
-              {list.map((b) => (
-                <div class="step book" id={b.id} data-lmin={b.level ?? 1} data-lmax={60}>
-                  <label class="check">
-                    <input type="checkbox" data-step={b.id} />
-                    <span class="visually-hidden">Mark book {b.title ?? b.location} collected</span>
-                  </label>
-                  <div>
-                    <RefItem
-                      r={{ name: b.title ?? 'Library book', zone: b.zone, coords: b.coords, note: b.location }}
-                    />
-                    <div class="meta">
-                      {b.level && <span class="pill level">Lv {b.level}+</span>}
-                      <Badge c={b.confidence} />
-                    </div>
-                    {b.note && <p class="small muted">{b.note}</p>}
-                    <Sources urls={b.sources} />
+            <section class="leg zone" id={id} data-group>
+              <header class="leg-head">
+                <span class="stone" aria-hidden="true" />
+                <div class="leg-head-main">
+                  <h2>{zone}</h2>
+                  <div class="leg-tools">
+                    <span class="count" data-group-count="long">
+                      0 of {list.length} done
+                    </span>
+                    {/* One book: its row already has a coordinate button, so no zone-level copy. */}
+                    {list.length > 1 && (
+                      <button type="button" class="btn" data-copy={all}>
+                        <Icon name="copy" size={16} class="way-copy" data-copy-icon />
+                        <Icon name="check" size={16} class="way-ok" />
+                        Copy all {list.length} waypoints
+                      </button>
+                    )}
                   </div>
                 </div>
-              ))}
+              </header>
+              <ol class="steps">
+                {list.map((b) => {
+                  const title = b.title ?? 'Library book';
+                  const way = wayCommand(b.zone, b.coords, bookName(b));
+                  return (
+                    <li
+                      class:list={['step', 'kind-book', { theory: b.confidence === 'theory' }]}
+                      id={b.id}
+                      data-lmin={b.level ?? 1}
+                      data-lmax={60}
+                      data-title={b.title ?? `Library book in ${b.zone}`}
+                      data-way={way}
+                      data-way-label={coordLabel(b.coords)}
+                    >
+                      <Waymark id={b.id} glyph="book" label={`Mark book "${b.title ?? b.location}" collected`} />
+                      <div class="step-main">
+                        <p class="next-flag">
+                          <span class="tag next">Next book</span>
+                        </p>
+                        <h3 class="step-title">
+                          {title} <span class="tag done">Done</span>
+                        </h3>
+                        <div class="facts">
+                          {b.level && <span class="tag lv num">Lv {b.level}+</span>}
+                          <WayButton way={way} coords={b.coords} class="key" />
+                          <Trust c={b.confidence} urls={b.sources} report={`library book "${title}" (${b.id})`} />
+                        </div>
+                        <div class="detail">
+                          <p class="loc">
+                            <Icon name="pin" size={16} class="muted" /> {b.location}
+                          </p>
+                          {b.note && <p class="body" set:html={md(b.note)} />}
+                          <div class="book-actions">
+                            <WayButton way={way} coords={b.coords} />
+                            <label class="btn mark-done" for={`chk-${b.id}`} aria-hidden="true">
+                              <Icon name="check" size={16} />
+                              Mark done
+                            </label>
+                          </div>
+                        </div>
+                        <button class="btn quiet step-toggle" type="button" data-action="details" aria-expanded="false">
+                          <span data-details-label>Show details</span>
+                          <Icon name="chevron-down" size={16} class="chev" />
+                        </button>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ol>
             </section>
           );
         })}
@@ -119,61 +178,25 @@ const zones = [...new Set(books.map((b) => b.zone))]
 </script>
 
 <style>
-  .card h3 {
-    margin-top: 0;
+  .head-cards {
+    margin-bottom: var(--sp-8);
   }
-  .zone {
-    margin-top: 1.2rem;
+  .head-cards .card {
+    padding-bottom: var(--sp-2);
   }
-  .zone header {
+  .rewards > li {
+    border-top: 1px dashed var(--rule);
+  }
+  .rewards > li:first-child {
+    border-top: 0;
+  }
+  .book-actions {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 0.6rem;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0.3rem;
-    margin-bottom: 0.5rem;
+    gap: 8px 12px;
+    margin-top: 10px;
   }
-  .zone h2 {
-    margin: 0;
-    font-size: 1.35rem;
-  }
-  .zone.complete [data-group-count] {
-    color: var(--fel);
-    background: var(--fel-soft);
-  }
-  .book {
-    display: grid;
-    grid-template-columns: 2.2rem 1fr;
-    gap: 0.4rem;
-    padding: 0.6rem 0.5rem;
-    border-bottom: 1px dashed var(--border);
-  }
-  .book.done {
-    opacity: 0.5;
-  }
-  :global(.hide-done) .book.done {
-    display: none;
-  }
-  .book:global(.flash) {
-    background: var(--accent-soft);
-  }
-  .check {
-    display: flex;
-    justify-content: center;
-    padding-top: 0.1rem;
-  }
-  .check input {
-    width: 1.35rem;
-    height: 1.35rem;
-    accent-color: var(--fel);
-  }
-  .meta {
-    display: flex;
-    gap: 0.3rem;
-    margin-top: 0.25rem;
-  }
-  .book[data-now='future'] {
-    opacity: 0.75;
+  .book-actions .mark-done {
+    margin-top: 0;
   }
 </style>

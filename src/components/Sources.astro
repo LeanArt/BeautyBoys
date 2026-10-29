@@ -1,20 +1,13 @@
 ---
+// Sources without a confidence seal (e.g. a table's sources). A 44px disclosure with a list of links.
+import Icon from './Icon.astro';
+import { sourceLabel } from '../lib/sources';
+
 interface Props {
   urls: string[];
 }
 
 const { urls } = Astro.props;
-
-function label(u: string): string {
-  try {
-    const url = new URL(u);
-    const host = url.hostname.replace(/^www\./, '');
-    const tail = url.pathname.split('/').filter(Boolean).pop() ?? '';
-    return tail ? `${host} › ${decodeURIComponent(tail).slice(0, 48)}` : host;
-  } catch {
-    return u;
-  }
-}
 ---
 
 {
@@ -22,12 +15,14 @@ function label(u: string): string {
     <details class="sources">
       <summary>
         Sources ({urls.length})
+        <Icon name="chevron-down" size={16} class="chev" />
       </summary>
-      <ul>
+      <ul class="src-list">
         {urls.map((u) => (
           <li>
             <a href={u} target="_blank" rel="noopener">
-              {label(u)}
+              <Icon name="external" size={16} />
+              {sourceLabel(u)}
             </a>
           </li>
         ))}

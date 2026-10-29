@@ -1,14 +1,65 @@
 ---
+// Page head: optional breadcrumb, H1, lede (slot), labelled facts, and the "set your level" prompt.
+// `demo` (style guide only): the title is a <p> styled as the H1 (one H1 per page) and the level prompt stays
+// visible even when a level is set.
+import Icon from './Icon.astro';
+
 interface Props {
-  eyebrow?: string;
   title: string;
+  trail?: { href: string; label: string }[];
+  facts?: { label: string; value: string }[];
+  levelPrompt?: boolean;
+  demo?: boolean;
 }
 
-const { eyebrow, title } = Astro.props;
+const { title, trail = [], facts = [], levelPrompt = false, demo = false } = Astro.props;
+const hasLede = Astro.slots.has('default');
+const Title = demo ? 'p' : 'h1';
 ---
 
 <header class="page-head">
-  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-  <h1>{title}</h1>
-  <div class="lede"><slot /></div>
+  {
+    trail.length > 0 && (
+      <nav aria-label={demo ? 'Breadcrumb (demo)' : 'Breadcrumb'} class="crumbs">
+        <ol>
+          {trail.map((t, i) => (
+            <li>
+              {i > 0 && <Icon name="chevron-right" size={16} />}
+              <a href={t.href}>{t.label}</a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )
+  }
+  <Title class="page-title">{title}</Title>
+  {
+    hasLede && (
+      <div class="lede">
+        <slot />
+      </div>
+    )
+  }
+  {
+    facts.length > 0 && (
+      <dl class="facts-dl">
+        {facts.map((f) => (
+          <div>
+            <dt>{f.label}</dt>
+            <dd class="num">{f.value}</dd>
+          </div>
+        ))}
+      </dl>
+    )
+  }
+  {
+    levelPrompt && (
+      <p class:list={['level-prompt', { always: demo }]}>
+        Set your level in the top bar to see what matters now.
+        <button class="btn quiet" type="button" data-action="focus-level">
+          Set my level
+        </button>
+      </p>
+    )
+  }
 </header>

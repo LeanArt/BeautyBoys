@@ -1,4 +1,7 @@
-// Any element with [data-copy="text"] copies that text on click and briefly shows "Copied".
+// Any element with [data-copy="text"] copies that text on click.
+// Buttons with a [data-copy-icon] swap that icon for a check (width never changes); others swap their text.
+import { toast } from './toast';
+
 export async function copyText(text: string): Promise<boolean> {
   try {
     await navigator.clipboard.writeText(text);
@@ -11,7 +14,12 @@ export async function copyText(text: string): Promise<boolean> {
     ta.style.opacity = '0';
     document.body.appendChild(ta);
     ta.select();
-    const ok = document.execCommand('copy');
+    let ok = false;
+    try {
+      ok = document.execCommand('copy');
+    } catch {
+      ok = false;
+    }
     ta.remove();
     return ok;
   }
@@ -22,14 +30,26 @@ export function initCopy() {
     const btn = (e.target as HTMLElement).closest<HTMLElement>('[data-copy]');
     if (!btn) return;
     e.preventDefault();
-    const ok = await copyText(btn.dataset.copy ?? '');
-    const old = btn.dataset.label ?? btn.textContent ?? '';
-    btn.dataset.label = old;
-    btn.textContent = ok ? 'Copied' : 'Copy failed';
+    const text = btn.dataset.copy ?? '';
+    if (!text) return;
+    const ok = await copyText(text);
     btn.classList.add('copied');
-    setTimeout(() => {
-      btn.textContent = old;
-      btn.classList.remove('copied');
-    }, 1400);
+    if (btn.querySelector('[data-copy-icon]')) {
+      btn.dataset.state = ok ? 'copied' : 'failed';
+      setTimeout(() => {
+        delete btn.dataset.state;
+        btn.classList.remove('copied');
+      }, 1400);
+    } else {
+      const old = btn.dataset.label ?? btn.textContent ?? '';
+      btn.dataset.label = old;
+      btn.textContent = ok ? 'Copied' : 'Copy failed';
+      setTimeout(() => {
+        btn.textContent = old;
+        btn.classList.remove('copied');
+      }, 1400);
+    }
+    const lines = text.split('\n').length;
+    toast(ok ? (lines > 1 ? `Copied ${lines} waypoints` : `Copied ${text}`) : "Copy didn't work. Long-press the coordinates to copy them.");
   });
 }

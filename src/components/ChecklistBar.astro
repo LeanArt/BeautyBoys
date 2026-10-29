@@ -1,73 +1,117 @@
 ---
-interface Props {
-  levelJump?: boolean;
+// Checklist bar (docs/DESIGN.md, section 3 "Checklist bar"): the dock at the bottom of the screen below 900px,
+// the sticky rail from 900px. Exactly one DOM instance of every [data-action] (progress.ts binds them).
+// Order inside the sheet / rail: options first (always visible when it opens), then sections, then backup and reset.
+// `demo` (style guide only): fixed counts and next step, sheet rendered open, no level attributes, nothing bound.
+import Icon from './Icon.astro';
+
+interface Section {
+  id: string;
+  label: string;
+  level?: [number, number];
+  total: number;
+  demo?: { done: number; now?: 'past' | 'current' | 'future' };
 }
 
-const { levelJump = true } = Astro.props;
+interface Props {
+  sections: Section[];
+  levelJump?: boolean;
+  nextLabel?: string; // "Next step" (route) or "Next book" (library)
+  noun?: string; // "steps" or "books" in "3 of 12 steps done"
+  demo?: { nextTitle: string; way?: string; wayLabel?: string };
+}
+
+const { sections, levelJump = true, nextLabel = 'Next step', noun = 'steps', demo } = Astro.props;
+const lv = (l: [number, number]) => (l[0] === l[1] ? `Lv ${l[0]}` : `Lv ${l[0]}–${l[1]}`);
+const total = sections.reduce((n, s) => n + s.total, 0);
+const doneAll = sections.reduce((n, s) => n + (s.demo?.done ?? 0), 0);
+const countText = demo ? `${doneAll} of ${total} ${noun} done` : undefined;
 ---
 
-<div class="checklist-bar card">
-  <div class="progress">
-    <div class="track"><div class="fill" data-progress-bar></div></div>
-    <span class="small muted" data-progress-text>Loading progress…</span>
+<div class="jbar" role="region" aria-label="Checklist progress" data-noun={noun}>
+  <p class="jbar-count count" data-progress-text>{countText ?? 'Loading progress…'}</p>
+  <div class="jbar-meter" aria-hidden="true">
+    <i class="jbar-fill" data-progress-bar style={demo && total ? `width:${(doneAll / total) * 100}%` : undefined}></i>
   </div>
-  <div class="actions">
-    <button class="btn small primary" type="button" data-action="resume">Resume where I left off</button>
-    {levelJump && <button class="btn small" type="button" data-action="my-level">Jump to my level</button>}
-    <button class="btn small" type="button" data-action="hide-done" aria-pressed="false">Hide done</button>
+  <div class="jbar-row">
+    <button class="jbar-next" type="button" data-action="resume">
+      <span class="jbar-next-label"
+        ><span class="phone">{nextLabel}</span><span class="desk">Go to {nextLabel.toLowerCase()}</span></span
+      >
+      <span class="jbar-next-title" data-next-title>{demo?.nextTitle ?? '…'}</span>
+    </button>
+    <button
+      class="way jbar-way"
+      type="button"
+      data-copy={demo?.way ?? ''}
+      data-next-coord
+      hidden={!demo?.way}
+      aria-label={demo?.way ? `Copy ${demo.way}` : `Copy /way for the ${nextLabel.toLowerCase()}`}
+    >
+      <Icon name="crosshair" size={16} /><span class="num" data-way-label>{demo?.wayLabel}</span><Icon
+        name="copy"
+        size={16}
+        class="way-copy"
+        data-copy-icon
+      /><Icon name="check" size={16} class="way-ok" />
+    </button>
+    <details class="jbar-sheet" data-sheet={demo ? undefined : ''} data-open-from={demo ? undefined : '900'} open={!!demo}>
+      <summary class="btn icon"><Icon name="list" /><span class="visually-hidden">Sections and options</span></summary>
+      <div class="sheet-panel">
+        <p class="count" data-progress-text>{countText ?? '…'}</p>
+        <div class="sheet-actions">
+          {levelJump && <button class="btn" type="button" data-action="my-level">Jump to my level</button>}
+          <div class="seg" role="group" aria-label="View">
+            <button class="btn" type="button" data-action="view" data-view="full" aria-pressed="true">Full</button>
+            <button class="btn" type="button" data-action="view" data-view="compact" aria-pressed="false">Compact</button>
+          </div>
+          <button class="switch-btn" type="button" data-action="hide-done" aria-pressed="false"
+            >Hide done {noun}<span class="track" aria-hidden="true"></span></button
+          >
+        </div>
+        <h2 class="sheet-label">Sections</h2>
+        <ol class="journey">
+          {
+            sections.map((s) => (
+              <li data-complete={s.demo && s.demo.done === s.total ? '' : undefined}>
+                <a
+                  href={`#${s.id}`}
+                  data-lmin={demo ? undefined : s.level?.[0]}
+                  data-lmax={demo ? undefined : s.level?.[1]}
+                  data-now={s.demo?.now}
+                >
+                  <span class="j-stone" aria-hidden="true" />
+                  <span class="j-name">{s.label}</span>
+                  <span class="j-meta">
+                    {s.level && <span class="num">{lv(s.level)}</span>}
+                    <span class="count" data-count-for={s.id}>
+                      {s.demo?.done ?? 0}/{s.total}
+                    </span>
+                    <span class="j-here">Your level</span>
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="sheet-actions sheet-more">
+          <details class="backup">
+            <summary>Move progress to another device<Icon name="chevron-down" size={16} class="chev" /></summary>
+            <p>
+              Progress is saved in this browser only. Make a backup code here and paste it into the same box on your phone or
+              other computer.
+            </p>
+            <textarea data-backup-code aria-label="Backup code" spellcheck="false"></textarea>
+            <div class="row">
+              <button class="btn" type="button" data-action="backup">Make backup code</button>
+              <button class="btn" type="button" data-action="restore">Restore from code</button>
+            </div>
+            <p data-backup-status aria-live="polite"></p>
+          </details>
+          <hr />
+          <button class="btn danger" type="button" data-action="reset">Untick everything</button>
+        </div>
+      </div>
+    </details>
   </div>
-  <details class="backup">
-    <summary class="small">Move progress to another device</summary>
-    <p class="small muted">
-      Progress is saved in this browser only. Make a backup code here and paste it into the same box on your phone or
-      other computer.
-    </p>
-    <textarea data-backup-code aria-label="Backup code" spellcheck="false"></textarea>
-    <div class="actions">
-      <button class="btn small" type="button" data-action="backup">Make backup code</button>
-      <button class="btn small" type="button" data-action="restore">Restore from code</button>
-      <button class="btn small" type="button" data-action="reset">Untick everything</button>
-    </div>
-    <p class="small" data-backup-status aria-live="polite"></p>
-  </details>
 </div>
-
-<style>
-  .checklist-bar {
-    display: grid;
-    gap: 0.7rem;
-    margin: 1rem 0 1.5rem;
-  }
-  .progress {
-    display: grid;
-    gap: 0.3rem;
-  }
-  .track {
-    height: 10px;
-    border-radius: 999px;
-    background: var(--surface-2);
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-  .fill {
-    height: 100%;
-    width: 0;
-    background: linear-gradient(90deg, var(--fel), var(--accent));
-    transition: width 0.3s;
-  }
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-  .backup summary {
-    cursor: pointer;
-    color: var(--muted);
-  }
-  .backup textarea {
-    margin: 0.4rem 0;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    min-height: 3.5rem;
-  }
-</style>

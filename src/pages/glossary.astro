@@ -1,18 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
+import Icon from '../components/Icon.astro';
 
 const terms: [string, string][] = [
-  ['Addon', 'A free add-on that changes the game interface – map markers, waypoints, bag sorting. See the starter pack on the Start page.'],
+  ['Addon', 'A free add-on that changes the game interface: map markers, waypoints, bag sorting. See the starter pack on the Start page.'],
   ['Aggro', "A monster's attention. Whoever has aggro gets attacked. You want your demon to have it, not you."],
   ['Alt', 'Any extra character on your account besides your main one.'],
-  ['AoE', 'Area of effect – a spell that hits everything in an area, like Rain of Fire or Hellfire.'],
+  ['AoE', 'Area of effect: a spell that hits everything in an area, like Rain of Fire or Hellfire.'],
   ['Auction House (AH)', 'Where players buy and sell items to each other. Found in capital cities.'],
   ['Bane', "Forever's new name for the warlock's Agony and Doom spells. A Bane doesn't take up your curse slot."],
   ['BoE / BoP', 'Binds on Equip / Binds on Pickup. A BoE item can be traded until you wear it; a BoP item is yours the moment you loot it.'],
   ['Buff / Debuff', 'A helpful effect on you (buff) or a harmful one (debuff), shown as icons near your portrait.'],
   ['Camp', 'A campfire you build in the wild. Sitting by it gives buffs; profession objects add more. Unlocked around level 5.'],
-  ['Capstone', 'The big talent at the bottom of a talent tree – for Affliction, Wrack at level 40.'],
+  ['Capstone', 'The big talent at the bottom of a talent tree. For Affliction that is Wrack, at level 40.'],
   ['CC (crowd control)', 'Spells that stop a monster for a while, like Fear or Banish.'],
   ['Channel / channeled spell', "A spell you keep casting while it works, like Drain Life. Moving cancels it."],
   ['Cooldown (CD)', 'The wait before you can use something again.'],
@@ -25,6 +26,7 @@ const terms: [string, string][] = [
   ['Hearthstone', 'An item that teleports you to the inn you set as home. Long cooldown.'],
   ['Kite', 'Keeping a monster away from you while you damage it, e.g. by Fearing it or running while your DoTs tick.'],
   ['Legacy points', "Forever's account-wide achievement points. Spend them on perks at a class trainer. Max 16 per character at launch."],
+  ['Lv', 'Short for level. On this site "Lv 12–14" means a step suits characters of level 12 to 14.'],
   ['Life Tap', 'Warlock spell that turns your health into mana. In Forever it gets stronger with Spirit.'],
   ["Merchant's Favor", 'A currency from filling Waylaid Crates. Buys special recipes at the Azeroth Commerce Authority in Redridge.'],
   ['Mob', 'Any monster or enemy creature.'],
@@ -36,7 +38,7 @@ const terms: [string, string][] = [
   ['Rested XP', 'Bonus XP you build while logged out in an inn. Kills give double XP until it runs out.'],
   ['Ruleset', "Forever's replacement for realms: Normal, PvP, RP or RP-PvP. Permanent once you pick it."],
   ['Soul Shard', "A warlock reagent you get with Drain Soul. Needed for demons, Healthstones and more. They don't stack."],
-  ['Spec', 'Your specialization – the talent tree you put most points into (Affliction, Demonology or Destruction).'],
+  ['Spec', 'Your specialization: the talent tree you put most points into (Affliction, Demonology or Destruction).'],
   ['Tagging', 'The first player (or group) to hit a monster gets the kill credit and loot. Group up to share it.'],
   ['Tank / Healer / DPS', 'The three group roles: takes hits / keeps people alive / deals damage. Warlocks are DPS.'],
   ['TomTom', 'An addon that shows an arrow to map coordinates. Paste a /way command from this guide to use it.'],
@@ -44,28 +46,53 @@ const terms: [string, string][] = [
   ['Vendor', 'An NPC who buys your items and sells supplies. Right-click them to open their shop.'],
   ['Wand', 'A ranged weapon casters shoot for free (no mana). A warlock\'s best friend until about level 30.'],
   ['Waylaid Crate', 'A crate that drops from monsters. Fill it with the listed materials and hand it in for Merchant\'s Favor. Don\'t delete it.'],
-  ['/way', 'A TomTom command, e.g. /way Dun Morogh 47.2 53.6 Gimrizz. Paste it into chat to get an arrow to that spot.'],
+  ['Waypoint (/way)', 'A TomTom command, e.g. /way Dun Morogh 47.2 53.6 Gimrizz. The coordinate buttons on this site copy one: paste it into chat to get an arrow to that spot.'],
   ['World instance', 'A copy of a busy area, used to spread players out. Grouping with a friend moves you into the same copy.'],
 ];
 
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const sorted = [...terms].sort((a, b) => a[0].replace(/^\W+/, '').localeCompare(b[0].replace(/^\W+/, '')));
+const letterOf = (t: string) => (t.replace(/^\W+/, '')[0] ?? '#').toUpperCase();
+const letters = [...new Set(sorted.map(([t]) => letterOf(t)))];
+const firstOfLetter = new Set(letters.map((l) => sorted.find(([t]) => letterOf(t) === l)![0]));
 ---
 
 <Base title="Glossary" description="Plain-English explanations of World of Warcraft words for brand-new players.">
-  <PageHead eyebrow="Words gamers use" title="Glossary">
-    Every word you'll hear in chat or read in guides, explained without more jargon.
-  </PageHead>
+  <Fragment slot="head">
+    <PageHead title="Glossary">Every word you'll hear in chat or read in guides, explained without more jargon.</PageHead>
+  </Fragment>
 
-  <label class="search">
-    <span class="visually-hidden">Filter terms</span>
-    <input type="search" id="gloss-q" placeholder="Filter, e.g. aggro" autocomplete="off" />
-  </label>
+  <div class="gloss-tools">
+    <div class="field">
+      <label class="label" for="gloss-q">Find a word</label>
+      <span class="search-field">
+        <Icon name="search" />
+        <input type="search" id="gloss-q" placeholder="Aggro, rested, wand…" autocomplete="off" />
+        <button type="button" class="btn icon quiet clear" data-clear aria-label="Clear search" hidden><Icon name="close" /></button>
+      </span>
+    </div>
+    <p id="gloss-count" aria-live="polite">Showing {terms.length} of {terms.length} words</p>
+  </div>
+
+  <nav aria-label="Jump to a letter">
+    <ul class="letters">
+      {
+        letters.map((l) => (
+          <li>
+            <a class="btn quiet" href={`#letter-${l.toLowerCase()}`}>
+              {l}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
 
   <dl class="gloss" id="gloss">
     {
-      terms.map(([t, d]) => (
+      sorted.map(([t, d]) => (
         <div class="entry" id={slug(t)} data-text={`${t} ${d}`.toLowerCase()}>
-          <dt>{t}</dt>
+          <dt id={firstOfLetter.has(t) ? `letter-${letterOf(t).toLowerCase()}` : undefined}>{t}</dt>
           <dd>{d}</dd>
         </div>
       ))
@@ -75,41 +102,27 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
 
 <script>
   const q = document.getElementById('gloss-q') as HTMLInputElement | null;
+  const count = document.getElementById('gloss-count');
+  const clear = document.querySelector<HTMLButtonElement>('.gloss-tools [data-clear]');
   const entries = [...document.querySelectorAll<HTMLElement>('#gloss .entry')];
-  q?.addEventListener('input', () => {
+  const update = () => {
+    if (!q) return;
     const v = q.value.trim().toLowerCase();
-    entries.forEach((e) => (e.hidden = !!v && !e.dataset.text!.includes(v)));
+    let shown = 0;
+    entries.forEach((e) => {
+      e.hidden = !!v && !e.dataset.text!.includes(v);
+      if (!e.hidden) shown++;
+    });
+    if (clear) clear.hidden = q.value === '';
+    if (count)
+      count.textContent =
+        shown === 0 ? `No word matches “${q.value.trim()}”. Try a shorter word.` : `Showing ${shown} of ${entries.length} words`;
+  };
+  q?.addEventListener('input', update);
+  clear?.addEventListener('click', () => {
+    if (!q) return;
+    q.value = '';
+    update();
+    q.focus();
   });
 </script>
-
-<style>
-  .search input {
-    width: min(100%, 22rem);
-    margin: 0.5rem 0 1rem;
-  }
-  .gloss {
-    display: grid;
-    gap: 0.6rem;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-    margin: 0;
-  }
-  .entry {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 0.7rem 0.9rem;
-  }
-  .entry:target {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-soft);
-  }
-  dt {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.1rem;
-  }
-  dd {
-    margin: 0.2rem 0 0;
-    color: var(--muted);
-  }
-</style>

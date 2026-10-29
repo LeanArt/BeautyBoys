@@ -1,0 +1,67 @@
+---
+// The one hidden icon sprite, rendered once at the top of <body> by Base.astro.
+// Every glyph is drawn for Waypoint on a 24x24 grid: stroke = currentColor, round caps and joins,
+// no fills except where noted (fill="currentColor" stroke="none"). No icon library, no game art.
+// Use <Icon name="..." /> to place one. Add a glyph: a new <symbol id="i-NAME"> here + docs/DESIGN.md.
+---
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <!-- brand -->
+  <symbol id="i-mark" viewBox="0 0 24 24"><path d="M12 1.5v21" stroke-width="2"></path><path d="M12 6.5l5 5.5-5 5.5-5-5.5z" fill="currentColor" stroke="none"></path></symbol>
+
+  <!-- step kinds -->
+  <symbol id="i-signpost" viewBox="0 0 24 24"><path d="M12 21.5V2.5"></path><path d="M5 5h11l3 2.5-3 2.5H5z"></path><path d="M19 12.5H8l-3 2.5 3 2.5h11z"></path></symbol>
+  <symbol id="i-quest" viewBox="0 0 24 24"><path d="M10.4 3.5h3.2l-.7 11.2h-1.8z" fill="currentColor" stroke="none"></path><circle cx="12" cy="19" r="1.8" fill="currentColor" stroke="none"></circle></symbol>
+  <symbol id="i-turnin" viewBox="0 0 24 24"><path d="M8.8 8.6a3.3 3.3 0 1 1 4.9 2.9c-1 .6-1.7 1.3-1.7 2.5v.8" stroke-width="2.5"></path><circle cx="12" cy="19" r="1.8" fill="currentColor" stroke="none"></circle></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 21.5c-3.6 0-6.5-2.6-6.5-6.3 0-3.6 3-5.6 3.7-8.7 1.5 1.2 2 2.7 2 4.2 1.5-.9 2.6-3.3 2.3-6.2 3.3 2 5.5 6 5.5 10.2 0 3.9-3 6.8-7 6.8z"></path></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M3.5 5.5c2.8-1.2 5.8-1.2 8.5.6 2.7-1.8 5.7-1.8 8.5-.6v13.4c-2.8-1.1-5.8-1.1-8.5.6-2.7-1.7-5.7-1.7-8.5-.6z"></path><path d="M12 6.1v13.4"></path></symbol>
+  <symbol id="i-gate" viewBox="0 0 24 24"><path d="M5 21V10.5a7 7 0 0 1 14 0V21"></path><path d="M3 21h18"></path><path d="M9 21v-7.5M12 21v-9M15 21v-7.5"></path></symbol>
+  <symbol id="i-anvil" viewBox="0 0 24 24"><path d="M3.5 7.5h12.5a4.5 4.5 0 0 0 4.5 4.5l-4.5 1-1.5 2.5h-6l-1.5-2.5A3.5 3.5 0 0 1 3.5 9.5z"></path><path d="M9 15.5 8 20.5h8l-1-5"></path></symbol>
+  <symbol id="i-rune" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 5.5l1.7 4.8 4.8 1.7-4.8 1.7L12 18.5l-1.7-4.8L5.5 12l4.8-1.7z"></path></symbol>
+  <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><circle cx="12" cy="12" r="5"></circle></symbol>
+  <symbol id="i-lantern" viewBox="0 0 24 24"><path d="M12 2v2.5M9 4.5h6"></path><path d="M8 7.5h8l-.8 11H8.8z"></path><path d="M7 21h10"></path><path d="M12 11.5c1 1 1.3 2 0 3.5-1.3-1.5-1-2.5 0-3.5z"></path></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L12 16.8l-5.4 2.9 1.2-5.9L3.4 9.7l6-.7z"></path></symbol>
+
+  <!-- places, people, things -->
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s-6.5-6.4-6.5-11.5a6.5 6.5 0 0 1 13 0c0 5.1-6.5 11.5-6.5 11.5z"></path><circle cx="12" cy="10" r="2.3"></circle></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"></circle><path d="M4.8 20.5c.9-3.9 3.7-6 7.2-6s6.3 2.1 7.2 6"></path></symbol>
+  <symbol id="i-pouch" viewBox="0 0 24 24"><path d="M7 8V6a5 5 0 0 1 10 0v2"></path><path d="M4.5 8h15l-1.2 12.5H5.7z"></path></symbol>
+  <symbol id="i-crosshair" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.5"></circle><path d="M12 2.5v5M12 16.5v5M2.5 12h5M16.5 12h5"></path></symbol>
+
+  <!-- actions and states -->
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11.5" height="11.5" rx="1.5"></rect><path d="M15.5 8.5V5.5A1.5 1.5 0 0 0 14 4H5.5A1.5 1.5 0 0 0 4 5.5V14a1.5 1.5 0 0 0 1.5 1.5h3"></path></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"></path></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M10.5 8.5l4 3.5-4 3.5z" fill="currentColor" stroke="none"></path></symbol>
+
+  <!-- bag verdicts -->
+  <symbol id="i-keep" viewBox="0 0 24 24"><path d="M6 6.5h12a1.5 1.5 0 0 1 1.5 1.5v11A1.5 1.5 0 0 1 18 20.5H6A1.5 1.5 0 0 1 4.5 19V8A1.5 1.5 0 0 1 6 6.5z"></path><path d="M9 6.5 7.5 3.5h9L15 6.5"></path><path d="M9.5 14l2 2 3.5-3.5"></path></symbol>
+  <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3.5 10a8.5 5.5 0 0 1 17 0v10h-17z"></path><path d="M3.5 13.5h17"></path><path d="M10.5 12h3v3h-3z"></path></symbol>
+  <symbol id="i-sell" viewBox="0 0 24 24"><path d="M5 7.5a7 2.5 0 1 0 14 0a7 2.5 0 1 0-14 0"></path><path d="M5 7.5v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-4"></path><path d="M5 11.5v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-4"></path></symbol>
+  <symbol id="i-auction" viewBox="0 0 24 24"><path d="M13.6 3.2l6.4 6.4-2.6 2.6L11 5.8z"></path><path d="M14.3 9 5 18.3"></path><path d="M3 21h9"></path></symbol>
+  <symbol id="i-buy" viewBox="0 0 24 24"><path d="M3.5 9.5h17l-1.8 9.5a1.5 1.5 0 0 1-1.5 1.2H6.8a1.5 1.5 0 0 1-1.5-1.2z"></path><path d="M8 9.5l3-5.5M16 9.5l-3-5.5"></path><path d="M9 13v4M15 13v4"></path></symbol>
+  <symbol id="i-use" viewBox="0 0 24 24"><path d="M9.5 3h5M10.5 3v5.5L5.6 17A2.8 2.8 0 0 0 8 21h8a2.8 2.8 0 0 0 2.4-4l-4.9-8.5V3"></path><path d="M7.5 14.5h9"></path></symbol>
+  <symbol id="i-destroy" viewBox="0 0 24 24"><path d="M4 7h16M9.5 7V4h5v3M6 7l1 13.5h10L18 7"></path><path d="M10 11v6M14 11v6"></path></symbol>
+
+  <!-- callouts -->
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6"></path><path d="M12 7.5h.01" stroke-width="2.5"></path></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3.5l9 16H3z"></path><path d="M12 10v4.5"></path><path d="M12 17.5h.01" stroke-width="2.5"></path></symbol>
+  <symbol id="i-danger" viewBox="0 0 24 24"><path d="M8.3 3h7.4L21 8.3v7.4L15.7 21H8.3L3 15.7V8.3z"></path><path d="M12 8v5"></path><path d="M12 16.5h.01" stroke-width="2.5"></path></symbol>
+  <symbol id="i-unknown" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9.2a2.6 2.6 0 1 1 3.7 2.4c-.8.4-1.2 1-1.2 1.9v.5"></path><path d="M12 17h.01" stroke-width="2.5"></path></symbol>
+
+  <!-- interface -->
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"></path></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 7h11M9 12h11M9 17h11"></path><path d="M4.5 7h.01M4.5 12h.01M4.5 17h.01" stroke-width="3"></path></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="M6 9.5l6 6 6-6"></path></symbol>
+  <symbol id="i-chevron-up" viewBox="0 0 24 24"><path d="M6 14.5l6-6 6 6"></path></symbol>
+  <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"></path></symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"></path></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"></path></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"></path></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></symbol>
+  <symbol id="i-auto" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"></path></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9"></path><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"></path></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"></path><path d="M5 4h11l-2 4 2 4H5"></path></symbol>
+</svg>

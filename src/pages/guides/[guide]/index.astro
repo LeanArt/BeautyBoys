@@ -2,10 +2,11 @@
 import Base from '../../../layouts/Base.astro';
 import PageHead from '../../../components/PageHead.astro';
 import GuideNav from '../../../components/GuideNav.astro';
-import Badge from '../../../components/Badge.astro';
-import Sources from '../../../components/Sources.astro';
+import GuidePager from '../../../components/GuidePager.astro';
+import Trust from '../../../components/Trust.astro';
 import { guides, type Guide } from '../../../lib/guides';
 import { classFor } from '../../../lib/data';
+import { formatDate } from '../../../lib/wow';
 
 export function getStaticPaths() {
   return guides.filter((g) => g.status === 'ready').map((guide) => ({ params: { guide: guide.id }, props: { guide } }));
@@ -16,48 +17,62 @@ const cls = classFor(guide.id);
 const base = `/guides/${guide.id}/`;
 
 // The big moments on the way to 60. Levels are where a new player will usually be.
-const milestones = [
+const milestones: { lv: [number, number]; title: string; body: string; href: string }[] = [
   { lv: [1, 4], title: 'Your first demon: the Imp', body: 'A short class quest in Coldridge Valley.', href: 'route/' },
   { lv: [5, 8], title: 'Camping unlocked', body: '"The Great Outdoors" at the Kharanos campfire teaches you to build a camp for buffs.', href: '/systems/#camping' },
-  { lv: [5, 10], title: 'Pick up professions', body: 'Tailoring + Enchanting, plus Cooking and First Aid.', href: 'professions/' },
-  { lv: [10, 10], title: 'Talents + Voidwalker', body: 'Your first talent point and your tank demon.', href: 'talents/' },
+  { lv: [5, 10], title: 'Pick up professions', body: 'Tailoring and Enchanting, plus Cooking and First Aid.', href: 'professions/' },
+  { lv: [10, 10], title: 'Talents and the Voidwalker', body: 'Your first talent point and your tank demon.', href: 'talents/' },
   { lv: [13, 18], title: 'Hall of Thanes', body: 'The new dungeon under Ironforge. Run it once with all its quests.', href: 'route/' },
   { lv: [14, 20], title: 'Cozy Sleeping Bag', body: 'A scavenger hunt for a permanent XP bonus.', href: '/systems/#sleeping-bag' },
   { lv: [20, 20], title: 'Succubus or Incubus', body: 'Your damage demon, plus Ritual of Summoning.', href: 'talents/#demons' },
   { lv: [22, 28], title: 'Gravestone Scepter', body: 'The best wand for your 20s, from a Blackfathom Deeps quest.', href: 'route/' },
-  { lv: [25, 25], title: 'First Legacy point', body: 'Account-wide perks. Spend carefully – only 16 at launch.', href: '/systems/#legacy' },
+  { lv: [25, 25], title: 'First Legacy point', body: 'Account-wide perks. Spend carefully: only 16 at launch.', href: '/systems/#legacy' },
   { lv: [30, 30], title: 'Felhunter', body: 'The anti-caster demon, from a quest in Ratchet.', href: 'talents/#demons' },
   { lv: [40, 40], title: 'Mount, dual spec and Wrack', body: 'Riding (100g), the Felsteed quest, a second talent setup, and your capstone talent.', href: 'talents/' },
-  { lv: [60, 60], title: 'Level 60: Mount Hyjal', body: "The endgame zone. Raids open December 9.", href: 'route/' },
+  { lv: [60, 60], title: 'Level 60: Mount Hyjal', body: 'The endgame zone. Raids open 9 Dec 2026.', href: 'route/' },
 ];
+const lv = (l: [number, number]) => (l[0] === l[1] ? `${l[0]}` : `${l[0]}–${l[1]}`);
 ---
 
-<Base title={`${guide.race} ${guide.className}`} description={`A beginner's leveling guide for the ${guide.race} ${guide.className} in WoW: Forever.`}>
-  <PageHead eyebrow={`${guide.faction} · leveling guide`} title={`${guide.race} ${guide.className}`}>
-    {guide.blurb}
-  </PageHead>
-  <GuideNav guide={guide} />
+<Base
+  title={`${guide.race} ${guide.className}`}
+  description={`A beginner's leveling guide for the ${guide.race} ${guide.className} in WoW: Forever.`}
+  guide={guide.id}
+>
+  <Fragment slot="head">
+    <PageHead
+      title={`${guide.race} ${guide.className}`}
+      facts={[
+        { label: 'Faction', value: guide.faction },
+        ...(cls ? [{ label: 'Updated', value: formatDate(cls.updated) }] : []),
+      ]}
+      levelPrompt
+    >
+      {guide.blurb}
+    </PageHead>
+    <GuideNav guide={guide} />
+  </Fragment>
 
   <div class="grid">
-    <div class="card">
-      <h3>Why it's a great first character</h3>
+    <section class="card" aria-labelledby="why-first">
+      <h2 id="why-first" class="h3">Why it's a great first character</h2>
       <ul>
         <li>Your demon takes the hits; your spells heal you.</li>
         <li>Damage-over-time spells let you fight while moving.</li>
         <li>Life Tap turns health into mana, so you rarely stop to drink.</li>
         <li>Groups love you: you make Healthstones and can summon people.</li>
       </ul>
-    </div>
-    <div class="card">
-      <h3>The short version</h3>
+    </section>
+    <section class="card" aria-labelledby="short-version">
+      <h2 id="short-version" class="h3">The short version</h2>
       <ul>
         <li><strong>Spec:</strong> Affliction while leveling.</li>
-        <li><strong>Demon:</strong> Imp → Voidwalker (10) → Succubus/Incubus (20).</li>
-        <li><strong>Professions:</strong> Tailoring + Enchanting, Cooking, First Aid.</li>
-        <li><strong>Route:</strong> Dun Morogh → Loch Modan → Westfall/Redridge → Duskwood/Wetlands → …</li>
+        <li><strong>Demons:</strong> Imp, then Voidwalker (10), then Succubus or Incubus (20).</li>
+        <li><strong>Professions:</strong> Tailoring and Enchanting, plus Cooking and First Aid.</li>
+        <li><strong>Route:</strong> Dun Morogh, Loch Modan, Westfall and Redridge, then Duskwood and the Wetlands, and on.</li>
       </ul>
       <a class="btn primary" href={`${base}route/`}>Open the route</a>
-    </div>
+    </section>
   </div>
 
   <h2>Milestones on the way to 60</h2>
@@ -65,12 +80,17 @@ const milestones = [
     {
       milestones.map((m) => (
         <li data-lmin={m.lv[0]} data-lmax={m.lv[1]}>
-          <span class="pill level">{m.lv[0] === m.lv[1] ? `Lv ${m.lv[0]}` : `Lv ${m.lv[0]}–${m.lv[1]}`}</span>
-          <div>
-            <a href={m.href.startsWith('/') ? m.href : `${base}${m.href}`}>
-              <strong>{m.title}</strong>
-            </a>
-            <span class="muted"> – {m.body}</span>
+          <span class="tl-lv">
+            <span class="visually-hidden">Level </span>
+            {lv(m.lv)}
+          </span>
+          <span class="tl-node" aria-hidden="true" />
+          <div class="tl-main">
+            <div class="tl-title">
+              <a href={m.href.startsWith('/') ? m.href : `${base}${m.href}`}>{m.title}</a>
+              <span class="tag now">Now</span>
+            </div>
+            <p class="tl-body">{m.body}</p>
           </div>
         </li>
       ))
@@ -79,69 +99,23 @@ const milestones = [
 
   {
     cls && (
-      <section>
-        <h2>Gnome racial abilities</h2>
-        <p class="muted">Final versions from Blizzard's October 26 development notes.</p>
-        <div class="grid">
+      <section aria-labelledby="racials">
+        <h2 id="racials">Gnome racial abilities</h2>
+        <p class="muted">Final versions from Blizzard's 26 Oct 2026 development notes.</p>
+        <ul class="rows">
           {cls.racials.map((r) => (
-            <div class="card">
+            <li>
               <h3>{r.name}</h3>
               <p>{r.effect}</p>
-              <p class="muted small">
+              <p class="for-you">
                 <strong>For you:</strong> {r.forYou}
               </p>
-              <Badge c={r.confidence} />
-              <Sources urls={r.sources} />
-            </div>
+              <Trust c={r.confidence} urls={r.sources} report={`racial "${r.name}"`} />
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
     )
   }
+  <GuidePager guide={guide} />
 </Base>
-
-<style>
-  .timeline {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border-left: 2px solid var(--border);
-  }
-  .timeline li {
-    display: flex;
-    gap: 0.75rem;
-    align-items: baseline;
-    padding: 0.5rem 0 0.5rem 1rem;
-    position: relative;
-  }
-  .timeline li::before {
-    content: '';
-    position: absolute;
-    left: -7px;
-    top: 0.95rem;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--surface);
-    border: 2px solid var(--border);
-  }
-  .timeline li[data-now='past'] {
-    opacity: 0.6;
-  }
-  .timeline li[data-now='past']::before {
-    background: var(--fel);
-    border-color: var(--fel);
-  }
-  .timeline li[data-now='current']::before {
-    background: var(--accent);
-    border-color: var(--accent);
-    box-shadow: 0 0 0 4px var(--accent-soft);
-  }
-  .timeline .pill {
-    min-width: 5.2rem;
-    justify-content: center;
-  }
-  .card h3 {
-    margin-top: 0;
-  }
-</style>

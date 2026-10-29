@@ -1,0 +1,23 @@
+---
+// The coordinate button: shows "28.6, 66.1", copies the TomTom /way command (copy.ts + toast).
+// Its width never changes: on copy only the copy glyph swaps for a check (data-state="copied").
+import Icon from './Icon.astro';
+import { coordLabel } from '../lib/wow';
+
+interface Props {
+  way: string; // full /way command
+  coords: [number, number];
+  class?: string;
+}
+
+const { way, coords, class: cls } = Astro.props;
+---
+
+<button class:list={['way', cls]} type="button" data-copy={way} aria-label={`Copy ${way}`} title={`Copy ${way}`}>
+  <Icon name="crosshair" size={16} /><span class="num" data-way-label>{coordLabel(coords)}</span><Icon
+    name="copy"
+    size={16}
+    class="way-copy"
+    data-copy-icon
+  /><Icon name="check" size={16} class="way-ok" />
+</button>

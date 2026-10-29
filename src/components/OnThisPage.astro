@@ -1,0 +1,26 @@
+---
+// "On this page": collapsed disclosure in flow below 1200px, sticky left rail from 1200px (rail.ts opens it).
+import Icon from './Icon.astro';
+
+interface Props {
+  items: { id: string; label: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<details class="toc" data-open-from="1200">
+  <summary>On this page ({items.length} sections)<Icon name="chevron-down" size={16} class="chev" /></summary>
+  <nav aria-label="On this page">
+    <p class="toc-label" aria-hidden="true">On this page</p>
+    <ol>
+      {
+        items.map((i) => (
+          <li>
+            <a href={`#${i.id}`}>{i.label}</a>
+          </li>
+        ))
+      }
+    </ol>
+  </nav>
+</details>

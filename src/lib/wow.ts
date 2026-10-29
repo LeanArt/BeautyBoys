@@ -19,3 +19,13 @@ export function wayCommand(zone: string, coords: [number, number], label: string
 export function levelLabel([a, b]: [number, number]): string {
   return a === b ? `Lv ${a}` : `Lv ${a}–${b}`;
 }
+
+// "29 Oct 2026" (day month year, UTC so build time and browser agree).
+export function formatDate(iso: string): string {
+  return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+}
+
+// "28.6, 66.1": how coordinates are shown on the page (the /way command keeps TomTom format).
+export function coordLabel([x, y]: [number, number]): string {
+  return `${x.toFixed(1)}, ${y.toFixed(1)}`;
+}

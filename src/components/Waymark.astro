@@ -1,0 +1,28 @@
+---
+// The waymark: a round node on the ley line that IS the checkbox (44x44 hit area).
+// Shows the step's kind glyph until it is ticked, then a check.
+// The accessible name is the input's aria-label, so the visible "Mark done" label (a second pointer target) is not read twice.
+import Icon from './Icon.astro';
+import type { IconName } from '../lib/icons';
+
+interface Props {
+  id: string; // step id (data-step) – the input gets id="chk-{id}"
+  glyph: IconName;
+  label: string; // accessible label, e.g. 'Mark "Train at level 14" done'
+  demo?: { checked?: boolean }; // style guide only: no data-step (nothing binds), fixed state, disabled
+}
+
+const { id, glyph, label, demo } = Astro.props;
+---
+
+<label class="check">
+  <input
+    type="checkbox"
+    id={`chk-${id}`}
+    data-step={demo ? undefined : id}
+    aria-label={label}
+    checked={demo?.checked}
+    disabled={!!demo}
+  />
+  <span class="ring" aria-hidden="true"><Icon name={glyph} size={16} class="ring-kind" /><Icon name="check" size={16} class="ring-check" /></span>
+</label>

@@ -2,12 +2,17 @@
 import Base from '../../../layouts/Base.astro';
 import PageHead from '../../../components/PageHead.astro';
 import GuideNav from '../../../components/GuideNav.astro';
+import GuidePager from '../../../components/GuidePager.astro';
+import OnThisPage from '../../../components/OnThisPage.astro';
 import Badge from '../../../components/Badge.astro';
+import Trust from '../../../components/Trust.astro';
 import Sources from '../../../components/Sources.astro';
 import RefItem from '../../../components/RefItem.astro';
+import Callout from '../../../components/Callout.astro';
+import Icon from '../../../components/Icon.astro';
 import { guides, type Guide } from '../../../lib/guides';
 import { classFor } from '../../../lib/data';
-import { wowheadUrl, levelLabel } from '../../../lib/wow';
+import { wowheadUrl, levelLabel, formatDate } from '../../../lib/wow';
 
 export function getStaticPaths() {
   return guides.filter((g) => g.status === 'ready').map((guide) => ({ params: { guide: guide.id }, props: { guide } }));
@@ -17,85 +22,95 @@ const { guide } = Astro.props as { guide: Guide };
 const cls = classFor(guide.id);
 if (!cls) throw new Error(`Missing class data for ${guide.id}`);
 const { spec } = cls;
-
-// Running total of points per tree, so the table can show "Affliction 21" etc.
-let total = 0;
-const rows = spec.talents.map((t) => {
-  const [a, b] = t.level;
-  total += b - a + 1;
-  return { ...t, total };
-});
+const base = `/guides/${guide.id}/`;
+const toc = [
+  { id: 'talents', label: 'Talent plan' },
+  { id: 'rotation', label: 'What to press' },
+  { id: 'demons', label: 'Demons' },
+  { id: 'spells', label: 'Spells by level' },
+  { id: 'shards', label: 'Soul Shards' },
+  { id: 'dual', label: 'Dual spec' },
+];
 ---
 
-<Base title={`Talents, spells & demons – ${guide.race} ${guide.className}`}>
-  <PageHead eyebrow={`${guide.race} ${guide.className}`} title="Talents, spells & demons">
-    What to put your talent points into, which demon to use, and what to press.
-  </PageHead>
-  <GuideNav guide={guide} />
+<Base title={`Talents, spells & demons: ${guide.race} ${guide.className}`} rail="lg" guide={guide.id}>
+  <Fragment slot="head">
+    <PageHead
+      title="Talents, spells & demons"
+      trail={[{ href: base, label: `${guide.race} ${guide.className} guide` }]}
+      facts={[{ label: 'Updated', value: formatDate(cls.updated) }]}
+      levelPrompt
+    >
+      What to put your talent points into, which demon to use, and what to press.
+    </PageHead>
+    <GuideNav guide={guide} />
+  </Fragment>
 
-  <ul class="toc">
-    <li><a class="pill" href="#talents">Talent plan</a></li>
-    <li><a class="pill" href="#rotation">What to press</a></li>
-    <li><a class="pill" href="#demons">Demons</a></li>
-    <li><a class="pill" href="#spells">Spells by level</a></li>
-    <li><a class="pill" href="#shards">Soul Shards</a></li>
-    <li><a class="pill" href="#dual">Dual spec</a></li>
-  </ul>
+  <OnThisPage slot="rail" items={toc} />
 
   <section id="talents">
     <h2>Talent plan: {spec.name}</h2>
-    <p>{spec.summary}</p>
-    <div class="callout warn small">
+    <p class="prose">{spec.summary}</p>
+    <Callout variant="warn">
       <p>{spec.note}</p>
+    </Callout>
+    <div class="trust-line">
+      <span>How sure we are:</span>
+      <Trust c={spec.confidence} urls={spec.sources} report="talent plan" />
+      <a href="https://www.wowhead.com/forever/talent-calc" target="_blank" rel="noopener" class="ext"
+        >Wowhead's Forever talent calculator<Icon name="external" size={16} /></a
+      >
     </div>
-    <p>
-      <Badge c={spec.confidence} />
-      <a class="small" href="https://www.wowhead.com/forever/talent-calc" target="_blank" rel="noopener">
-        Open Wowhead's Forever talent calculator ↗
-      </a>
-    </p>
     <div class="table-wrap">
-      <table class="talents">
-        <thead>
-          <tr><th>Level</th><th>Talent</th><th>Points</th><th>Why</th></tr>
+      <table class="data stack" role="table">
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col">Level</th>
+            <th role="columnheader" scope="col">Talent</th>
+            <th role="columnheader" scope="col" class="c-num">Points</th>
+            <th role="columnheader" scope="col">Why</th>
+          </tr>
         </thead>
-        <tbody>
+        <tbody role="rowgroup">
           {
-            rows.map((t) => (
-              <tr data-lmin={t.level[0]} data-lmax={t.level[1]}>
-                <td>
-                  <span class="pill level">{levelLabel(t.level)}</span>
+            spec.talents.map((t) => (
+              <tr role="row" data-lmin={t.level[0]} data-lmax={t.level[1]}>
+                <td role="cell" class="c-lv">
+                  <span class="tag num">{levelLabel(t.level)}</span>
+                  <span class="tag now">Now</span>
                 </td>
-                <td>
+                <td role="cell" class="c-main">
                   {t.wh ? (
                     <a href={wowheadUrl(t.wh)} target="_blank" rel="noopener">
-                      <strong>{t.talent}</strong>
+                      {t.talent}
                     </a>
                   ) : (
-                    <strong>{t.talent}</strong>
+                    t.talent
                   )}
-                  <div class="muted small">{t.tree}</div>
+                  <span class="sub">{t.tree}</span>
                 </td>
-                <td class="nowrap">{t.ranks}</td>
-                <td>{t.why}</td>
+                <td role="cell" class="c-num num">
+                  {t.ranks}
+                </td>
+                <td role="cell" class="c-why">
+                  {t.why}
+                </td>
               </tr>
             ))
           }
         </tbody>
       </table>
     </div>
-    <Sources urls={spec.sources} />
 
     <h3>Other ways to play</h3>
     <div class="grid">
       {
         spec.alternatives.map((a) => (
-          <div class="card">
+          <section class="card">
             <h4>{a.name}</h4>
             <p>{a.summary}</p>
-            <Badge c={a.confidence} />
-            <Sources urls={a.sources} />
-          </div>
+            <Trust c={a.confidence} urls={a.sources} report={`talent alternative "${a.name}"`} />
+          </section>
         ))
       }
     </div>
@@ -106,16 +121,19 @@ const rows = spec.talents.map((t) => {
     <div class="grid">
       {
         cls.rotations.map((r) => (
-          <div class="card" data-lmin={r.level[0]} data-lmax={r.level[1]}>
-            <h4>{r.title}</h4>
-            <ol>
+          <section class="card" data-lmin={r.level[0]} data-lmax={r.level[1]}>
+            <div class="card-tags">
+              <span class="tag num">{levelLabel(r.level)}</span>
+              <span class="tag now">Now</span>
+            </div>
+            <h3 class="h4">{r.title}</h3>
+            <ol class="steps-list">
               {r.steps.map((s) => (
                 <li>{s}</li>
               ))}
             </ol>
-            <Badge c={r.confidence} />
-            <Sources urls={r.sources} />
-          </div>
+            <Trust c={r.confidence} urls={r.sources} report={`rotation "${r.title}"`} />
+          </section>
         ))
       }
     </div>
@@ -126,9 +144,12 @@ const rows = spec.talents.map((t) => {
     <div class="grid">
       {
         cls.demons.map((d) => (
-          <div class="card" data-lmin={d.level} data-lmax={d.level + 9}>
-            <p class="eyebrow">Level {d.level}</p>
-            <h4>
+          <section class="card" data-lmin={d.level} data-lmax={d.level + 9}>
+            <div class="card-tags">
+              <span class="tag num">Lv {d.level}</span>
+              <span class="tag now">Now</span>
+            </div>
+            <h3 class="h4">
               {d.wh ? (
                 <a href={wowheadUrl(d.wh)} target="_blank" rel="noopener">
                   {d.name}
@@ -136,16 +157,15 @@ const rows = spec.talents.map((t) => {
               ) : (
                 d.name
               )}
-            </h4>
+            </h3>
             <p>
               <strong>How:</strong> {d.how}
             </p>
             <p>
               <strong>Use:</strong> {d.use}
             </p>
-            <Badge c={d.confidence} />
-            <Sources urls={d.sources} />
-          </div>
+            <Trust c={d.confidence} urls={d.sources} report={`demon "${d.name}"`} />
+          </section>
         ))
       }
     </div>
@@ -153,22 +173,26 @@ const rows = spec.talents.map((t) => {
 
   <section id="spells">
     <h2>New spells by level</h2>
-    <p class="muted">{cls.spellsNote}</p>
+    <p class="prose muted">{cls.spellsNote}</p>
     <div class="table-wrap">
-      <table>
-        <thead><tr><th>Level</th><th>You can learn</th></tr></thead>
-        <tbody>
+      <table class="data stack" role="table">
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col">Level</th>
+            <th role="columnheader" scope="col">You can learn</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
           {
             cls.spells.map((row) => (
-              <tr data-lmin={row.level} data-lmax={row.level + 1}>
-                <td>
-                  <span class="pill level">Lv {row.level}</span>
+              <tr role="row" data-lmin={row.level} data-lmax={row.level + 1}>
+                <td role="cell" class="c-lv">
+                  <span class="tag num">Lv {row.level}</span>
+                  <span class="tag now">Now</span>
                 </td>
-                <td class="spells">
-                  {row.spells.map((s) => (
-                    <span class="spell">
-                      <RefItem r={s} />
-                    </span>
+                <td role="cell" class="c-main spells">
+                  {row.spells.map((s, i) => (
+                    <Fragment>{i > 0 && ', '}<RefItem r={s} variant="inline" />{s.note && <span class="spell-note"> ({s.note})</span>}</Fragment>
                   ))}
                 </td>
               </tr>
@@ -177,13 +201,16 @@ const rows = spec.talents.map((t) => {
         </tbody>
       </table>
     </div>
-    <p class="small"><Badge c="official" /> levels from the Forever ability list.</p>
+    <div class="trust-line">
+      <span>Levels from the Forever ability list:</span>
+      <Badge c="official" />
+    </div>
     <Sources urls={['https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)', 'https://www.warcrafttavern.com/forever/guides/warlock-leveling/']} />
   </section>
 
   <section id="shards">
     <h2>Soul Shards</h2>
-    <ul>
+    <ul class="prose">
       {cls.shards.map((s) => <li>{s}</li>)}
     </ul>
     <Sources
@@ -200,39 +227,29 @@ const rows = spec.talents.map((t) => {
     <div class="card">
       <p>{cls.dualSpec.body}</p>
       <p><strong>Cost:</strong> {cls.dualSpec.cost}</p>
-      <Badge c={cls.dualSpec.confidence} />
-      <Sources urls={cls.dualSpec.sources} />
+      <Trust c={cls.dualSpec.confidence} urls={cls.dualSpec.sources} report="dual spec" />
     </div>
   </section>
+
+  <GuidePager guide={guide} />
 </Base>
 
 <style>
-  .nowrap {
-    white-space: nowrap;
+  .ext {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: var(--hit);
   }
-  tr[data-now='current'] td {
-    background: var(--accent-soft);
+  td.c-main.spells {
+    font-weight: 400;
   }
-  tr[data-now='past'] {
-    opacity: 0.55;
+  .spell-note {
+    color: var(--ink-3);
+    font-size: var(--fs-sm);
+    font-weight: 400;
   }
-  .card[data-now='current'] {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-soft);
-  }
-  .card h4 {
-    margin: 0 0 0.5rem;
-    font-size: 1.1rem;
-  }
-  .card .eyebrow + h4 {
-    margin-top: 0.2rem;
-  }
-  .spells {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.3rem 1rem;
-  }
-  .talents td:first-child {
-    white-space: nowrap;
+  .card .steps-list {
+    margin-bottom: var(--sp-3);
   }
 </style>

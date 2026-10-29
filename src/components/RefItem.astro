@@ -1,65 +1,45 @@
 ---
-// A named thing (quest, NPC, item) with an optional Wowhead tooltip link and /way button.
+// A named thing (quest, NPC, item, vendor, book) with an optional Wowhead link and coordinate button.
+// variant="row" (default): fixed-slot row inside <ul class="ref-list"><li>…</li></ul>.
+// variant="inline": just the name link, for refs inside sentences and short lists (no coordinate button).
+import Icon from './Icon.astro';
+import type { IconName } from '../lib/icons';
+import WayButton from './WayButton.astro';
 import { wowheadUrl, wayCommand } from '../lib/wow';
 import { md } from '../lib/md';
 import type { Ref } from '../lib/data';
 
+export type RefKind = 'quest' | 'npc' | 'item' | 'vendor' | 'book';
+
 interface Props {
   r: Ref & { giver?: string; role?: string };
   zone?: string; // fallback zone for /way when the ref has coords but no zone
+  kind?: RefKind;
+  variant?: 'row' | 'inline';
+  price?: string;
+  detail?: string; // overrides line 2
 }
 
-const { r, zone } = Astro.props;
+const GLYPH: Record<RefKind, IconName> = { quest: 'quest', npc: 'person', item: 'pouch', vendor: 'person', book: 'book' };
+
+const { r, zone, variant = 'row', price, detail } = Astro.props;
+const kind: RefKind = Astro.props.kind ?? (r.role ? 'npc' : r.giver ? 'quest' : 'item');
 const wayZone = r.zone ?? zone;
 const way = r.coords && wayZone ? wayCommand(wayZone, r.coords, r.name) : null;
+const line2 = detail ?? r.role ?? (r.giver ? `From ${r.giver}` : undefined);
 ---
 
-<span class="ref">
-  {
-    r.wh ? (
-      <a class="ref-name" href={wowheadUrl(r.wh)} target="_blank" rel="noopener">
-        {r.name}
-      </a>
-    ) : (
-      <span class="ref-name">{r.name}</span>
-    )
-  }
-  {r.role && <span class="muted"> – {r.role}</span>}
-  {r.giver && <span class="muted"> · from {r.giver}</span>}
-  {r.coords && <span class="coords">{r.coords[0].toFixed(1)}, {r.coords[1].toFixed(1)}</span>}
-  {
-    way && (
-      <button type="button" class="btn small way" data-copy={way} title={`Copy TomTom waypoint: ${way}`}>
-        /way
-      </button>
-    )
-  }
-  {r.note && <span class="ref-note" set:html={md(r.note)} />}
-</span>
-
-<style>
-  .ref {
-    display: inline;
-  }
-  .ref-name {
-    font-weight: 600;
-  }
-  .coords {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--muted);
-    margin-left: 0.35rem;
-  }
-  .way {
-    margin-left: 0.35rem;
-    font-family: var(--font-mono);
-    font-weight: 600;
-    padding: 0.05rem 0.4rem;
-    vertical-align: 1px;
-  }
-  .ref-note {
-    display: block;
-    font-size: 0.88rem;
-    color: var(--muted);
-  }
-</style>
+{
+  variant === 'inline' ? (
+    <span class="ref-inline">{r.wh ? <a href={wowheadUrl(r.wh)} target="_blank" rel="noopener">{r.name}</a> : r.name}</span>
+  ) : (
+    <div class="ref">
+      <Icon class={`ref-glyph ${kind}`} name={GLYPH[kind]} />
+      {r.wh ? <a class="ref-name" href={wowheadUrl(r.wh)} target="_blank" rel="noopener">{r.name}</a> : <span class="ref-name">{r.name}</span>}
+      {price && <span class="ref-price num">{price}</span>}
+      {line2 && <span class="ref-detail">{line2}</span>}
+      {r.note && <span class="ref-note" set:html={md(r.note)} />}
+      {way && r.coords && <WayButton way={way} coords={r.coords} />}
+    </div>
+  )
+}

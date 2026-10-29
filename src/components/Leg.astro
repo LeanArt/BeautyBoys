@@ -1,0 +1,69 @@
+---
+// A route bracket: the waystone header on the ley line and its steps (docs/DESIGN.md, section 3 "Waystone").
+// Contract: section.leg.bracket[id][data-group][data-lmin][data-lmax], [data-group-count], [data-group-bar]; progress.ts adds .complete.
+// Slots: default = <StepCard>s, "extras" = anything under the summary (talents and spells disclosure).
+// `demo` (style guide only): fixed state and counts, no data-group / data-lmin / data-lmax, so no script touches it.
+import Callout from './Callout.astro';
+import { levelLabel } from '../lib/wow';
+import { md } from '../lib/md';
+
+interface Props {
+  id: string;
+  level: [number, number];
+  title: string;
+  zones: string[];
+  total: number;
+  summary?: string; // markdown
+  untested?: boolean;
+  heading?: 'h2' | 'h3';
+  demo?: { now?: 'past' | 'current' | 'future'; done: number; level?: number; complete?: boolean };
+}
+
+const { id, level, title, zones, total, summary, untested = false, heading = 'h2', demo } = Astro.props;
+const Heading = heading;
+---
+
+<section
+  class:list={['leg', 'bracket', { complete: demo?.complete }]}
+  id={id}
+  data-group={demo ? undefined : ''}
+  data-lmin={demo ? undefined : level[0]}
+  data-lmax={demo ? undefined : level[1]}
+  data-now={demo?.now}
+>
+  <header class="leg-head">
+    <span class="stone" aria-hidden="true"></span>
+    <div class="leg-head-main">
+      <Heading class="leg-title">
+        <span class="tag num">{levelLabel(level)}</span>
+        {title}
+      </Heading>
+      <p class="leg-facts">
+        <span class="here-line">
+          You are here, at level {demo ? <b>{demo.level}</b> : <b data-level-value />}.{' '}
+        </span>
+        Zones: {zones.join(', ')}.
+      </p>
+      <div class="mini">
+        <span class="mini-track" aria-hidden="true">
+          <i data-group-bar style={demo ? `width:${(demo.done / total) * 100}%` : undefined}></i>
+        </span>
+        <span class="count" data-group-count="long">
+          {demo?.done ?? 0} of {total} done
+        </span>
+      </div>
+      {summary && <div class="leg-summary" set:html={`<p>${md(summary)}</p>`} />}
+      {
+        untested && (
+          <Callout variant="untested" compact>
+            <p>Nobody has played past level 30 yet. Steps marked Theory are our best guess from Classic and dev notes.</p>
+          </Callout>
+        )
+      }
+      <slot name="extras" />
+    </div>
+  </header>
+  <ol class="steps">
+    <slot />
+  </ol>
+</section>

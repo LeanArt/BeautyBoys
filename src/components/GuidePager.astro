@@ -1,0 +1,40 @@
+---
+// Previous / next guide page, at the bottom of every guide page.
+import Icon from './Icon.astro';
+import { guidePages, type Guide } from '../lib/guides';
+
+interface Props {
+  guide: Guide;
+}
+
+const { guide } = Astro.props;
+const pages = guidePages(guide);
+const i = pages.findIndex((p) => p.href === Astro.url.pathname);
+const prev = i > 0 ? pages[i - 1] : null;
+const next = i >= 0 && i < pages.length - 1 ? pages[i + 1] : null;
+---
+
+<nav class="pager" aria-label="Guide pages">
+  {
+    prev && (
+      <a class="pager-prev" href={prev.href} rel="prev">
+        <Icon name="chevron-left" />
+        <span class="pager-text">
+          <span class="pager-dir">Previous</span>
+          <span class="pager-name">{prev.label}</span>
+        </span>
+      </a>
+    )
+  }
+  {
+    next && (
+      <a class="pager-next" href={next.href} rel="next">
+        <span class="pager-text">
+          <span class="pager-dir">Next</span>
+          <span class="pager-name">{next.label}</span>
+        </span>
+        <Icon name="chevron-right" />
+      </a>
+    )
+  }
+</nav>

@@ -1,0 +1,21 @@
+---
+// One glyph from the sprite in Icons.astro. Decorative by default (aria-hidden);
+// pass `label` when the icon is the only thing that carries meaning (rare: a word normally sits next to it).
+import type { HTMLAttributes } from 'astro/types';
+import type { IconName } from '../lib/icons';
+
+
+interface Props extends Omit<HTMLAttributes<'svg'>, 'name'> {
+  name: IconName;
+  size?: 16 | 20 | 24;
+  label?: string;
+  class?: string;
+}
+
+const { name, size = 20, label, class: cls, ...rest } = Astro.props;
+const a11y = label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': 'true' as const, focusable: 'false' };
+---
+
+<svg class:list={['i', `s${size}`, `i-${name}`, cls]} width={size} height={size} viewBox="0 0 24 24" {...a11y} {...rest}
+  ><use href={`#i-${name}`}></use></svg
+>

@@ -5,6 +5,7 @@
     {
       "id": "coldridge-1-6",
       "title": "Coldridge Valley",
+      "short": "Coldridge Valley",
       "level": [
         1,
         6
@@ -398,6 +399,7 @@
     {
       "id": "dun-morogh-6-12",
       "title": "Kharanos, Ironforge & eastern Dun Morogh",
+      "short": "Kharanos & Ironforge",
       "level": [
         6,
         12
@@ -1180,6 +1182,7 @@
     {
       "id": "loch-modan-12-20",
       "title": "Loch Modan, Hall of Thanes & Redridge",
+      "short": "Loch Modan & Redridge",
       "level": [
         12,
         20
@@ -2062,6 +2065,7 @@
     {
       "id": "level-20-25",
       "title": "Succubus/Incubus, Blackfathom Deeps & the Wetlands",
+      "short": "Blackfathom & Wetlands",
       "level": [
         20,
         25
@@ -2615,6 +2619,7 @@
     {
       "id": "level-25-30",
       "title": "Excavation Site, Southshore & the Felhunter",
+      "short": "Southshore & Felhunter",
       "level": [
         25,
         30
@@ -3085,6 +3090,7 @@
     {
       "id": "level-30-35",
       "title": "Stranglethorn, Arathi & Desolace (untested)",
+      "short": "Stranglethorn & Arathi",
       "level": [
         30,
         35
@@ -3182,6 +3188,7 @@
     {
       "id": "level-35-40",
       "title": "Riverglades & Stranglethorn (untested)",
+      "short": "Riverglades & Stranglethorn",
       "level": [
         35,
         40
@@ -3251,6 +3258,7 @@
     {
       "id": "level-40-45",
       "title": "Level 40 milestones, Riverglades & Tanaris (untested)",
+      "short": "Level 40 & Tanaris",
       "level": [
         40,
         45
@@ -3372,6 +3380,7 @@
     {
       "id": "level-45-50",
       "title": "Tanaris, Feralas & Hinterlands (untested)",
+      "short": "Feralas & Hinterlands",
       "level": [
         45,
         50
@@ -3444,6 +3453,7 @@
     {
       "id": "level-50-55",
       "title": "Un'Goro, Felwood & Burning Steppes (untested)",
+      "short": "Un'Goro & Felwood",
       "level": [
         50,
         55
@@ -3511,6 +3521,7 @@
     {
       "id": "level-55-60",
       "title": "Plaguelands, Winterspring & Mount Hyjal (untested)",
+      "short": "Plaguelands & Hyjal",
       "level": [
         55,
         60

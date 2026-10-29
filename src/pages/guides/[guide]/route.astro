@@ -2,13 +2,18 @@
 import Base from '../../../layouts/Base.astro';
 import PageHead from '../../../components/PageHead.astro';
 import GuideNav from '../../../components/GuideNav.astro';
+import GuidePager from '../../../components/GuidePager.astro';
 import StepCard from '../../../components/StepCard.astro';
+import Leg from '../../../components/Leg.astro';
 import ChecklistBar from '../../../components/ChecklistBar.astro';
 import RefItem from '../../../components/RefItem.astro';
+import Callout from '../../../components/Callout.astro';
+import Badge from '../../../components/Badge.astro';
+import Icon from '../../../components/Icon.astro';
 import { guides, type Guide } from '../../../lib/guides';
 import { routeFor, classFor } from '../../../lib/data';
-import { md } from '../../../lib/md';
-import { levelLabel } from '../../../lib/wow';
+import { levelLabel, formatDate } from '../../../lib/wow';
+import { site } from '../../../lib/site';
 
 export function getStaticPaths() {
   return guides.filter((g) => g.status === 'ready').map((guide) => ({ params: { guide: guide.id }, props: { guide } }));
@@ -17,9 +22,11 @@ export function getStaticPaths() {
 const { guide } = Astro.props as { guide: Guide };
 const route = routeFor(guide.id);
 const cls = classFor(guide.id);
+const base = `/guides/${guide.id}/`;
 
 const overlaps = (a: [number, number], b: [number, number]) => a[0] <= b[1] && b[0] <= a[1];
 const inRange = (lv: number, r: [number, number]) => lv >= r[0] && lv <= r[1];
+const range = (r: [number, number]) => (r[0] === r[1] ? `${r[0]}` : `${r[0]}–${r[1]}`);
 
 // Talent points and trainer spells that fall inside each bracket.
 const extras = Object.fromEntries(
@@ -31,105 +38,126 @@ const extras = Object.fromEntries(
     },
   ]),
 );
+const sections = (route?.brackets ?? []).map((b) => ({ id: b.id, label: b.short ?? b.title, level: b.level, total: b.steps.length }));
+// The beta was capped, so everything above the cap is untested.
+const testedTo = site.betaLevelCap;
+// Untested brackets carry one Untested callout, so the data's "(untested)" title suffix and
+// "Untested –" / "Untested." summary lead are dropped here (say it once per bracket).
+const stripTitle = (t: string) => t.replace(/\s*\(untested\)\s*$/i, '');
+const stripSummary = (t: string) => {
+  const rest = t.replace(/^untested\s*(?:[–—-]\s*|\.\s*)/i, '');
+  return rest.charAt(0).toUpperCase() + rest.slice(1);
+};
 ---
 
-<Base title={`Route – ${guide.race} ${guide.className}`} description={`Hub-by-hub leveling route for the ${guide.race} ${guide.className} in WoW: Forever.`}>
-  <PageHead eyebrow={`${guide.race} ${guide.className}`} title="Leveling route">
-    Hub by hub, with the quests that matter. Tick each step when you've done it – your progress stays in this browser.
-  </PageHead>
-  <GuideNav guide={guide} />
+<Base
+  title={`Route: ${guide.race} ${guide.className}`}
+  description={`Hub-by-hub leveling route for the ${guide.race} ${guide.className} in WoW: Forever.`}
+  rail="md"
+  dock
+  guide={guide.id}
+>
+  <Fragment slot="head">
+    <PageHead
+      title="Leveling route"
+      trail={[{ href: base, label: `${guide.race} ${guide.className} guide` }]}
+      facts={route
+        ? [
+            { label: 'Updated', value: formatDate(route.updated) },
+            { label: 'Played in beta', value: `Levels 1–${testedTo}` },
+          ]
+        : []}
+      levelPrompt
+    >
+      Hub by hub, with the quests that matter. Tick each step when you've done it. Your progress stays in this browser.
+    </PageHead>
+    <GuideNav guide={guide} />
+  </Fragment>
+
+  {route && <ChecklistBar slot="rail" sections={sections} />}
 
   {
     !route ? (
-      <div class="callout warn">
+      <Callout variant="warn">
         <p>The route is being written. Check back soon.</p>
-      </div>
+      </Callout>
     ) : (
       <Fragment>
-        <div class="callout small">
+        <Callout variant="info" label="How to read this">
           <p>
-            <strong>How to read this:</strong> do the steps roughly in order, but don't stress – skipping a step is fine.
-            Levels 1–30 come from the beta. Steps marked <span class="pill badge-theory">theory</span> haven't been played
-            by anyone yet. Copy a <code>/way</code> and paste it into game chat to get a TomTom arrow.
+            Do the steps roughly in order, but don't stress: skipping a step is fine. Levels 1–{testedTo} come from the beta.
+            Steps marked <Badge c="theory" /> haven't been played by anyone yet. Copy a <code>/way</code> and paste it into
+            game chat to get a TomTom arrow.
           </p>
-        </div>
-
-        <ChecklistBar />
-
-        <nav class="bracket-nav" aria-label="Level brackets">
-          {route.brackets.map((b) => (
-            <a href={`#${b.id}`} class="pill level" data-lmin={b.level[0]} data-lmax={b.level[1]}>
-              {levelLabel(b.level)}
-            </a>
-          ))}
-        </nav>
+        </Callout>
 
         {route.brackets.map((b) => {
           const { talents, spells } = extras[b.id];
+          const untested = b.level[0] >= site.betaLevelCap;
           return (
-            <section class="bracket" id={b.id} data-group data-lmin={b.level[0]} data-lmax={b.level[1]}>
-              <header class="bracket-head">
-                <div>
-                  <p class="eyebrow">{levelLabel(b.level)}</p>
-                  <h2>{b.title}</h2>
-                  <p class="muted zones">{b.zones.join(' · ')}</p>
-                </div>
-                <span class="pill count" data-group-count>
-                  0/{b.steps.length}
-                </span>
-              </header>
-              <p set:html={md(b.summary)} />
-
+            <Leg
+              id={b.id}
+              level={b.level}
+              title={untested ? stripTitle(b.title) : b.title}
+              zones={b.zones}
+              total={b.steps.length}
+              summary={untested ? stripSummary(b.summary) : b.summary}
+              untested={untested}
+            >
               {(talents.length > 0 || spells.length > 0) && (
-                <details class="bracket-extras">
-                  <summary>Talents &amp; new spells in this bracket</summary>
-                  <div class="extras-grid">
+                <details class="bracket-extras" slot="extras">
+                  <summary>
+                    New talents and spells at levels {range(b.level)}
+                    <Icon name="chevron-down" size={16} class="chev" />
+                  </summary>
+                  <div class="extras-body">
                     {talents.length > 0 && (
-                      <div>
-                        <h4>Talent points</h4>
-                        <ul>
+                      <Fragment>
+                        <p class="extras-label">Talent points</p>
+                        <ul class="inline-refs">
                           {talents.map((t) => (
                             <li>
-                              <span class="pill level">{levelLabel(t.level)}</span> {t.talent} {t.ranks}
+                              <span class="tag num">{levelLabel(t.level)}</span>
+                              <RefItem r={{ name: t.talent, wh: t.wh }} variant="inline" />
+                              <span class="num">{t.ranks}</span>
                             </li>
                           ))}
                         </ul>
-                      </div>
+                      </Fragment>
                     )}
                     {spells.length > 0 && (
-                      <div>
-                        <h4>At the trainer</h4>
-                        <ul>
+                      <Fragment>
+                        <p class="extras-label">At the trainer</p>
+                        <ul class="inline-refs">
                           {spells.map((s) => (
                             <li>
-                              <span class="pill level">Lv {s.level}</span>{' '}
-                              {s.spells.map((sp, i) => (
-                                <Fragment>
-                                  {i > 0 && ', '}
-                                  <RefItem r={sp} />
-                                </Fragment>
-                              ))}
+                              <span class="tag num">Lv {s.level}</span>
+                              <span>
+                                {s.spells.map((sp, i) => (
+                                  <Fragment>{i > 0 && ', '}<RefItem r={sp} variant="inline" /></Fragment>
+                                ))}
+                              </span>
                             </li>
                           ))}
                         </ul>
-                      </div>
+                      </Fragment>
                     )}
+                    <p>
+                      <a href={`${base}talents/`}>Full talent plan and spell list</a>
+                    </p>
                   </div>
-                  <p class="small">
-                    <a href={`/guides/${guide.id}/talents/`}>Full talent plan and spell list →</a>
-                  </p>
                 </details>
               )}
-
               {b.steps.map((s) => (
                 <StepCard step={s} />
               ))}
-            </section>
+            </Leg>
           );
         })}
       </Fragment>
     )
   }
+  <GuidePager guide={guide} />
 </Base>
 
 <script>
@@ -137,82 +165,3 @@ const extras = Object.fromEntries(
   const guide = location.pathname.split('/').filter(Boolean)[1] ?? 'unknown';
   initProgress(`route:${guide}`);
 </script>
-
-<style>
-  .bracket-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    margin: 0 0 1rem;
-  }
-  .bracket-nav a {
-    text-decoration: none;
-  }
-  .bracket-nav a[data-now='current'] {
-    background: var(--accent);
-    color: var(--surface);
-    border-color: var(--accent);
-  }
-  .bracket {
-    padding-top: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-  .bracket-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 1rem;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 0.6rem;
-    padding-bottom: 0.4rem;
-  }
-  .bracket-head h2 {
-    margin: 0.1rem 0 0.1rem;
-  }
-  .zones {
-    margin: 0;
-    font-size: 0.9rem;
-  }
-  .count {
-    font-size: 0.85rem;
-  }
-  .bracket.complete .count {
-    color: var(--fel);
-    background: var(--fel-soft);
-    border-color: transparent;
-  }
-  .bracket-extras {
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 0.5rem 0.9rem;
-    margin: 0 0 0.9rem;
-  }
-  .bracket-extras summary {
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.92rem;
-  }
-  .extras-grid {
-    display: grid;
-    gap: 0.5rem 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-  }
-  .extras-grid h4 {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--muted);
-    margin: 0.7rem 0 0.3rem;
-  }
-  .extras-grid ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 0.92rem;
-  }
-  .extras-grid li {
-    margin: 0.25rem 0;
-  }
-</style>

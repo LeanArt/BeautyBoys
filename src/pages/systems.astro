@@ -3,6 +3,11 @@ import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 import Badge from '../components/Badge.astro';
 import Sources from '../components/Sources.astro';
+import Trust from '../components/Trust.astro';
+import Callout from '../components/Callout.astro';
+import OnThisPage from '../components/OnThisPage.astro';
+import { formatDate } from '../lib/wow';
+import { site } from '../lib/site';
 
 const S = {
   devNotes: 'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696',
@@ -31,36 +36,32 @@ const S = {
 };
 
 const sections = [
-  ['xp', 'XP boosts'],
-  ['camping', 'Camping'],
-  ['sleeping-bag', 'Cozy Sleeping Bag'],
-  ['legacy', 'Legacy points'],
-  ['merchants-favor', "Merchant's Favor"],
-  ['dungeons', 'Dungeons'],
-  ['mounts', 'Mounts & riding'],
-  ['dual-spec', 'Dual spec & respecs'],
-  ['world', 'Rulesets & world instances'],
-  ['safety', 'Gold & account safety'],
+  { id: 'xp', label: 'XP boosts' },
+  { id: 'camping', label: 'Camping' },
+  { id: 'sleeping-bag', label: 'Cozy Sleeping Bag' },
+  { id: 'legacy', label: 'Legacy points' },
+  { id: 'merchants-favor', label: "Merchant's Favor" },
+  { id: 'dungeons', label: 'Dungeons' },
+  { id: 'mounts', label: 'Mounts & riding' },
+  { id: 'dual-spec', label: 'Dual spec & respecs' },
+  { id: 'world', label: 'Rulesets & world instances' },
+  { id: 'safety', label: 'Gold & account safety' },
 ];
 ---
 
-<Base title="Forever systems" description="Camping, Legacy points, the Cozy Sleeping Bag, Merchant's Favor and other WoW: Forever systems explained for new players.">
-  <PageHead eyebrow="What's new in Forever" title="Forever systems, explained">
-    Forever adds systems that even veteran players don't know yet. Here's what each one is, whether you should care,
-    and what to do about it.
-  </PageHead>
+<Base
+  title="Forever systems"
+  description="Camping, Legacy points, the Cozy Sleeping Bag, Merchant's Favor and other WoW: Forever systems explained for new players."
+  rail="lg"
+>
+  <Fragment slot="head">
+    <PageHead title="Forever systems, explained" facts={[{ label: 'Updated', value: formatDate(site.dataUpdated) }]}>
+      Forever adds systems that even veteran players don't know yet. Here's what each one is, whether you should care,
+      and what to do about it.
+    </PageHead>
+  </Fragment>
 
-  <ul class="toc">
-    {
-      sections.map(([id, label]) => (
-        <li>
-          <a class="pill" href={`#${id}`}>
-            {label}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <OnThisPage slot="rail" items={sections} />
 
   <section id="xp">
     <h2>XP boosts that stack</h2>
@@ -69,38 +70,45 @@ const sections = [
       together adds up to hours saved.
     </p>
     <div class="table-wrap">
-      <table>
-        <thead><tr><th>Boost</th><th>What it does</th><th>How to get it</th><th>Trust</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><strong>Rested XP</strong></td>
-            <td>Double XP from kills until it runs out. You build it while logged out in an inn or city.</td>
-            <td>Log out at an inn. Builds 5% of a level per 8 hours, up to 1.5 levels.</td>
-            <td><Badge c="official" /></td>
+      <table class="data stack" role="table">
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col">Boost</th>
+            <th role="columnheader" scope="col">What it does</th>
+            <th role="columnheader" scope="col">How to get it</th>
+            <th role="columnheader" scope="col" class="c-num">Trust</th>
           </tr>
-          <tr>
-            <td><strong>Well Fed</strong></td>
-            <td>About +5% XP from kills for ~15 minutes (lost if you die).</td>
-            <td>Eat cooked food. Learn Cooking – you need it for camping anyway.</td>
-            <td><Badge c="beta-tested" /></td>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <td role="cell" class="c-main">Rested XP</td>
+            <td role="cell" class="c-why">Double XP from kills until it runs out. You build it while logged out in an inn or city.</td>
+            <td role="cell" data-label="How to get it:">Log out at an inn. Builds 5% of a level per 8 hours, up to 1.5 levels.</td>
+            <td role="cell" class="c-num"><Badge c="official" /></td>
           </tr>
-          <tr>
-            <td><strong>Cozy Sleeping Bag</strong></td>
-            <td>Up to +3% XP; survives death; counts as a rested area. 1-hour cooldown.</td>
-            <td>A scavenger hunt from level 14 – <a href="#sleeping-bag">see below</a>.</td>
-            <td><Badge c="beta-tested" /></td>
+          <tr role="row">
+            <td role="cell" class="c-main">Well Fed</td>
+            <td role="cell" class="c-why">About +5% XP from kills for ~15 minutes (lost if you die).</td>
+            <td role="cell" data-label="How to get it:">Eat cooked food. Learn Cooking: you need it for camping anyway.</td>
+            <td role="cell" class="c-num"><Badge c="beta-tested" /></td>
           </tr>
-          <tr>
-            <td><strong>Camp Tent</strong></td>
-            <td>Gives you rested XP worth 5% of a level (once per hour).</td>
-            <td>A Leatherworker's camp object – ask a friend or guildmate.</td>
-            <td><Badge c="official" /></td>
+          <tr role="row">
+            <td role="cell" class="c-main">Cozy Sleeping Bag</td>
+            <td role="cell" class="c-why">Up to +3% XP; survives death; counts as a rested area. 1-hour cooldown.</td>
+            <td role="cell" data-label="How to get it:">A scavenger hunt from level 14. <a href="#sleeping-bag">See below</a>.</td>
+            <td role="cell" class="c-num"><Badge c="beta-tested" /></td>
           </tr>
-          <tr>
-            <td><strong>Well Rested</strong> (Legacy perk)</td>
-            <td>Rested XP builds faster and caps higher.</td>
-            <td>Spend Legacy points – <a href="#legacy">see below</a>.</td>
-            <td><Badge c="official" /></td>
+          <tr role="row">
+            <td role="cell" class="c-main">Camp Tent</td>
+            <td role="cell" class="c-why">Gives you rested XP worth 5% of a level (once per hour).</td>
+            <td role="cell" data-label="How to get it:">A Leatherworker's camp object. Ask a friend or guildmate.</td>
+            <td role="cell" class="c-num"><Badge c="official" /></td>
+          </tr>
+          <tr role="row">
+            <td role="cell" class="c-main">Well Rested (Legacy perk)</td>
+            <td role="cell" class="c-why">Rested XP builds faster and caps higher.</td>
+            <td role="cell" data-label="How to get it:">Spend Legacy points. <a href="#legacy">See below</a>.</td>
+            <td role="cell" class="c-num"><Badge c="official" /></td>
           </tr>
         </tbody>
       </table>
@@ -124,7 +132,7 @@ const sections = [
           Around level 5, talk to the welcoming campfire in <strong>Kharanos</strong> for the quest <em>The Great Outdoors</em>.
           You need the Cooking profession, Flint and Tinder, and Simple Wood (sold by trade-goods vendors).
         </p>
-        <p class="small">
+        <p>
           <strong>Bugged quest?</strong> In the beta it often didn't complete. Fix: abandon it, log out and back in, take it
           again, then type <code>/sit</code> by the fire and wait about a minute.
         </p>
@@ -146,8 +154,10 @@ const sections = [
         </p>
       </div>
     </div>
-    <p class="small"><Badge c="official" /> mechanics · <Badge c="beta-tested" /> quest location and bug fix</p>
-    <Sources urls={[S.camping, S.wtCamp, S.outdoorsBug, S.devNotes]} />
+    <div class="trust-line">
+      <span>Mechanics:</span> <Badge c="official" /> <span>Quest location and bug fix:</span>
+      <Trust c="beta-tested" urls={[S.camping, S.wtCamp, S.outdoorsBug, S.devNotes]} report="systems: camping" />
+    </div>
   </section>
 
   <section id="sleeping-bag">
@@ -157,17 +167,19 @@ const sections = [
       stack up to +3% XP, and it survives death. It also hands out Student Fodder and some campfire supplies along the way.
     </p>
     <p>
-      The trail runs across several zones (Westfall → the Barrens → Stonetalon → Loch Modan → Hillsbrad in the version we
+      The trail runs across several zones (Westfall, the Barrens, Stonetalon, Loch Modan, then Hillsbrad in the version we
       trust most). The route page tells you when you're nearby.
     </p>
-    <div class="callout warn small">
+    <Callout variant="warn">
       <p>
-        Sources disagree on where the hunt starts – Westfall's Alexston Farmstead in most guides, Loch Modan in some beta
+        Sources disagree on where the hunt starts: Westfall's Alexston Farmstead in most guides, Loch Modan in some beta
         forum posts. Check at launch.
       </p>
+    </Callout>
+    <div class="trust-line">
+      <span>How sure we are:</span>
+      <Trust c="community" urls={[S.wtBag, S.sleepingBagForum]} report="systems: Cozy Sleeping Bag" />
     </div>
-    <p class="small"><Badge c="community" /></p>
-    <Sources urls={[S.wtBag, S.sleepingBagForum]} />
   </section>
 
   <section id="legacy">
@@ -190,17 +202,19 @@ const sections = [
       <div class="card">
         <h3>Good perks for leveling</h3>
         <ul>
-          <li><strong>Talented</strong> – talent points up to 5 levels earlier. Strongest on your <em>next</em> character.</li>
-          <li><strong>Well Rested</strong> – more rested XP.</li>
-          <li><strong>Thrill of Adventure</strong> – a little health and mana back after kills.</li>
-          <li><strong>Reagent Economy</strong> – no need to buy class reagents.</li>
-          <li><strong>Frequent Flier</strong> – cheaper, faster flight paths.</li>
+          <li><strong>Talented:</strong> talent points up to 5 levels earlier. Strongest on your <em>next</em> character.</li>
+          <li><strong>Well Rested:</strong> more rested XP.</li>
+          <li><strong>Thrill of Adventure:</strong> a little health and mana back after kills.</li>
+          <li><strong>Reagent Economy:</strong> no need to buy class reagents.</li>
+          <li><strong>Frequent Flier:</strong> cheaper, faster flight paths.</li>
         </ul>
-        <p class="small muted">Our suggestion, not a tested rule – the best mix will settle after launch.</p>
+        <p class="muted">Our suggestion, not a tested rule. The best mix will settle after launch.</p>
       </div>
     </div>
-    <p class="small"><Badge c="official" /> rules · <Badge c="community" /> perk picks</p>
-    <Sources urls={[S.legacy, S.wtLegacy]} />
+    <div class="trust-line">
+      <span>Rules:</span> <Badge c="official" /> <span>Perk picks:</span>
+      <Trust c="community" urls={[S.legacy, S.wtLegacy]} report="systems: Legacy points" />
+    </div>
   </section>
 
   <section id="merchants-favor">
@@ -219,18 +233,20 @@ const sections = [
       </li>
       <li>The returns are low, and beta players were unhappy about it – treat it as a bonus, not a plan.</li>
     </ul>
-    <p class="small"><Badge c="beta-tested" /></p>
-    <Sources urls={[S.mf, S.crates, S.mfFeedback]} />
+    <div class="trust-line">
+      <span>How sure we are:</span>
+      <Trust c="beta-tested" urls={[S.mf, S.crates, S.mfFeedback]} report="systems: Merchant's Favor" />
+    </div>
   </section>
 
   <section id="dungeons">
     <h2>Dungeons while leveling</h2>
-    <div class="callout fel">
+    <Callout variant="tip">
       <p>
         <strong>Run each dungeon once, with all its quests, then go back to questing.</strong> Monster XP inside dungeons was
-        cut sharply in the beta and Blizzard said it will stay that way – the XP is in the dungeon quests.
+        cut sharply in the beta and Blizzard said it will stay that way: the XP is in the dungeon quests.
       </p>
-    </div>
+    </Callout>
     <ul>
       <li>Collect every quest for a dungeon before you go in. Some start far away.</li>
       <li>Group with players near your level – a much higher-level player in the group reduces your XP.</li>
@@ -241,8 +257,10 @@ const sections = [
         (55–60) and <strong>Shaper's Terrace</strong> (58–60).
       </li>
     </ul>
-    <p class="small"><Badge c="official" /></p>
-    <Sources urls={[S.dungeons, S.aggrend, S.dungeonXp]} />
+    <div class="trust-line">
+      <span>How sure we are:</span>
+      <Trust c="official" urls={[S.dungeons, S.aggrend, S.dungeonXp]} report="systems: dungeons" />
+    </div>
   </section>
 
   <section id="mounts">
@@ -257,8 +275,10 @@ const sections = [
       </li>
       <li>There's no flying anywhere in Forever.</li>
     </ul>
-    <p class="small"><Badge c="community" /> costs · <Badge c="official" /> mount comes with riding</p>
-    <Sources urls={[S.deepDive, S.wtRide, S.methodMount, S.mounts]} />
+    <div class="trust-line">
+      <span>Mount comes with riding:</span> <Badge c="official" /> <span>Costs:</span>
+      <Trust c="community" urls={[S.deepDive, S.wtRide, S.methodMount, S.mounts]} report="systems: mounts" />
+    </div>
   </section>
 
   <section id="dual-spec">
@@ -268,8 +288,10 @@ const sections = [
       <li>The cost isn't confirmed: the wiki says 10 gold, some beta players saw more.</li>
       <li>Changing talents ("respec") costs gold at a class trainer. The price climbs each time and slowly drops back down.</li>
     </ul>
-    <p class="small"><Badge c="community" /></p>
-    <Sources urls={[S.wiki, S.dualSpec, S.devNotes]} />
+    <div class="trust-line">
+      <span>How sure we are:</span>
+      <Trust c="community" urls={[S.wiki, S.dualSpec, S.devNotes]} report="systems: dual spec" />
+    </div>
   </section>
 
   <section id="world">
@@ -283,32 +305,24 @@ const sections = [
       </li>
       <li>Grouping, dungeons and raids only work with players on the same ruleset and faction.</li>
     </ul>
-    <p class="small"><Badge c="official" /></p>
-    <Sources urls={[S.rulesets, S.devNotes]} />
+    <div class="trust-line">
+      <span>How sure we are:</span>
+      <Trust c="official" urls={[S.rulesets, S.devNotes]} report="systems: rulesets" />
+    </div>
   </section>
 
   <section id="safety">
     <h2>Gold &amp; account safety</h2>
-    <div class="callout danger">
+    <Callout variant="danger">
       <p>
         <strong>Never buy gold, and don't accept gold from strangers.</strong> Blizzard places "Temporary Economy Holds" on
-        accounts tied to bought gold – no trading, mail or Auction House while it's investigated. Gold "gifts" from
+        accounts tied to bought gold: no trading, mail or Auction House while it's investigated. Gold "gifts" from
         strangers are a common way gold sellers move money.
       </p>
+    </Callout>
+    <div class="trust-line">
+      <span>How sure we are:</span>
+      <Trust c="official" urls={[S.holds]} report="systems: gold safety" />
     </div>
-    <p class="small"><Badge c="official" /></p>
-    <Sources urls={[S.holds]} />
   </section>
 </Base>
-
-<style>
-  section {
-    scroll-margin-top: 7rem;
-  }
-  .grid .card h3 {
-    margin-top: 0;
-  }
-  td {
-    min-width: 7rem;
-  }
-</style>

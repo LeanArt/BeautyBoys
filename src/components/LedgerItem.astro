@@ -1,0 +1,71 @@
+---
+// One bag advisor ledger row (docs/DESIGN.md, section 3 "Bag advisor"): verdict stamp | name, facts, reason, vendors.
+// Contract: article.item[data-act][data-cat][data-lmin][data-lmax][data-text] inside #bag-items (the bag script filters on these).
+// `demo` (style guide only): no data attributes, so no script binds it.
+import Icon from './Icon.astro';
+import Trust from './Trust.astro';
+import RefItem from './RefItem.astro';
+import { wowheadUrl, levelLabel } from '../lib/wow';
+import type { BagItem } from '../lib/data';
+
+interface Props {
+  item: BagItem;
+  verdict: string; // "Buy"
+  category: string; // "Food, drink & potions"
+  heading?: 'h3' | 'h4';
+  demo?: boolean;
+}
+
+const { item: i, verdict, category, heading = 'h3', demo = false } = Astro.props;
+const Heading = heading;
+const text = `${i.name} ${i.why} ${(i.where ?? []).map((w) => `${w.npc} ${w.zone} ${w.hub ?? ''}`).join(' ')}`.toLowerCase();
+---
+
+<article
+  class={`item act-${i.action}`}
+  data-act={demo ? undefined : i.action}
+  data-cat={demo ? undefined : i.category}
+  data-lmin={demo ? undefined : i.level[0]}
+  data-lmax={demo ? undefined : i.level[1]}
+  data-text={demo ? undefined : text}
+>
+  <span class="verdict">
+    <Icon name={i.action} size={16} />
+    {verdict}
+  </span>
+  <div class="item-main">
+    <Heading class="item-name">
+      {
+        i.wh ? (
+          <a href={wowheadUrl(i.wh)} target="_blank" rel="noopener">
+            {i.name}
+          </a>
+        ) : (
+          i.name
+        )
+      }
+    </Heading>
+    <div class="facts">
+      <span class="tag num">{levelLabel(i.level)}</span>
+      <span class="kind">{category}</span>
+      <Trust c={i.confidence} urls={i.sources} report={`bag advisor "${i.name}"`} />
+    </div>
+    <p class="item-why">{i.why}</p>
+  </div>
+  {
+    i.where && i.where.length > 0 && (
+      <ul class="ref-list item-where">
+        {i.where.map((w) => (
+          <li>
+            <RefItem
+              r={{ name: w.npc, wh: w.wh, zone: w.zone, coords: w.coords }}
+              kind="vendor"
+              price={w.price}
+              detail={[w.hub, w.zone].filter(Boolean).join(', ')}
+            />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</article>

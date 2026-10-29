@@ -2,7 +2,18 @@
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import Badge from '../../components/Badge.astro';
-import Sources from '../../components/Sources.astro';
+import Trust from '../../components/Trust.astro';
+import Callout from '../../components/Callout.astro';
+import OnThisPage from '../../components/OnThisPage.astro';
+
+const toc = [
+  { id: 'what', label: 'What is Forever?' },
+  { id: 'before', label: 'Before launch' },
+  { id: 'first-hour', label: 'Your first hour' },
+  { id: 'addons', label: 'Addons' },
+  { id: 'mistakes', label: 'Mistakes to avoid' },
+  { id: 'using', label: 'Using this site' },
+];
 
 const addons = [
   {
@@ -50,19 +61,15 @@ const mistakes = [
 ];
 ---
 
-<Base title="Start here" description="Everything a brand-new player needs before and during the first hour of WoW: Forever.">
-  <PageHead eyebrow="New to World of Warcraft?" title="Start here">
-    Ten minutes of reading that save hours of confusion. Then head to the route and tick off your first steps.
-  </PageHead>
+<Base title="Start here" description="Everything a brand-new player needs before and during the first hour of WoW: Forever." rail="lg">
+  <Fragment slot="head">
+    <PageHead title="Start here">
+      New to World of Warcraft? Ten minutes of reading that save hours of confusion. Then head to the route and tick off
+      your first steps.
+    </PageHead>
+  </Fragment>
 
-  <ul class="toc">
-    <li><a class="pill" href="#what">What is Forever?</a></li>
-    <li><a class="pill" href="#before">Before launch</a></li>
-    <li><a class="pill" href="#first-hour">Your first hour</a></li>
-    <li><a class="pill" href="#addons">Addons</a></li>
-    <li><a class="pill" href="#mistakes">Mistakes to avoid</a></li>
-    <li><a class="pill" href="#using">Using this site</a></li>
-  </ul>
+  <OnThisPage slot="rail" items={toc} />
 
   <section id="what">
     <h2>What is WoW: Forever?</h2>
@@ -81,25 +88,30 @@ const mistakes = [
       </li>
       <li>It's not the same as "Classic". Old guides and videos for Classic are often wrong here.</li>
     </ul>
-    <p class="small"><Badge c="official" /></p>
-    <Sources
-      urls={[
-        'https://news.blizzard.com/en-us/article/24302093/',
-        'https://warcraft.wiki.gg/wiki/World_of_Warcraft:_Forever',
-        'https://worldofwarcraft.blizzard.com/en-us/news/24315280/new-players-starter-guide-welcome-to-world-of-warcraft-forever',
-      ]}
-    />
+    <div class="trust-line">
+      <span>How sure we are:</span>
+      <Trust
+        c="official"
+        urls={[
+          'https://news.blizzard.com/en-us/article/24302093/',
+          'https://warcraft.wiki.gg/wiki/World_of_Warcraft:_Forever',
+          'https://worldofwarcraft.blizzard.com/en-us/news/24315280/new-players-starter-guide-welcome-to-world-of-warcraft-forever',
+        ]}
+        report="start: what is Forever"
+      />
+    </div>
   </section>
 
   <section id="before">
-    <h2>Before launch (Nov 4, 3 p.m. PST)</h2>
-    <ol class="checklist">
+    <h2>Before launch</h2>
+    <p>Forever launches <time datetime="2026-11-04T23:00:00Z">Wed 4 Nov 2026, 3:00 pm PST</time>. Get these done first:</p>
+    <ol class="steps-list">
       <li>
         <strong>Get game time.</strong> A WoW subscription or game time covers Forever. Install the Battle.net app and
         download the game ahead of launch.
       </li>
       <li>
-        <strong>Pick a ruleset – this choice is permanent.</strong> There are no realms to pick; you choose a ruleset and
+        <strong>Pick a ruleset. This choice is permanent.</strong> There are no realms to pick; you choose a ruleset and
         everyone on it shares one big world. We recommend <strong>Normal</strong>: nobody can attack you unless you want
         to fight. (PvP lets other players attack you in most zones and locks your account to one faction.)
       </li>
@@ -117,15 +129,19 @@ const mistakes = [
         unless you're in a group.
       </li>
     </ol>
-    <p class="small"><Badge c="official" /></p>
-    <Sources
-      urls={[
-        'https://news.blizzard.com/en-us/article/24302070/updated-10-22-choose-your-ruleset-in-world-of-warcraft-forever',
-        'https://worldofwarcraft.blizzard.com/en-us/news/24303866',
-        'https://us.forums.blizzard.com/en/wow/t/mob-tagging-needs-to-be-reverted-to-the-same-as-retail/2352890',
-        'https://eu.forums.blizzard.com/en/wow/t/22000-login-queue-during-the-beta-%E2%80%94-what-happens-at-launch/629259',
-      ]}
-    />
+    <div class="trust-line">
+      <span>How sure we are:</span>
+      <Trust
+        c="official"
+        urls={[
+          'https://news.blizzard.com/en-us/article/24302070/updated-10-22-choose-your-ruleset-in-world-of-warcraft-forever',
+          'https://worldofwarcraft.blizzard.com/en-us/news/24303866',
+          'https://us.forums.blizzard.com/en/wow/t/mob-tagging-needs-to-be-reverted-to-the-same-as-retail/2352890',
+          'https://eu.forums.blizzard.com/en/wow/t/22000-login-queue-during-the-beta-%E2%80%94-what-happens-at-launch/629259',
+        ]}
+        report="start: before launch"
+      />
+    </div>
   </section>
 
   <section id="first-hour">
@@ -140,10 +156,16 @@ const mistakes = [
       </div>
       <div class="card">
         <h3>Useful keys</h3>
-        <p>
-          <kbd>M</kbd> map · <kbd>L</kbd> quest log · <kbd>B</kbd> bags · <kbd>C</kbd> character · <kbd>P</kbd> spells ·
-          <kbd>N</kbd> talents · <kbd>Esc</kbd> menu. Check Options → Keybindings if one doesn't work.
-        </p>
+        <ul class="keys">
+          <li><kbd>M</kbd> map</li>
+          <li><kbd>L</kbd> quest log</li>
+          <li><kbd>B</kbd> bags</li>
+          <li><kbd>C</kbd> character</li>
+          <li><kbd>P</kbd> spells</li>
+          <li><kbd>N</kbd> talents</li>
+          <li><kbd>Esc</kbd> menu</li>
+        </ul>
+        <p>If one doesn't work, check Game Menu &gt; Options &gt; Keybindings.</p>
       </div>
       <div class="card">
         <h3>Quest markers</h3>
@@ -155,9 +177,10 @@ const mistakes = [
       <div class="card">
         <h3>Monster colors</h3>
         <p>
-          Hover a monster: <span class="lvl grey">grey</span> gives no XP, <span class="lvl green">green</span> is easy,
-          <span class="lvl yellow">yellow</span> is fair, <span class="lvl orange">orange</span> is hard,
-          <span class="lvl red">red</span> will probably kill you.
+          Hover a monster to see its level color: <span class="con grey">grey</span> gives no XP,
+          <span class="con green">green</span> is easy, <span class="con yellow">yellow</span> is fair,
+          <span class="con orange">orange</span> is hard, <span class="con red">red</span> will probably kill you. The route
+          uses the same colors on each step's level tag.
         </p>
       </div>
       <div class="card">
@@ -184,7 +207,7 @@ const mistakes = [
       <div class="card">
         <h3>Your demon</h3>
         <p>
-          Warlocks fight with a demon pet. Send it in first (pet bar → Attack) so monsters hit it instead of you. You get
+          Warlocks fight with a demon pet. Send it in first (pet bar &gt; Attack) so monsters hit it instead of you. You get
           new demons from class quests at 10, 20 and 30.
         </p>
       </div>
@@ -198,8 +221,8 @@ const mistakes = [
       uses the modern WoW addon system, so old "Classic" addons won't load – pick versions that list WoW: Forever support.
     </p>
     <div class="table-wrap">
-      <table>
-        <thead><tr><th>Addon</th><th>Why</th></tr></thead>
+      <table class="data">
+        <thead><tr><th scope="col">Addon</th><th scope="col">Why</th></tr></thead>
         <tbody>
           {
             addons.map((a) => (
@@ -216,75 +239,74 @@ const mistakes = [
         </tbody>
       </table>
     </div>
-    <p class="small"><Badge c="beta-tested" /></p>
-    <Sources urls={['https://wowforeverguides.com/leveling/addons', 'https://www.youtube.com/watch?v=lgtzH7bG5Vw']} />
+    <div class="trust-line">
+      <span>How sure we are:</span>
+      <Trust c="beta-tested" urls={['https://wowforeverguides.com/leveling/addons', 'https://www.youtube.com/watch?v=lgtzH7bG5Vw']} report="start: addons" />
+    </div>
   </section>
 
   <section id="mistakes">
     <h2>Mistakes to avoid</h2>
-    <ol class="mistakes">
+    <ul class="rows mistakes">
       {
         mistakes.map(([m, fix]) => (
           <li>
-            <strong>{m}</strong> {fix}
+            <p>
+              <strong>{m}</strong> {fix}
+            </p>
           </li>
         ))
       }
-    </ol>
-    <p class="small"><Badge c="beta-tested" /></p>
-    <Sources
-      urls={[
-        'https://www.youtube.com/watch?v=vLF-nCuyzMo',
-        'https://us.forums.blizzard.com/en/wow/t/2376010',
-        'https://us.forums.blizzard.com/en/wow/t/2388218',
-        'https://us.forums.blizzard.com/en/wow/t/temporary-economy-holds-for-rmt/2381433',
-      ]}
-    />
+    </ul>
+    <div class="trust-line">
+      <span>How sure we are:</span>
+      <Trust
+        c="beta-tested"
+        urls={[
+          'https://www.youtube.com/watch?v=vLF-nCuyzMo',
+          'https://us.forums.blizzard.com/en/wow/t/2376010',
+          'https://us.forums.blizzard.com/en/wow/t/2388218',
+          'https://us.forums.blizzard.com/en/wow/t/temporary-economy-holds-for-rmt/2381433',
+        ]}
+        report="start: mistakes to avoid"
+      />
+    </div>
   </section>
 
   <section id="using">
     <h2>How to use this site</h2>
-    <div class="callout fel">
+    <Callout variant="tip" label="Using Waypoint">
       <ol>
-        <li>Type your level into <strong>My level</strong> at the top. Every page highlights what matters right now.</li>
+        <li>Set your level with <strong>My level</strong> at the top (the minus and plus buttons, or type it). Every page highlights what matters right now.</li>
         <li>Open the <a href="/guides/gnome-warlock/route/">route</a> on a phone or second screen and tick steps off as you go. Progress stays in this browser.</li>
-        <li>The <code>/way</code> buttons copy a waypoint. Paste it into the game chat and TomTom shows an arrow.</li>
+        <li>The coordinate buttons copy a <code>/way</code> waypoint. Paste it into the game chat and TomTom shows an arrow.</li>
         <li>Hover item, quest and spell names for in-game tooltips.</li>
-        <li>Check the badge on each step – <em>theory</em> means nobody could test it yet.</li>
+        <li>Check the trust seal on each step: <Badge c="theory" /> means nobody could test it yet.</li>
       </ol>
-    </div>
+    </Callout>
   </section>
 </Base>
 
 <style>
-  .checklist li,
-  .mistakes li {
-    margin-bottom: 0.6rem;
+  .keys {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    padding: 0;
+    margin: 0 0 var(--sp-3);
+  }
+  .keys li {
+    margin: 0;
+    white-space: nowrap;
   }
   kbd + kbd {
     margin-left: 2px;
   }
-  .lvl {
-    font-weight: 700;
-    padding: 0 0.2rem;
-    border-radius: 3px;
-  }
-  .lvl.grey {
-    color: #8a8a8a;
-  }
-  .lvl.green {
-    color: #2e9b2e;
-  }
-  .lvl.yellow {
-    color: #b59400;
-  }
-  .lvl.orange {
-    color: #d26b00;
-  }
-  .lvl.red {
-    color: #d12f2f;
-  }
   .grid .card h3 {
-    margin-top: 0;
+    font-size: var(--fs-lg);
+  }
+  .mistakes p {
+    margin: 0;
   }
 </style>

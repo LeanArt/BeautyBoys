@@ -2,12 +2,15 @@
 import Base from '../../../layouts/Base.astro';
 import PageHead from '../../../components/PageHead.astro';
 import GuideNav from '../../../components/GuideNav.astro';
-import Badge from '../../../components/Badge.astro';
-import Sources from '../../../components/Sources.astro';
+import GuidePager from '../../../components/GuidePager.astro';
+import OnThisPage from '../../../components/OnThisPage.astro';
+import Trust from '../../../components/Trust.astro';
 import RefItem from '../../../components/RefItem.astro';
+import Callout from '../../../components/Callout.astro';
 import { guides, type Guide } from '../../../lib/guides';
 import { professionsFor } from '../../../lib/data';
 import { md } from '../../../lib/md';
+import { formatDate } from '../../../lib/wow';
 
 export function getStaticPaths() {
   return guides.filter((g) => g.status === 'ready').map((guide) => ({ params: { guide: guide.id }, props: { guide } }));
@@ -17,157 +20,158 @@ const { guide } = Astro.props as { guide: Guide };
 const data = professionsFor(guide.id);
 const primary = data?.plans.filter((p) => p.type === 'primary') ?? [];
 const secondary = data?.plans.filter((p) => p.type === 'secondary') ?? [];
+const base = `/guides/${guide.id}/`;
+const groups = [
+  { id: 'main-professions', title: 'Main professions (pick two)', plans: primary },
+  { id: 'secondary-professions', title: 'Secondary professions (take them all)', plans: secondary },
+].filter((g) => g.plans.length > 0);
+const toc = [
+  ...groups.map((g) => ({ id: g.id, label: g.title.replace(/ \(.*\)$/, '') })),
+  { id: 'alts', label: 'Support alts' },
+  { id: 'sharing', label: 'Moving items between characters' },
+];
 ---
 
-<Base title={`Professions & alts – ${guide.race} ${guide.className}`}>
-  <PageHead eyebrow={`${guide.race} ${guide.className}`} title="Professions & support alts">
-    Which professions to take, the moments they pay off while leveling, and which extra characters can keep them fed.
-  </PageHead>
-  <GuideNav guide={guide} />
+<Base title={`Professions & alts: ${guide.race} ${guide.className}`} rail="lg" guide={guide.id}>
+  <Fragment slot="head">
+    <PageHead
+      title="Professions & support alts"
+      trail={[{ href: base, label: `${guide.race} ${guide.className} guide` }]}
+      facts={data ? [{ label: 'Updated', value: formatDate(data.updated) }] : []}
+    >
+      Which professions to take, the moments they pay off while leveling, and which extra characters can keep them fed.
+    </PageHead>
+    <GuideNav guide={guide} />
+  </Fragment>
+
+  {data && <OnThisPage slot="rail" items={toc} />}
 
   {
     !data ? (
-      <div class="callout warn">
+      <Callout variant="warn">
         <p>The professions plan is being written. Check back soon.</p>
-      </div>
+      </Callout>
     ) : (
       <Fragment>
-        <div class="callout fel">
+        <Callout variant="tip">
           <p set:html={md(data.summary)} />
-        </div>
+        </Callout>
 
-        <ul class="toc">
-          {[...primary, ...secondary].map((p) => (
-            <li>
-              <a class="pill" href={`#${p.id}`}>
-                {p.name}
-              </a>
-            </li>
-          ))}
-          <li>
-            <a class="pill" href="#alts">
-              Support alts
-            </a>
-          </li>
-          <li>
-            <a class="pill" href="#sharing">
-              Moving items between characters
-            </a>
-          </li>
-        </ul>
+        {groups.map((group) => (
+          <section id={group.id}>
+            <h2>{group.title}</h2>
+            {group.plans.map((p) => (
+              <article class="prof" id={p.id}>
+                <h3>{p.name}</h3>
+                <p class="role">{p.role}</p>
 
-        {[
-          { title: 'Main professions (pick two)', plans: primary },
-          { title: 'Secondary professions (take them all)', plans: secondary },
-        ].map((group) =>
-          group.plans.length === 0 ? null : (
-            <section>
-              <h2>{group.title}</h2>
-              {group.plans.map((p) => (
-                <article class="prof card" id={p.id}>
-                  <h3>{p.name}</h3>
-                  <p class="role">{p.role}</p>
+                {p.trainers.length > 0 && (
+                  <div class="refs">
+                    <h4 class="refs-label">Trainers on your route</h4>
+                    <ul class="ref-list">
+                      {p.trainers.map((t) => (
+                        <li>
+                          <RefItem r={t} kind="npc" />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
-                  {p.trainers.length > 0 && (
-                    <div class="trainers">
-                      <h4>Trainers on your route</h4>
-                      <ul>
-                        {p.trainers.map((t) => (
-                          <li>
-                            <RefItem r={t} />
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {p.milestones.length > 0 && (
-                    <div class="table-wrap">
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>Skill</th>
-                            <th>Milestone</th>
+                {p.milestones.length > 0 && (
+                  <div class="table-wrap">
+                    <table class="data stack" role="table">
+                      <thead role="rowgroup">
+                        <tr role="row">
+                          <th role="columnheader" scope="col">
+                            Skill
+                          </th>
+                          <th role="columnheader" scope="col">
+                            Milestone
+                          </th>
+                          <th role="columnheader" scope="col">
+                            What to do
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody role="rowgroup">
+                        {p.milestones.map((m) => (
+                          <tr role="row" data-lmin={m.level ?? 0} data-lmax={m.level ?? 0}>
+                            <td role="cell" class="c-lv">
+                              <span class="tag num">Skill {m.skill}</span>
+                              {m.level && <span class="lv-hint num">about Lv {m.level}</span>}
+                            </td>
+                            <td role="cell" class="c-main">
+                              {m.title}
+                            </td>
+                            <td role="cell" class="c-why">
+                              <p set:html={md(m.body)} />
+                              {m.crafts && m.crafts.length > 0 && (
+                                <p class="crafts">
+                                  <strong>Make:</strong>{' '}
+                                  {m.crafts.map((c, i) => (
+                                    <Fragment>{i > 0 && ', '}<RefItem r={c} variant="inline" /></Fragment>
+                                  ))}
+                                </p>
+                              )}
+                              <Trust c={m.confidence} urls={m.sources} report={`${p.name} milestone "${m.title}"`} />
+                            </td>
                           </tr>
-                        </thead>
-                        <tbody>
-                          {p.milestones.map((m) => (
-                            <tr data-lmin={m.level ?? 0} data-lmax={m.level ?? 0}>
-                              <td class="skill">
-                                <span class="pill level">{m.skill}</span>
-                                {m.level && <div class="muted small">~ Lv {m.level}</div>}
-                              </td>
-                              <td>
-                                <strong>{m.title}</strong>
-                                <p set:html={md(m.body)} />
-                                {m.crafts && m.crafts.length > 0 && (
-                                  <ul class="crafts">
-                                    {m.crafts.map((c) => (
-                                      <li>
-                                        <RefItem r={c} />
-                                      </li>
-                                    ))}
-                                  </ul>
-                                )}
-                                <div class="foot">
-                                  <Badge c={m.confidence} />
-                                  <Sources urls={m.sources} />
-                                </div>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  )}
-
-                  {p.needsFromOthers && p.needsFromOthers.length > 0 && (
-                    <div class="needs">
-                      <h4>Needs from other professions</h4>
-                      <ul>
-                        {p.needsFromOthers.map((n) => (
-                          <li>
-                            <RefItem r={n.item} /> <span class="muted">– from {n.from}, for {n.usedFor}</span>
-                          </li>
                         ))}
-                      </ul>
-                    </div>
-                  )}
-                </article>
-              ))}
-            </section>
-          ),
-        )}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+
+                {p.needsFromOthers && p.needsFromOthers.length > 0 && (
+                  <div class="refs">
+                    <h4 class="refs-label">Needs from other professions</h4>
+                    <ul class="inline-refs needs">
+                      {p.needsFromOthers.map((n) => (
+                        <li>
+                          <RefItem r={n.item} variant="inline" />
+                          <span>
+                            from {n.from}, for {n.usedFor}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </article>
+            ))}
+          </section>
+        ))}
 
         <section id="alts">
           <h2>Support alts</h2>
-          <p class="muted">
-            Extra characters on your account whose professions feed your main. You don't need any of them – but if you
-            enjoy playing a second character, these make your main's life easier.
+          <p class="prose muted">
+            Extra characters on your account whose professions feed your main. You don't need any of them, but if you enjoy
+            playing a second character, these make your main's life easier.
           </p>
           <div class="grid">
             {data.alts.map((a) => (
               <article class="card alt">
                 <h3>{a.title}</h3>
-                <p class="pros">{a.professions.join(' + ')}</p>
+                <p class="pros">{a.professions.join(' and ')}</p>
                 <p>
                   <strong>Who:</strong> {a.suggestion}
                 </p>
                 <p set:html={md(a.why)} />
                 {a.feeds.length > 0 && (
                   <Fragment>
-                    <h4>Feeds your main</h4>
-                    <ul>
+                    <h4 class="refs-label">Feeds your main</h4>
+                    <ul class="inline-refs feeds">
                       {a.feeds.map((f) => (
                         <li>
-                          <RefItem r={f.item} /> <span class="muted">– {f.usedFor}</span>
+                          <RefItem r={f.item} variant="inline" />
+                          <span>{f.usedFor}</span>
                         </li>
                       ))}
                     </ul>
                   </Fragment>
                 )}
-                <Badge c={a.confidence} />
-                <Sources urls={a.sources} />
+                <Trust c={a.confidence} urls={a.sources} report={`support alt "${a.title}"`} />
               </article>
             ))}
           </div>
@@ -177,72 +181,58 @@ const secondary = data?.plans.filter((p) => p.type === 'secondary') ?? [];
           <h2>Moving items between your characters</h2>
           <div class="grid">
             {data.howToShare.map((h) => (
-              <div class="card">
+              <section class="card">
                 <h3>{h.title}</h3>
                 <p set:html={md(h.body)} />
-                <Badge c={h.confidence} />
-                <Sources urls={h.sources} />
-              </div>
+                <Trust c={h.confidence} urls={h.sources} report={`moving items "${h.title}"`} />
+              </section>
             ))}
           </div>
         </section>
       </Fragment>
     )
   }
+  <GuidePager guide={guide} />
 </Base>
 
 <style>
   .prof {
-    margin-bottom: 1.2rem;
+    margin: 0 0 var(--sp-10);
   }
-  .prof h3,
-  .alt h3,
-  .grid .card h3 {
-    margin-top: 0;
+  .prof h3 {
+    margin-top: var(--sp-6);
   }
   .role {
-    color: var(--muted);
+    color: var(--ink-2);
+    max-width: 64ch;
   }
-  h4 {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--muted);
-    margin: 0.9rem 0 0.3rem;
+  .lv-hint {
+    font-size: var(--fs-xs);
+    color: var(--ink-3);
+    margin-top: 4px;
+    display: block;
   }
-  .trainers ul,
-  .needs ul,
-  .alt ul,
   .crafts {
-    padding-left: 1.1rem;
-    margin: 0 0 0.6rem;
-  }
-  .table-wrap {
-    margin-top: 0.8rem;
-    box-shadow: none;
-  }
-  td p {
-    margin: 0.2rem 0 0.3rem;
-  }
-  .skill {
-    width: 6rem;
-  }
-  .foot {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.4rem 0.8rem;
-  }
-  .foot :global(details.sources) {
-    margin-top: 0;
+    font-size: var(--fs-sm);
   }
   .pros {
     font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 0.4rem;
+    color: var(--class);
+    margin-bottom: var(--sp-2);
   }
-  tr[data-now='current'] td {
-    background: var(--accent-soft);
+  .card h3 {
+    font-size: var(--fs-lg);
+  }
+  .needs > li > span:last-child,
+  .feeds > li > span:last-child {
+    color: var(--ink-2);
+  }
+  .feeds > li,
+  .needs > li {
+    border-top: 1px dashed var(--rule);
+  }
+  .feeds > li:first-child,
+  .needs > li:first-child {
+    border-top: 0;
   }
 </style>

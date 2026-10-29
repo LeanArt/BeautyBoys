@@ -1,214 +1,108 @@
 ---
-import Badge from './Badge.astro';
-import Sources from './Sources.astro';
+// One route step: a waymark row on the ley line (docs/DESIGN.md, section 3 "Route step").
+// Contract: li.step[id][data-lmin][data-lmax] + input[data-step]; progress.ts adds .done, data-next, .open.
+// `demo` (style guide only): renders a fixed state; no data-lmin/data-lmax/data-step, so no script touches it.
+import Icon from './Icon.astro';
+import Waymark from './Waymark.astro';
+import Trust from './Trust.astro';
 import RefItem from './RefItem.astro';
+import WayButton from './WayButton.astro';
 import { md } from '../lib/md';
-import { levelLabel } from '../lib/wow';
-import { reportHref } from '../lib/site';
+import { levelLabel, wayCommand, coordLabel } from '../lib/wow';
 import type { Step } from '../lib/data';
+import { KIND } from '../lib/kinds';
+import type { Ladder } from '../scripts/level';
 
 interface Props {
   step: Step;
+  demo?: {
+    done?: boolean;
+    next?: boolean;
+    open?: boolean;
+    flash?: boolean;
+    now?: 'past' | 'current' | 'future';
+    ladder?: Ladder;
+  };
 }
 
-const { step } = Astro.props;
+const { step, demo } = Astro.props;
+const LADDER_WORD: Record<Ladder, string> = { 'too-hard': 'too hard', hard: 'hard', 'on-level': 'on level', easy: 'easy', trivial: 'trivial' };
 
-const KIND: Record<Step['kind'], string> = {
-  travel: 'Travel',
-  quests: 'Quests',
-  class: 'Class',
-  train: 'Train',
-  dungeon: 'Dungeon',
-  profession: 'Profession',
-  system: 'Forever system',
-  shopping: 'Shopping',
-  tip: 'Tip',
-  milestone: 'Milestone',
-};
-const where = [step.zone, step.hub].filter(Boolean).join(' · ');
+const kind = KIND[step.kind];
+const place = [step.hub, step.zone].filter(Boolean).join(', ');
+
+// Key waypoint: the first quest, person or item with coordinates.
+const keyRef = [...(step.quests ?? []), ...(step.npcs ?? []), ...(step.items ?? [])].find((r) => r.coords);
+const keyZone = keyRef ? keyRef.zone ?? step.zone : undefined;
+const keyWay = keyRef?.coords && keyZone ? wayCommand(keyZone, keyRef.coords, keyRef.name) : undefined;
+const groups = [
+  { label: 'Quests', refs: step.quests ?? [], kind: 'quest' as const },
+  { label: 'People', refs: step.npcs ?? [], kind: 'npc' as const },
+  { label: 'Items', refs: step.items ?? [], kind: 'item' as const },
+].filter((g) => g.refs.length > 0);
 ---
 
-<article class={`step kind-${step.kind}`} id={step.id} data-lmin={step.level[0]} data-lmax={step.level[1]}>
-  <label class="check">
-    <input type="checkbox" data-step={step.id} />
-    <span class="visually-hidden">Mark "{step.title}" done</span>
-  </label>
-  <div class="content">
-    <header>
-      <h3>{step.title}</h3>
-      <div class="meta">
-        <span class="pill level">{levelLabel(step.level)}</span>
-        <span class={`pill kind`}>{KIND[step.kind]}</span>
-        {step.optional && <span class="pill">optional</span>}
-        <Badge c={step.confidence} />
-      </div>
-    </header>
-    <p class="where">{where}</p>
-    <p class="body" set:html={md(step.body)} />
-
-    {
-      step.quests && step.quests.length > 0 && (
-        <div class="refs">
-          <h4>Key quests</h4>
-          <ul>
-            {step.quests.map((q) => (
-              <li>
-                <RefItem r={q} zone={step.zone} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      )
-    }
-    {
-      step.npcs && step.npcs.length > 0 && (
-        <div class="refs">
-          <h4>Who</h4>
-          <ul>
-            {step.npcs.map((n) => (
-              <li>
-                <RefItem r={n} zone={step.zone} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      )
-    }
-    {
-      step.items && step.items.length > 0 && (
-        <div class="refs">
-          <h4>Items</h4>
-          <ul>
-            {step.items.map((i) => (
-              <li>
-                <RefItem r={i} zone={step.zone} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      )
-    }
-    <div class="foot">
-      <Sources urls={step.sources} />
-      <a class="report small" href={reportHref(`route step "${step.title}" (${step.id})`)} target="_blank" rel="noopener"
-        >Report a problem</a
-      >
+<li
+  class:list={['step', `kind-${step.kind}`, { theory: step.confidence === 'theory', done: demo?.done, open: demo?.open, flash: demo?.flash }]}
+  id={step.id}
+  data-lmin={demo ? undefined : step.level[0]}
+  data-lmax={demo ? undefined : step.level[1]}
+  data-now={demo?.now}
+  data-next={demo?.next ? '' : undefined}
+  aria-current={demo?.next ? 'step' : undefined}
+  data-title={step.title}
+  data-way={keyWay}
+  data-way-label={keyRef?.coords ? coordLabel(keyRef.coords) : undefined}
+>
+  <Waymark id={step.id} glyph={kind.glyph} label={`Mark "${step.title}" done`} demo={demo && { checked: demo.done }} />
+  <div class="step-main">
+    <p class="next-flag"><span class="tag next">Next step</span></p>
+    <h3 class="step-title">{step.title} <span class="tag done">Done</span></h3>
+    <div class="facts">
+      {
+        demo ? (
+          <span class="tag lv num" data-ladder={demo.ladder}>
+            {levelLabel(step.level)} <span class="ladder">{demo.ladder && LADDER_WORD[demo.ladder]}</span>
+          </span>
+        ) : (
+          <span class="tag lv num" data-lmin={step.level[0]} data-lmax={step.level[1]} data-ladder-tag>
+            {levelLabel(step.level)} <span class="ladder" />
+          </span>
+        )
+      }
+      <span class="kind">{kind.word}</span>
+      {
+        place && (
+          <span class="place">
+            <Icon name="pin" size={16} />
+            {place}
+          </span>
+        )
+      }
+      {step.optional && <span class="tag optional">Optional</span>}
+      {keyWay && keyRef?.coords && <WayButton way={keyWay} coords={keyRef.coords} class="key" />}
+      <Trust c={step.confidence} urls={step.sources} report={`route step "${step.title}" (${step.id})`} />
     </div>
+    <div class="detail">
+      <p class="body" set:html={md(step.body)} />
+      {
+        groups.map((g) => (
+          <div class="refs">
+            <h4 class="refs-label">{g.label}</h4>
+            <ul class="ref-list">
+              {g.refs.map((r) => (
+                <li>
+                  <RefItem r={r} zone={step.zone} kind={g.kind} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+      <label class="btn mark-done" for={`chk-${step.id}`} aria-hidden="true"><Icon name="check" size={16} />Mark done</label>
+    </div>
+    <button class="btn quiet step-toggle" type="button" data-action="details" aria-expanded={demo?.open ? 'true' : 'false'}
+      ><span data-details-label>{demo?.open ? 'Hide details' : 'Show details'}</span><Icon name="chevron-down" size={16} class="chev" /></button
+    >
   </div>
-</article>
-
-<style>
-  .step {
-    display: grid;
-    grid-template-columns: 2.4rem 1fr;
-    gap: 0.4rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--border);
-    border-radius: var(--radius);
-    padding: 0.85rem 1rem 0.75rem 0.6rem;
-    margin: 0 0 0.7rem;
-    transition: opacity 0.2s, border-color 0.2s;
-  }
-  .step.kind-class,
-  .step.kind-train {
-    border-left-color: var(--accent);
-  }
-  .step.kind-dungeon {
-    border-left-color: var(--danger);
-  }
-  .step.kind-system {
-    border-left-color: var(--info);
-  }
-  .step.kind-profession,
-  .step.kind-shopping {
-    border-left-color: var(--gold);
-  }
-  .step.kind-milestone {
-    border-left-color: var(--fel);
-  }
-  .step[data-now='current'] {
-    box-shadow: 0 0 0 2px var(--accent-soft);
-  }
-  .step.done {
-    opacity: 0.55;
-  }
-  .step.done h3 {
-    text-decoration: line-through;
-    text-decoration-thickness: 1px;
-  }
-  :global(.hide-done) .step.done {
-    display: none;
-  }
-  .step:global(.flash) {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 4px var(--accent-soft);
-  }
-  .check {
-    display: flex;
-    justify-content: center;
-    padding-top: 0.15rem;
-    cursor: pointer;
-  }
-  .check input {
-    width: 1.45rem;
-    height: 1.45rem;
-    accent-color: var(--fel);
-    cursor: pointer;
-  }
-  header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.3rem 0.8rem;
-  }
-  h3 {
-    margin: 0;
-    font-size: 1.12rem;
-  }
-  .meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.3rem;
-  }
-  .where {
-    margin: 0.15rem 0 0.4rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--muted);
-  }
-  .body {
-    margin-bottom: 0.4rem;
-  }
-  .refs h4 {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--muted);
-    margin: 0.6rem 0 0.2rem;
-  }
-  .refs ul {
-    margin: 0;
-    padding-left: 1.1rem;
-  }
-  .refs li {
-    margin: 0.2rem 0;
-  }
-  .foot {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.4rem 1rem;
-  }
-  .report {
-    color: var(--muted);
-  }
-  @media (max-width: 520px) {
-    .step {
-      grid-template-columns: 2rem 1fr;
-      padding-right: 0.75rem;
-    }
-  }
-</style>
+</li>

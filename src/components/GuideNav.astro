@@ -1,24 +1,18 @@
 ---
-import type { Guide } from '../lib/guides';
+// Guide sub-nav: Overview, Route, Talents, Professions. One scrolling row on phones (never wraps).
+import { guidePages, type Guide } from '../lib/guides';
 
 interface Props {
   guide: Guide;
 }
 
 const { guide } = Astro.props;
-const base = `/guides/${guide.id}/`;
-const links = [
-  { href: base, label: 'Overview' },
-  { href: `${base}route/`, label: 'Route' },
-  { href: `${base}talents/`, label: 'Talents, spells & demons' },
-  { href: `${base}professions/`, label: 'Professions & alts' },
-];
 const path = Astro.url.pathname;
 ---
 
 <nav class="guide-nav" aria-label={`${guide.race} ${guide.className} guide`}>
   {
-    links.map((l) => (
+    guidePages(guide).map((l) => (
       <a href={l.href} aria-current={path === l.href ? 'page' : undefined}>
         {l.label}
       </a>
@@ -26,28 +20,21 @@ const path = Astro.url.pathname;
   }
 </nav>
 
-<style>
-  .guide-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem;
-    border-bottom: 1px solid var(--border);
-    margin: 0.5rem 0 1.5rem;
-  }
-  .guide-nav a {
-    padding: 0.45rem 0.75rem;
-    font-size: 0.92rem;
-    font-weight: 600;
-    color: var(--muted);
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-  }
-  .guide-nav a:hover {
-    color: var(--text);
-  }
-  .guide-nav a[aria-current='page'] {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-  }
-</style>
+<script>
+  // Bring the active link into the scrolling row without moving the page vertically, and fade the edge
+  // (data-more="start|end|both") on any side that has links scrolled out of view.
+  document.querySelectorAll<HTMLElement>('.guide-nav').forEach((nav) => {
+    const a = nav.querySelector<HTMLElement>('[aria-current="page"]');
+    if (a && a.offsetLeft + a.offsetWidth > nav.clientWidth) nav.scrollLeft = a.offsetLeft - 16;
+    const mark = () => {
+      const start = nav.scrollLeft > 1;
+      const end = nav.scrollLeft + nav.clientWidth < nav.scrollWidth - 1;
+      if (start || end) nav.dataset.more = start && end ? 'both' : start ? 'start' : 'end';
+      else delete nav.dataset.more;
+    };
+    mark();
+    nav.addEventListener('scroll', mark, { passive: true });
+    addEventListener('resize', mark);
+    document.fonts?.ready.then(mark); // web fonts change the link widths
+  });
+</script>

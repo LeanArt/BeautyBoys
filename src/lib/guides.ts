@@ -22,3 +22,16 @@ export const guides: Guide[] = [
 ];
 
 export const getGuide = (id: string) => guides.find((g) => g.id === id);
+
+// The four pages of every guide, in reading order (sub-nav, menu and pager all use this).
+export type GuidePage = { href: string; label: string };
+export function guidePages(guide: Guide | string): GuidePage[] {
+  const id = typeof guide === 'string' ? guide : guide.id;
+  const base = `/guides/${id}/`;
+  return [
+    { href: base, label: 'Overview' },
+    { href: `${base}route/`, label: 'Route' },
+    { href: `${base}talents/`, label: 'Talents, spells & demons' },
+    { href: `${base}professions/`, label: 'Professions & alts' },
+  ];
+}

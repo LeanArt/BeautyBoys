@@ -1,0 +1,57 @@
+---
+// Interactive trust seal: pips + word + chevron. Opens in flow (never a popover) with the meaning,
+// the sources and a "Report it" link. Replaces every Badge + Sources pair.
+import Icon from './Icon.astro';
+import type { Confidence } from '../lib/data';
+import { CONFIDENCE } from '../lib/confidence';
+import { sourceLabel } from '../lib/sources';
+import { reportHref } from '../lib/site';
+
+interface Props {
+  c: Confidence;
+  urls?: string[];
+  report?: string;
+  open?: boolean; // style guide only: render the open state
+}
+
+const { c, urls = [], report, open = false } = Astro.props;
+const info = CONFIDENCE[c];
+---
+
+<details class={`trust ${c}`} open={open}>
+  <summary
+    ><span class="visually-hidden">How sure we are: </span><span class="pips" aria-hidden="true"
+      >{[0, 1, 2].map((i) => <i class={i < info.pips ? 'on' : undefined} />)}</span
+    >{info.word}<Icon name="chevron-down" size={16} class="chev" /></summary
+  >
+  <div class="trust-panel">
+    <p><strong>{info.word}:</strong> {info.meaning}.</p>
+    {
+      urls.length > 0 && (
+        <Fragment>
+          <p class="trust-label">Sources ({urls.length})</p>
+          <ul class="src-list">
+            {urls.map((u) => (
+              <li>
+                <a href={u} target="_blank" rel="noopener">
+                  <Icon name="external" size={16} />
+                  {sourceLabel(u)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Fragment>
+      )
+    }
+    {
+      report && (
+        <p>
+          <a class="report-link" href={reportHref(report)} target="_blank" rel="noopener">
+            <Icon name="flag" size={16} />
+            Something wrong? Report it
+          </a>
+        </p>
+      )
+    }
+  </div>
+</details>

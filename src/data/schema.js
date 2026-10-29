@@ -70,6 +70,7 @@ export const Step = z.object({
 export const Bracket = z.object({
   id: Id,
   title: z.string(),
+  short: z.string().optional(), // short label for the journey list and the home road, e.g. "Loch Modan & Redridge"
   level: LevelRange,
   zones: z.array(z.string()),
   summary: z.string(),
