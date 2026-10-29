@@ -1,0 +1,1042 @@
+{
+  "updated": "2026-10-29",
+  "guide": "gnome-warlock",
+  "summary": "Take **Tailoring + Enchanting** on your warlock, plus **Cooking** (you can't camp without it, and Well Fed food adds 5% kill XP), **First Aid** (bandages and, new in Forever, health potions) and optionally **Fishing**. Tailoring makes Shadow-damage cloth from level 12, your reagent and soul bags and a Spirit banner that feeds Life Tap. Enchanting turns greens you don't need into early wands and a level-25 Soulstaff, and both professions earn account-wide Legacy points at 150/225/300. If you mostly want PvP, **Engineering + Tailoring** is the alternative: the Gnome racial Engineering Specialization makes your gadgets fail less often.",
+  "plans": [
+    {
+      "id": "tailoring",
+      "name": "Tailoring",
+      "type": "primary",
+      "role": "Your best leveling gear (Shadow-damage cloth), your reagent bags and soul bag, a Spirit camp banner for Life Tap, and 3 Legacy points.",
+      "trainers": [
+        {
+          "name": "Uthrar Threx",
+          "role": "Apprentice Tailoring trainer (closest to Dun Morogh)",
+          "zone": "Ironforge",
+          "coords": [43.7, 28.2],
+          "note": "The Great Forge. Dun Morogh itself has no tailor."
+        },
+        {
+          "name": "Jormund Stonebrow",
+          "role": "Journeyman Tailoring trainer (skill 50, level 10)",
+          "zone": "Ironforge",
+          "coords": [43.3, 28.9],
+          "note": "The Great Forge, next to Uthrar Threx."
+        },
+        {
+          "name": "Lawrence Schneider",
+          "role": "Apprentice Tailoring trainer",
+          "zone": "Stormwind City",
+          "coords": [53.5, 81.7],
+          "note": "Mage Quarter, near the warlock trainers."
+        },
+        {
+          "name": "Sellandus",
+          "role": "Journeyman Tailoring trainer (skill 50, level 10)",
+          "zone": "Stormwind City",
+          "coords": [52.3, 83.4],
+          "note": "Mage Quarter."
+        },
+        {
+          "name": "Georgio Bolero",
+          "role": "Expert Tailoring trainer (skill 125, level 20, 50 silver)",
+          "zone": "Stormwind City",
+          "coords": [53.3, 81.5],
+          "note": "Mage Quarter. The only Alliance Expert tailor."
+        },
+        {
+          "name": "Timothy Worthington",
+          "role": "Artisan Tailoring trainer (skill 200, level 35)",
+          "zone": "Dustwallow Marsh",
+          "coords": [66.2, 51.8],
+          "note": "Theramore Isle. Untested in Forever (beta was capped at 30)."
+        },
+        {
+          "name": "Mivin Shadowweave",
+          "role": "Merchant's Favor pattern vendor (Shadow set, reagent bags)",
+          "zone": "Redridge Mountains",
+          "coords": [10.0, 73.0],
+          "note": "Azeroth Commerce Authority camp at Three Corners, west Redridge."
+        }
+      ],
+      "milestones": [
+        {
+          "skill": 1,
+          "level": 5,
+          "title": "Learn Tailoring at level 5 and keep your cloth",
+          "body": "Crafting professions open at level 5. Train in Ironforge (**Uthrar Threx**) – Dun Morogh has no tailor. Next tiers: **Journeyman** at level 10 + skill 50, **Expert** at level 20 + skill 125 (50 silver, Georgio Bolero in Stormwind), **Artisan** at level 35 + skill 200 (Timothy Worthington, Theramore). Keep every Linen and Wool Cloth you loot.",
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.wow-professions.com/forever/tailoring-leveling-guide",
+            "https://www.warcrafttavern.com/forever/guides/professions/"
+          ]
+        },
+        {
+          "skill": 5,
+          "level": 5,
+          "title": "Linen Reagent Bag – your new 5th bag slot",
+          "body": "Forever adds a **reagent bag slot**. The Linen Reagent Bag (6 Bolt of Linen Cloth + 6 Coarse Thread, vendor pattern) gives 6 slots for cloth, ore, herbs and fish. Later your **Soul Pouch** goes in this slot instead.",
+          "crafts": [
+            { "name": "Linen Reagent Bag", "wh": { "type": "item", "id": 253664 }, "note": "6-slot reagent bag" }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://www.wowhead.com/forever/spell=1257013",
+            "https://warcraft.wiki.gg/wiki/Forever_tailoring_patterns",
+            "https://us.forums.blizzard.com/en/wow/t/2394758",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+          ]
+        },
+        {
+          "skill": 20,
+          "title": "Faction Banner – Spirit for Life Tap",
+          "body": "At skill 20 you get the **Faction Banner** camp item (from the trainer or the *Camping 101* quest): 1 Bolt of Linen Cloth + 1 Coarse Thread. Place it at a campfire and sit for 1 minute: Alliance players there get **+14–32 Spirit** (by level), which doesn't stack with Divine Spirit. In Forever **Life Tap scales with Spirit**, so this is more mana per tap. Each player places one camp item and all camp items share a 1-hour cooldown, so when you camp alone this is usually the one to use.",
+          "crafts": [
+            { "name": "Faction Banner", "wh": { "type": "item", "id": 279973 }, "note": "Alliance version" }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://news.blizzard.com/en-us/article/24301516/gather-around-the-campfire-in-world-of-warcraft-forever",
+            "https://www.wowhead.com/forever/item=279973",
+            "https://www.wow-professions.com/forever/camping-guide",
+            "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696"
+          ]
+        },
+        {
+          "skill": 35,
+          "level": 10,
+          "title": "Novice Arcanist's Sash (level 10 belt)",
+          "body": "An early trainer pattern for a bind-on-pickup belt: required level 10, +3 Stamina, +3 Intellect, +4 spell power. It needs 8 Bolt of Linen Cloth, 2 Fine Thread and **2 Minor Mana Potions** – an Alchemy product, so buy them or get them from an alchemist alt.",
+          "crafts": [
+            { "name": "Novice Arcanist's Sash", "wh": { "type": "item", "id": 253885 } }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://www.wowhead.com/forever/spell=1257368",
+            "https://warcraft.wiki.gg/wiki/Forever_tailoring_patterns",
+            "https://us.forums.blizzard.com/en/wow/t/2356428"
+          ]
+        },
+        {
+          "skill": 50,
+          "level": 10,
+          "title": "Red Linen Bag – now 8 slots",
+          "body": "4 Bolt of Linen Cloth, 1 Fine Thread and 1 Red Dye (vendor). The Forever version holds **8 slots**. The wiki lists the pattern as a drop in Forever, so look on the Auction House.",
+          "crafts": [
+            { "name": "Red Linen Bag", "wh": { "type": "item", "id": 5762 }, "note": "8-slot bag" }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://www.wowhead.com/forever/spell=6686",
+            "https://warcraft.wiki.gg/wiki/Forever_tailoring_patterns"
+          ]
+        },
+        {
+          "skill": 60,
+          "level": 12,
+          "title": "Merchant's Favor Shadow set (levels 12–25)",
+          "body": "**Mivin Shadowweave** at the Three Corners camp (west Redridge) sells six Shadow patterns for **30 Merchant's Favor each**, no reputation needed: Boots (req. level 12, skill 60), Gloves (15/75), Sash (17/85), Circlet (20/100), Gown (22/110), Leggings (25/125). The gear binds on pickup, so you craft it for yourself. Every piece needs **Cerulean Dye** (Alchemy) and **Shadowgem**; Circlet, Gown and Leggings also need Silver Bar and Greater Astral Essence (from your Enchanting). Example – Shadow Gown: 12 Bolt of Silk Cloth, 2 Silken Thread, 6 Cerulean Dye, 6 Shadowgem, 2 Silver Bar, 2 Greater Astral Essence for +13 Shadow damage. The whole set is 180 Favor; your first Shipping Label quest gives 50.",
+          "crafts": [
+            { "name": "Shadow Boots", "wh": { "type": "item", "id": 253895 }, "note": "req. 12, skill 60, +6 Shadow damage" },
+            { "name": "Shadow Gloves", "wh": { "type": "item", "id": 253919 }, "note": "req. 15, skill 75" },
+            { "name": "Shadow Sash", "wh": { "type": "item", "id": 253931 }, "note": "req. 17, skill 85" },
+            { "name": "Shadow Circlet", "wh": { "type": "item", "id": 253955 }, "note": "req. 20, skill 100" },
+            { "name": "Shadow Gown", "wh": { "type": "item", "id": 253967 }, "note": "req. 22, skill 110, +13 Shadow damage" },
+            { "name": "Shadow Leggings", "wh": { "type": "item", "id": 253993 }, "note": "req. 25, skill 125, +14 Shadow damage" }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+            "https://www.wow-professions.com/forever/npc/mivin-shadowweave",
+            "https://www.wowhead.com/forever/spell=1257409",
+            "https://us.forums.blizzard.com/en/wow/t/2385559"
+          ]
+        },
+        {
+          "skill": 70,
+          "title": "Woolen Reagent Bag (8 slots) and later bags",
+          "body": "Woolen Reagent Bag: 3 Bolt of Woolen Cloth, 1 Fine Thread, 1 Cerulean Dye (vendor pattern) – swap out the 6-slot linen one. Later: **Silk Reagent Bag** (10 slots; needs 2 Heavy Leather from Skinning and 3 Cerulean Dye) and **Mageweave Reagent Bag** (skill 190, 60 Favor from Mivin at Friendly).",
+          "crafts": [
+            { "name": "Woolen Reagent Bag", "wh": { "type": "item", "id": 253667 }, "note": "8 slots" },
+            { "name": "Silk Reagent Bag", "wh": { "type": "item", "id": 253973 }, "note": "10 slots" },
+            { "name": "Mageweave Reagent Bag", "wh": { "type": "item", "id": 254035 } }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://www.wowhead.com/forever/spell=1257017",
+            "https://www.wowhead.com/forever/spell=1257412",
+            "https://warcraft.wiki.gg/wiki/Forever_tailoring_patterns",
+            "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce"
+          ]
+        },
+        {
+          "skill": 75,
+          "level": 15,
+          "title": "Filigreed Shadow pieces (dungeon-drop patterns)",
+          "body": "New patterns that drop in dungeons – **which dungeons is still unknown**. Filigreed Shadow Gown (skill 75, req. level 15, +9 Shadow damage), Leggings (skill 100) and Circlet (skill 125). Each needs Cerulean Dye and Shadowgem. The gear binds on pickup, so keep any of these patterns you find.",
+          "crafts": [
+            { "name": "Filigreed Shadow Gown", "wh": { "type": "item", "id": 253907 } },
+            { "name": "Filigreed Shadow Leggings", "wh": { "type": "item", "id": 253943 } },
+            { "name": "Filigreed Shadow Circlet", "wh": { "type": "item", "id": 253981 } }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://warcraft.wiki.gg/wiki/Forever_tailoring_patterns",
+            "https://www.wowhead.com/forever/spell=1257379",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+          ]
+        },
+        {
+          "skill": 150,
+          "level": 20,
+          "title": "Legacy points at 150, 225 and 300",
+          "body": "Every crafting profession gives one **account-wide Legacy point** at skill 150, 225 and 300 – that's 6 points from Tailoring + Enchanting. Reaching 150 also unlocks the Legacy system before your first character hits level 25. Going past 150 needs Expert (level 20); past 225 needs Artisan (level 35).",
+          "confidence": "official",
+          "sources": [
+            "https://news.blizzard.com/en-us/article/24307383/get-to-know-the-world-of-warcraft-forever-legacy-system",
+            "https://www.wow-professions.com/forever/tailoring-leveling-guide"
+          ]
+        },
+        {
+          "skill": 215,
+          "title": "Soul Pouch – a 24-slot soul bag",
+          "body": "Vendor pattern at skill 215 (which vendor is not confirmed yet). Wowhead's Forever data lists it as a **24-slot Soul Bag** (warlock only), and soul bags fit the reagent slot. It needs 6 Bolt of Runecloth, **4 Rugged Leather** (Skinning), 2 Ichor of Undeath and 1 Rune Thread – high-level materials, so you'll make it late. The **Felcloth Bag** (skill 285, 32 slots) follows; its pattern source is unknown.",
+          "crafts": [
+            { "name": "Soul Pouch", "wh": { "type": "item", "id": 21340 } },
+            { "name": "Felcloth Bag", "wh": { "type": "item", "id": 21341 } }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://www.wowhead.com/forever/spell=26085",
+            "https://www.wowhead.com/forever/item=21340",
+            "https://warcraft.wiki.gg/wiki/Forever_tailoring_patterns",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+          ]
+        }
+      ],
+      "needsFromOthers": [
+        {
+          "item": { "name": "Cerulean Dye", "wh": { "type": "item", "id": 249409 }, "note": "Tooltip: \"Crafted by alchemists.\" Players make it from Frilled Lichen, a scarce herb. About 1–2 gold each in the beta." },
+          "from": "Alchemy",
+          "usedFor": "Every Shadow set piece (2–8 each, Gown 6), the Filigreed Shadow pieces (2 each), Woolen and Silk Reagent Bags. Magenta and Viridian Dye (also Alchemy) go into the later reagent bags."
+        },
+        {
+          "item": { "name": "Shadowgem", "wh": { "type": "item", "id": 1210 }, "note": "In Classic it comes from Copper and Tin veins; the Forever source is not confirmed." },
+          "from": "Mining (or the Auction House)",
+          "usedFor": "Shadow set (1–8 per piece) and Filigreed Shadow pieces. Your Enchanting needs it too (Runed Silver Rod, Soulstaff)."
+        },
+        {
+          "item": { "name": "Silver Bar", "wh": { "type": "item", "id": 2842 } },
+          "from": "Mining (smelt Silver Ore)",
+          "usedFor": "Shadow Circlet (1), Shadow Gown (2), Shadow Leggings (2)."
+        },
+        {
+          "item": { "name": "Minor Mana Potion", "wh": { "type": "item", "id": 2455 } },
+          "from": "Alchemy",
+          "usedFor": "Novice Arcanist's Sash (2 per belt)."
+        },
+        {
+          "item": { "name": "Elixir of Wisdom", "wh": { "type": "item", "id": 3383 } },
+          "from": "Alchemy",
+          "usedFor": "Gloves of Meditation – a common Tailoring skill-up step around 120–140."
+        },
+        {
+          "item": { "name": "Heavy Leather", "wh": { "type": "item", "id": 4234 } },
+          "from": "Skinning",
+          "usedFor": "Silk Reagent Bag (2)."
+        },
+        {
+          "item": { "name": "Rugged Leather", "wh": { "type": "item", "id": 8170 } },
+          "from": "Skinning",
+          "usedFor": "Soul Pouch (4) and Runecloth Reagent Bag (2)."
+        },
+        {
+          "item": { "name": "Ichor of Undeath", "wh": { "type": "item", "id": 7972 }, "note": "A monster drop, not a profession. Forever drop source not confirmed – check the Auction House." },
+          "from": "Monster drop (no profession)",
+          "usedFor": "Soul Pouch (2)."
+        },
+        {
+          "item": { "name": "Greater Astral Essence", "wh": { "type": "item", "id": 11082 } },
+          "from": "Your own Enchanting (disenchanting greens)",
+          "usedFor": "Shadow Circlet, Gown and Leggings (2–3 each)."
+        }
+      ]
+    },
+    {
+      "id": "enchanting",
+      "name": "Enchanting",
+      "type": "primary",
+      "role": "Turns greens you don't need into early wands, a level-25 Soulstaff and wizard oil, and earns 3 Legacy points.",
+      "trainers": [
+        {
+          "name": "Thonys Pillarstone",
+          "role": "Apprentice Enchanting trainer (closest to Dun Morogh)",
+          "zone": "Ironforge",
+          "coords": [60.4, 44.9],
+          "note": "The Great Forge. Dun Morogh has no enchanting trainer."
+        },
+        {
+          "name": "Gimble Thistlefuzz",
+          "role": "Journeyman Enchanting trainer (skill 50, level 10)",
+          "zone": "Ironforge",
+          "coords": [59.8, 45.5]
+        },
+        {
+          "name": "Tilli Thistlefuzz",
+          "role": "Enchanting supplies (Copper Rod, Mote of Magic)",
+          "zone": "Ironforge",
+          "coords": [60.8, 44.1],
+          "note": "Also sells the Enchant 2H Weapon – Lesser Intellect formula."
+        },
+        {
+          "name": "Betty Quin",
+          "role": "Apprentice Enchanting trainer",
+          "zone": "Stormwind City",
+          "coords": [53.1, 73.8],
+          "note": "The Canals. Lucan Cordell (Journeyman) stands next to her."
+        },
+        {
+          "name": "Kitta Firewind",
+          "role": "Expert Enchanting trainer (skill 125, level 20, 50 silver)",
+          "zone": "Elwynn Forest",
+          "coords": [64.9, 70.6],
+          "note": "Top of the Tower of Azora."
+        },
+        {
+          "name": "Annora",
+          "role": "Artisan Enchanting trainer (skill 200, level 35)",
+          "zone": "Badlands",
+          "note": "Inside Uldaman. She only appears after the mobs in her area are cleared – bring a group. Untested in Forever."
+        },
+        {
+          "name": "Alynsia",
+          "role": "Merchant's Favor formula vendor (Soulstaff, Brilliant Wand)",
+          "zone": "Redridge Mountains",
+          "coords": [11.2, 71.5],
+          "note": "Azeroth Commerce Authority camp at Three Corners."
+        }
+      ],
+      "milestones": [
+        {
+          "skill": 1,
+          "level": 5,
+          "title": "Learn Enchanting in Ironforge, make a Runed Copper Rod",
+          "body": "Go to **Thonys Pillarstone** in Ironforge. Make a **Runed Copper Rod** first (Copper Rod + Mote of Magic, both from Tilli Thistlefuzz next to the trainer) – every early wand needs it as a tool. New in Forever: the **Novice's Practice Wand** (skill 1, 4.0 DPS).",
+          "crafts": [
+            { "name": "Novice's Practice Wand", "wh": { "type": "item", "id": 247789 } }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.wow-professions.com/forever/enchanting-leveling-guide",
+            "https://warcraft.wiki.gg/wiki/Forever_enchanting_formulas",
+            "https://www.wowhead.com/forever/spell=7421"
+          ]
+        },
+        {
+          "skill": 10,
+          "level": 5,
+          "title": "Lesser Magic Wand (level 5)",
+          "body": "1 Simple Wood + 1 Lesser Magic Essence (disenchant a green). 11.3 DPS at level 5 – your finisher on every mob. Since the beta, wands **don't scale with spell power** and you must **stand still 0.5 s** before a shot, but they are still your main filler until about 30. Crafted wands sell for 1 copper: make them to use, not to sell.",
+          "crafts": [
+            { "name": "Lesser Magic Wand", "wh": { "type": "item", "id": 11287 } }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://www.wowhead.com/forever/spell=14293",
+            "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+          ]
+        },
+        {
+          "skill": 20,
+          "title": "Enchanted Lute camp item",
+          "body": "1 Simple Wood + 1 Strange Dust. Everyone at the fire gets armor, all stats and resistances (like Mark of the Wild). You can place only one camp item per hour, so alone you'll usually pick the Faction Banner; bring the Lute when you camp with friends.",
+          "crafts": [
+            { "name": "Enchanted Lute", "wh": { "type": "item", "id": 279976 } }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://news.blizzard.com/en-us/article/24301516/gather-around-the-campfire-in-world-of-warcraft-forever",
+            "https://www.wowhead.com/forever/spell=1230643"
+          ]
+        },
+        {
+          "skill": 45,
+          "title": "Minor Wizard Oil",
+          "body": "Strange Dust + Maple Seed + Empty Vial (vendor items, vendor formula). +8 spell damage on your weapon for 30 minutes, 5 charges. In Forever your **Firestone and Spellstone are weapon imbues that stack with wizard oil**.",
+          "crafts": [
+            { "name": "Minor Wizard Oil", "wh": { "type": "item", "id": 20744 } }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://www.wowhead.com/forever/spell=25124",
+            "https://warcraft.wiki.gg/wiki/Forever_enchanting_formulas",
+            "https://news.blizzard.com/en-us/article/24310968/world-of-warcraft-forever-class-deep-dives-rogue-and-warlock"
+          ]
+        },
+        {
+          "skill": 70,
+          "level": 13,
+          "title": "Greater Magic Wand (level 13)",
+          "body": "1 Simple Wood + 2 Lesser Magic Essence, with the Runed Copper Rod. 17.5 DPS at level 13. Learn Journeyman (level 10, skill 50) from Gimble Thistlefuzz first. Keep it until a better wand drops – usually the Gravestone Scepter from Blackfathom Deeps.",
+          "crafts": [
+            { "name": "Greater Magic Wand", "wh": { "type": "item", "id": 11288 } }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://www.wowhead.com/forever/spell=14807",
+            "https://www.wowhead.com/forever/item=11288",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+          ]
+        },
+        {
+          "skill": 100,
+          "title": "Runed Silver Rod – needs a blacksmith's Silver Rod",
+          "body": "1 Silver Rod (made by Blacksmiths), 3 Strange Dust, 4 Lesser Magic Essence, 1 Shadowgem. It's the tool for the **Soulstaff**, Orb of Souls and Minor Mana Oil, so buy a Silver Rod on the Auction House before you reach skill 140.",
+          "crafts": [
+            { "name": "Runed Silver Rod", "wh": { "type": "item", "id": 6339 } }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://www.wowhead.com/forever/spell=7795",
+            "https://www.wowhead.com/forever/spell=7818",
+            "https://www.wow-professions.com/forever/enchanting-leveling-guide"
+          ]
+        },
+        {
+          "skill": 140,
+          "level": 25,
+          "title": "Soulstaff for 45 Merchant's Favor (level 25)",
+          "body": "**Alynsia** at the Three Corners camp sells the Soulstaff formula for **45 Merchant's Favor**, no reputation needed. Soulstaff: two-hand, req. level 25, **+34 spell damage and healing**, +11 Stamina, +11 Spirit, bind on pickup. It needs 2 Large + 1 Small Glimmering Shard, 4 Star Wood, 1 Greater Astral Essence, 6 Soul Dust and 2 Shadowgem, with the Runed Silver Rod. The Orb of Souls off-hand (same price) is mostly healing (+4 damage), so the staff is the warlock pick.",
+          "crafts": [
+            { "name": "Soulstaff", "wh": { "type": "item", "id": 249393 } },
+            { "name": "Orb of Souls", "wh": { "type": "item", "id": 249395 }, "note": "Off-hand, +6 Spirit, mostly healing" }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+            "https://www.wow-professions.com/forever/npc/alynsia",
+            "https://www.wowhead.com/forever/spell=1248739",
+            "https://www.wowhead.com/forever/spell=1248748"
+          ]
+        },
+        {
+          "skill": 150,
+          "level": 20,
+          "title": "Expert Enchanting, a Legacy point and the Runed Golden Rod",
+          "body": "Expert (level 20, skill 125, 50 silver) is taught by **Kitta Firewind** at the top of the Tower of Azora, Elwynn Forest. Skill 150 gives a Legacy point. The Runed Golden Rod needs a Golden Rod (Blacksmithing), an Iridescent Pearl, a Greater Astral Essence and a Soul Dust; it's the tool for the Lesser (skill 155) and Greater (175) Mystic Wands, whose required levels aren't known yet.",
+          "crafts": [
+            { "name": "Runed Golden Rod", "wh": { "type": "item", "id": 11130 } }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.wow-professions.com/forever/enchanting-leveling-guide",
+            "https://www.wowhead.com/forever/spell=13628",
+            "https://warcraft.wiki.gg/wiki/Forever_enchanting_formulas",
+            "https://news.blizzard.com/en-us/article/24307383/get-to-know-the-world-of-warcraft-forever-legacy-system"
+          ]
+        },
+        {
+          "skill": 225,
+          "level": 35,
+          "title": "Artisan from Annora in Uldaman",
+          "body": "Artisan Enchanting (level 35, skill 200) is only taught by **Annora** inside Uldaman, and she appears only after you clear the mobs around her – you can't solo it at 35, so bring a group. Untested in Forever (the beta stopped at 30).",
+          "confidence": "community",
+          "sources": [
+            "https://www.wow-professions.com/forever/enchanting-leveling-guide"
+          ]
+        },
+        {
+          "skill": 275,
+          "level": 55,
+          "title": "Brilliant Wand (180 Favor, Honored)",
+          "body": "Alynsia sells it for **180 Merchant's Favor** at Honored. Fire wand, 59.6 DPS, +7 Intellect, +9 spell power, req. level 55, bind on pickup. It needs a **Runed Arcanite Rod** (Arcanite Rod from a blacksmith + Golden Pearl), Greater Eternal Essence, 3 Illusion Dust, 2 Large Brilliant Shard and Star Wood. Nobody could test this yet.",
+          "crafts": [
+            { "name": "Brilliant Wand", "wh": { "type": "item", "id": 249385 } }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+            "https://www.wowhead.com/forever/spell=1248650",
+            "https://warcraft.wiki.gg/wiki/Forever_enchanting_formulas"
+          ]
+        }
+      ],
+      "needsFromOthers": [
+        {
+          "item": { "name": "Silver Rod", "wh": { "type": "item", "id": 6338 }, "note": "Recipe: 1 Silver Bar + 2 Rough Grinding Stone. Blacksmiths often make it while leveling, so check the Auction House." },
+          "from": "Blacksmithing",
+          "usedFor": "Runed Silver Rod (skill 100) – tool for Soulstaff, Orb of Souls and Minor Mana Oil."
+        },
+        {
+          "item": { "name": "Golden Rod", "wh": { "type": "item", "id": 11128 } },
+          "from": "Blacksmithing",
+          "usedFor": "Runed Golden Rod (skill 150) – tool for the Lesser and Greater Mystic Wands."
+        },
+        {
+          "item": { "name": "Truesilver Rod", "wh": { "type": "item", "id": 11144 } },
+          "from": "Blacksmithing",
+          "usedFor": "Runed Truesilver Rod (skill 200)."
+        },
+        {
+          "item": { "name": "Arcanite Rod", "wh": { "type": "item", "id": 16206 } },
+          "from": "Blacksmithing",
+          "usedFor": "Runed Arcanite Rod (skill 290) – tool for the Brilliant Wand."
+        },
+        {
+          "item": { "name": "Iridescent Pearl", "wh": { "type": "item", "id": 5500 }, "note": "Black Pearl (Truesilver rod) and Golden Pearl (Arcanite rod) do the same job later. In Classic pearls come from clams looted from coastal mobs; no Forever source is confirmed, and nothing says Fishing gives them." },
+          "from": "Clams / Auction House (no profession confirmed)",
+          "usedFor": "Runed Golden Rod (skill 150)."
+        },
+        {
+          "item": { "name": "Shadowgem", "wh": { "type": "item", "id": 1210 }, "note": "Classic source: Copper and Tin veins; not confirmed for Forever." },
+          "from": "Mining (or the Auction House)",
+          "usedFor": "Runed Silver Rod (1) and Soulstaff (2)."
+        }
+      ]
+    },
+    {
+      "id": "cooking",
+      "name": "Cooking",
+      "type": "secondary",
+      "role": "You can't camp without it, and Well Fed food gives +5% kill XP.",
+      "trainers": [
+        {
+          "name": "Gremlock Pilsnor",
+          "role": "Apprentice and Journeyman Cooking trainer",
+          "zone": "Dun Morogh",
+          "coords": [47.6, 52.3],
+          "note": "Thunderbrew Distillery, Kharanos."
+        },
+        {
+          "name": "Kreg Bilmn",
+          "role": "Sells Simple Wood and Flint and Tinder for campfire kits",
+          "zone": "Dun Morogh",
+          "coords": [47.2, 52.4],
+          "note": "Thunderbrew Distillery, Kharanos."
+        },
+        {
+          "name": "Daryl Riknussun",
+          "role": "Cooking trainer; starts the Artisan quest \"I Know A Guy...\"",
+          "zone": "Ironforge",
+          "coords": [60.0, 36.7],
+          "note": "The Great Forge."
+        },
+        {
+          "name": "Stephen Ryback",
+          "role": "Cooking trainer",
+          "zone": "Stormwind City",
+          "coords": [78.2, 53.2]
+        },
+        {
+          "name": "Shandrina",
+          "role": "Sells the Expert Cookbook (Cooking 125)",
+          "zone": "Ashenvale",
+          "note": "Mystral Lake."
+        },
+        {
+          "name": "Kalsey Sanden",
+          "role": "Merchant's Favor smoothie recipes",
+          "zone": "Redridge Mountains",
+          "note": "Azeroth Commerce Authority camp at Three Corners."
+        }
+      ],
+      "milestones": [
+        {
+          "skill": 1,
+          "level": 5,
+          "title": "Learn Cooking – camping needs it",
+          "body": "Camping only works if you know Cooking. The **Basic Campfire Kit** comes with it: craft it from 1 Simple Wood (Flint and Tinder is just the tool) and place it from your bags. It holds 3 camp items and has a 5-minute cooldown. Craft a stack in Kharanos and carry only the kits.",
+          "crafts": [
+            { "name": "Basic Campfire Kit", "wh": { "type": "item", "id": 279981 } }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://www.wowhead.com/forever/spell=1229737",
+            "https://news.blizzard.com/en-us/article/24301516/gather-around-the-campfire-in-world-of-warcraft-forever",
+            "https://www.wow-professions.com/forever/camping-guide",
+            "https://www.wow-professions.com/forever/cooking-leveling-guide"
+          ]
+        },
+        {
+          "skill": 1,
+          "level": 5,
+          "title": "Well Fed food = +5% kill XP",
+          "body": "Food that makes you **Well Fed** (eat for 10 seconds) adds **+5% experience from kills** for 15 minutes; you lose it when you die. Roasted Boar Meat and Herb Baked Egg (both from the trainer) do it – plain Charred Wolf Meat does not. Cook whatever meat drops on your route and eat before big pulls.",
+          "crafts": [
+            { "name": "Roasted Boar Meat", "wh": { "type": "item", "id": 2681 } },
+            { "name": "Herb Baked Egg", "wh": { "type": "item", "id": 6888 } }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://www.wowhead.com/forever/item=2681",
+            "https://www.wowhead.com/forever/item=6888",
+            "https://www.warcrafttavern.com/forever/guides/experience/"
+          ]
+        },
+        {
+          "skill": 25,
+          "title": "Merchant's Favor smoothies: mana, Spirit and +5% XP",
+          "body": "**Kalsey Sanden** at the Three Corners camp sells six smoothie recipes. They restore mana, add **Spirit** (more Life Tap mana) and +5% kill XP: Venomous (skill 25, 30 Favor, +1 Spirit), Slimy (100, 30, +3), Mrrggl Smrrthle (125, 30, +5), Calcified (180, 60, Friendly, +10), Spicy (200, 60, Friendly, +15), Wicked (250, 90, Honored, +20). Favor is per character – buy the Shadow patterns and Soulstaff first.",
+          "crafts": [
+            { "name": "Venomous Smoothie", "wh": { "type": "spell", "id": 1249963 } },
+            { "name": "Calcified Smoothie", "wh": { "type": "spell", "id": 1249966 } }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+            "https://www.wowhead.com/forever/spell=1249963",
+            "https://www.wowhead.com/forever/spell=1249966"
+          ]
+        },
+        {
+          "skill": 90,
+          "title": "Journeyman Campfire (5 camp items)",
+          "body": "Blueprint dropped by **Lord Serpentis** in Wailing Caverns; you learn it at Cooking 90 but can only use it at 140 (burns Star Wood). It only matters when you camp with friends, because alone you place one camp item anyway.",
+          "confidence": "community",
+          "sources": [
+            "https://www.wow-professions.com/forever/camping-guide"
+          ]
+        },
+        {
+          "skill": 125,
+          "level": 20,
+          "title": "Expert and Artisan Cooking",
+          "body": "Expert: buy the **Expert Cookbook** from Shandrina at Mystral Lake, Ashenvale (Cooking 125). Artisan (level 35, Cooking 225): Daryl Riknussun in Ironforge sends you to Gadgetzan with *I Know A Guy...*, and *Clamlette Surprise* from Dirge Quikcleave teaches it. Untested in Forever.",
+          "confidence": "community",
+          "sources": [
+            "https://www.wow-professions.com/forever/cooking-leveling-guide",
+            "https://www.warcrafttavern.com/forever/guides/professions/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "first-aid",
+      "name": "First Aid",
+      "type": "secondary",
+      "role": "Cheap healing between fights (then Life Tap the health back into mana) – and in Forever it also makes health potions.",
+      "trainers": [
+        {
+          "name": "Thamner Pol",
+          "role": "Apprentice and Journeyman First Aid trainer",
+          "zone": "Dun Morogh",
+          "coords": [47.2, 52.5],
+          "note": "Thunderbrew Distillery, Kharanos."
+        },
+        {
+          "name": "Golorn Frostbeard",
+          "role": "Trade supplies: Mild Spices and Empty Vial for potions",
+          "zone": "Dun Morogh",
+          "coords": [46.6, 53.5],
+          "note": "Kharanos."
+        },
+        {
+          "name": "Nissa Firestone",
+          "role": "First Aid trainer",
+          "zone": "Ironforge",
+          "coords": [54.9, 58.5],
+          "note": "The Great Forge."
+        },
+        {
+          "name": "Shaina Fuller",
+          "role": "First Aid trainer",
+          "zone": "Stormwind City",
+          "coords": [53.0, 44.7],
+          "note": "Cathedral of Light."
+        },
+        {
+          "name": "Deneb Walker",
+          "role": "Sells Expert First Aid – Under Wraps and bandage manuals",
+          "zone": "Arathi Highlands",
+          "coords": [27.1, 58.8],
+          "note": "Stromgarde Keep. You can also buy the books on the Auction House."
+        },
+        {
+          "name": "Doctor Gustaf VanHowzen",
+          "role": "Artisan First Aid (Triage quest, level 35, First Aid 225)",
+          "zone": "Dustwallow Marsh",
+          "coords": [67.8, 49.0],
+          "note": "Theramore. Untested in Forever."
+        }
+      ],
+      "milestones": [
+        {
+          "skill": 1,
+          "level": 5,
+          "title": "Bandages + Life Tap",
+          "body": "Linen Bandage (1 Linen Cloth) heals 66 over 6 seconds; Heavy Linen Bandage (skill 20, 2 Linen Cloth) heals 114. Life Tap turns health into mana, so a bandage after a fight is cheap mana. Learn it from Thamner Pol in Kharanos.",
+          "crafts": [
+            { "name": "Linen Bandage", "wh": { "type": "item", "id": 1251 } },
+            { "name": "Heavy Linen Bandage", "wh": { "type": "item", "id": 2581 } }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://www.wowhead.com/forever/spell=3275",
+            "https://www.wowhead.com/forever/spell=3276",
+            "https://www.wow-professions.com/forever/first-aid-leveling-guide"
+          ]
+        },
+        {
+          "skill": 1,
+          "level": 5,
+          "title": "Health potions moved to First Aid",
+          "body": "In Forever **Minor Healing Potion** is a First Aid recipe: Peacebloom + Mild Spices + Empty Vial; it restores 70–90 health (2-minute cooldown). Spices and vials are sold in Kharanos; Peacebloom comes from Herbalism – a gatherer alt or the Auction House. You can level 1–75 on potions instead of bandages.",
+          "crafts": [
+            { "name": "Minor Healing Potion", "wh": { "type": "item", "id": 118 } }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://www.wowhead.com/forever/spell=1244431",
+            "https://www.wow-professions.com/forever/first-aid-leveling-guide",
+            "https://us.forums.blizzard.com/en/wow/t/2395120"
+          ]
+        },
+        {
+          "skill": 20,
+          "title": "First Aid Kit camp item",
+          "body": "3 Linen Bandage + 1 Refreshing Spring Water. Everyone at the fire gets +3–56 Stamina (by level); doesn't stack with Power Word: Fortitude. Alone you place only one camp item per hour, so it competes with your Faction Banner.",
+          "crafts": [
+            { "name": "First Aid Kit", "wh": { "type": "item", "id": 279968 } }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://news.blizzard.com/en-us/article/24301516/gather-around-the-campfire-in-world-of-warcraft-forever",
+            "https://www.wowhead.com/forever/spell=1230117"
+          ]
+        },
+        {
+          "skill": 50,
+          "level": 10,
+          "title": "Journeyman: wool bandages and Anti-Venom",
+          "body": "Every First Aid trainer also teaches Journeyman at skill 50. Wool Bandage comes at 80, Heavy Wool Bandage at 115. First Aid also makes **Anti-Venom** (cures poisons), and players report disease cures that help in Excavation Site.",
+          "crafts": [
+            { "name": "Anti-Venom", "wh": { "type": "item", "id": 6452 } }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.wow-professions.com/forever/first-aid-leveling-guide",
+            "https://us.forums.blizzard.com/en/wow/t/2369918",
+            "https://www.warcrafttavern.com/forever/guides/professions/"
+          ]
+        },
+        {
+          "skill": 125,
+          "title": "Expert book and the Triage quest",
+          "body": "Expert: buy *Expert First Aid – Under Wraps* from Deneb Walker in Arathi Highlands (First Aid 125; the guide lists no level requirement) or on the Auction House, plus the Heavy Silk and Mageweave Bandage manuals. Artisan: the *Triage* quest from Doctor Gustaf VanHowzen in Theramore (level 35, First Aid 225). Superior and Major Healing Potions need Sungrass and Golden Sansam from Herbalism; their manuals are drops. Untested above 225.",
+          "confidence": "community",
+          "sources": [
+            "https://www.wow-professions.com/forever/first-aid-leveling-guide"
+          ]
+        }
+      ],
+      "needsFromOthers": [
+        {
+          "item": { "name": "Peacebloom", "wh": { "type": "item", "id": 2447 } },
+          "from": "Herbalism",
+          "usedFor": "Minor Healing Potion (1 per potion)."
+        },
+        {
+          "item": { "name": "Sungrass", "wh": { "type": "item", "id": 8838 } },
+          "from": "Herbalism",
+          "usedFor": "Superior Healing Potion (Artisan First Aid)."
+        },
+        {
+          "item": { "name": "Golden Sansam", "wh": { "type": "item", "id": 13464 } },
+          "from": "Herbalism",
+          "usedFor": "Major Healing Potion (Artisan First Aid)."
+        }
+      ]
+    },
+    {
+      "id": "fishing",
+      "name": "Fishing (optional)",
+      "type": "secondary",
+      "role": "Optional and relaxing: fish for your Cooking and a strong Fish Bowl camp buff. Any character can learn it – you don't need an alt for it.",
+      "trainers": [
+        {
+          "name": "Paxton Ganter",
+          "role": "Fishing trainer",
+          "zone": "Dun Morogh",
+          "coords": [35.5, 40.2],
+          "note": "Iceflow Lake."
+        },
+        {
+          "name": "Grimnur Stonebrand",
+          "role": "Fishing trainer",
+          "zone": "Ironforge",
+          "coords": [48.1, 6.5],
+          "note": "The Forlorn Cavern, next to the warlock trainers."
+        },
+        {
+          "name": "Arnold Leland",
+          "role": "Fishing trainer",
+          "zone": "Stormwind City",
+          "coords": [55.0, 69.6],
+          "note": "The Canals."
+        },
+        {
+          "name": "Old Man Heming",
+          "role": "Sells Expert Fishing – The Bass and You (level 20, Fishing 125)",
+          "zone": "Stranglethorn Vale",
+          "note": "Bottom of Booty Bay, near the fishing sign."
+        },
+        {
+          "name": "Nat Pagle",
+          "role": "Artisan quest \"Nat Pagle, Angler Extreme\" (level 35, Fishing 225)",
+          "zone": "Dustwallow Marsh",
+          "coords": [58.5, 59.9],
+          "note": "Tidefury Cove."
+        }
+      ],
+      "milestones": [
+        {
+          "skill": 1,
+          "title": "Optional – learn it on your main",
+          "body": "Fishing is a secondary profession, so it doesn't cost a Tailoring or Enchanting slot. You only need a fishing pole, no materials. Fish feed your Cooking (Well Fed XP food) and the Fish Bowl. Pearls for Enchanting rods: no Forever source says Fishing gives them, so don't plan around it.",
+          "confidence": "community",
+          "sources": [
+            "https://www.wow-professions.com/forever/fishing-leveling-guide",
+            "https://worldofwarcraft.blizzard.com/en-us/news/24315280/new-players-starter-guide-welcome-to-world-of-warcraft-forever"
+          ]
+        },
+        {
+          "skill": 20,
+          "title": "Fish Bowl camp item (+8% stats)",
+          "body": "1 Raw Brilliant Smallfish + 1 Empty Vial: everyone at the fire gets **+8% all stats** (like Blessing of Kings). Strong, but alone it competes with your Faction Banner for your one camp item per hour.",
+          "crafts": [
+            { "name": "Fish Bowl", "wh": { "type": "item", "id": 279967 } }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://news.blizzard.com/en-us/article/24301516/gather-around-the-campfire-in-world-of-warcraft-forever",
+            "https://www.wowhead.com/forever/spell=1229745"
+          ]
+        },
+        {
+          "skill": 125,
+          "level": 20,
+          "title": "Expert book and Nat Pagle's quest",
+          "body": "Expert: *Expert Fishing – The Bass and You* from Old Man Heming in Booty Bay (level 20, Fishing 125) or the Auction House. Artisan: Nat Pagle's quest in Dustwallow Marsh (level 35, Fishing 225) – catch four quest fish in four zones. Untested in Forever.",
+          "confidence": "community",
+          "sources": [
+            "https://www.wow-professions.com/forever/fishing-leveling-guide"
+          ]
+        }
+      ]
+    }
+  ],
+  "alts": [
+    {
+      "id": "gatherer-alt",
+      "title": "The gatherer (make this one first – it's plenty)",
+      "suggestion": "A **Dwarf Hunter**, Alliance, on the Normal ruleset like your main. Hunters are the easiest class to level a little (the pet takes the hits), and a Dwarf starts in Coldridge Valley next to your gnome, so you already know the trainers: Mining at Steelgrill's Depot (Yarr Hammerstone) or in Ironforge (Geofram Bouldertoe), Herbalism in Ironforge (Reyna Stonebranch). Any Alliance class works.",
+      "professions": ["Mining", "Herbalism"],
+      "feeds": [
+        {
+          "item": { "name": "Shadowgem", "wh": { "type": "item", "id": 1210 }, "note": "Classic source: Copper and Tin veins; not confirmed for Forever." },
+          "usedFor": "Shadow set and Filigreed Shadow pieces (Tailoring), Runed Silver Rod and Soulstaff (Enchanting)."
+        },
+        {
+          "item": { "name": "Silver Bar", "wh": { "type": "item", "id": 2842 } },
+          "usedFor": "Smelt Silver Ore – Shadow Circlet (1), Gown (2) and Leggings (2)."
+        },
+        {
+          "item": { "name": "Copper Ore", "wh": { "type": "item", "id": 2770 } },
+          "usedFor": "A Waylaid Crate: Apprentice Ore takes 20 Copper Ore (or 20 Tin Ore). Mail ore and spare crates to your main, who fills them and turns them in for Merchant's Favor."
+        },
+        {
+          "item": { "name": "Peacebloom", "wh": { "type": "item", "id": 2447 } },
+          "usedFor": "Minor Healing Potions (First Aid) and Waylaid Crate: Apprentice Herbs (20 Peacebloom or 20 Silverleaf)."
+        },
+        {
+          "item": { "name": "Frilled Lichen", "wh": { "type": "item", "id": 249399 }, "note": "Scarce herb. Beta testers only found it on characters level 25 or lower." },
+          "usedFor": "Sell it, or send it to an alchemist for Cerulean Dye – the dye in almost every warlock Tailoring pattern."
+        }
+      ],
+      "why": "Tailoring and Enchanting gather nothing. One gatherer covers the ore, gems and herbs both need and fills Waylaid Crates for your main's Merchant's Favor (Favor is per character, so the main turns the crates in). Gathering earns **no Legacy points**, and the alt only needs to reach roughly 10–25: keep it at **25 or lower**, because in the beta scarce materials (Frilled Lichen, Pristine Leather, likely Pyrite) only dropped for characters at that level. For a new player this one alt is enough – buy the rest on the Auction House.",
+      "confidence": "community",
+      "sources": [
+        "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+        "https://us.forums.blizzard.com/en/wow/t/2379537",
+        "https://www.wowhead.com/forever/spell=1257409",
+        "https://news.blizzard.com/en-us/article/24307383/get-to-know-the-world-of-warcraft-forever-legacy-system",
+        "https://www.wow-professions.com/forever/mining-leveling-guide"
+      ]
+    },
+    {
+      "id": "alchemist-alt",
+      "title": "The alchemist (Cerulean Dye + Legacy points)",
+      "suggestion": "A **Dwarf or Human Paladin** – tough and simple for a first alt – on Normal, Alliance. Alchemy is taught by Tally Berryfizz (Tinker Town, Ironforge) or Lilyssia Nightbreeze (Mage Quarter, Stormwind). If you only want one alt, you can make the gatherer Herbalism + Alchemy instead and buy Shadowgem and Silver Bars.",
+      "professions": ["Alchemy", "Herbalism"],
+      "feeds": [
+        {
+          "item": { "name": "Cerulean Dye", "wh": { "type": "item", "id": 249409 } },
+          "usedFor": "Shadow set (2–8 per piece, Gown 6), Filigreed Shadow pieces (2 each), Woolen and Silk Reagent Bags."
+        },
+        {
+          "item": { "name": "Minor Mana Potion", "wh": { "type": "item", "id": 2455 } },
+          "usedFor": "Novice Arcanist's Sash (2) – and an emergency mana potion for you."
+        },
+        {
+          "item": { "name": "Elixir of Wisdom", "wh": { "type": "item", "id": 3383 } },
+          "usedFor": "Gloves of Meditation, a Tailoring skill-up step around 120–140."
+        },
+        {
+          "item": { "name": "Magenta Dye", "wh": { "type": "item", "id": 249430 } },
+          "usedFor": "Mageweave Reagent Bag and the later reagent bags."
+        }
+      ],
+      "why": "**Cerulean Dye** is in almost every warlock Tailoring pattern, its tooltip says it's crafted by alchemists, and it cost about 1–2 gold each in the beta. Alchemy is a crafting profession, so Alchemy 150/225/300 gives **3 account-wide Legacy points** your main can spend. Expert needs character level 20 and Artisan level 35, so the alt must reach 20 for the 225 point and 35 for the 300 point. The catch: dyes are also on the Auction House – only make this alt if you enjoy it.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wowhead.com/forever/item=249409",
+        "https://www.wowhead.com/forever/spell=1257368",
+        "https://www.wow-professions.com/forever/alchemy-leveling-guide",
+        "https://us.forums.blizzard.com/en/wow/t/2385559",
+        "https://news.blizzard.com/en-us/article/24307383/get-to-know-the-world-of-warcraft-forever-legacy-system"
+      ]
+    },
+    {
+      "id": "blacksmith-alt",
+      "title": "Optional: the blacksmith (Enchanting rods)",
+      "suggestion": "A **Dwarf Warrior or Paladin** (plate wearers can use Blacksmithing gear themselves), Alliance, Normal. Blacksmithing trainer: Rotgath Stonebeard in the Great Forge, Ironforge. Take Mining as the second profession.",
+      "professions": ["Mining", "Blacksmithing"],
+      "feeds": [
+        {
+          "item": { "name": "Silver Rod", "wh": { "type": "item", "id": 6338 } },
+          "usedFor": "Runed Silver Rod (Enchanting 100) – tool for Soulstaff, Orb of Souls and Minor Mana Oil."
+        },
+        {
+          "item": { "name": "Golden Rod", "wh": { "type": "item", "id": 11128 } },
+          "usedFor": "Runed Golden Rod (Enchanting 150) – tool for the Mystic wands."
+        },
+        {
+          "item": { "name": "Truesilver Rod", "wh": { "type": "item", "id": 11144 } },
+          "usedFor": "Runed Truesilver Rod (Enchanting 200)."
+        },
+        {
+          "item": { "name": "Arcanite Rod", "wh": { "type": "item", "id": 16206 } },
+          "usedFor": "Runed Arcanite Rod (Enchanting 290) – tool for the Brilliant Wand."
+        }
+      ],
+      "why": "Enchanting needs **one of each rod, ever**: four items over 1–300. Blacksmiths make Silver Rods as a normal leveling step, so they're usually on the Auction House. Only make this alt if you also want Blacksmithing's **3 Legacy points** (150/225/300) or plate gear for another character – for rods alone it isn't worth the time.",
+      "confidence": "community",
+      "sources": [
+        "https://www.wowhead.com/forever/spell=7818",
+        "https://www.wowhead.com/forever/spell=7795",
+        "https://www.wow-professions.com/forever/enchanting-leveling-guide",
+        "https://www.wow-professions.com/forever/blacksmithing-leveling-guide"
+      ]
+    },
+    {
+      "id": "leather-alt",
+      "title": "Optional: the skinner / leatherworker",
+      "suggestion": "Any Alliance class on Normal; a **Hunter** is easiest, and hunters kill beasts all day, which is what Skinning needs.",
+      "professions": ["Skinning", "Leatherworking"],
+      "feeds": [
+        {
+          "item": { "name": "Light Leather", "wh": { "type": "item", "id": 2318 } },
+          "usedFor": "Waylaid Crate: Apprentice Textiles takes 20 Light Leather – mail it to your main for Merchant's Favor."
+        },
+        {
+          "item": { "name": "Heavy Leather", "wh": { "type": "item", "id": 4234 } },
+          "usedFor": "Silk Reagent Bag (2)."
+        },
+        {
+          "item": { "name": "Rugged Leather", "wh": { "type": "item", "id": 8170 } },
+          "usedFor": "Soul Pouch (4) and Runecloth Reagent Bag (2)."
+        },
+        {
+          "item": { "name": "Pristine Leather", "wh": { "type": "item", "id": 249427 }, "note": "Scarce; in the beta it only dropped for characters level 25 or lower." },
+          "usedFor": "Gold on the Auction House, and the Bottomless Reagent Bag (5) at Tailoring 300."
+        },
+        {
+          "item": { "name": "Camp Tent", "wh": { "type": "item", "id": 279978 }, "note": "Needs Leatherworking 20 to place." },
+          "usedFor": "Raises rested XP to 5% of a level for everyone at that camp – but only when the leatherworker places it. Your alt can't be at the fire while you play your main, so it only helps when you duo with a friend who has it."
+        }
+      ],
+      "why": "Honestly the weakest alt for a solo warlock. Skinning feeds your bags (Heavy and Rugged Leather) and crates, and Leatherworking adds 3 Legacy points (150/225/300), but most Leatherworking gear is not for casters and the Camp Tent can't help your main. Make it only if you like the class or play with a friend.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wowhead.com/forever/spell=1229432",
+        "https://news.blizzard.com/en-us/article/24301516/gather-around-the-campfire-in-world-of-warcraft-forever",
+        "https://www.wowhead.com/forever/spell=26085",
+        "https://us.forums.blizzard.com/en/wow/t/2379537",
+        "https://us.forums.blizzard.com/en/wow/t/2356339"
+      ]
+    }
+  ],
+  "howToShare": [
+    {
+      "title": "Mail is how you move things",
+      "body": "Use any mailbox to send items and gold between your characters. Beta players reported mail to their **own** characters arrived instantly; launch behavior is not confirmed. The level 1–5 starting areas have **no mailbox**, so a new alt walks to the next town (Kharanos for Coldridge Valley). Always type the **full name including the surname** – in the beta, mail that matched only first names could go to the wrong character.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://us.forums.blizzard.com/en/wow/t/2385020",
+        "https://us.forums.blizzard.com/en/wow/t/2387874",
+        "https://us.forums.blizzard.com/en/wow/t/2378495",
+        "https://us.forums.blizzard.com/en/wow/t/2352948"
+      ]
+    },
+    {
+      "title": "Same ruleset, same faction",
+      "body": "Make every support alt **Alliance on the Normal ruleset**, like your main. Each ruleset is its own world and characters can't move between them; players also report mail doesn't work across rulesets or to the other faction (even for bind-to-account items).",
+      "confidence": "community",
+      "sources": [
+        "https://news.blizzard.com/en-us/article/24302070/updated-10-22-choose-your-ruleset-in-world-of-warcraft-forever",
+        "https://us.forums.blizzard.com/en/wow/t/2355967",
+        "https://us.forums.blizzard.com/en/wow/t/2391604"
+      ]
+    },
+    {
+      "title": "No account-wide bank at launch",
+      "body": "Forever launches **without** a warband/account bank – each character has its own bank. Ion Hazzikostas said: \"An account-wide bank is something I could see adding in the not-too-distant future.\" No date. Guild banks exist (Blizzard mentions them), but Forever guild bank costs are unknown.",
+      "confidence": "official",
+      "sources": [
+        "https://www.pcgamer.com/games/world-of-warcraft/why-alts-are-part-of-world-of-warcraft-forevers-core-progression-plans/",
+        "https://us.forums.blizzard.com/en/wow/t/2395208",
+        "https://us.forums.blizzard.com/en/wow/t/temporary-economy-holds-for-rmt/2381433"
+      ]
+    },
+    {
+      "title": "Merchant's Favor stays on one character",
+      "body": "Merchant's Favor is **per character** and Sealed crates bind to you, so you can't send Favor. Earn it on your main, the character who buys the Shadow and Soulstaff patterns. Empty **Waylaid Crates** and raw materials are not bound (crates are even sold on the Auction House), so your alts can mail crates and bundles (40 Linen, 20 Copper Ore, 20 Peacebloom, 20 Strange Dust…) to your main, who fills and turns them in.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+        "https://us.forums.blizzard.com/en/wow/t/2357989",
+        "https://www.wowhead.com/forever/item=248684"
+      ]
+    },
+    {
+      "title": "Legacy points: earned by the account, spent per character",
+      "body": "There are 65 one-point challenges. Points are **account-wide**, but each character spends them separately, up to **16 points per character at launch**. Crafting professions give 1 point each at 150, 225 and 300; **gathering gives none**. Your first point unlocks the system (first character to 25, or 150 in a crafting profession). Alts aren't required: one character can earn up to 29 points alone.",
+      "confidence": "official",
+      "sources": [
+        "https://news.blizzard.com/en-us/article/24307383/get-to-know-the-world-of-warcraft-forever-legacy-system"
+      ]
+    },
+    {
+      "title": "Some things can't be shared at all",
+      "body": "Enchanting has **no vellums or scrolls**: you can't mail an enchant, only cast it on gear in person – that's why Enchanting belongs on your main, not an alt. The Shadow set, Filigreed pieces, Soulstaff and Brilliant Wand **bind on pickup**, so your main must craft them. Lesser and Greater Magic Wands are bind-on-equip, so those can be mailed.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://us.forums.blizzard.com/en/wow/t/2365915",
+        "https://us.forums.blizzard.com/en/wow/t/2394765",
+        "https://www.wowhead.com/forever/item=11287",
+        "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce"
+      ]
+    },
+    {
+      "title": "Camp items only work from the player who places them",
+      "body": "Each player at a campfire adds **one** camp item from their own profession, and all camp items share a 1-hour cooldown. Your alt's Camp Tent or Incense Candle can't help your main, because only one of your characters can be online. Alone, you get the campfire plus one of your own items – usually the Faction Banner.",
+      "confidence": "official",
+      "sources": [
+        "https://news.blizzard.com/en-us/article/24301516/gather-around-the-campfire-in-world-of-warcraft-forever",
+        "https://www.wow-professions.com/forever/camping-guide",
+        "https://www.wowhead.com/forever/item=279978"
+      ]
+    }
+  ]
+}

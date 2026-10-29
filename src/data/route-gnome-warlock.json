@@ -1,0 +1,3584 @@
+{
+  "guide": "gnome-warlock",
+  "updated": "2026-10-29",
+  "brackets": [
+    {
+      "id": "coldridge-1-6",
+      "title": "Coldridge Valley",
+      "level": [
+        1,
+        6
+      ],
+      "zones": [
+        "Dun Morogh"
+      ],
+      "summary": "Your first hour or two: get your Imp, learn the basic Shadow Bolt + Immolate rhythm, and leave the snowy starter valley at about level 6.",
+      "steps": [
+        {
+          "id": "cv-start",
+          "title": "Start at Anvilmar – sell your spare gear for Immolate",
+          "kind": "tip",
+          "level": [
+            1,
+            1
+          ],
+          "zone": "Dun Morogh",
+          "hub": "Anvilmar",
+          "body": "Gnomes start at Anvilmar in Coldridge Valley, the starter valley shared with dwarves. Sell your spare starting gear to a vendor so you can afford **Immolate** (a fire spell that burns over time) from the trainer right away. Early fights: cast Shadow Bolt, cast Immolate while the bolt is still flying, and finish the enemy with your weapon if you run out of mana.",
+          "npcs": [
+            {
+              "name": "Alamar Grimm",
+              "role": "Warlock trainer (only teaches up to level 6)",
+              "wh": {
+                "type": "npc",
+                "id": 460
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                28.6,
+                66.2
+              ]
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://games.gg/world-of-warcraft/guides/wow-forever-dun-morogh/",
+            "https://www.warcrafttavern.com/forever/guides/class-trainers/"
+          ]
+        },
+        {
+          "id": "cv-imp",
+          "title": "Imp quest: Tainted Memorandum → Beginnings",
+          "kind": "class",
+          "level": [
+            1,
+            4
+          ],
+          "zone": "Dun Morogh",
+          "hub": "Anvilmar",
+          "body": "Your first demon comes from a class quest. Take the **Tainted Memorandum** letter from Sten Stoutarm and bring it to Alamar Grimm inside Anvilmar; his follow-up **Beginnings** asks for 3 Feather Charms (games.gg lists it at level 4; in Classic the charms drop from Frostmane trolls in the valley). Keep the Imp out: it attacks from range and its **Blood Pact** buff gives you extra Stamina.",
+          "quests": [
+            {
+              "name": "Tainted Memorandum",
+              "wh": {
+                "type": "quest",
+                "id": 3115
+              },
+              "giver": "Sten Stoutarm",
+              "zone": "Dun Morogh"
+            },
+            {
+              "name": "Beginnings",
+              "wh": {
+                "type": "quest",
+                "id": 1599
+              },
+              "giver": "Alamar Grimm",
+              "zone": "Dun Morogh",
+              "coords": [
+                28.6,
+                66.1
+              ],
+              "note": "Bring 3 Feather Charms to Alamar Grimm"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Sten Stoutarm",
+              "role": "Gives your class letter",
+              "wh": {
+                "type": "npc",
+                "id": 658
+              },
+              "zone": "Dun Morogh"
+            },
+            {
+              "name": "Alamar Grimm",
+              "role": "Warlock trainer, Imp quest",
+              "wh": {
+                "type": "npc",
+                "id": 460
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                28.6,
+                66.2
+              ]
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://games.gg/world-of-warcraft/guides/wow-forever-dun-morogh/",
+            "https://www.wowhead.com/forever/quest=1599"
+          ]
+        },
+        {
+          "id": "cv-anvilmar-quests",
+          "title": "Anvilmar quests",
+          "kind": "quests",
+          "level": [
+            1,
+            4
+          ],
+          "zone": "Dun Morogh",
+          "hub": "Anvilmar",
+          "body": "Pick up everything around Anvilmar first, then do it in one loop: wolves for meat, the trogg camp, and Felix's three hidden boxes. At launch the valley will be packed and mobs are not shared between players, so group up with people on the same quest.",
+          "quests": [
+            {
+              "name": "Dwarven Outfitters",
+              "wh": {
+                "type": "quest",
+                "id": 179
+              },
+              "giver": "Sten Stoutarm",
+              "zone": "Dun Morogh"
+            },
+            {
+              "name": "A New Threat",
+              "wh": {
+                "type": "quest",
+                "id": 170
+              },
+              "giver": "Balir Frosthammer",
+              "zone": "Dun Morogh",
+              "coords": [
+                29.7,
+                71.2
+              ]
+            },
+            {
+              "name": "Coldridge Valley Mail Delivery",
+              "wh": {
+                "type": "quest",
+                "id": 233
+              },
+              "giver": "Sten Stoutarm",
+              "zone": "Dun Morogh"
+            },
+            {
+              "name": "A Refugee's Quandary",
+              "wh": {
+                "type": "quest",
+                "id": 3361
+              },
+              "giver": "Felix Whindlebolt",
+              "zone": "Dun Morogh",
+              "coords": [
+                28.6,
+                67.6
+              ],
+              "note": "From level 3. Felix's Box 20.9, 76.1 · Chest 22.8, 80.0 · Bucket of Bolts 26.3, 79.3"
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://games.gg/world-of-warcraft/guides/wow-forever-dun-morogh/",
+            "https://us.forums.blizzard.com/en/wow/t/2391412"
+          ]
+        },
+        {
+          "id": "cv-troll-cave",
+          "title": "Grelin Whitebeard's camp and the troll cave",
+          "kind": "quests",
+          "level": [
+            3,
+            6
+          ],
+          "zone": "Dun Morogh",
+          "hub": "Grelin Whitebeard's camp",
+          "body": "Talin Keeneye and Grelin Whitebeard's camp west of Anvilmar have the next batch. Kill troll whelps for The Troll Cave, then Grik'nir the Cold (30.5, 80.2) for the journal. Nori's Mornbrew delivery has a 5-minute timer – only accept it when you're ready to run straight back to Anvilmar.",
+          "quests": [
+            {
+              "name": "The Boar Hunter",
+              "wh": {
+                "type": "quest",
+                "id": 183
+              },
+              "giver": "Talin Keeneye",
+              "zone": "Dun Morogh",
+              "coords": [
+                22.6,
+                71.4
+              ]
+            },
+            {
+              "name": "The Troll Cave",
+              "wh": {
+                "type": "quest",
+                "id": 182
+              },
+              "giver": "Grelin Whitebeard",
+              "zone": "Dun Morogh",
+              "coords": [
+                25.1,
+                75.7
+              ]
+            },
+            {
+              "name": "The Stolen Journal",
+              "wh": {
+                "type": "quest",
+                "id": 218
+              },
+              "giver": "Grelin Whitebeard",
+              "zone": "Dun Morogh",
+              "coords": [
+                25.1,
+                75.7
+              ],
+              "note": "Kill Grik'nir the Cold at 30.5, 80.2"
+            },
+            {
+              "name": "Scalding Mornbrew Delivery",
+              "wh": {
+                "type": "quest",
+                "id": 3364
+              },
+              "giver": "Nori Pridedrift",
+              "zone": "Dun Morogh",
+              "coords": [
+                25.0,
+                76.0
+              ],
+              "note": "Timed: deliver to Durnan Furcutter in Anvilmar (28.8, 66.4)"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Grelin Whitebeard",
+              "role": "Quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 786
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                25.1,
+                75.7
+              ]
+            },
+            {
+              "name": "Talin Keeneye",
+              "role": "Quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 714
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                22.6,
+                71.4
+              ]
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://games.gg/world-of-warcraft/guides/wow-forever-dun-morogh/"
+          ]
+        },
+        {
+          "id": "cv-train",
+          "title": "Train at Alamar Grimm (levels 4 and 6)",
+          "kind": "train",
+          "level": [
+            4,
+            6
+          ],
+          "zone": "Dun Morogh",
+          "hub": "Anvilmar",
+          "body": "Visit the trainer every even level – there's always something new. Level 4: **Corruption** and **Curse of Weakness**, plus the Imp's **Blood Pact** grimoire (a book that teaches your demon a spell) from the demon trainer next door. Level 6: **Life Tap** (turns health into mana) and Shadow Bolt rank 2. Alamar only teaches up to level 6, so after that you train in Kharanos or Ironforge.",
+          "npcs": [
+            {
+              "name": "Alamar Grimm",
+              "role": "Warlock trainer (up to level 6)",
+              "wh": {
+                "type": "npc",
+                "id": 460
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                28.6,
+                66.2
+              ]
+            },
+            {
+              "name": "Wren Darkspring",
+              "role": "Demon trainer (Imp/Voidwalker grimoires only)",
+              "wh": {
+                "type": "npc",
+                "id": 6376
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                28.8,
+                66.2
+              ]
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/class-trainers/",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)"
+          ]
+        },
+        {
+          "id": "cv-leave",
+          "title": "Through the tunnel to Kharanos",
+          "kind": "travel",
+          "level": [
+            5,
+            6
+          ],
+          "zone": "Dun Morogh",
+          "hub": "Coldridge Pass",
+          "body": "Hand in Felix's boxes and train, then take Senir's Observations to Mountaineer Thalos at the tunnel and grab Supplies to Tannok from Hands Springsprocket next to him. Walk through the tunnel – Kharanos is the town on the other side.",
+          "quests": [
+            {
+              "name": "Senir's Observations",
+              "wh": {
+                "type": "quest",
+                "id": 282
+              },
+              "giver": "Grelin Whitebeard",
+              "zone": "Dun Morogh",
+              "note": "Speak with Mountaineer Thalos (33.5, 71.8)"
+            },
+            {
+              "name": "Supplies to Tannok",
+              "wh": {
+                "type": "quest",
+                "id": 2160
+              },
+              "giver": "Hands Springsprocket",
+              "zone": "Dun Morogh",
+              "coords": [
+                33.9,
+                72.2
+              ]
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Mountaineer Thalos",
+              "role": "Quest giver at the tunnel",
+              "wh": {
+                "type": "npc",
+                "id": 1965
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                33.5,
+                71.8
+              ]
+            },
+            {
+              "name": "Hands Springsprocket",
+              "role": "Quest giver at the tunnel",
+              "wh": {
+                "type": "npc",
+                "id": 6782
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                33.9,
+                72.2
+              ]
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://games.gg/world-of-warcraft/guides/wow-forever-dun-morogh/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dun-morogh-6-12",
+      "title": "Kharanos, Ironforge & eastern Dun Morogh",
+      "level": [
+        6,
+        12
+      ],
+      "zones": [
+        "Dun Morogh",
+        "Ironforge",
+        "Stormwind City",
+        "Elwynn Forest"
+      ],
+      "summary": "Kharanos is your home base: bind your hearthstone, unlock camping and pick up professions. At 10 you visit Ironforge for talents and start the Voidwalker quest, then finish eastern Dun Morogh.",
+      "steps": [
+        {
+          "id": "dm-kharanos-arrive",
+          "title": "Arrive in Kharanos – bind your hearthstone",
+          "kind": "travel",
+          "level": [
+            6,
+            6
+          ],
+          "zone": "Dun Morogh",
+          "hub": "Kharanos",
+          "body": "Turn in Senir's Observations to Senir Whitebeard and the crate to Tannok Frosthammer. Then talk to Innkeeper Belm and make the inn your home: your **Hearthstone** (in your bags) teleports you back here, with a cooldown. Logging out in an inn also builds **rested XP**, which doubles the XP you get from kills.",
+          "quests": [
+            {
+              "name": "Senir's Observations",
+              "wh": {
+                "type": "quest",
+                "id": 420
+              },
+              "giver": "Mountaineer Thalos",
+              "zone": "Dun Morogh",
+              "note": "Turn in to Senir Whitebeard (46.7, 53.8)"
+            },
+            {
+              "name": "Supplies to Tannok",
+              "wh": {
+                "type": "quest",
+                "id": 2160
+              },
+              "giver": "Hands Springsprocket",
+              "zone": "Dun Morogh",
+              "note": "Turn in to Tannok Frosthammer (47.2, 52.2)"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Innkeeper Belm",
+              "role": "Innkeeper – bind your hearthstone",
+              "wh": {
+                "type": "npc",
+                "id": 1247
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                47.4,
+                52.5
+              ]
+            },
+            {
+              "name": "Senir Whitebeard",
+              "role": "Quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 1252
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                46.7,
+                53.8
+              ]
+            },
+            {
+              "name": "Tannok Frosthammer",
+              "role": "Quest turn-in",
+              "wh": {
+                "type": "npc",
+                "id": 6806
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                47.2,
+                52.2
+              ]
+            }
+          ],
+          "items": [
+            {
+              "name": "Hearthstone",
+              "wh": {
+                "type": "item",
+                "id": 6948
+              }
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://games.gg/world-of-warcraft/guides/wow-forever-dun-morogh/",
+            "https://www.warcrafttavern.com/forever/guides/experience/"
+          ]
+        },
+        {
+          "id": "dm-great-outdoors",
+          "title": "Unlock camping: The Great Outdoors",
+          "kind": "system",
+          "level": [
+            5,
+            6
+          ],
+          "zone": "Dun Morogh",
+          "hub": "Kharanos",
+          "body": "Eric Brighthammer, by the campfire outside Kharanos, gives **The Great Outdoors**: type `/sit` at his fire for about a minute until you get the Boosted Rest buff, then learn Cooking in town to build your own campfires (sit 1 minute at any camp for an hour of buffs). **Bug fix:** if the quest won't complete – common if you already had a camp buff when you accepted it – abandon it, log out and back in, accept it again and `/sit` for a full minute; typing `/sit` worked when the X key didn't.",
+          "quests": [
+            {
+              "name": "The Great Outdoors",
+              "giver": "Eric Brighthammer",
+              "zone": "Dun Morogh",
+              "coords": [
+                46.7,
+                53.9
+              ]
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Eric Brighthammer",
+              "role": "Camping intro quest",
+              "zone": "Dun Morogh",
+              "coords": [
+                46.7,
+                53.9
+              ]
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.method.gg/wow-forever/camping-in-wow-forever-how-it-all-works-all-profession-buffs",
+            "https://us.forums.blizzard.com/en/wow/t/2353288",
+            "https://www.gfinityesports.com/article/world-of-warcraft-forever-camping-guide-how-to-build-camps",
+            "https://www.warcrafttavern.com/forever/guides/camping/"
+          ]
+        },
+        {
+          "id": "dm-professions",
+          "title": "Professions: Cooking + First Aid now, Tailoring + Enchanting in Ironforge",
+          "kind": "profession",
+          "level": [
+            5,
+            10
+          ],
+          "zone": "Dun Morogh",
+          "hub": "Kharanos",
+          "body": "Learn **Cooking** (campfires, plus food that gives bonus XP) and **First Aid** (bandages you can Life Tap back into mana; in Forever it also makes healing potions and cures) in the Thunderbrew Distillery in Kharanos – neither uses one of your two main profession slots. Your two main professions, **Tailoring + Enchanting** (the most-recommended warlock pair), are trained at the Great Forge in Ironforge once you get there around level 10. The Professions page covers how to level them.",
+          "npcs": [
+            {
+              "name": "Gremlock Pilsnor",
+              "role": "Cooking trainer (Thunderbrew Distillery)",
+              "wh": {
+                "type": "npc",
+                "id": 1699
+              },
+              "zone": "Dun Morogh"
+            },
+            {
+              "name": "Thamner Pol",
+              "role": "First Aid trainer (Thunderbrew Distillery)",
+              "wh": {
+                "type": "npc",
+                "id": 2326
+              },
+              "zone": "Dun Morogh"
+            },
+            {
+              "name": "Uthrar Threx",
+              "role": "Tailoring trainer (Great Forge)",
+              "wh": {
+                "type": "npc",
+                "id": 1703
+              },
+              "zone": "Ironforge"
+            },
+            {
+              "name": "Thonys Pillarstone",
+              "role": "Enchanting trainer (Great Forge)",
+              "zone": "Ironforge"
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.wow-professions.com/forever/cooking-leveling-guide",
+            "https://www.wow-professions.com/forever/first-aid-leveling-guide",
+            "https://www.wow-professions.com/forever/tailoring-leveling-guide",
+            "https://www.wow-professions.com/forever/enchanting-leveling-guide",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://conquestcapped.com/guides/wow-forever/wow-forever-warlock-leveling/"
+          ]
+        },
+        {
+          "id": "dm-kharanos-quests",
+          "title": "Kharanos & Steelgrill's Depot",
+          "kind": "quests",
+          "level": [
+            6,
+            9
+          ],
+          "zone": "Dun Morogh",
+          "hub": "Kharanos",
+          "body": "Kharanos and Steelgrill's Depot just east of it hand out the next wave. Most targets – boars, bears and the wendigos in the Grizzled Den (around 40, 48) – are close to town, so pick everything up first and clear them in one loop.",
+          "quests": [
+            {
+              "name": "Beer Basted Boar Ribs",
+              "wh": {
+                "type": "quest",
+                "id": 384
+              },
+              "giver": "Ragnar Thunderbrew",
+              "zone": "Dun Morogh",
+              "coords": [
+                46.8,
+                52.4
+              ]
+            },
+            {
+              "name": "Tools for Steelgrill",
+              "wh": {
+                "type": "quest",
+                "id": 400
+              },
+              "giver": "Tharek Blackstone",
+              "zone": "Dun Morogh",
+              "coords": [
+                46.0,
+                51.7
+              ],
+              "note": "Deliver to Beldin Steelgrill (50.4, 49.1)"
+            },
+            {
+              "name": "Operation Recombobulation",
+              "wh": {
+                "type": "quest",
+                "id": 412
+              },
+              "giver": "Razzle Sprysprocket",
+              "zone": "Dun Morogh",
+              "coords": [
+                45.9,
+                49.4
+              ],
+              "note": "Leper Gnomes around 27.6, 36.4"
+            },
+            {
+              "name": "Stocking Jetsteam",
+              "wh": {
+                "type": "quest",
+                "id": 317
+              },
+              "giver": "Pilot Bellowfiz",
+              "zone": "Dun Morogh",
+              "coords": [
+                49.4,
+                48.4
+              ]
+            },
+            {
+              "name": "The Grizzled Den",
+              "wh": {
+                "type": "quest",
+                "id": 313
+              },
+              "giver": "Pilot Stonegear",
+              "zone": "Dun Morogh",
+              "coords": [
+                49.6,
+                48.6
+              ],
+              "note": "Do it at about level 8"
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://games.gg/world-of-warcraft/guides/wow-forever-dun-morogh/"
+          ]
+        },
+        {
+          "id": "dm-train-kharanos",
+          "title": "Train with Gimrizz Shadowcog (Kharanos)",
+          "kind": "train",
+          "level": [
+            6,
+            10
+          ],
+          "zone": "Dun Morogh",
+          "hub": "Kharanos",
+          "body": "Gimrizz Shadowcog in Kharanos is a full warlock trainer – visit him at 6, 8 and 10. Level 8 is a big one: **Bane of Agony** (a damage-over-time spell you'll open every fight with) and **Fear**. Demon grimoires are sold by Dannie Fizzwizzle next to him. Spell costs aren't published; the free 'What's Training? (Forever)' addon shows them in game.",
+          "npcs": [
+            {
+              "name": "Gimrizz Shadowcog",
+              "role": "Warlock trainer",
+              "wh": {
+                "type": "npc",
+                "id": 5612
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                47.2,
+                53.6
+              ]
+            },
+            {
+              "name": "Dannie Fizzwizzle",
+              "role": "Demon trainer",
+              "wh": {
+                "type": "npc",
+                "id": 6328
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                47.2,
+                53.6
+              ]
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/class-trainers/",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)",
+            "https://www.curseforge.com/wow/addons/whats-training-forever"
+          ]
+        },
+        {
+          "id": "dm-brewnall",
+          "title": "Brewnall Village and Frostmane Hold",
+          "kind": "quests",
+          "level": [
+            8,
+            10
+          ],
+          "zone": "Dun Morogh",
+          "hub": "Brewnall Village",
+          "body": "West of Kharanos, Brewnall Village (30.2, 45.6) sends you after bears, boars and snow leopards, Shimmerweed from the trolls on Shimmer Ridge, and a beer-swapping prank in the Kharanos inn basement. Frostmane Hold is a crowded troll cave – go at about level 9 and pull one troll at a time. Its turn-in gives **The Reports**, your ticket to Ironforge.",
+          "quests": [
+            {
+              "name": "Evershine",
+              "wh": {
+                "type": "quest",
+                "id": 318
+              },
+              "giver": "Pilot Bellowfiz",
+              "zone": "Dun Morogh",
+              "note": "Unlocks A Favor for Evershine at Brewnall"
+            },
+            {
+              "name": "A Favor for Evershine",
+              "wh": {
+                "type": "quest",
+                "id": 319
+              },
+              "giver": "Rejold Barleybrew",
+              "zone": "Dun Morogh",
+              "coords": [
+                30.2,
+                45.6
+              ]
+            },
+            {
+              "name": "The Perfect Stout",
+              "wh": {
+                "type": "quest",
+                "id": 315
+              },
+              "giver": "Rejold Barleybrew",
+              "zone": "Dun Morogh",
+              "coords": [
+                30.2,
+                45.6
+              ],
+              "note": "Shimmerweed from Frostmane Seers around 41, 42"
+            },
+            {
+              "name": "Bitter Rivals",
+              "wh": {
+                "type": "quest",
+                "id": 310
+              },
+              "giver": "Marleth Barleybrew",
+              "zone": "Dun Morogh",
+              "coords": [
+                30.2,
+                45.6
+              ]
+            },
+            {
+              "name": "Frostmane Hold",
+              "wh": {
+                "type": "quest",
+                "id": 287
+              },
+              "giver": "Senir Whitebeard",
+              "zone": "Dun Morogh",
+              "coords": [
+                46.7,
+                53.8
+              ],
+              "note": "Frostmane Headhunters around 24, 51"
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://games.gg/world-of-warcraft/guides/wow-forever-dun-morogh/",
+            "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696"
+          ]
+        },
+        {
+          "id": "dm-ironforge",
+          "title": "Ironforge: The Reports, first flight path, Tailoring & Enchanting",
+          "kind": "travel",
+          "level": [
+            10,
+            10
+          ],
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "body": "Take **The Reports** to Senator Barin Redstone in Ironforge, then talk to Gryth Thurden, the gryphon master, to unlock your first flight path. While you're here, learn **Tailoring** and **Enchanting** at the Great Forge and visit the warlock trainers in the Forlorn Cavern. The **Deeprun Tram** connects Ironforge and Stormwind in a few minutes – you'll use it for the Voidwalker quest.",
+          "quests": [
+            {
+              "name": "The Reports",
+              "wh": {
+                "type": "quest",
+                "id": 291
+              },
+              "giver": "Senir Whitebeard",
+              "zone": "Dun Morogh",
+              "note": "Deliver to Senator Barin Redstone in Ironforge"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Gryth Thurden",
+              "role": "Gryphon master (flight path)",
+              "wh": {
+                "type": "npc",
+                "id": 1573
+              },
+              "zone": "Ironforge",
+              "coords": [
+                55.5,
+                47.7
+              ]
+            },
+            {
+              "name": "Uthrar Threx",
+              "role": "Tailoring trainer",
+              "wh": {
+                "type": "npc",
+                "id": 1703
+              },
+              "zone": "Ironforge"
+            },
+            {
+              "name": "Thonys Pillarstone",
+              "role": "Enchanting trainer",
+              "zone": "Ironforge"
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://games.gg/world-of-warcraft/guides/wow-forever-dun-morogh/",
+            "https://www.wow-professions.com/forever/tailoring-leveling-guide",
+            "https://www.wow-professions.com/forever/enchanting-leveling-guide"
+          ]
+        },
+        {
+          "id": "dm-train-if-10",
+          "title": "Train in Ironforge's Forlorn Cavern (level 10)",
+          "kind": "train",
+          "level": [
+            10,
+            10
+          ],
+          "zone": "Ironforge",
+          "hub": "Forlorn Cavern",
+          "body": "The Ironforge warlock trainers stand together in the Forlorn Cavern. Level 10 brings **Drain Soul** (makes Soul Shards, the reagent for most demons) and **Create Healthstone** (a free emergency heal – always keep one). Put your first talent point into **Improved Corruption**, which makes Corruption instant – every leveling guide starts with it. Talent resets are also done here, for a fee.",
+          "npcs": [
+            {
+              "name": "Alexander Calder",
+              "role": "Warlock trainer",
+              "wh": {
+                "type": "npc",
+                "id": 5173
+              },
+              "zone": "Ironforge",
+              "coords": [
+                50.8,
+                6.4
+              ]
+            },
+            {
+              "name": "Briarthorn",
+              "role": "Warlock trainer",
+              "wh": {
+                "type": "npc",
+                "id": 5172
+              },
+              "zone": "Ironforge",
+              "coords": [
+                50.2,
+                7.4
+              ]
+            },
+            {
+              "name": "Thistleheart",
+              "role": "Warlock trainer",
+              "wh": {
+                "type": "npc",
+                "id": 5171
+              },
+              "zone": "Ironforge",
+              "coords": [
+                50.8,
+                6.6
+              ]
+            },
+            {
+              "name": "Jubahl Corpseseeker",
+              "role": "Demon trainer",
+              "wh": {
+                "type": "npc",
+                "id": 6382
+              },
+              "zone": "Ironforge",
+              "coords": [
+                53.2,
+                7.6
+              ]
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/class-trainers/",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://conquestcapped.com/guides/wow-forever/wow-forever-warlock-leveling/"
+          ]
+        },
+        {
+          "id": "dm-lvl10",
+          "title": "Level 10: talents and the Voidwalker",
+          "kind": "milestone",
+          "level": [
+            10,
+            10
+          ],
+          "zone": "Ironforge",
+          "body": "Two big unlocks: you get one talent point per level from now on, and your **Voidwalker** quest opens. The Voidwalker is a tank demon – it holds enemies off you while your DoTs (damage-over-time spells) and wand do the work – and most guides call it the best leveling demon until 20.",
+          "confidence": "official",
+          "sources": [
+            "https://news.blizzard.com/en-us/article/24310968/world-of-warcraft-forever-class-deep-dives-rogue-and-warlock",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://conquestcapped.com/guides/wow-forever/wow-forever-warlock-leveling/"
+          ]
+        },
+        {
+          "id": "dm-voidwalker",
+          "title": "Voidwalker quest: The Slaughtered Lamb → The Binding",
+          "kind": "class",
+          "level": [
+            10,
+            12
+          ],
+          "zone": "Stormwind City",
+          "hub": "The Slaughtered Lamb (Mage Quarter)",
+          "body": "Gnomes start with **The Slaughtered Lamb** in Ironforge, which sends you by Deeprun Tram to **Gakin the Darkbinder** in the basement of the Slaughtered Lamb, Stormwind's Mage Quarter. He sends you to **Surena Caledon** at the Brackwell Pumpkin Patch in Elwynn Forest for her choker, then you summon and defeat a Voidwalker for **The Binding**. Ask a Stormwind guard for directions – sources give Stormwind coordinates for two different city maps, so we left them out. The steps after the first are the Classic chain as stored in the Forever database; re-check the quest text in game.",
+          "quests": [
+            {
+              "name": "The Slaughtered Lamb",
+              "wh": {
+                "type": "quest",
+                "id": 1715
+              },
+              "giver": "Lago Blackwrench",
+              "zone": "Ironforge",
+              "note": "Report to Gakin the Darkbinder in Stormwind"
+            },
+            {
+              "name": "Surena Caledon",
+              "wh": {
+                "type": "quest",
+                "id": 1688
+              },
+              "giver": "Gakin the Darkbinder",
+              "zone": "Elwynn Forest",
+              "note": "Surena is at the Brackwell Pumpkin Patch"
+            },
+            {
+              "name": "The Binding",
+              "wh": {
+                "type": "quest",
+                "id": 1689
+              },
+              "giver": "Gakin the Darkbinder",
+              "zone": "Stormwind City",
+              "note": "Summon and subdue a Voidwalker, then return the choker"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Lago Blackwrench",
+              "role": "Starts the gnome Voidwalker quest",
+              "wh": {
+                "type": "npc",
+                "id": 6120
+              },
+              "zone": "Ironforge"
+            },
+            {
+              "name": "Gakin the Darkbinder",
+              "role": "Warlock demon quests (Voidwalker, Succubus/Incubus)",
+              "wh": {
+                "type": "npc",
+                "id": 6122
+              },
+              "zone": "Stormwind City"
+            },
+            {
+              "name": "Surena Caledon",
+              "role": "Target – take her choker",
+              "wh": {
+                "type": "npc",
+                "id": 881
+              },
+              "zone": "Elwynn Forest"
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://www.wowhead.com/forever/quest=1715",
+            "https://www.wowhead.com/forever/quest=1689",
+            "https://classicdb.ch/?quest=1688"
+          ]
+        },
+        {
+          "id": "dm-east",
+          "title": "Eastern Dun Morogh: Amberstill, Gol'Bolar Quarry and the gate",
+          "kind": "quests",
+          "level": [
+            10,
+            12
+          ],
+          "zone": "Dun Morogh",
+          "hub": "Gol'Bolar Quarry",
+          "body": "Back in Dun Morogh, work east along the road. Protecting the Herd's target is an elite (a much tougher mob) – find a partner or skip it. Deliver the Shimmer Stout to Mountaineer Barleybrew at the eastern gate; he gives **Stout to Kadrell**, which leads you into Loch Modan.",
+          "quests": [
+            {
+              "name": "Protecting the Herd",
+              "wh": {
+                "type": "quest",
+                "id": 314
+              },
+              "giver": "Rudra Amberstill",
+              "zone": "Dun Morogh",
+              "coords": [
+                63.1,
+                49.9
+              ],
+              "note": "Elite target (Vagash) – group up"
+            },
+            {
+              "name": "Those Blasted Troggs!",
+              "wh": {
+                "type": "quest",
+                "id": 432
+              },
+              "giver": "Foreman Stonebrow",
+              "zone": "Dun Morogh",
+              "coords": [
+                69.1,
+                56.3
+              ]
+            },
+            {
+              "name": "The Public Servant",
+              "wh": {
+                "type": "quest",
+                "id": 433
+              },
+              "giver": "Senator Mehr Stonehallow",
+              "zone": "Dun Morogh",
+              "coords": [
+                68.7,
+                56.0
+              ]
+            },
+            {
+              "name": "The Lost Pilot",
+              "wh": {
+                "type": "quest",
+                "id": 419
+              },
+              "giver": "Pilot Hammerfoot",
+              "zone": "Dun Morogh",
+              "coords": [
+                83.9,
+                39.2
+              ],
+              "note": "Leads to A Pilot's Revenge – Mangeclaw at 78.3, 37.8"
+            },
+            {
+              "name": "Shimmer Stout",
+              "wh": {
+                "type": "quest",
+                "id": 413
+              },
+              "giver": "Rejold Barleybrew",
+              "zone": "Dun Morogh",
+              "note": "Deliver to Mountaineer Barleybrew (86.3, 48.8)"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Rudra Amberstill",
+              "role": "Quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 1265
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                63.1,
+                49.9
+              ]
+            },
+            {
+              "name": "Foreman Stonebrow",
+              "role": "Quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 1254
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                69.1,
+                56.3
+              ]
+            },
+            {
+              "name": "Pilot Hammerfoot",
+              "role": "Quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 1960
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                83.9,
+                39.2
+              ]
+            },
+            {
+              "name": "Mountaineer Barleybrew",
+              "role": "Gives Stout to Kadrell",
+              "wh": {
+                "type": "npc",
+                "id": 1959
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                86.3,
+                48.8
+              ]
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://games.gg/world-of-warcraft/guides/wow-forever-dun-morogh/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loch-modan-12-20",
+      "title": "Loch Modan, Hall of Thanes & Redridge",
+      "level": [
+        12,
+        20
+      ],
+      "zones": [
+        "Loch Modan",
+        "Dun Morogh",
+        "Ironforge",
+        "Westfall",
+        "Darkshore",
+        "Stormwind City",
+        "Redridge Mountains"
+      ],
+      "summary": "Quest out of Thelsamar, run Hall of Thanes once with all five quests, start the Cozy Sleeping Bag hunt, then push to 20 in Redridge (or Westfall/Darkshore).",
+      "steps": [
+        {
+          "id": "lm-thelsamar",
+          "title": "Into Loch Modan: Thelsamar",
+          "kind": "travel",
+          "level": [
+            11,
+            12
+          ],
+          "zone": "Loch Modan",
+          "hub": "Thelsamar",
+          "body": "Walk east through the gate into Loch Modan and hand in Stout to Kadrell at Thelsamar, the town in the middle of the zone. Take the flight path from Thorgrum Borrelson and set your hearth at the Stoutlager Inn – Thelsamar is your base until the mid-teens.",
+          "quests": [
+            {
+              "name": "Stout to Kadrell",
+              "giver": "Mountaineer Barleybrew",
+              "zone": "Loch Modan",
+              "note": "Turn in to Mountaineer Kadrell in Thelsamar"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Thorgrum Borrelson",
+              "role": "Gryphon master (flight path)",
+              "wh": {
+                "type": "npc",
+                "id": 1572
+              },
+              "zone": "Loch Modan",
+              "coords": [
+                33.9,
+                51.0
+              ]
+            },
+            {
+              "name": "Mountaineer Kadrell",
+              "role": "Quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 1340
+              },
+              "zone": "Loch Modan"
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://games.gg/world-of-warcraft/guides/wow-forever-dun-morogh/",
+            "https://expcarry.com/wow-forever-leveling-guide-alliance",
+            "https://www.warcrafttavern.com/forever/guides/library-books/"
+          ]
+        },
+        {
+          "id": "lm-quests",
+          "title": "Thelsamar, Algaz Station and the Valley of Kings",
+          "kind": "quests",
+          "level": [
+            12,
+            16
+          ],
+          "zone": "Loch Modan",
+          "hub": "Thelsamar",
+          "body": "Loch Modan still runs on its classic quest chains in Forever (the dev notes only mention small changes, like Resupplying the Excavation at Miran's camp). Pick up everything in Thelsamar, then work south to Algaz Station and north-west to the Valley of Kings. Skip quests that turn grey – Forever has no level scaling and beta players regularly out-leveled zones.",
+          "quests": [
+            {
+              "name": "Rat Catching",
+              "wh": {
+                "type": "quest",
+                "id": 416
+              },
+              "giver": "Mountaineer Kadrell",
+              "zone": "Loch Modan"
+            },
+            {
+              "name": "Thelsamar Blood Sausages",
+              "wh": {
+                "type": "quest",
+                "id": 418
+              },
+              "giver": "Vidra Hearthstove",
+              "zone": "Loch Modan"
+            },
+            {
+              "name": "Filthy Paws",
+              "wh": {
+                "type": "quest",
+                "id": 307
+              },
+              "giver": "Mountaineer Stormpike",
+              "zone": "Loch Modan",
+              "note": "Algaz Station"
+            },
+            {
+              "name": "In Defense of the King's Lands",
+              "wh": {
+                "type": "quest",
+                "id": 224
+              },
+              "giver": "Mountaineer Cobbleflint",
+              "zone": "Loch Modan",
+              "note": "Valley of Kings"
+            },
+            {
+              "name": "Excavation Progress Report",
+              "wh": {
+                "type": "quest",
+                "id": 298
+              },
+              "giver": "Prospector Ironband",
+              "zone": "Loch Modan",
+              "note": "Ironband's Excavation Site"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Vidra Hearthstove",
+              "role": "Quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 1963
+              },
+              "zone": "Loch Modan"
+            },
+            {
+              "name": "Mountaineer Stormpike",
+              "role": "Quest giver (Algaz Station)",
+              "wh": {
+                "type": "npc",
+                "id": 1343
+              },
+              "zone": "Loch Modan"
+            },
+            {
+              "name": "Mountaineer Cobbleflint",
+              "role": "Quest giver (Valley of Kings)",
+              "wh": {
+                "type": "npc",
+                "id": 1089
+              },
+              "zone": "Loch Modan"
+            },
+            {
+              "name": "Prospector Ironband",
+              "role": "Quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 1344
+              },
+              "zone": "Loch Modan"
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://warcraft.wiki.gg/wiki/Loch_Modan_questing_guide",
+            "https://expcarry.com/wow-forever-leveling-guide-alliance",
+            "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696",
+            "https://us.forums.blizzard.com/en/wow/t/2390574"
+          ]
+        },
+        {
+          "id": "lm-library",
+          "title": "Library books: Ironforge and Loch Modan",
+          "kind": "system",
+          "level": [
+            10,
+            20
+          ],
+          "zone": "Loch Modan",
+          "body": "Forever hides **library books** around the world; turn them in one at a time to Garion Wendell (top of the Mage Tower, Stormwind Mage Quarter) for rewards at 10, 20 and 25 books. Three are on your path: Ironforge's Hall of Explorers, upstairs in Thelsamar's inn, and a cave in Mo'grosh Stronghold (elite ogres – bring a friend). Grab them when you pass by; the Library page lists the rest.",
+          "items": [
+            {
+              "name": "Archmage Antonidas: The Unabridged Autobiography",
+              "zone": "Ironforge",
+              "coords": [
+                76.1,
+                10.2
+              ],
+              "note": "Back room of the Hall of Explorers"
+            },
+            {
+              "name": "Rumi of Gnomeregan: The Collected Works",
+              "zone": "Loch Modan",
+              "coords": [
+                35.6,
+                48.9
+              ],
+              "note": "Upstairs in the Stoutlager Inn; a copy in Westfall counts as the same book"
+            },
+            {
+              "name": "Runes of the Sorcerer-Kings",
+              "zone": "Loch Modan",
+              "coords": [
+                77.5,
+                14.1
+              ],
+              "note": "Middle cave of Mo'grosh Stronghold (entrance 74.5, 19.6), level 19–20 elites"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Garion Wendell",
+              "role": "Librarian – book turn-in",
+              "zone": "Stormwind City",
+              "wh": {
+                "type": "npc",
+                "id": 211033
+              },
+              "coords": [
+                49.0,
+                86.3
+              ]
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/library-books/",
+            "https://us.forums.blizzard.com/en/wow/t/2363572"
+          ]
+        },
+        {
+          "id": "lm-train-if",
+          "title": "Train in Ironforge at 12, 14, 16 and 18",
+          "kind": "train",
+          "level": [
+            12,
+            18
+          ],
+          "zone": "Ironforge",
+          "hub": "Forlorn Cavern",
+          "body": "Thelsamar has no warlock trainer, so fly back to Ironforge on even levels – it fits nicely with your Hall of Thanes trip. 12: **Health Funnel** (heals your demon). 14: **Drain Life** and **Curse of Recklessness**. 16: **Unending Breath**; 18: **Create Soulstone** and **Searing Pain** – keep spending talent points in Affliction.",
+          "npcs": [
+            {
+              "name": "Alexander Calder",
+              "role": "Warlock trainer",
+              "wh": {
+                "type": "npc",
+                "id": 5173
+              },
+              "zone": "Ironforge",
+              "coords": [
+                50.8,
+                6.4
+              ]
+            },
+            {
+              "name": "Jubahl Corpseseeker",
+              "role": "Demon trainer (Voidwalker Sacrifice grimoire at 16)",
+              "wh": {
+                "type": "npc",
+                "id": 6382
+              },
+              "zone": "Ironforge",
+              "coords": [
+                53.2,
+                7.6
+              ]
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/class-trainers/",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)"
+          ]
+        },
+        {
+          "id": "lm-wand",
+          "title": "Get a wand: Lesser (5) or Greater Magic Wand (13)",
+          "kind": "shopping",
+          "level": [
+            12,
+            13
+          ],
+          "zone": "Ironforge",
+          "body": "Wands are your main damage between DoTs until about level 30 – they cost no mana. Enchanters make the **Lesser Magic Wand** (level 5) and **Greater Magic Wand** (level 13); craft them yourself if you took Enchanting, or buy one on the Auction House. Since the beta, wands don't benefit from spell power and you must stand still for half a second before each shot.",
+          "items": [
+            {
+              "name": "Lesser Magic Wand",
+              "wh": {
+                "type": "item",
+                "id": 11287
+              },
+              "note": "Requires level 5, about 11.3 DPS"
+            },
+            {
+              "name": "Greater Magic Wand",
+              "wh": {
+                "type": "item",
+                "id": 11288
+              },
+              "note": "Requires level 13, about 17.5 DPS"
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://conquestcapped.com/guides/wow-forever/wow-forever-warlock-leveling/",
+            "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696"
+          ]
+        },
+        {
+          "id": "lm-hot-prep",
+          "title": "Hall of Thanes prep: Earthseer Farsen and the Dark Iron Map",
+          "kind": "quests",
+          "level": [
+            12,
+            14
+          ],
+          "zone": "Dun Morogh",
+          "hub": "Gol'Bolar Quarry",
+          "body": "The dungeon's last-boss quest starts out in Dun Morogh, so get it before you go in. Beldin Steelgrill (Steelgrill's Depot) points you to Earthseer Farsen at the camp above Gol'Bolar Quarry. Kill Dark Iron Spies for **Nip 'Em in the Bud** until one drops the **Dark Iron Map**, right-click the map to start a quest, and bring it to Farsen for **Old Ironforge Incursion**.",
+          "quests": [
+            {
+              "name": "A Visitor to Dun Morogh",
+              "wh": {
+                "type": "quest",
+                "id": 96408
+              },
+              "giver": "Beldin Steelgrill",
+              "zone": "Dun Morogh",
+              "coords": [
+                50.4,
+                49.1
+              ],
+              "note": "Optional breadcrumb"
+            },
+            {
+              "name": "Farsen's Watch",
+              "wh": {
+                "type": "quest",
+                "id": 96392
+              },
+              "giver": "Earthseer Farsen",
+              "zone": "Dun Morogh",
+              "coords": [
+                64.8,
+                58.5
+              ]
+            },
+            {
+              "name": "Nip 'Em in the Bud",
+              "wh": {
+                "type": "quest",
+                "id": 96390
+              },
+              "giver": "Earthseer Farsen",
+              "zone": "Dun Morogh",
+              "coords": [
+                64.8,
+                58.5
+              ],
+              "note": "10 Dark Iron Spies around 76.7, 60.7 – one drops the Dark Iron Map"
+            },
+            {
+              "name": "Underground Map",
+              "wh": {
+                "type": "quest",
+                "id": 96391
+              },
+              "giver": "Dark Iron Map (item)",
+              "zone": "Dun Morogh",
+              "note": "Deliver the map to Earthseer Farsen"
+            },
+            {
+              "name": "Old Ironforge Incursion",
+              "wh": {
+                "type": "quest",
+                "id": 96393
+              },
+              "giver": "Earthseer Farsen",
+              "zone": "Dun Morogh",
+              "coords": [
+                64.8,
+                58.5
+              ],
+              "note": "Kill Durgen Dirgehammer in Hall of Thanes, bring his head to King Magni"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Beldin Steelgrill",
+              "role": "Breadcrumb quest",
+              "wh": {
+                "type": "npc",
+                "id": 1376
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                50.4,
+                49.1
+              ]
+            },
+            {
+              "name": "Earthseer Farsen",
+              "role": "Hall of Thanes quest chain",
+              "zone": "Dun Morogh",
+              "coords": [
+                64.8,
+                58.5
+              ]
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/hall-of-thanes-quests/",
+            "https://us.forums.blizzard.com/en/wow/t/quest-for-last-boss-hall-of-thanes/2354410",
+            "https://warcraft.wiki.gg/wiki/Old_Ironforge_Incursion",
+            "https://www.wowhead.com/forever/quest=96390"
+          ]
+        },
+        {
+          "id": "lm-hall-of-thanes",
+          "title": "Hall of Thanes (13–18): one run with all five quests",
+          "kind": "dungeon",
+          "level": [
+            13,
+            18
+          ],
+          "zone": "Ironforge",
+          "hub": "The High Seat",
+          "body": "Hall of Thanes is the new Alliance dungeon under Ironforge: walk from the Great Forge into King Magni's hall and take the cobwebbed passage on the left (43.5, 52.0) down to the entrance. Grab **Important Heirlooms** and **The Restless Dead** on the way in, **An Ancient Grudge** in the second room, and loot the **Treaty of Understanding** tablet behind a vault door in the final room. Run it **once** with every quest – players measured dungeon mob XP at roughly a quarter of Classic, so the XP is in the quests – then go back to questing.",
+          "quests": [
+            {
+              "name": "Important Heirlooms",
+              "wh": {
+                "type": "quest",
+                "id": 96403
+              },
+              "giver": "Thom Filch",
+              "zone": "Ironforge",
+              "note": "By the bridge outside the dungeon"
+            },
+            {
+              "name": "The Restless Dead",
+              "wh": {
+                "type": "quest",
+                "id": 96394
+              },
+              "giver": "Afadra Dunwall",
+              "zone": "Ironforge",
+              "note": "Up the stairs on the way to the entrance"
+            },
+            {
+              "name": "Old Ironforge Incursion",
+              "wh": {
+                "type": "quest",
+                "id": 96393
+              },
+              "giver": "Earthseer Farsen",
+              "zone": "Dun Morogh"
+            },
+            {
+              "name": "An Ancient Grudge",
+              "wh": {
+                "type": "quest",
+                "id": 96395
+              },
+              "giver": "Ghostly Attendant",
+              "zone": "Ironforge",
+              "note": "Inside; turn in on your way out"
+            },
+            {
+              "name": "The Treaty of Understanding",
+              "giver": "Tablet in the final room",
+              "zone": "Ironforge",
+              "note": "Turn in to King Magni Bronzebeard"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "King Magni Bronzebeard",
+              "role": "Turn-in for Old Ironforge Incursion and the Treaty",
+              "wh": {
+                "type": "npc",
+                "id": 2784
+              },
+              "zone": "Ironforge",
+              "coords": [
+                39.4,
+                55.8
+              ]
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/hall-of-thanes/",
+            "https://www.warcrafttavern.com/forever/guides/hall-of-thanes-quests/",
+            "https://worldofwarcraft.blizzard.com/en-us/news/24301455",
+            "https://us.forums.blizzard.com/en/wow/t/2379420",
+            "https://us.forums.blizzard.com/en/wow/t/2395335"
+          ]
+        },
+        {
+          "id": "lm-sleeping-bag",
+          "title": "Cozy Sleeping Bag scavenger hunt (level 14+)",
+          "kind": "system",
+          "level": [
+            14,
+            30
+          ],
+          "zone": "Westfall",
+          "hub": "Alexston Farmstead",
+          "body": "This hunt across five zones gives the **Cozy Sleeping Bag**: lie on it for 3 minutes for up to +3% XP, stacking with food and camp buffs (1-hour cooldown). It starts at a **Nailed Plank** in Westfall (37, 50), then goes the Barrens → Stonetalon → Stonewrought Dam in Loch Modan (49, 12) → Thoradin's Wall in Hillsbrad, and must be done in that order – so do each leg when your route passes by. Some forum posts tie the chain to Loch Modan ('Wet Bags' on the dam), but the dam is the 4th stop, not the start.",
+          "quests": [
+            {
+              "name": "...and that note you found",
+              "giver": "Nailed Plank (object)",
+              "zone": "Westfall",
+              "coords": [
+                37.0,
+                50.0
+              ],
+              "note": "Turn in at the Burned-Out Remains, The Barrens 46, 74"
+            },
+            {
+              "name": "Stepping Stones",
+              "giver": "Burned-Out Remains (object)",
+              "zone": "The Barrens",
+              "coords": [
+                46.0,
+                74.0
+              ],
+              "note": "Leads to the Pocket Litter near Sun Rock Retreat, Stonetalon (gives Flint and Tinder + 3 Simple Wood)"
+            },
+            {
+              "name": "Scramble",
+              "giver": "Pocket Litter (object)",
+              "zone": "Stonetalon Mountains",
+              "note": "Mound of Dirt just east of the Pocket Litter"
+            },
+            {
+              "name": "Wet Job",
+              "giver": "Mound of Dirt (object)",
+              "zone": "Stonetalon Mountains",
+              "note": "Ends at the Carved Figurine on a ledge of the Stonewrought Dam, Loch Modan 49, 12"
+            },
+            {
+              "name": "Eagle's Fist",
+              "giver": "Carved Figurine (object)",
+              "zone": "Loch Modan",
+              "coords": [
+                49.0,
+                12.0
+              ],
+              "note": "Ends at the Messenger Bag on top of Thoradin's Wall, Hillsbrad – climb the leaning cart"
+            },
+            {
+              "name": "This Must Be the Place",
+              "giver": "Hastily Rolled-Up Satchel (object)",
+              "zone": "Hillsbrad Foothills",
+              "note": "Rewards the Cozy Sleeping Bag + 5 Student Fodder"
+            }
+          ],
+          "items": [
+            {
+              "name": "Cozy Sleeping Bag",
+              "wh": {
+                "type": "item",
+                "id": 211527
+              }
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/cozy-sleeping-bag/",
+            "https://us.forums.blizzard.com/en/wow/t/2362081",
+            "https://www.youtube.com/watch?v=Z_B2qWD8sOU"
+          ]
+        },
+        {
+          "id": "lm-westfall-darkshore",
+          "title": "Option: Westfall (Sentinel Hill) or Darkshore (15–18)",
+          "kind": "quests",
+          "level": [
+            14,
+            18
+          ],
+          "zone": "Westfall",
+          "hub": "Sentinel Hill",
+          "optional": true,
+          "body": "If Loch Modan runs dry, take the tram to Stormwind and head to Westfall – you need to go there for the sleeping bag anyway – and grab the Sentinel Hill flight path. The Deadmines (15–22) is here but optional for a gnome; Hall of Thanes is closer. Alternatively, the new Stormwind Harbor boat takes you to Auberdine for Darkshore (10–20).",
+          "quests": [
+            {
+              "name": "The People's Militia",
+              "wh": {
+                "type": "quest",
+                "id": 12
+              },
+              "giver": "Gryan Stoutmantle",
+              "zone": "Westfall",
+              "coords": [
+                56.0,
+                47.0
+              ]
+            },
+            {
+              "name": "Westfall Stew",
+              "wh": {
+                "type": "quest",
+                "id": 36
+              },
+              "giver": "Verna Furlbrow",
+              "zone": "Westfall",
+              "coords": [
+                60.0,
+                19.0
+              ]
+            },
+            {
+              "name": "Goretusk Liver Pie",
+              "wh": {
+                "type": "quest",
+                "id": 22
+              },
+              "giver": "Salma Saldean",
+              "zone": "Westfall",
+              "coords": [
+                56.0,
+                31.0
+              ]
+            },
+            {
+              "name": "The Defias Brotherhood",
+              "wh": {
+                "type": "quest",
+                "id": 65
+              },
+              "giver": "Gryan Stoutmantle",
+              "zone": "Westfall",
+              "coords": [
+                56.0,
+                47.0
+              ],
+              "note": "Deadmines chain – only if you plan to run it"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Gryan Stoutmantle",
+              "role": "Main Sentinel Hill quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 234
+              },
+              "zone": "Westfall",
+              "coords": [
+                56.0,
+                47.0
+              ]
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://games.gg/world-of-warcraft/guides/wow-forever-westfall-guide/",
+            "https://expcarry.com/wow-forever-leveling-guide-alliance",
+            "https://overgear.com/guides/wow-forever/1-60-leveling-guide/"
+          ]
+        },
+        {
+          "id": "lm-train-sw",
+          "title": "Train in Stormwind (16–20)",
+          "kind": "train",
+          "level": [
+            16,
+            20
+          ],
+          "zone": "Stormwind City",
+          "hub": "Mage Quarter",
+          "body": "When you're questing on the Stormwind side (Westfall, Redridge), train in the Mage Quarter instead of flying back to Ironforge. Ask any city guard for 'Warlock trainer' and it's marked on your map. The demon trainer Spackle Thornberry is nearby for grimoires.",
+          "npcs": [
+            {
+              "name": "Demisette Cloyce",
+              "role": "Warlock trainer",
+              "wh": {
+                "type": "npc",
+                "id": 461
+              },
+              "zone": "Stormwind City"
+            },
+            {
+              "name": "Sandahl",
+              "role": "Warlock trainer",
+              "wh": {
+                "type": "npc",
+                "id": 5496
+              },
+              "zone": "Stormwind City"
+            },
+            {
+              "name": "Ursula Deline",
+              "role": "Warlock trainer",
+              "wh": {
+                "type": "npc",
+                "id": 5495
+              },
+              "zone": "Stormwind City"
+            },
+            {
+              "name": "Spackle Thornberry",
+              "role": "Demon trainer",
+              "wh": {
+                "type": "npc",
+                "id": 5520
+              },
+              "zone": "Stormwind City"
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/class-trainers/",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+          ]
+        },
+        {
+          "id": "lm-merchants-favor",
+          "title": "Merchant's Favor: Azeroth Commerce Authority (Three Corners)",
+          "kind": "system",
+          "level": [
+            15,
+            20
+          ],
+          "zone": "Redridge Mountains",
+          "hub": "Three Corners",
+          "body": "**Waylaid Crates** drop now and then from mobs and chests (or buy them on the Auction House): right-click one, fill it with the listed bundle (e.g. 40 Linen Cloth) and hand the sealed crate to **Marcy Baker** at the Azeroth Commerce Authority camp in Three Corners, west Redridge. You get **Merchant's Favor**, a currency for profession recipes such as Tailoring's Shadow-damage gear. Your first crate also gives a Shipping Label quest worth 50 Favor and 2,000 reputation. Don't delete crates – bank them; Apprentice and Journeyman crates need level 10 to open.",
+          "items": [
+            {
+              "name": "Waylaid Crate: Apprentice Textiles",
+              "wh": {
+                "type": "item",
+                "id": 248684
+              },
+              "note": "Example crate – needs 40 Linen Cloth"
+            },
+            {
+              "name": "Shipping Label",
+              "wh": {
+                "type": "item",
+                "id": 280180
+              },
+              "note": "From your first crate – starts a 50 Favor quest"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Marcy Baker",
+              "role": "Merchant's Favor crate turn-in",
+              "zone": "Redridge Mountains",
+              "note": "Some beta posts placed the camp near Lakeshire; current guides say Three Corners"
+            },
+            {
+              "name": "Mivin Shadowweave",
+              "role": "Tailoring recipes for Merchant's Favor",
+              "zone": "Redridge Mountains"
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+            "https://games.gg/world-of-warcraft/guides/wow-forever-redridge-mountains/",
+            "https://us.forums.blizzard.com/en/wow/t/2373995",
+            "https://us.forums.blizzard.com/en/wow/t/2357989"
+          ]
+        },
+        {
+          "id": "lm-redridge",
+          "title": "Redridge Mountains (Lakeshire) 16–22",
+          "kind": "quests",
+          "level": [
+            16,
+            22
+          ],
+          "zone": "Redridge Mountains",
+          "hub": "Lakeshire",
+          "body": "Enter Redridge at Three Corners around 15–16, take the flight path south of Lakeshire's bridge and set your hearth at the Lakeshire inn. Redridge got lots of new Alliance quests in Forever, so pick up anything new you see. Messenger to Darkshire is your link to Duskwood later.",
+          "quests": [
+            {
+              "name": "Encroaching Gnolls",
+              "wh": {
+                "type": "quest",
+                "id": 244
+              },
+              "giver": "Guard Parker",
+              "zone": "Redridge Mountains",
+              "coords": [
+                15.3,
+                71.5
+              ]
+            },
+            {
+              "name": "The Price of Shoes",
+              "wh": {
+                "type": "quest",
+                "id": 118
+              },
+              "giver": "Verner Osgood",
+              "zone": "Redridge Mountains",
+              "coords": [
+                31.0,
+                47.3
+              ],
+              "note": "Unlocks his other quests"
+            },
+            {
+              "name": "Tharil'zun",
+              "wh": {
+                "type": "quest",
+                "id": 19
+              },
+              "giver": "Marshal Marris",
+              "zone": "Redridge Mountains",
+              "coords": [
+                33.5,
+                49.0
+              ]
+            },
+            {
+              "name": "Messenger to Darkshire",
+              "wh": {
+                "type": "quest",
+                "id": 145
+              },
+              "giver": "Magistrate Solomon",
+              "zone": "Redridge Mountains",
+              "coords": [
+                30.0,
+                44.5
+              ]
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Innkeeper Brianna",
+              "role": "Innkeeper – bind here",
+              "wh": {
+                "type": "npc",
+                "id": 6727
+              },
+              "zone": "Redridge Mountains",
+              "coords": [
+                27.0,
+                44.8
+              ]
+            },
+            {
+              "name": "Ariena Stormfeather",
+              "role": "Gryphon master (flight path)",
+              "wh": {
+                "type": "npc",
+                "id": 931
+              },
+              "zone": "Redridge Mountains",
+              "coords": [
+                30.6,
+                59.4
+              ]
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://games.gg/world-of-warcraft/guides/wow-forever-redridge-mountains/",
+            "https://us.forums.blizzard.com/en/wow/t/2379059",
+            "https://expcarry.com/wow-forever-leveling-guide-alliance"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "level-20-25",
+      "title": "Succubus/Incubus, Blackfathom Deeps & the Wetlands",
+      "level": [
+        20,
+        25
+      ],
+      "zones": [
+        "Stormwind City",
+        "Darkshore",
+        "Ashenvale",
+        "The Barrens",
+        "Wetlands",
+        "Duskwood",
+        "Ironforge"
+      ],
+      "summary": "A big level-20 training day, your second demon quest on Kalimdor via the new Stormwind–Auberdine boat, Blackfathom Deeps for the Gravestone Scepter wand, and Wetlands questing (Duskwood is the alternative).",
+      "steps": [
+        {
+          "id": "b4-level-20",
+          "title": "Level 20: big training day in Stormwind",
+          "kind": "milestone",
+          "level": [
+            20,
+            20
+          ],
+          "zone": "Stormwind City",
+          "hub": "Mage Quarter",
+          "body": "Train **Demon Armor**, **Rain of Fire** (your first area spell), **Ritual of Summoning** (the only way to summon players in Forever – meeting stones no longer do) and **Curse of the Elements**. Your **Succubus/Incubus** quest unlocks, Expert professions open (with skill 125), and the 20-book library reward becomes available.",
+          "npcs": [
+            {
+              "name": "Demisette Cloyce",
+              "role": "Warlock trainer",
+              "wh": {
+                "type": "npc",
+                "id": 461
+              },
+              "zone": "Stormwind City"
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)",
+            "https://www.warcrafttavern.com/forever/guides/library-books/"
+          ]
+        },
+        {
+          "id": "b4-sayaad",
+          "title": "Succubus or Incubus: Devourer of Souls / What Is Love?",
+          "kind": "class",
+          "level": [
+            20,
+            22
+          ],
+          "zone": "Ashenvale",
+          "body": "Ask **Gakin the Darkbinder** (Slaughtered Lamb basement, Stormwind) for **Devourer of Souls**, which sends you to **Takar the Seer** in the Barrens. Takar offers the Succubus hunt (**Heartswood**, Ashenvale) or the new Incubus one (**What Is Love?** – a Wooden Figurine in a house west of Maestra's Post, Ashenvale); bring it to Gakin and win **The Binding**. Both demons share the same spells, and Conquest Capped calls the Incubus quest the easier one. This is the chain stored in the Forever database – no beta write-up of the Alliance route exists, so re-check each quest's text.",
+          "quests": [
+            {
+              "name": "Devourer of Souls",
+              "wh": {
+                "type": "quest",
+                "id": 1716
+              },
+              "giver": "Gakin the Darkbinder",
+              "zone": "Stormwind City",
+              "note": "Speak with Takar the Seer in the Barrens"
+            },
+            {
+              "name": "Heartswood",
+              "wh": {
+                "type": "quest",
+                "id": 1738
+              },
+              "giver": "Takar the Seer",
+              "zone": "Ashenvale",
+              "note": "Succubus version"
+            },
+            {
+              "name": "What Is Love?",
+              "wh": {
+                "type": "quest",
+                "id": 65602
+              },
+              "giver": "Takar the Seer",
+              "zone": "Ashenvale",
+              "note": "Incubus version – follow the road north into Ashenvale, then west past Maestra's Post to a house in the trees"
+            },
+            {
+              "name": "The Binding",
+              "wh": {
+                "type": "quest",
+                "id": 1739
+              },
+              "giver": "Gakin the Darkbinder",
+              "zone": "Stormwind City",
+              "note": "Succubus"
+            },
+            {
+              "name": "The Binding",
+              "wh": {
+                "type": "quest",
+                "id": 65603
+              },
+              "giver": "Gakin the Darkbinder",
+              "zone": "Stormwind City",
+              "note": "Incubus"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Gakin the Darkbinder",
+              "role": "Demon quests",
+              "wh": {
+                "type": "npc",
+                "id": 6122
+              },
+              "zone": "Stormwind City"
+            },
+            {
+              "name": "Takar the Seer",
+              "role": "Succubus/Incubus quest",
+              "wh": {
+                "type": "npc",
+                "id": 6244
+              },
+              "zone": "The Barrens"
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://conquestcapped.com/guides/wow-forever/wow-forever-warlock-leveling/",
+            "https://www.wowhead.com/forever/quest=1716",
+            "https://warcraft.wiki.gg/wiki/What_Is_Love%3F",
+            "https://wowwiki.fandom.com/wiki/Takar_the_Seer"
+          ]
+        },
+        {
+          "id": "b4-auberdine-boat",
+          "title": "New boat: Stormwind Harbor → Auberdine",
+          "kind": "travel",
+          "level": [
+            20,
+            22
+          ],
+          "zone": "Stormwind City",
+          "hub": "Stormwind Harbor",
+          "body": "New in Forever: a boat leaves the southern-most dock of Stormwind Harbor for Auberdine in Darkshore, so you no longer need the long Wetlands detour to reach Kalimdor. Take the Auberdine flight path and use one trip for everything over there: the demon quest (Ashenvale + the Barrens), Blackfathom Deeps, and the Barrens/Stonetalon legs of the sleeping bag. There are no Alliance warlock trainers on Kalimdor, so train before you sail.",
+          "quests": [
+            {
+              "name": "Business in Auberdine",
+              "wh": {
+                "type": "quest",
+                "id": 97894
+              },
+              "zone": "Stormwind City",
+              "note": "Its quest text describes the new harbor boat"
+            }
+          ],
+          "confidence": "official",
+          "sources": [
+            "https://www.wowhead.com/forever/quest=97894/business-in-auberdine",
+            "https://us.forums.blizzard.com/en/wow/t/2374700",
+            "https://expcarry.com/wow-forever-leveling-guide-alliance",
+            "https://www.warcrafttavern.com/forever/guides/class-trainers/"
+          ]
+        },
+        {
+          "id": "b4-bfd",
+          "title": "Blackfathom Deeps (22–28): Gravestone Scepter",
+          "kind": "dungeon",
+          "level": [
+            22,
+            28
+          ],
+          "zone": "Ashenvale",
+          "hub": "Zoram Strand",
+          "body": "Before you go in, collect **Knowledge in the Deeps** (Gerrig Bonegrip, Forlorn Cavern in Ironforge) and **Researching the Corruption** (Gershala Nightwhisper, Auberdine); the entrance is in the north-west of Ashenvale (14.5, 14.6), through an underwater cave. Inside, Argent Guard Thaelrid (near Ghamoo-ra) gives **Blackfathom Villainy**: kill Twilight Lord Kelris and take his head to Dawnwatcher Selgorm in Darnassus for the **Gravestone Scepter**, the best wand you can get before 30. You can accept it at 18 but will want to be 22+; run it once with all quests, then go back to questing.",
+          "quests": [
+            {
+              "name": "Knowledge in the Deeps",
+              "wh": {
+                "type": "quest",
+                "id": 971
+              },
+              "giver": "Gerrig Bonegrip",
+              "zone": "Ironforge"
+            },
+            {
+              "name": "Researching the Corruption",
+              "wh": {
+                "type": "quest",
+                "id": 1275
+              },
+              "giver": "Gershala Nightwhisper",
+              "zone": "Darkshore"
+            },
+            {
+              "name": "Blackfathom Villainy",
+              "wh": {
+                "type": "quest",
+                "id": 1200
+              },
+              "giver": "Argent Guard Thaelrid",
+              "zone": "Ashenvale",
+              "note": "Inside the dungeon; turn in to Dawnwatcher Selgorm, Darnassus"
+            },
+            {
+              "name": "In Search of Thaelrid",
+              "wh": {
+                "type": "quest",
+                "id": 1198
+              },
+              "giver": "Dawnwatcher Shaedlass",
+              "zone": "Darnassus",
+              "note": "Optional, level 20"
+            },
+            {
+              "name": "The Orb of Soran'ruk",
+              "wh": {
+                "type": "quest",
+                "id": 1740
+              },
+              "giver": "Doan Karhan",
+              "zone": "The Barrens",
+              "note": "Warlock-only, level 25: fragments from BFD and Shadowfang Keep → Staff or Orb of Soran'ruk"
+            }
+          ],
+          "items": [
+            {
+              "name": "Gravestone Scepter",
+              "wh": {
+                "type": "item",
+                "id": 7001
+              },
+              "note": "About 29 DPS wand"
+            },
+            {
+              "name": "Head of Kelris",
+              "wh": {
+                "type": "item",
+                "id": 5881
+              }
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Gerrig Bonegrip",
+              "role": "Dungeon quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 2786
+              },
+              "zone": "Ironforge"
+            },
+            {
+              "name": "Argent Guard Thaelrid",
+              "role": "Blackfathom Villainy (inside the dungeon)",
+              "wh": {
+                "type": "npc",
+                "id": 4787
+              },
+              "zone": "Ashenvale"
+            },
+            {
+              "name": "Dawnwatcher Selgorm",
+              "role": "Turn-in for the Gravestone Scepter",
+              "wh": {
+                "type": "npc",
+                "id": 4783
+              },
+              "zone": "Darnassus"
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/blackfathom-deeps-quests/",
+            "https://www.warcrafttavern.com/forever/guides/blackfathom-deeps/",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://conquestcapped.com/guides/wow-forever/wow-forever-warlock-leveling/",
+            "https://us.forums.blizzard.com/en/wow/t/2395335"
+          ]
+        },
+        {
+          "id": "b4-wetlands",
+          "title": "Wetlands (Menethil Harbor) 21–25",
+          "kind": "quests",
+          "level": [
+            21,
+            25
+          ],
+          "zone": "Wetlands",
+          "hub": "Menethil Harbor",
+          "body": "Wetlands is the gnome's natural zone for the 20s: walk north from Loch Modan through the Dun Algaz tunnel, take Menethil Harbor's flight path and set your hearth at its inn. Start with the harbour quests, then Rethiel the Greenwarden's gnoll chain, which later unlocks an Excavation Site dungeon quest. Forever added 25+ new Wetlands quests that guides haven't fully mapped yet – take new ones whenever you see them.",
+          "quests": [
+            {
+              "name": "Claws from the Deep",
+              "wh": {
+                "type": "quest",
+                "id": 279
+              },
+              "giver": "Karl Boran",
+              "zone": "Wetlands",
+              "coords": [
+                11.0,
+                58.0
+              ]
+            },
+            {
+              "name": "The Greenwarden",
+              "wh": {
+                "type": "quest",
+                "id": 463
+              },
+              "giver": "First Mate Fitzsimmons",
+              "zone": "Wetlands",
+              "note": "Outside the inn; leads to Rethiel the Greenwarden (56.3, 40.3)"
+            },
+            {
+              "name": "Young Crocolisk Skins",
+              "wh": {
+                "type": "quest",
+                "id": 484
+              },
+              "giver": "James Halloran",
+              "zone": "Wetlands",
+              "coords": [
+                8.6,
+                55.7
+              ]
+            },
+            {
+              "name": "In Search of the Excavation Team",
+              "wh": {
+                "type": "quest",
+                "id": 305
+              },
+              "giver": "Tarrel Rockweaver",
+              "zone": "Wetlands"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Shellei Brondir",
+              "role": "Gryphon master (flight path)",
+              "wh": {
+                "type": "npc",
+                "id": 1571
+              },
+              "zone": "Wetlands",
+              "coords": [
+                9.5,
+                59.7
+              ]
+            },
+            {
+              "name": "Innkeeper Helbrek",
+              "role": "Innkeeper – bind here",
+              "wh": {
+                "type": "npc",
+                "id": 1464
+              },
+              "zone": "Wetlands"
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://games.gg/world-of-warcraft/guides/wow-forever-wetlands-leveling-guide/",
+            "https://expcarry.com/wow-forever-leveling-guide-alliance",
+            "https://us.forums.blizzard.com/en/wow/t/2379059"
+          ]
+        },
+        {
+          "id": "b4-duskwood",
+          "title": "Option: Duskwood (Darkshire) 20–25",
+          "kind": "quests",
+          "level": [
+            20,
+            25
+          ],
+          "zone": "Duskwood",
+          "hub": "Darkshire",
+          "optional": true,
+          "body": "If you prefer the Stormwind side, carry **Messenger to Darkshire** from Redridge, take the flight path just west of Darkshire (77, 44) and bind at the inn. Darkshire hands out about two thirds of the zone's quests; do the Night Watch and Sven's Camp chains now and leave the elite group quests (Morbent Fel, Mor'Ladim) for 30+.",
+          "quests": [
+            {
+              "name": "Messenger to Darkshire",
+              "wh": {
+                "type": "quest",
+                "id": 145
+              },
+              "giver": "Magistrate Solomon",
+              "zone": "Redridge Mountains",
+              "note": "Turn in to Lord Ello Ebonlocke in Darkshire"
+            },
+            {
+              "name": "The Night Watch",
+              "wh": {
+                "type": "quest",
+                "id": 56
+              },
+              "zone": "Duskwood",
+              "note": "From the Darkshire hub; the Night Watch camp is at 45, 67"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Commander Althea Ebonlocke",
+              "role": "Darkshire quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 264
+              },
+              "zone": "Duskwood"
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://games.gg/world-of-warcraft/guides/wow-forever-duskwood-guide/",
+            "https://expcarry.com/wow-forever-leveling-guide-alliance"
+          ]
+        },
+        {
+          "id": "b4-train-22-24",
+          "title": "Train at 22 and 24",
+          "kind": "train",
+          "level": [
+            22,
+            24
+          ],
+          "zone": "Ironforge",
+          "hub": "Forlorn Cavern",
+          "body": "Fly back from Menethil (or Darkshire → Stormwind) on even levels. 22: **Eye of Kilrogg**; 24: **Drain Mana** and **Sense Demons**. Demon trainers sell new grimoires too: Soothing Kiss (Succubus/Incubus) at 22 and Suffering (Voidwalker) at 24.",
+          "npcs": [
+            {
+              "name": "Alexander Calder",
+              "role": "Warlock trainer",
+              "wh": {
+                "type": "npc",
+                "id": 5173
+              },
+              "zone": "Ironforge",
+              "coords": [
+                50.8,
+                6.4
+              ]
+            },
+            {
+              "name": "Jubahl Corpseseeker",
+              "role": "Demon trainer",
+              "wh": {
+                "type": "npc",
+                "id": 6382
+              },
+              "zone": "Ironforge",
+              "coords": [
+                53.2,
+                7.6
+              ]
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://www.warcrafttavern.com/forever/guides/class-trainers/"
+          ]
+        },
+        {
+          "id": "b4-expert-professions",
+          "title": "Expert professions and Shadow-damage tailoring",
+          "kind": "profession",
+          "level": [
+            20,
+            25
+          ],
+          "zone": "Stormwind City",
+          "body": "Once you're level 20 with skill 125, train Expert Tailoring from Georgio Bolero in Stormwind and Expert Enchanting from Kitta Firewind at the top of the Tower of Azora in Elwynn Forest. Tailors can buy Shadow-damage patterns for Merchant's Favor from Mivin Shadowweave at the Three Corners camp – e.g. Shadow Circlet (level 20) and Shadow Gown (level 22); only the tailor who makes them can wear them.",
+          "npcs": [
+            {
+              "name": "Georgio Bolero",
+              "role": "Expert Tailoring trainer",
+              "wh": {
+                "type": "npc",
+                "id": 1346
+              },
+              "zone": "Stormwind City"
+            },
+            {
+              "name": "Kitta Firewind",
+              "role": "Expert Enchanting trainer (Tower of Azora)",
+              "zone": "Elwynn Forest"
+            },
+            {
+              "name": "Mivin Shadowweave",
+              "role": "Tailoring recipes for Merchant's Favor",
+              "zone": "Redridge Mountains"
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://www.wow-professions.com/forever/tailoring-leveling-guide",
+            "https://www.wow-professions.com/forever/enchanting-leveling-guide",
+            "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+          ]
+        },
+        {
+          "id": "b4-library",
+          "title": "Library books on the 20s route",
+          "kind": "system",
+          "level": [
+            20,
+            30
+          ],
+          "zone": "Wetlands",
+          "body": "Three more books sit near this route: Whelgar's Excavation Site in the Wetlands, the Ruins of Mathystra in Darkshore (naga, levels 19–21) and the Dawning Wood Catacombs in Duskwood (level 27–28 undead – go later or with a friend). Twenty books gets you a ring with a spell-power option; the Library page has the full list.",
+          "items": [
+            {
+              "name": "Goaz Scrolls",
+              "zone": "Wetlands",
+              "coords": [
+                33.6,
+                47.9
+              ]
+            },
+            {
+              "name": "Nar'thalas Almanac, Vol. 74",
+              "zone": "Darkshore",
+              "coords": [
+                59.6,
+                22.2
+              ]
+            },
+            {
+              "name": "Crimes Against Anatomy",
+              "zone": "Duskwood",
+              "coords": [
+                6.7,
+                28.5
+              ],
+              "note": "Crypt entrance at 16.0, 38.5"
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/library-books/",
+            "https://us.forums.blizzard.com/en/wow/t/2363572"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "level-25-30",
+      "title": "Excavation Site, Southshore & the Felhunter",
+      "level": [
+        25,
+        30
+      ],
+      "zones": [
+        "Wetlands",
+        "Hillsbrad Foothills",
+        "Silverpine Forest",
+        "Alterac Mountains",
+        "Ironforge",
+        "Stormwind City",
+        "The Barrens"
+      ],
+      "summary": "Finish the Wetlands with one Excavation Site run, sail to Southshore, run City of Dalaran around 30 and start the Felhunter quest.",
+      "steps": [
+        {
+          "id": "b5-excavation-prep",
+          "title": "Collect the Excavation Site quests (24–27)",
+          "kind": "quests",
+          "level": [
+            24,
+            27
+          ],
+          "zone": "Wetlands",
+          "hub": "Menethil Harbor",
+          "body": "Collect the dungeon quests before you go in. Rethiel the Greenwarden's three gnoll quests (the Fen Creepers are invisible – listen for them along the rivers) unlock **Horrors in the Highland**; Caitlin Grassman in Menethil gives **Lost in the Thicket Things**; Dorin Songblade in Lakeshire, Redridge gives **Songblade Search** from level 24.",
+          "quests": [
+            {
+              "name": "Tramping Paws",
+              "giver": "Rethiel the Greenwarden",
+              "zone": "Wetlands",
+              "coords": [
+                56.3,
+                40.3
+              ],
+              "note": "Then Fire Taboo and Blisters on the Land"
+            },
+            {
+              "name": "Horrors in the Highland",
+              "giver": "Rethiel the Greenwarden",
+              "zone": "Wetlands",
+              "coords": [
+                56.3,
+                40.3
+              ]
+            },
+            {
+              "name": "Lost in the Thicket Things",
+              "giver": "Caitlin Grassman",
+              "zone": "Wetlands",
+              "coords": [
+                11.9,
+                58.8
+              ],
+              "note": "Optional breadcrumb: Seeking Caitlin from Llana in Astranaar"
+            },
+            {
+              "name": "Highland Hides",
+              "giver": "James Halloran",
+              "zone": "Wetlands",
+              "coords": [
+                8.6,
+                55.7
+              ],
+              "note": "After Young Crocolisk Skins; bugged in the beta (tiny reward)"
+            },
+            {
+              "name": "Songblade Search",
+              "wh": {
+                "type": "quest",
+                "id": 95772
+              },
+              "giver": "Dorin Songblade",
+              "zone": "Redridge Mountains",
+              "note": "Lakeshire; sources disagree on his coordinates (25.6 vs 30.8, 46.6)"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Rethiel the Greenwarden",
+              "role": "Quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 1244
+              },
+              "zone": "Wetlands",
+              "coords": [
+                56.3,
+                40.3
+              ]
+            },
+            {
+              "name": "James Halloran",
+              "role": "Quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 2094
+              },
+              "zone": "Wetlands",
+              "coords": [
+                8.6,
+                55.7
+              ]
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/excavation-site-wetlands-quests/",
+            "https://games.gg/world-of-warcraft/guides/wow-forever-wetlands-leveling-guide/",
+            "https://warcraft.wiki.gg/wiki/Songblade_Search"
+          ]
+        },
+        {
+          "id": "b5-excavation",
+          "title": "Excavation Site: Wetlands (24–29)",
+          "kind": "dungeon",
+          "level": [
+            24,
+            29
+          ],
+          "zone": "Wetlands",
+          "hub": "Thelgen Rock",
+          "body": "The path to this new dungeon starts left of Thelgen Rock (53.9, 65.4); the entrance is at 48.1, 56.5. Its diseases are brutal (a big Stamina loss, and one that cuts your damage), so bring a priest, paladin or shaman – or **First Aid disease cures**. One run finishes every quest; the last boss drops a Titan Relic that starts **Lost Relic Carry**.",
+          "quests": [
+            {
+              "name": "Lost Relic Carry",
+              "giver": "Titan Relic (boss drop)",
+              "zone": "Wetlands",
+              "note": "To Prospector Whelgar (38.8, 52.3), then Prehistoric Prism → High Explorer Magellas, Ironforge (69.4, 19.1)"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Prospector Whelgar",
+              "role": "Quest turn-in",
+              "wh": {
+                "type": "npc",
+                "id": 1077
+              },
+              "zone": "Wetlands",
+              "coords": [
+                38.8,
+                52.3
+              ]
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/excavation-site-wetlands/",
+            "https://www.warcrafttavern.com/forever/guides/excavation-site-wetlands-quests/",
+            "https://worldofwarcraft.blizzard.com/en-us/news/24301455",
+            "https://us.forums.blizzard.com/en/wow/t/2369918"
+          ]
+        },
+        {
+          "id": "b5-train-26-28",
+          "title": "Train at 26 and 28",
+          "kind": "train",
+          "level": [
+            26,
+            28
+          ],
+          "zone": "Ironforge",
+          "hub": "Forlorn Cavern",
+          "body": "Menethil's flight path gets you back to Ironforge quickly. 26: **Curse of Tongues** (slows enemy casters) and **Detect Invisibility**; the Succubus/Incubus **Seduction** grimoire also unlocks. 28: **Banish** and **Create Firestone**, now a weapon imbue that adds fire damage and crit.",
+          "npcs": [
+            {
+              "name": "Alexander Calder",
+              "role": "Warlock trainer",
+              "wh": {
+                "type": "npc",
+                "id": 5173
+              },
+              "zone": "Ironforge",
+              "coords": [
+                50.8,
+                6.4
+              ]
+            },
+            {
+              "name": "Jubahl Corpseseeker",
+              "role": "Demon trainer",
+              "wh": {
+                "type": "npc",
+                "id": 6382
+              },
+              "zone": "Ironforge",
+              "coords": [
+                53.2,
+                7.6
+              ]
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://news.blizzard.com/en-us/article/24310968/world-of-warcraft-forever-class-deep-dives-rogue-and-warlock"
+          ]
+        },
+        {
+          "id": "b5-southshore",
+          "title": "Boat to Southshore (Hillsbrad Foothills)",
+          "kind": "travel",
+          "level": [
+            27,
+            28
+          ],
+          "zone": "Hillsbrad Foothills",
+          "hub": "Southshore",
+          "body": "Take the new boat from Menethil Harbor to Southshore (it continues to Auberdine). Grab the flight path from Darla Harris, bind at the inn, and finish the sleeping bag on top of Thoradin's Wall. Southshore quests are best from about 28, since most targets are level 30+.",
+          "npcs": [
+            {
+              "name": "Darla Harris",
+              "role": "Gryphon master (flight path)",
+              "wh": {
+                "type": "npc",
+                "id": 2432
+              },
+              "zone": "Hillsbrad Foothills",
+              "coords": [
+                49.3,
+                52.3
+              ]
+            },
+            {
+              "name": "Innkeeper Anderson",
+              "role": "Innkeeper – bind here",
+              "wh": {
+                "type": "npc",
+                "id": 2352
+              },
+              "zone": "Hillsbrad Foothills",
+              "coords": [
+                51.2,
+                58.9
+              ]
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://games.gg/world-of-warcraft/guides/wow-forever-hillsbrad-foothills-leveling-guide/",
+            "https://expcarry.com/wow-forever-leveling-guide-alliance",
+            "https://us.forums.blizzard.com/en/wow/t/2374700"
+          ]
+        },
+        {
+          "id": "b5-southshore-quests",
+          "title": "Southshore quests (28–30)",
+          "kind": "quests",
+          "level": [
+            28,
+            30
+          ],
+          "zone": "Hillsbrad Foothills",
+          "hub": "Southshore",
+          "body": "Pick up the Southshore basics and, most importantly, **An Alarming Request** from Emissary Jaques – it's the Alliance key to the City of Dalaran dungeon. Hints of a New Plague? leads on into Arathi Highlands for your 30s.",
+          "quests": [
+            {
+              "name": "An Alarming Request",
+              "giver": "Emissary Jaques",
+              "zone": "Hillsbrad Foothills",
+              "coords": [
+                48.3,
+                60.1
+              ],
+              "note": "Unlocks the Alliance Dalaran quests"
+            },
+            {
+              "name": "Down the Coast",
+              "giver": "Lieutenant Farren Orinelle",
+              "zone": "Hillsbrad Foothills"
+            },
+            {
+              "name": "Soothing Turtle Bisque",
+              "giver": "Chef Jessen",
+              "zone": "Hillsbrad Foothills"
+            },
+            {
+              "name": "Hints of a New Plague?",
+              "giver": "Phin Odelic",
+              "zone": "Hillsbrad Foothills",
+              "note": "From level 30"
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://games.gg/world-of-warcraft/guides/wow-forever-hillsbrad-foothills-leveling-guide/",
+            "https://www.warcrafttavern.com/forever/guides/city-of-dalaran/"
+          ]
+        },
+        {
+          "id": "b5-dalaran",
+          "title": "City of Dalaran (28–33)",
+          "kind": "dungeon",
+          "level": [
+            28,
+            33
+          ],
+          "zone": "Silverpine Forest",
+          "hub": "Dalaran sewer entrance",
+          "body": "This new dungeon is Dalaran in the Alterac Mountains, entered through the sewers at 69.3, 45.6 (on the Silverpine Forest map). With An Alarming Request done, the Image of Archmage Modera at the entrance gives **Starving Arcane**, **Heart of Disruption** and a sewer key; also bring **Power Overwhelming** and **A Green Sample** from Stormwind. Run it once around 30 – lots of mana users for you to drain – but Starving Arcane may need a second run.",
+          "quests": [
+            {
+              "name": "Starving Arcane",
+              "giver": "Image of Archmage Modera",
+              "zone": "Silverpine Forest",
+              "coords": [
+                68.5,
+                45.1
+              ]
+            },
+            {
+              "name": "Heart of Disruption",
+              "giver": "Image of Archmage Modera",
+              "zone": "Silverpine Forest",
+              "coords": [
+                68.5,
+                45.1
+              ],
+              "note": "Leads to Friend of the Kirin Tor"
+            },
+            {
+              "name": "Power Overwhelming",
+              "wh": {
+                "type": "quest",
+                "id": 92489
+              },
+              "giver": "High Sorcerer Andromath",
+              "zone": "Stormwind City",
+              "note": "Wizard's Sanctum, Mage Quarter"
+            },
+            {
+              "name": "A Green Sample",
+              "giver": "Shylamiir",
+              "zone": "Stormwind City",
+              "note": "Herbalism trainer in The Park"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "High Sorcerer Andromath",
+              "role": "Dungeon quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 5694
+              },
+              "zone": "Stormwind City"
+            }
+          ],
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/city-of-dalaran-quests/",
+            "https://www.warcrafttavern.com/forever/guides/city-of-dalaran/",
+            "https://worldofwarcraft.blizzard.com/en-us/news/24301455",
+            "https://us.forums.blizzard.com/en/wow/t/2377075"
+          ]
+        },
+        {
+          "id": "b5-level-30",
+          "title": "Level 30: Hellfire, Siphon Life and drain tanking",
+          "kind": "milestone",
+          "level": [
+            30,
+            30
+          ],
+          "zone": "Stormwind City",
+          "hub": "Mage Quarter",
+          "body": "Train **Hellfire**, **Subjugate Demon** and Drain Life rank 3, and take **Siphon Life** in the talent tree. From here Warcraft Tavern switches to drain tanking: respec into Improved Drains, Fel Concentration, Improved Life Tap and Soul Siphon, then let your Succubus/Incubus fight while you channel **Drain Life** instead of wanding. The 25-book library reward also needs level 30.",
+          "confidence": "beta-tested",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://conquestcapped.com/guides/wow-forever/wow-forever-warlock-leveling/",
+            "https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)",
+            "https://www.warcrafttavern.com/forever/guides/library-books/"
+          ]
+        },
+        {
+          "id": "b5-felhunter",
+          "title": "Felhunter: Seeking Strahad → Ratchet",
+          "kind": "class",
+          "level": [
+            30,
+            32
+          ],
+          "zone": "The Barrens",
+          "hub": "Ratchet",
+          "body": "Pick up **Seeking Strahad** in Stormwind; it sends you to **Strahad Farsan** in Ratchet, on the Barrens coast. In the Forever database the chain continues with three **Tome of the Cabal** quests (Krom Stoutarm in Ironforge, then a Reconstructed Tome plus 3 Rods of Channeling back to Strahad) and ends with **The Binding**, a summon-and-defeat fight. The beta stopped at 30, so nobody has documented this route yet – treat the steps as a preview. The Felhunter is the anti-caster/PvP demon (it removes magic effects and later silences casters).",
+          "quests": [
+            {
+              "name": "Seeking Strahad",
+              "wh": {
+                "type": "quest",
+                "id": 1798
+              },
+              "zone": "Stormwind City",
+              "note": "Speak with Strahad Farsan in Ratchet"
+            },
+            {
+              "name": "Tome of the Cabal",
+              "wh": {
+                "type": "quest",
+                "id": 1758
+              },
+              "zone": "The Barrens",
+              "note": "Speak with Krom Stoutarm in Ironforge"
+            },
+            {
+              "name": "Tome of the Cabal",
+              "wh": {
+                "type": "quest",
+                "id": 1802
+              },
+              "giver": "Krom Stoutarm",
+              "zone": "Ironforge",
+              "note": "Moldy Tome + Tattered Manuscript"
+            },
+            {
+              "name": "Tome of the Cabal",
+              "wh": {
+                "type": "quest",
+                "id": 1804
+              },
+              "zone": "The Barrens",
+              "note": "Reconstructed Tome + 3 Rods of Channeling to Strahad Farsan"
+            },
+            {
+              "name": "The Binding",
+              "wh": {
+                "type": "quest",
+                "id": 1795
+              },
+              "giver": "Strahad Farsan",
+              "zone": "The Barrens",
+              "note": "Summon and subdue a Felhunter"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Strahad Farsan",
+              "role": "Felhunter and Felsteed quests",
+              "wh": {
+                "type": "npc",
+                "id": 6251
+              },
+              "zone": "The Barrens"
+            },
+            {
+              "name": "Krom Stoutarm",
+              "role": "Tome of the Cabal step",
+              "wh": {
+                "type": "npc",
+                "id": 6294
+              },
+              "zone": "Ironforge"
+            }
+          ],
+          "confidence": "community",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+            "https://www.wowhead.com/forever/quest=1798",
+            "https://www.wowhead.com/forever/quest=1795",
+            "https://conquestcapped.com/guides/wow-forever/wow-forever-warlock-leveling/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "level-30-35",
+      "title": "Stranglethorn, Arathi & Desolace (untested)",
+      "level": [
+        30,
+        35
+      ],
+      "zones": [
+        "Stranglethorn Vale",
+        "Arathi Highlands",
+        "Desolace",
+        "Alterac Mountains",
+        "Dun Morogh"
+      ],
+      "summary": "Untested – the beta stopped at 30. This follows the zone tables in current guides; expect to adjust at launch.",
+      "steps": [
+        {
+          "id": "b6-zones",
+          "title": "Zones: Stranglethorn Vale, Arathi Highlands, Desolace",
+          "kind": "quests",
+          "level": [
+            30,
+            35
+          ],
+          "zone": "Stranglethorn Vale",
+          "hub": "Booty Bay",
+          "body": "Guides agree on Stranglethorn Vale, Arathi Highlands and Desolace for the early 30s, with Alterac Mountains as an extra. Pick up the flight paths at Booty Bay, Refuge Pointe and Nijel's Point as you arrive. Two library books are here: Alterac's ogre fortress (48.5, 57.6) and Witherbark Village in Arathi (73.0, 65.0).",
+          "confidence": "theory",
+          "sources": [
+            "https://expcarry.com/wow-forever-leveling-guide-alliance",
+            "https://overgear.com/guides/wow-forever/1-60-leveling-guide/",
+            "https://www.warcrafttavern.com/forever/guides/library-books/"
+          ]
+        },
+        {
+          "id": "b6-dungeons",
+          "title": "Dungeons: Gnomeregan (29–38) and Scarlet Monastery",
+          "kind": "dungeon",
+          "level": [
+            30,
+            38
+          ],
+          "zone": "Dun Morogh",
+          "hub": "Gnomeregan",
+          "body": "Gnomeregan, the gnomes' old capital, keeps its Classic quests with new rewards; some start with Ozzie Togglevolt in Kharanos. Beta players found it rough for casters because higher-level mobs make your spells miss more. Scarlet Monastery Graveyard (30–38) is the other option.",
+          "npcs": [
+            {
+              "name": "Ozzie Togglevolt",
+              "role": "Gnomeregan quest giver",
+              "wh": {
+                "type": "npc",
+                "id": 1268
+              },
+              "zone": "Dun Morogh"
+            }
+          ],
+          "confidence": "theory",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/dungeons/",
+            "https://www.warcrafttavern.com/forever/guides/gnomeregan-quests/",
+            "https://us.forums.blizzard.com/en/wow/t/2389250"
+          ]
+        },
+        {
+          "id": "b6-train-32",
+          "title": "Train at 32 and 34",
+          "kind": "train",
+          "level": [
+            32,
+            34
+          ],
+          "zone": "Ironforge",
+          "hub": "Forlorn Cavern",
+          "body": "Keep training every even level in Ironforge or Stormwind – there are no Alliance warlock trainers on Kalimdor. Level 32 adds **Shadow Ward**, plus new ranks of your core spells.",
+          "npcs": [
+            {
+              "name": "Alexander Calder",
+              "role": "Warlock trainer",
+              "wh": {
+                "type": "npc",
+                "id": 5173
+              },
+              "zone": "Ironforge",
+              "coords": [
+                50.8,
+                6.4
+              ]
+            }
+          ],
+          "confidence": "theory",
+          "sources": [
+            "https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)",
+            "https://www.warcrafttavern.com/forever/guides/class-trainers/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "level-35-40",
+      "title": "Riverglades & Stranglethorn (untested)",
+      "level": [
+        35,
+        40
+      ],
+      "zones": [
+        "Riverglades",
+        "Stranglethorn Vale",
+        "Dustwallow Marsh",
+        "Arathi Highlands"
+      ],
+      "summary": "Untested. Riverglades, Forever's big new zone, opens in the mid-30s; The Drowned City dungeon sits in Stranglethorn.",
+      "steps": [
+        {
+          "id": "b7-riverglades",
+          "title": "Riverglades (35–45): Farholde Keep",
+          "kind": "quests",
+          "level": [
+            35,
+            40
+          ],
+          "zone": "Riverglades",
+          "hub": "Farholde Keep",
+          "body": "Blizzard describes Riverglades as a mid-30s to mid-40s zone with 150+ quests for both factions; Farholde Keep is the Alliance hub and Powderfuse Port is the neutral harbour, with a boat to Steamwheedle Port in Tanaris. Guides disagree on the overland entrance (off the Redridge/Burning Steppes road), and the beta had no flight path at Powderfuse Port. Don't try to clear every quest – the huge pool lets you skip weak chains.",
+          "confidence": "theory",
+          "sources": [
+            "https://news.blizzard.com/en-us/article/24303862/world-of-warcraft-forever-whats-next-panel-recap",
+            "https://expcarry.com/wow-forever-leveling-guide-alliance",
+            "https://games.gg/world-of-warcraft/guides/wow-forever-redridge-mountains/",
+            "https://us.forums.blizzard.com/en/wow/t/2353281"
+          ]
+        },
+        {
+          "id": "b7-drowned-city",
+          "title": "The Drowned City (35–40)",
+          "kind": "dungeon",
+          "level": [
+            35,
+            40
+          ],
+          "zone": "Stranglethorn Vale",
+          "body": "A new underwater dungeon west of Grom'gol in Stranglethorn Vale – your **Unending Breath** finally earns its keep. Its quests and loot haven't been published, so collect anything you see offered nearby before going in.",
+          "confidence": "theory",
+          "sources": [
+            "https://worldofwarcraft.blizzard.com/en-us/news/24301455",
+            "https://www.warcrafttavern.com/forever/guides/dungeons/"
+          ]
+        },
+        {
+          "id": "b7-train-36",
+          "title": "Train at 36 and 38",
+          "kind": "train",
+          "level": [
+            36,
+            38
+          ],
+          "zone": "Stormwind City",
+          "hub": "Mage Quarter",
+          "body": "Level 36 adds **Create Spellstone** – a weapon imbue for Shadow damage and spell haste that stacks with wizard oil – and the Felhunter's **Spell Lock** grimoire (silences a caster).",
+          "confidence": "theory",
+          "sources": [
+            "https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)",
+            "https://news.blizzard.com/en-us/article/24310968/world-of-warcraft-forever-class-deep-dives-rogue-and-warlock"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "level-40-45",
+      "title": "Level 40 milestones, Riverglades & Tanaris (untested)",
+      "level": [
+        40,
+        45
+      ],
+      "zones": [
+        "Riverglades",
+        "Tanaris",
+        "Feralas",
+        "The Hinterlands",
+        "The Barrens",
+        "Dun Morogh"
+      ],
+      "summary": "Level 40 is the biggest milestone before 60: dual spec, your Affliction capstone Wrack, riding and the warlock Felsteed mount.",
+      "steps": [
+        {
+          "id": "b8-dual-spec-wrack",
+          "title": "Level 40: Dual Spec and Wrack",
+          "kind": "milestone",
+          "level": [
+            40,
+            40
+          ],
+          "zone": "Stormwind City",
+          "hub": "Mage Quarter",
+          "body": "At 40 your class trainer sells **Dual Talent Specialization** (reported at 10 gold) – two saved talent setups you can swap between outside combat, e.g. Affliction for questing and Destruction for dungeons. Your 31st Affliction point unlocks **Wrack**, a channeled Shadow drain that makes your other DoTs hit 10% harder (some older guides call it 'Drain Hope'). Train **Howl of Terror** (area Fear) at the same time.",
+          "confidence": "official",
+          "sources": [
+            "https://news.blizzard.com/en-us/article/24310968/world-of-warcraft-forever-class-deep-dives-rogue-and-warlock",
+            "https://warcraft.wiki.gg/wiki/World_of_Warcraft:_Forever",
+            "https://us.forums.blizzard.com/en/wow/t/dual-talent-specilization-wow-forever/2391901"
+          ]
+        },
+        {
+          "id": "b8-felsteed",
+          "title": "Level 40: Riding and the Felsteed",
+          "kind": "milestone",
+          "level": [
+            40,
+            40
+          ],
+          "zone": "The Barrens",
+          "hub": "Ratchet",
+          "body": "Apprentice Riding (60% speed) is listed at level 40 for 100 gold; in Forever you pay for the skill and the mount comes with it. Warlocks get their class mount from **Summon Felsteed** at Strahad Farsan in Ratchet – Warcraft Tavern says the class quest also teaches riding, but forum players were unsure, so bring the gold just in case. The gnome riding trainer is Binjy Featherwhistle at Steelgrill's Depot.",
+          "quests": [
+            {
+              "name": "Summon Felsteed",
+              "giver": "Strahad Farsan",
+              "zone": "The Barrens"
+            }
+          ],
+          "npcs": [
+            {
+              "name": "Strahad Farsan",
+              "role": "Felsteed quest",
+              "wh": {
+                "type": "npc",
+                "id": 6251
+              },
+              "zone": "The Barrens"
+            },
+            {
+              "name": "Binjy Featherwhistle",
+              "role": "Gnome riding trainer",
+              "wh": {
+                "type": "npc",
+                "id": 7954
+              },
+              "zone": "Dun Morogh",
+              "coords": [
+                49.2,
+                48.1
+              ]
+            }
+          ],
+          "confidence": "theory",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/riding/",
+            "https://www.wowhead.com/forever/quest=4490",
+            "https://us.forums.blizzard.com/en/wow/t/warlock-and-paladin-class-mounts/2370227",
+            "https://www.method.gg/wow-forever/how-to-get-a-mount-in-wow-forever-cost-requirement-and-mount-options"
+          ]
+        },
+        {
+          "id": "b8-zones",
+          "title": "Zones: Riverglades, Tanaris, Feralas, Hinterlands",
+          "kind": "quests",
+          "level": [
+            40,
+            45
+          ],
+          "zone": "Tanaris",
+          "hub": "Gadgetzan",
+          "body": "Finish the best Riverglades chains, then take the Powderfuse Port boat to Tanaris (Gadgetzan). Feralas (Feathermoon) and The Hinterlands (Aerie Peak) are the alternatives. Death Coil, an instant escape that also heals you, arrives at 42.",
+          "confidence": "theory",
+          "sources": [
+            "https://expcarry.com/wow-forever-leveling-guide-alliance",
+            "https://overgear.com/guides/wow-forever/1-60-leveling-guide/",
+            "https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)"
+          ]
+        },
+        {
+          "id": "b8-dungeons",
+          "title": "Dungeons: Krol'dok Stronghold (40–45) and Zul'Farrak",
+          "kind": "dungeon",
+          "level": [
+            40,
+            47
+          ],
+          "zone": "Riverglades",
+          "body": "Krol'dok Stronghold is a new dungeon inside Riverglades (Blizzard confirmed 40–45), so it slots straight into your questing there. Zul'Farrak (40–47) in Tanaris is the classic alternative.",
+          "confidence": "theory",
+          "sources": [
+            "https://worldofwarcraft.blizzard.com/en-us/news/24301455",
+            "https://www.warcrafttavern.com/forever/guides/dungeons/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "level-45-50",
+      "title": "Tanaris, Feralas & Hinterlands (untested)",
+      "level": [
+        45,
+        50
+      ],
+      "zones": [
+        "Tanaris",
+        "Feralas",
+        "The Hinterlands",
+        "Searing Gorge",
+        "Un'Goro Crater",
+        "Dustwallow Marsh",
+        "Desolace"
+      ],
+      "summary": "Untested. Keep rotating between the 40s zones; Maraudon and the new Alcaz Island Prison fit here.",
+      "steps": [
+        {
+          "id": "b9-zones",
+          "title": "Zones: Tanaris, Feralas, The Hinterlands",
+          "kind": "quests",
+          "level": [
+            45,
+            50
+          ],
+          "zone": "Feralas",
+          "hub": "Feathermoon Stronghold",
+          "body": "Keep working through Tanaris, Feralas and The Hinterlands, with Searing Gorge (Thorium Point) and early Un'Goro as fillers. Move on when the remaining quests get spread out – you don't need to finish every zone.",
+          "confidence": "theory",
+          "sources": [
+            "https://expcarry.com/wow-forever-leveling-guide-alliance",
+            "https://overgear.com/guides/wow-forever/1-60-leveling-guide/"
+          ]
+        },
+        {
+          "id": "b9-dungeons",
+          "title": "Dungeons: Maraudon (45–51), Alcaz Island Prison (48–53)",
+          "kind": "dungeon",
+          "level": [
+            45,
+            53
+          ],
+          "zone": "Dustwallow Marsh",
+          "hub": "Theramore",
+          "body": "Alcaz Island Prison is a new dungeon on Alcaz Island in Dustwallow Marsh, easy to reach from Theramore. Maraudon (Desolace) is the classic option. As always: one run with all the quests, then back to questing.",
+          "confidence": "theory",
+          "sources": [
+            "https://worldofwarcraft.blizzard.com/en-us/news/24301455",
+            "https://www.warcrafttavern.com/forever/guides/dungeons/",
+            "https://expcarry.com/wow-forever-leveling-guide-alliance"
+          ]
+        },
+        {
+          "id": "b9-train-48",
+          "title": "Train at 46 and 48",
+          "kind": "train",
+          "level": [
+            46,
+            48
+          ],
+          "zone": "Ironforge",
+          "hub": "Forlorn Cavern",
+          "body": "Level 48 adds **Soul Fire**, a big fire nuke that costs a Soul Shard. Keep 3–5 shards spare (they don't stack) for summons, Healthstones and Soulstones.",
+          "confidence": "theory",
+          "sources": [
+            "https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)",
+            "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "level-50-55",
+      "title": "Un'Goro, Felwood & Burning Steppes (untested)",
+      "level": [
+        50,
+        55
+      ],
+      "zones": [
+        "Un'Goro Crater",
+        "Felwood",
+        "Burning Steppes",
+        "Western Plaguelands",
+        "Azshara"
+      ],
+      "summary": "Untested. Start positioning for 60; dungeon rewards begin to matter as gear, not just XP.",
+      "steps": [
+        {
+          "id": "b10-zones",
+          "title": "Zones: Un'Goro, Felwood, Burning Steppes",
+          "kind": "quests",
+          "level": [
+            50,
+            55
+          ],
+          "zone": "Un'Goro Crater",
+          "hub": "Marshal's Refuge",
+          "body": "Guides list Un'Goro Crater (Marshal's Refuge), Felwood (Talonbranch Glade) and Burning Steppes (Morgan's Vigil), with Western Plaguelands (Chillwind Camp) and Azshara as extras.",
+          "confidence": "theory",
+          "sources": [
+            "https://expcarry.com/wow-forever-leveling-guide-alliance",
+            "https://overgear.com/guides/wow-forever/1-60-leveling-guide/"
+          ]
+        },
+        {
+          "id": "b10-dungeons",
+          "title": "Dungeons: Sunken Temple (50–55), Blackrock Depths (52–60)",
+          "kind": "dungeon",
+          "level": [
+            50,
+            60
+          ],
+          "zone": "Burning Steppes",
+          "body": "Sunken Temple (Swamp of Sorrows) and Blackrock Depths (Blackrock Mountain, between Searing Gorge and Burning Steppes) are the classic picks here; Alcaz Island Prison still fits up to 53.",
+          "confidence": "theory",
+          "sources": [
+            "https://www.warcrafttavern.com/forever/guides/dungeons/",
+            "https://worldofwarcraft.blizzard.com/en-us/news/24301455"
+          ]
+        },
+        {
+          "id": "b10-train-50",
+          "title": "Level 50: Inferno",
+          "kind": "train",
+          "level": [
+            50,
+            50
+          ],
+          "zone": "Stormwind City",
+          "hub": "Mage Quarter",
+          "body": "Level 50 adds **Inferno**, which calls down an Infernal demon to fight for you for a while. Keep training every even level in Stormwind or Ironforge.",
+          "confidence": "theory",
+          "sources": [
+            "https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "level-55-60",
+      "title": "Plaguelands, Winterspring & Mount Hyjal (untested)",
+      "level": [
+        55,
+        60
+      ],
+      "zones": [
+        "Western Plaguelands",
+        "Eastern Plaguelands",
+        "Winterspring",
+        "Silithus",
+        "Azshara",
+        "Un'Goro Crater",
+        "Mount Hyjal"
+      ],
+      "summary": "Untested. Finish 60 in the Plaguelands, Winterspring and Silithus, run the two new top-end dungeons, then head to Mount Hyjal.",
+      "steps": [
+        {
+          "id": "b11-zones",
+          "title": "Zones: Plaguelands, Winterspring, Silithus",
+          "kind": "quests",
+          "level": [
+            55,
+            60
+          ],
+          "zone": "Eastern Plaguelands",
+          "hub": "Light's Hope Chapel",
+          "body": "Western and Eastern Plaguelands, Winterspring (Everlook) and Silithus (Cenarion Hold) are the last stretch, plus leftover Burning Steppes, Felwood and Un'Goro quests. From here, quest rewards double as your first level-60 gear.",
+          "confidence": "theory",
+          "sources": [
+            "https://expcarry.com/wow-forever-leveling-guide-alliance",
+            "https://overgear.com/guides/wow-forever/1-60-leveling-guide/"
+          ]
+        },
+        {
+          "id": "b11-dungeons",
+          "title": "Dungeons: Blackmaw Hold (55–60), Shaper's Terrace (58–60)",
+          "kind": "dungeon",
+          "level": [
+            55,
+            60
+          ],
+          "zone": "Azshara",
+          "body": "Two new dungeons close out leveling: Blackmaw Hold in Azshara and Shaper's Terrace in Un'Goro Crater. Classic end-game dungeons (Blackrock Spire, Dire Maul, Stratholme, Scholomance) open at 57–60 and lead into pre-raid gearing.",
+          "confidence": "theory",
+          "sources": [
+            "https://worldofwarcraft.blizzard.com/en-us/news/24301455",
+            "https://www.warcrafttavern.com/forever/guides/dungeons/"
+          ]
+        },
+        {
+          "id": "b11-level-60",
+          "title": "Level 60: Mount Hyjal",
+          "kind": "milestone",
+          "level": [
+            60,
+            60
+          ],
+          "zone": "Mount Hyjal",
+          "body": "At 60 your next stop is **Mount Hyjal**, Forever's new end-game zone and raid hub (raids unlock on December 9). Train **Bane of Doom** and **Ritual of Doom**; Journeyman Riding (100% speed) is listed at 1,000 gold. Reach 60 first – Hyjal isn't meant as a 55–60 leveling zone.",
+          "confidence": "theory",
+          "sources": [
+            "https://news.blizzard.com/en-us/article/24303862/world-of-warcraft-forever-whats-next-panel-recap",
+            "https://warcraft.wiki.gg/wiki/World_of_Warcraft:_Forever",
+            "https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)",
+            "https://www.warcrafttavern.com/forever/guides/riding/",
+            "https://expcarry.com/wow-forever-leveling-guide-alliance"
+          ]
+        }
+      ]
+    }
+  ]
+}

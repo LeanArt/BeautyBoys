@@ -344,6 +344,41 @@ textarea {
   border-style: dashed;
 }
 
+/* Wowhead colors item links by quality (q0 poor … q5 legendary). Its defaults are tuned for a
+   dark background – white "common" items vanish on our light theme – so map them to tokens. */
+:root {
+  --q0: #7a7a7a;
+  --q1: var(--text);
+  --q2: #1d7f00;
+  --q3: #0060c0;
+  --q4: #7d32c8;
+  --q5: #b85c00;
+}
+:root[data-theme='dark'] {
+  --q0: #9d9d9d;
+  --q1: #ffffff;
+  --q2: #1eff00;
+  --q3: #3d9bff;
+  --q4: #b65cf5;
+  --q5: #ff8000;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --q0: #9d9d9d;
+    --q1: #ffffff;
+    --q2: #1eff00;
+    --q3: #3d9bff;
+    --q4: #b65cf5;
+    --q5: #ff8000;
+  }
+}
+a.q0 { color: var(--q0) !important; }
+a.q1 { color: var(--q1) !important; }
+a.q2 { color: var(--q2) !important; }
+a.q3 { color: var(--q3) !important; }
+a.q4 { color: var(--q4) !important; }
+a.q5 { color: var(--q5) !important; }
+
 .term {
   text-decoration: underline dotted;
   text-underline-offset: 3px;

@@ -1,0 +1,880 @@
+{
+  "updated": "2026-10-29",
+  "turnIn": [
+    {
+      "name": "Garion Wendell",
+      "wh": {
+        "type": "npc",
+        "id": 211033
+      },
+      "zone": "Stormwind City",
+      "coords": [
+        49.0,
+        86.3
+      ],
+      "role": "Librarian – Alliance turn-in",
+      "note": "Top of the Mage Tower in the Mage Quarter. Hand books in one at a time (each gives a little XP and silver) – you don't have to save them up. Warcraft Tavern lists 38, 81, but Wowhead's Forever data and Method both put him at about 49, 86."
+    },
+    {
+      "name": "Owen Thadd",
+      "wh": {
+        "type": "npc",
+        "id": 211022
+      },
+      "zone": "Undercity",
+      "coords": [
+        74.0,
+        32.5
+      ],
+      "role": "Librarian – Horde turn-in",
+      "note": "Magic Quarter of Undercity. Listed for completeness – Alliance players use Garion Wendell."
+    }
+  ],
+  "rewards": [
+    {
+      "books": 10,
+      "level": 1,
+      "choices": [
+        {
+          "name": "Scholarly Pendant",
+          "wh": {
+            "type": "item",
+            "id": 277203
+          },
+          "note": "+3 Stamina, +2 Spirit. The warlock pick."
+        },
+        {
+          "name": "Erudite's Amulet",
+          "wh": {
+            "type": "item",
+            "id": 277204
+          },
+          "note": "+2 Agility, +3 Stamina."
+        }
+      ]
+    },
+    {
+      "books": 20,
+      "level": 20,
+      "choices": [
+        {
+          "name": "Field Researcher's Loop",
+          "wh": {
+            "type": "item",
+            "id": 281634
+          },
+          "note": "+7 Agility, +7 Stamina."
+        },
+        {
+          "name": "Philanthropist's Ring",
+          "wh": {
+            "type": "item",
+            "id": 281635
+          },
+          "note": "+5 Intellect, +10 spell damage and healing. The warlock pick."
+        }
+      ]
+    },
+    {
+      "books": 25,
+      "level": 30,
+      "choices": [
+        {
+          "name": "Truthseeker's Bow",
+          "wh": {
+            "type": "item",
+            "id": 277254
+          },
+          "note": "Bow – warlocks cannot use it. Requires level 40."
+        },
+        {
+          "name": "Crest of Elucidation",
+          "wh": {
+            "type": "item",
+            "id": 277258
+          },
+          "note": "Shield – warlocks cannot use shields. Requires level 40."
+        },
+        {
+          "name": "Researcher's Night Light",
+          "wh": {
+            "type": "item",
+            "id": 277260
+          },
+          "note": "Off-hand, +12 Stamina, +7 Fire damage. The warlock pick (best for Destruction/Demonology); requires level 40, so bank it until then."
+        }
+      ]
+    }
+  ],
+  "books": [
+    {
+      "id": "elwynn-theocritus-journal",
+      "title": "Archmage Theocritus' Research Journal",
+      "zone": "Elwynn Forest",
+      "coords": [
+        65.4,
+        70.1
+      ],
+      "location": "On a low table at the very top of the Tower of Azora, east of Goldshire.",
+      "faction": "alliance",
+      "level": 5,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=203755"
+      ]
+    },
+    {
+      "id": "ironforge-antonidas-autobiography",
+      "title": "Archmage Antonidas: The Unabridged Autobiography",
+      "zone": "Ironforge",
+      "coords": [
+        76.1,
+        10.2
+      ],
+      "location": "On the table in the middle of the small back room of the Hall of Explorers.",
+      "faction": "alliance",
+      "level": 1,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=203754"
+      ],
+      "note": "Method gives 75.7, 10.5 – same room."
+    },
+    {
+      "id": "loch-modan-rumi-of-gnomeregan",
+      "title": "Rumi of Gnomeregan: The Collected Works",
+      "zone": "Loch Modan",
+      "coords": [
+        35.6,
+        48.9
+      ],
+      "location": "Upstairs in the Stoutlager Inn in Thelsamar, on a table (it shows as \"Gnomish Tome\").",
+      "faction": "alliance",
+      "level": 10,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=208860"
+      ],
+      "note": "Same book as the one in the other inn (Thelsamar / Sentinel Hill) – you can only loot it once, so grab whichever you pass first."
+    },
+    {
+      "id": "westfall-rumi-of-gnomeregan",
+      "title": "Rumi of Gnomeregan: The Collected Works",
+      "zone": "Westfall",
+      "coords": [
+        52.7,
+        53.7
+      ],
+      "location": "In the Sentinel Hill inn, on a small table between the beds (it shows as \"Gnomish Tome\").",
+      "faction": "alliance",
+      "level": 10,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=208860"
+      ],
+      "note": "Same book as the one in the other inn (Thelsamar / Sentinel Hill) – you can only loot it once, so grab whichever you pass first."
+    },
+    {
+      "id": "loch-modan-runes-of-the-sorcerer-kings",
+      "title": "Runes of the Sorcerer-Kings",
+      "zone": "Loch Modan",
+      "coords": [
+        77.5,
+        14.1
+      ],
+      "location": "Mo'grosh Stronghold: enter the middle ogre cave (74.5, 19.6), follow it left to a small chamber; the scrolls lean against the right-hand wall.",
+      "faction": "alliance",
+      "level": 22,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=209850"
+      ],
+      "note": "Level 19–20 elite ogres guard the cave – bring a friend or come back a few levels later."
+    },
+    {
+      "id": "westfall-bewitchments-and-glamours",
+      "title": "Bewitchments and Glamours",
+      "zone": "Westfall",
+      "coords": [
+        45.4,
+        70.4
+      ],
+      "location": "In a small yellow-roofed house in Moonbrook (the town by the Deadmines entrance); the spellbook is on a shelf inside.",
+      "faction": "alliance",
+      "level": 16,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=209845"
+      ],
+      "note": "Level 14–15 Defias are around the house."
+    },
+    {
+      "id": "duskwood-crimes-against-anatomy",
+      "title": "Crimes Against Anatomy",
+      "zone": "Duskwood",
+      "coords": [
+        16.7,
+        28.5
+      ],
+      "location": "Deep in the Raven Hill crypt (Dawning Wood Catacombs): enter south of the big house on the north-west side of the cemetery (16.0, 38.5), go all the way down to the last room; the book is on an alchemy table.",
+      "faction": "both",
+      "level": 28,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=209849"
+      ],
+      "note": "Packed with level 27–28 undead. Warcraft Tavern lists 6.7, 28.5 and Method 16.7, 28.5 – the crypt entrance is the reliable landmark."
+    },
+    {
+      "id": "wetlands-goaz-scrolls",
+      "title": "Goaz Scrolls",
+      "zone": "Wetlands",
+      "coords": [
+        33.6,
+        47.9
+      ],
+      "location": "Whelgar's Excavation Site, at the west end near a bridge: the scrolls are tucked into a half-buried pot.",
+      "faction": "both",
+      "level": 22,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=209848"
+      ]
+    },
+    {
+      "id": "silverpine-dalaran-digest",
+      "title": "The Dalaran Digest, Vol. 23",
+      "zone": "Silverpine Forest",
+      "coords": [
+        63.5,
+        63.1
+      ],
+      "location": "In the big town hall in Ambermill: main room, small bookshelf in the back-left corner as you come in.",
+      "faction": "both",
+      "level": 20,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=209844"
+      ],
+      "note": "Horde zone with level 17–18 mobs in the hall; Method says the Ambermill mages are neutral to Alliance players."
+    },
+    {
+      "id": "silverpine-ataeric-arcane-curiosities",
+      "title": "Ataeric: On Arcane Curiosities",
+      "zone": "Silverpine Forest",
+      "coords": [
+        43.4,
+        41.2
+      ],
+      "location": "Bottom floor of the main building at The Sepulcher (Horde town), on a shelf next to the armorer; it shows as \"Arcane Secrets\".",
+      "faction": "horde",
+      "level": 12,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.wowhead.com/forever/item=210177"
+      ],
+      "note": "Only Warcraft Tavern lists this one."
+    },
+    {
+      "id": "tirisfal-apothecarys-primer",
+      "title": "The Apothecary's Metaphysical Primer",
+      "zone": "Tirisfal Glades",
+      "coords": [
+        59.5,
+        52.3
+      ],
+      "location": "In the alchemy shop in Brill (small house at the west end of town, next to the stables), on a little shelf.",
+      "faction": "horde",
+      "level": 5,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=208185"
+      ]
+    },
+    {
+      "id": "orgrimmar-lessons-of-tazo",
+      "title": "The Lessons of Ta'zo",
+      "zone": "Orgrimmar",
+      "coords": [
+        38.5,
+        78.2
+      ],
+      "location": "Click the painted stone (\"Mural of Ta'zo\") near the mage trainer building in the Valley of Spirits.",
+      "faction": "horde",
+      "level": 1,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=207972"
+      ]
+    },
+    {
+      "id": "darkshore-narthalas-almanac",
+      "title": "Nar'thalas Almanac, Vol. 74",
+      "zone": "Darkshore",
+      "coords": [
+        59.6,
+        22.2
+      ],
+      "location": "Ruins of Mathystra (north-east Darkshore): go down the stairs in the central ruin; the scrolls lean against a wall on a landing, above the water.",
+      "faction": "alliance",
+      "level": 20,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=209843"
+      ],
+      "note": "Level 19–21 naga around the ruins. The new Stormwind–Auberdine boat makes Darkshore easy to reach."
+    },
+    {
+      "id": "barrens-arcanic-systems-manual",
+      "title": "Arcanic Systems Manual",
+      "zone": "The Barrens",
+      "coords": [
+        56.3,
+        8.8
+      ],
+      "location": "Sludge Fen (north-east Barrens): climb the oil rig in the pond; the manual is on a chair in the control room behind Supervisor Lugwizzle.",
+      "faction": "both",
+      "level": 18,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=209847"
+      ],
+      "note": "Horde zone – Alliance players come in from Ashenvale or Ratchet. Do all three Barrens books in one trip."
+    },
+    {
+      "id": "barrens-baxtan-destructive-magics",
+      "title": "Baxtan: On Destructive Magics",
+      "zone": "The Barrens",
+      "coords": [
+        62.7,
+        36.3
+      ],
+      "location": "Upstairs in the goblin engineering shop in Ratchet (near the flight master), on a table between Gagsprocket and Gazlowe.",
+      "faction": "both",
+      "level": 10,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=208800"
+      ],
+      "note": "Ratchet is a neutral town, safe for Alliance."
+    },
+    {
+      "id": "barrens-secrets-of-the-dreamers",
+      "title": "Secrets of the Dreamers",
+      "zone": "The Barrens",
+      "coords": [
+        46.0,
+        36.4
+      ],
+      "location": "Inside the Cavern of Mists (the cave that leads to Wailing Caverns) at the Lushwater Oasis: on the ground next to a double rock column. Don't enter the dungeon itself.",
+      "faction": "both",
+      "level": 18,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=209846"
+      ],
+      "note": "The waypoint is the cave entrance; once inside the cave map the book is at 52.8, 54.7."
+    },
+    {
+      "id": "stonetalon-fury-of-the-land",
+      "title": "Fury of the Land",
+      "zone": "Stonetalon Mountains",
+      "coords": [
+        74.4,
+        85.7
+      ],
+      "location": "Grimtotem Post (south-east Stonetalon): inside the smaller hut, scrolls on top of some barrels.",
+      "faction": "both",
+      "level": 18,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=209851"
+      ],
+      "note": "Level 16–18 Grimtotem nearby. Pairs well with the Cozy Sleeping Bag step near Sun Rock Retreat."
+    },
+    {
+      "id": "thousand-needles-geomancy",
+      "title": "Geomancy: The Stone-Cold Truth",
+      "zone": "Thousand Needles",
+      "coords": [
+        34.0,
+        40.0
+      ],
+      "location": "In the largest hut on top of Darkcloud Pinnacle; the path up starts near 31.0, 37.0 and crosses rope bridges.",
+      "faction": "both",
+      "level": 28,
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=215683"
+      ],
+      "note": "One level-28 guard in the hut. Method gives 34.4, 40.0."
+    },
+    {
+      "id": "alterac-defensive-magics-101",
+      "title": "Defensive Magics 101",
+      "zone": "Alterac Mountains",
+      "coords": [
+        48.5,
+        57.6
+      ],
+      "location": "Inside the first tower of the ogre fortress at the crossroads (from the Strahnbrad or Tarren Mill side); look for a \"Manual\".",
+      "faction": "both",
+      "level": 38,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=215815"
+      ],
+      "note": "A level-40 ogre guards the room. Method gives 48.4, 57.5."
+    },
+    {
+      "id": "arathi-web-of-lies",
+      "title": "A Web of Lies: Debunking Myths and Legends",
+      "zone": "Arathi Highlands",
+      "coords": [
+        73.0,
+        65.0
+      ],
+      "location": "Witherbark Village (east Arathi): scrolls just outside a tent on the east side, near the mountain.",
+      "faction": "both",
+      "level": 35,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=215816"
+      ],
+      "note": "Method gives 73.6, 65.2 and suggests looting it from inside the tent to avoid pulling the trolls."
+    },
+    {
+      "id": "desolace-demons-and-you",
+      "title": "Demons and You",
+      "zone": "Desolace",
+      "coords": [
+        55.0,
+        28.0
+      ],
+      "location": "Thunder Axe Fortress: on a bench inside the large building (it shows as \"Mysterious Book\").",
+      "faction": "both",
+      "level": 35,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=215817"
+      ],
+      "note": "Method gives 55.1, 26.2."
+    },
+    {
+      "id": "stv-basilisks",
+      "title": "Basilisks: Should Petrification be Feared?",
+      "zone": "Stranglethorn Vale",
+      "coords": [
+        41.5,
+        50.8
+      ],
+      "location": "Research notes on a table just outside a basilisk cave, on the right; the path to it starts near 37.1, 48.8.",
+      "faction": "both",
+      "level": 35,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=213165"
+      ]
+    },
+    {
+      "id": "badlands-mummies",
+      "title": "Mummies: A Guide to the Unsavory Undead",
+      "zone": "Badlands",
+      "coords": [
+        57.0,
+        39.0
+      ],
+      "location": "In the crypt on the south side of the butte, next to two bodies; climb past the dwarf camp – the path starts near 56.0, 45.0.",
+      "faction": "both",
+      "level": 40,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=215820"
+      ],
+      "note": "Method gives 56.7, 39.7."
+    },
+    {
+      "id": "dustwallow-rwlrwlrwlrwl",
+      "title": "RwlRwlRwlRwl!",
+      "zone": "Dustwallow Marsh",
+      "coords": [
+        57.0,
+        21.0
+      ],
+      "location": "A \"Waterlogged Book\" on the ground on the east side of the murloc camp, by the furnace.",
+      "faction": "both",
+      "level": 38,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=215822"
+      ]
+    },
+    {
+      "id": "swamp-luddites-guide",
+      "title": "A Luddite's Guide to Caring for Your Demonic Pet",
+      "zone": "Swamp of Sorrows",
+      "coords": [
+        61.0,
+        22.0
+      ],
+      "location": "In a cage at Fallow Sanctuary: take a Rusted Cage Key from the Lost Ones, or just loot the book through the bars.",
+      "faction": "both",
+      "level": 38,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.wowhead.com/forever/item=215824"
+      ],
+      "note": "Only Warcraft Tavern lists this one (spelled \"Ludite's\" there)."
+    },
+    {
+      "id": "swamp-sanguine-sorcery",
+      "title": "Sanguine Sorcery",
+      "zone": "Swamp of Sorrows",
+      "coords": [
+        70.0,
+        51.0
+      ],
+      "location": "On the top level of the Temple of Atal'Hakkar (the Sunken Temple building in the swamp), on the back side – outside the dungeon.",
+      "faction": "both",
+      "level": 45,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=220345"
+      ],
+      "note": "Method gives 70.2, 51.9."
+    },
+    {
+      "id": "feralas-liminal-and-arcane",
+      "title": "The Liminal and the Arcane",
+      "zone": "Feralas",
+      "coords": [
+        50.6,
+        15.7
+      ],
+      "location": "Inside \"the Nightmare\" area in northern Feralas (the only hint Warcraft Tavern gives).",
+      "faction": "both",
+      "level": 45,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.wowhead.com/forever/item=220347"
+      ],
+      "note": "Only one guide lists it and the position comes from Season of Discovery – it may have moved."
+    },
+    {
+      "id": "tanaris-legends-of-the-tidesages",
+      "title": "Legends of the Tidesages",
+      "zone": "Tanaris",
+      "coords": [
+        72.7,
+        47.8
+      ],
+      "location": "Lost Rigger Cove (pirate camp, east Tanaris): on a bookshelf in the middle of the three main buildings.",
+      "faction": "both",
+      "level": 45,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=220346"
+      ]
+    },
+    {
+      "id": "hinterlands-venomous-journeys",
+      "title": "Venomous Journeys",
+      "zone": "The Hinterlands",
+      "coords": [
+        36.0,
+        72.7
+      ],
+      "location": "Inside a half-circle wall at the first troll pyramid on the left as you enter the area; one troll stands on top.",
+      "faction": "both",
+      "level": 45,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=220350"
+      ],
+      "note": "Method: you can pull the troll from the pyramid, drop down by the wall and loot the book through it."
+    },
+    {
+      "id": "searing-gorge-mind-of-metal",
+      "title": "A Mind of Metal",
+      "zone": "Searing Gorge",
+      "coords": [
+        37.0,
+        49.0
+      ],
+      "location": "Inside a tent with a Dark Iron dwarf standing next to it.",
+      "faction": "both",
+      "level": 47,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=220352"
+      ],
+      "note": "Method gives 38.1, 49.8."
+    },
+    {
+      "id": "blasted-lands-conjurers-codex",
+      "title": "Conjurer's Codex",
+      "zone": "Blasted Lands",
+      "coords": [
+        55.3,
+        32.2
+      ],
+      "location": "Warcraft Tavern gives only the coordinates – look for a sparkling book there.",
+      "faction": "both",
+      "level": 50,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.wowhead.com/forever/item=220353"
+      ],
+      "note": "Only Warcraft Tavern lists this one."
+    },
+    {
+      "id": "azshara-everyday-etiquette",
+      "title": "Everyday Etiquette",
+      "zone": "Azshara",
+      "coords": [
+        20.0,
+        61.0
+      ],
+      "location": "Heldarr Encampment, north of the flight path: on top of a crate beside the hut.",
+      "faction": "both",
+      "level": 50,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=220348"
+      ],
+      "note": "Method gives 20.4, 62.3."
+    },
+    {
+      "id": "felwood-northern-kalimdor",
+      "title": "Northern Kalimdor - A Comprehensive Guide",
+      "zone": "Felwood",
+      "coords": [
+        65.2,
+        3.2
+      ],
+      "location": "Inside Timbermaw Hold (the tunnel at the very top of Felwood), just left of the bridge about halfway through.",
+      "faction": "both",
+      "level": 50,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=228134"
+      ]
+    },
+    {
+      "id": "burning-steppes-magma-or-lava",
+      "title": "Magma or Lava?",
+      "zone": "Burning Steppes",
+      "coords": [
+        31.1,
+        30.1
+      ],
+      "location": "Inside Blackrock Mountain: past Lothos Riftwaker (the Molten Core attunement NPC) and before the Blackrock Depths mobs – you don't need to enter the instance.",
+      "faction": "both",
+      "level": 52,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=228133"
+      ],
+      "note": "The waypoint (Method) points at Blackrock Mountain on the Burning Steppes map; the book itself is inside the mountain."
+    },
+    {
+      "id": "blackrock-stonewrought-design",
+      "title": "Stonewrought Design",
+      "zone": "Burning Steppes",
+      "coords": [
+        31.1,
+        30.1
+      ],
+      "location": "Inside Blackrock Mountain, on the altar/tomb of Franclorn Forgewright (the ghost who starts the Shadowforge Key quest), near the summoning stone.",
+      "faction": "both",
+      "level": 52,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=220349",
+        "https://www.wowhead.com/forever/npc=8888"
+      ],
+      "note": "Method says it is outside the instance next to Franclorn; Warcraft Tavern files it under Blackrock Depths. Wowhead puts Franclorn at about 29, 29 on the Burning Steppes map."
+    },
+    {
+      "id": "wpl-necromancy-101",
+      "title": "Necromancy 101",
+      "zone": "Western Plaguelands",
+      "coords": [
+        69.2,
+        72.3
+      ],
+      "location": "In the castle on Caer Darrow: go in, turn right (don't take the Scholomance portal) and climb the ladders; the book is on a table upstairs.",
+      "faction": "both",
+      "level": 55,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=228141"
+      ],
+      "note": "Method gives 69.2, 72.3; Warcraft Tavern lists 52.7, 26.3 instead."
+    },
+    {
+      "id": "wpl-undead-potatoes",
+      "title": "Undead Potatoes",
+      "zone": "Western Plaguelands",
+      "coords": [
+        38.0,
+        54.0
+      ],
+      "location": "Felstone Field: on a table on the second floor of the house next to the barn (one mob guards it).",
+      "faction": "both",
+      "level": 52,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=228132"
+      ],
+      "note": "Method gives 38.3, 54.6."
+    },
+    {
+      "id": "epl-study-of-the-light",
+      "title": "A Study of the Light",
+      "zone": "Eastern Plaguelands",
+      "coords": [
+        81.5,
+        58.0
+      ],
+      "location": "Inside Light's Hope Chapel, at the back on the left.",
+      "faction": "both",
+      "level": 55,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=228135",
+        "https://www.wowhead.com/forever/npc=11034"
+      ],
+      "note": "Both guides say Light's Hope Chapel but give coordinates that don't match it (73.0, 65.0 and 71.8, 48.2). This waypoint is the chapel itself (Wowhead's Forever position of Lord Maxwell Tyrosus, who stands inside)."
+    },
+    {
+      "id": "epl-scourge-undead-menace",
+      "title": "Scourge: Undead Menace or Misunderstood?",
+      "zone": "Eastern Plaguelands",
+      "coords": [
+        26.6,
+        14.5
+      ],
+      "location": "On a table on the zone side of the bridge to the Stratholme entrance, on the right.",
+      "faction": "both",
+      "level": 55,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=228140"
+      ],
+      "note": "Method gives 26.6, 14.5; Warcraft Tavern 31.3, 21.0."
+    },
+    {
+      "id": "epl-knight-and-the-lady",
+      "title": "The Knight and the Lady",
+      "zone": "Eastern Plaguelands",
+      "coords": [
+        47.3,
+        42.3
+      ],
+      "location": "In a burnt-down house by the small lake in the middle of the zone.",
+      "faction": "both",
+      "level": 55,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=228138"
+      ],
+      "note": "Method gives 47.3, 42.3; Warcraft Tavern 55.0, 51.0. Bats patrol nearby."
+    },
+    {
+      "id": "winterspring-ka-boom",
+      "title": "Ka-Boom!",
+      "zone": "Winterspring",
+      "coords": [
+        61.0,
+        38.0
+      ],
+      "location": "In Everlook, on a shelf behind the alchemy supplies vendor.",
+      "faction": "both",
+      "level": 55,
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/item=228136"
+      ],
+      "note": "Method gives 60.4, 37.4."
+    }
+  ]
+}

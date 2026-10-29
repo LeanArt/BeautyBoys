@@ -1,0 +1,2982 @@
+{
+  "updated": "2026-10-29",
+  "items": [
+    {
+      "id": "water-refreshing-spring-water",
+      "name": "Refreshing Spring Water",
+      "wh": {
+        "type": "item",
+        "id": 159
+      },
+      "action": "buy",
+      "category": "consumable",
+      "level": [
+        1,
+        4
+      ],
+      "why": "Your first drink (no level needed). Warlocks rarely drink because Life Tap turns health into mana, so 5–10 bottles is plenty for the first levels.",
+      "where": [
+        {
+          "npc": "Kreg Bilmn",
+          "wh": {
+            "type": "npc",
+            "id": 1691
+          },
+          "zone": "Dun Morogh",
+          "hub": "Kharanos (Thunderbrew Distillery)",
+          "coords": [
+            47.2,
+            52.4
+          ],
+          "price": "25c for 5"
+        },
+        {
+          "npc": "Emrul Riknussun",
+          "wh": {
+            "type": "npc",
+            "id": 5160
+          },
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "coords": [
+            60.0,
+            37.6
+          ],
+          "price": "25c for 5"
+        },
+        {
+          "npc": "Brog Hamfist",
+          "wh": {
+            "type": "npc",
+            "id": 151
+          },
+          "zone": "Elwynn Forest",
+          "hub": "Goldshire (Lion's Pride Inn)",
+          "coords": [
+            43.9,
+            66.0
+          ],
+          "price": "25c for 5"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/npc/kreg-bilmn",
+        "https://www.wow-professions.com/forever/npc/emrul-riknussun",
+        "https://www.wow-professions.com/forever/npc/brog-hamfist",
+        "https://www.wowhead.com/forever/item=159",
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+      ]
+    },
+    {
+      "id": "water-ice-cold-milk",
+      "name": "Ice Cold Milk",
+      "wh": {
+        "type": "item",
+        "id": 1179
+      },
+      "action": "buy",
+      "category": "consumable",
+      "level": [
+        5,
+        14
+      ],
+      "why": "Next drink tier (needs level 5, about 3x the mana). The Kharanos and Ironforge supply vendors only list the level-1 water in the beta data, so stock up in Thelsamar or Lakeshire.",
+      "where": [
+        {
+          "npc": "Yanni Stoutheart",
+          "wh": {
+            "type": "npc",
+            "id": 1682
+          },
+          "zone": "Loch Modan",
+          "hub": "Thelsamar (Stoutlager Inn)",
+          "coords": [
+            34.8,
+            48.6
+          ],
+          "price": "1s 25c for 5"
+        },
+        {
+          "npc": "Lindsay Ashlock",
+          "wh": {
+            "type": "npc",
+            "id": 791
+          },
+          "zone": "Redridge Mountains",
+          "hub": "Lakeshire",
+          "coords": [
+            23.7,
+            47.4
+          ],
+          "price": "1s 25c for 5"
+        },
+        {
+          "npc": "Neal Allen",
+          "wh": {
+            "type": "npc",
+            "id": 1448
+          },
+          "zone": "Wetlands",
+          "hub": "Menethil Harbor (Menethil Keep)",
+          "coords": [
+            10.7,
+            56.7
+          ],
+          "price": "1s 25c for 5"
+        },
+        {
+          "npc": "Thurman Mullby",
+          "wh": {
+            "type": "npc",
+            "id": 1285
+          },
+          "zone": "Stormwind City",
+          "hub": "Trade District",
+          "coords": [
+            64.7,
+            72.0
+          ],
+          "price": "1s 25c for 5"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/npc/yanni-stoutheart",
+        "https://www.wow-professions.com/forever/npc/lindsay-ashlock",
+        "https://www.wow-professions.com/forever/npc/neal-allen",
+        "https://www.wow-professions.com/forever/npc/thurman-mullby",
+        "https://www.wowhead.com/forever/item=1179"
+      ]
+    },
+    {
+      "id": "water-melon-juice",
+      "name": "Melon Juice",
+      "wh": {
+        "type": "item",
+        "id": 1205
+      },
+      "action": "buy",
+      "category": "consumable",
+      "level": [
+        15,
+        24
+      ],
+      "why": "Drink for levels 15–24 (needs level 15). Buy a stack only if you often end fights low on both health and mana.",
+      "where": [
+        {
+          "npc": "Lindsay Ashlock",
+          "wh": {
+            "type": "npc",
+            "id": 791
+          },
+          "zone": "Redridge Mountains",
+          "hub": "Lakeshire",
+          "coords": [
+            23.7,
+            47.4
+          ],
+          "price": "5s for 5"
+        },
+        {
+          "npc": "Neal Allen",
+          "wh": {
+            "type": "npc",
+            "id": 1448
+          },
+          "zone": "Wetlands",
+          "hub": "Menethil Harbor (Menethil Keep)",
+          "coords": [
+            10.7,
+            56.7
+          ],
+          "price": "5s for 5"
+        },
+        {
+          "npc": "Thurman Mullby",
+          "wh": {
+            "type": "npc",
+            "id": 1285
+          },
+          "zone": "Stormwind City",
+          "hub": "Trade District",
+          "coords": [
+            64.7,
+            72.0
+          ],
+          "price": "5s for 5"
+        },
+        {
+          "npc": "Ben Trias",
+          "zone": "Stormwind City",
+          "coords": [
+            66.4,
+            73.5
+          ],
+          "price": "5s for 5"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/npc/lindsay-ashlock",
+        "https://www.wow-professions.com/forever/npc/neal-allen",
+        "https://www.wow-professions.com/forever/npc/thurman-mullby",
+        "https://www.wow-professions.com/forever/npc/ben-trias",
+        "https://www.wowhead.com/forever/item=1205"
+      ]
+    },
+    {
+      "id": "water-sweet-nectar",
+      "name": "Sweet Nectar",
+      "wh": {
+        "type": "item",
+        "id": 1708
+      },
+      "action": "buy",
+      "category": "consumable",
+      "level": [
+        25,
+        34
+      ],
+      "why": "Drink for levels 25–34 (needs level 25). Lakeshire and Menethil stop at Melon Juice in the beta data, so buy it in Stormwind, Southshore or Powderfuse Port.",
+      "where": [
+        {
+          "npc": "Thurman Mullby",
+          "wh": {
+            "type": "npc",
+            "id": 1285
+          },
+          "zone": "Stormwind City",
+          "hub": "Trade District",
+          "coords": [
+            64.7,
+            72.0
+          ],
+          "price": "10s for 5"
+        },
+        {
+          "npc": "Sarah Raycroft",
+          "zone": "Hillsbrad Foothills",
+          "hub": "Southshore",
+          "coords": [
+            49.1,
+            55.1
+          ],
+          "price": "10s for 5"
+        },
+        {
+          "npc": "Grizzek",
+          "zone": "Riverglades",
+          "hub": "Powderfuse Port",
+          "coords": [
+            76.6,
+            53.2
+          ],
+          "price": "10s for 5"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/npc/thurman-mullby",
+        "https://www.wow-professions.com/forever/npc/sarah-raycroft",
+        "https://www.wow-professions.com/forever/npc/grizzek",
+        "https://www.wowhead.com/forever/item=1708"
+      ]
+    },
+    {
+      "id": "water-moonberry-juice",
+      "name": "Moonberry Juice",
+      "wh": {
+        "type": "item",
+        "id": 1645
+      },
+      "action": "buy",
+      "category": "consumable",
+      "level": [
+        35,
+        44
+      ],
+      "why": "Drink for levels 35–44 (needs level 35). Powderfuse Port is on the 35–45 Riverglades route.",
+      "where": [
+        {
+          "npc": "Grizzek",
+          "zone": "Riverglades",
+          "hub": "Powderfuse Port",
+          "coords": [
+            76.6,
+            53.2
+          ],
+          "price": "20s for 5"
+        },
+        {
+          "npc": "Thurman Mullby",
+          "wh": {
+            "type": "npc",
+            "id": 1285
+          },
+          "zone": "Stormwind City",
+          "hub": "Trade District",
+          "coords": [
+            64.7,
+            72.0
+          ],
+          "price": "20s for 5"
+        },
+        {
+          "npc": "Dirge Quikcleave",
+          "wh": {
+            "type": "npc",
+            "id": 8125
+          },
+          "zone": "Tanaris",
+          "hub": "Gadgetzan",
+          "coords": [
+            52.6,
+            28.1
+          ],
+          "price": "20s for 5"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/npc/grizzek",
+        "https://www.wow-professions.com/forever/npc/thurman-mullby",
+        "https://www.wow-professions.com/forever/npc/dirge-quikcleave",
+        "https://www.wowhead.com/forever/item=1645"
+      ]
+    },
+    {
+      "id": "water-morning-glory-dew",
+      "name": "Morning Glory Dew",
+      "wh": {
+        "type": "item",
+        "id": 8766
+      },
+      "action": "buy",
+      "category": "consumable",
+      "level": [
+        45,
+        60
+      ],
+      "why": "Best vendor drink (needs level 45). Nobody could test levels above 30 in the beta, so this is vendor data only.",
+      "where": [
+        {
+          "npc": "Dirge Quikcleave",
+          "wh": {
+            "type": "npc",
+            "id": 8125
+          },
+          "zone": "Tanaris",
+          "hub": "Gadgetzan",
+          "coords": [
+            52.6,
+            28.1
+          ],
+          "price": "40s for 5"
+        },
+        {
+          "npc": "Innkeeper Zizplink",
+          "zone": "Riverglades",
+          "hub": "Powderfuse Port",
+          "coords": [
+            78.7,
+            54.0
+          ],
+          "price": "40s for 5"
+        },
+        {
+          "npc": "Himmik",
+          "wh": {
+            "type": "npc",
+            "id": 11187
+          },
+          "zone": "Winterspring",
+          "hub": "Everlook",
+          "coords": [
+            61.4,
+            39.1
+          ],
+          "price": "40s for 5"
+        },
+        {
+          "npc": "Ben Trias",
+          "zone": "Stormwind City",
+          "coords": [
+            66.4,
+            73.5
+          ],
+          "price": "40s for 5"
+        }
+      ],
+      "confidence": "theory",
+      "sources": [
+        "https://www.wow-professions.com/forever/npc/dirge-quikcleave",
+        "https://www.wow-professions.com/forever/npc/innkeeper-zizplink",
+        "https://www.wow-professions.com/forever/npc/himmik",
+        "https://www.wow-professions.com/forever/npc/ben-trias",
+        "https://www.wowhead.com/forever/item=8766"
+      ]
+    },
+    {
+      "id": "food-shiny-red-apple",
+      "name": "Shiny Red Apple",
+      "wh": {
+        "type": "item",
+        "id": 4536
+      },
+      "action": "buy",
+      "category": "consumable",
+      "level": [
+        1,
+        6
+      ],
+      "why": "Cheap level-1 food to eat back health after a fight. After the first few levels, bandages plus Life Tap or your own cooked food work better.",
+      "where": [
+        {
+          "npc": "Golorn Frostbeard",
+          "wh": {
+            "type": "npc",
+            "id": 1692
+          },
+          "zone": "Dun Morogh",
+          "hub": "Kharanos",
+          "coords": [
+            46.6,
+            53.5
+          ],
+          "price": "25c for 5"
+        },
+        {
+          "npc": "Emrul Riknussun",
+          "wh": {
+            "type": "npc",
+            "id": 5160
+          },
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "coords": [
+            60.0,
+            37.6
+          ],
+          "price": "25c for 5"
+        },
+        {
+          "npc": "Gloria Femmel",
+          "wh": {
+            "type": "npc",
+            "id": 3085
+          },
+          "zone": "Redridge Mountains",
+          "hub": "Lakeshire",
+          "coords": [
+            21.7,
+            43.6
+          ],
+          "price": "25c for 5"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/npc/golorn-frostbeard",
+        "https://www.wow-professions.com/forever/npc/emrul-riknussun",
+        "https://www.wow-professions.com/forever/npc/gloria-femmel",
+        "https://www.wowhead.com/forever/item=4536"
+      ]
+    },
+    {
+      "id": "food-vendor-meat",
+      "name": "Vendor meat (Haunch of Meat to Roasted Quail)",
+      "wh": {
+        "type": "item",
+        "id": 2287
+      },
+      "action": "buy",
+      "category": "consumable",
+      "level": [
+        5,
+        60
+      ],
+      "why": "Bought food by level: Haunch of Meat (5), Mutton Chop (15), Wild Hog Shank (25), Cured Ham Steak (35), Roasted Quail (45). Few Alliance vendors in the Eastern Kingdoms list it in the beta data, so most players use bandages and cooked food instead.",
+      "where": [
+        {
+          "npc": "Ulthaan",
+          "zone": "Ashenvale",
+          "hub": "Silverwind Refuge",
+          "coords": [
+            50.0,
+            66.7
+          ],
+          "price": "1s 25c for 5 (Haunch)"
+        },
+        {
+          "npc": "Dirge Quikcleave",
+          "wh": {
+            "type": "npc",
+            "id": 8125
+          },
+          "zone": "Tanaris",
+          "hub": "Gadgetzan",
+          "coords": [
+            52.6,
+            28.1
+          ]
+        },
+        {
+          "npc": "Innkeeper Zizplink",
+          "zone": "Riverglades",
+          "hub": "Powderfuse Port",
+          "coords": [
+            78.7,
+            54.0
+          ]
+        },
+        {
+          "npc": "Himmik",
+          "wh": {
+            "type": "npc",
+            "id": 11187
+          },
+          "zone": "Winterspring",
+          "hub": "Everlook",
+          "coords": [
+            61.4,
+            39.1
+          ]
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/npc/ulthaan",
+        "https://www.wow-professions.com/forever/npc/dirge-quikcleave",
+        "https://www.wow-professions.com/forever/npc/innkeeper-zizplink",
+        "https://www.wow-professions.com/forever/npc/himmik",
+        "https://www.wowhead.com/forever/item=2287",
+        "https://www.wowhead.com/forever/item=3770",
+        "https://www.wowhead.com/forever/item=8952"
+      ]
+    },
+    {
+      "id": "use-well-fed-food",
+      "name": "Cooked food (Well Fed)",
+      "action": "use",
+      "category": "consumable",
+      "level": [
+        1,
+        60
+      ],
+      "why": "Eat any cooked food that gives Well Fed: in Forever it adds about 5% kill XP for a while (lost if you die). Level Cooking as you go and keep a stack.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+        "https://www.warcrafttavern.com/forever/guides/experience/"
+      ]
+    },
+    {
+      "id": "use-bandages",
+      "name": "Linen Bandage (First Aid)",
+      "wh": {
+        "type": "item",
+        "id": 1251
+      },
+      "action": "use",
+      "category": "consumable",
+      "level": [
+        1,
+        30
+      ],
+      "why": "First Aid doesn't use a profession slot. Bandage between pulls or while a mob is Feared, then Life Tap that health into mana. Wool Bandages take over at First Aid 50.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+        "https://www.wow-professions.com/forever/first-aid-leveling-guide",
+        "https://www.wowhead.com/forever/item=1251",
+        "https://www.wowhead.com/forever/item=3530"
+      ]
+    },
+    {
+      "id": "keep-healing-potions",
+      "name": "Minor Healing Potion",
+      "wh": {
+        "type": "item",
+        "id": 118
+      },
+      "action": "keep",
+      "category": "consumable",
+      "level": [
+        5,
+        30
+      ],
+      "why": "Keep 3–5 for emergencies; they have their own cooldown, separate from your Healthstone. In Forever, First Aid (not Alchemy) makes them from Peacebloom, Mild Spices and an Empty Vial.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/first-aid-leveling-guide",
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+        "https://www.wowhead.com/forever/item=118"
+      ]
+    },
+    {
+      "id": "bag-small-brown-pouch",
+      "name": "Small Brown Pouch (6 slots)",
+      "wh": {
+        "type": "item",
+        "id": 4496
+      },
+      "action": "buy",
+      "category": "container",
+      "level": [
+        1,
+        15
+      ],
+      "why": "Cheapest bag you can buy. Fill every empty bag slot early: an empty slot is free space you aren't using.",
+      "where": [
+        {
+          "npc": "Kreg Bilmn",
+          "wh": {
+            "type": "npc",
+            "id": 1691
+          },
+          "zone": "Dun Morogh",
+          "hub": "Kharanos (Thunderbrew Distillery)",
+          "coords": [
+            47.2,
+            52.4
+          ],
+          "price": "5s"
+        },
+        {
+          "npc": "Yanni Stoutheart",
+          "wh": {
+            "type": "npc",
+            "id": 1682
+          },
+          "zone": "Loch Modan",
+          "hub": "Thelsamar (Stoutlager Inn)",
+          "coords": [
+            34.8,
+            48.6
+          ],
+          "price": "5s"
+        },
+        {
+          "npc": "Lindsay Ashlock",
+          "wh": {
+            "type": "npc",
+            "id": 791
+          },
+          "zone": "Redridge Mountains",
+          "hub": "Lakeshire",
+          "coords": [
+            23.7,
+            47.4
+          ],
+          "price": "5s"
+        },
+        {
+          "npc": "Brog Hamfist",
+          "wh": {
+            "type": "npc",
+            "id": 151
+          },
+          "zone": "Elwynn Forest",
+          "hub": "Goldshire (Lion's Pride Inn)",
+          "coords": [
+            43.9,
+            66.0
+          ],
+          "price": "5s"
+        },
+        {
+          "npc": "Thurman Mullby",
+          "wh": {
+            "type": "npc",
+            "id": 1285
+          },
+          "zone": "Stormwind City",
+          "hub": "Trade District",
+          "coords": [
+            64.7,
+            72.0
+          ],
+          "price": "5s"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/npc/kreg-bilmn",
+        "https://www.wow-professions.com/forever/npc/yanni-stoutheart",
+        "https://www.wow-professions.com/forever/npc/lindsay-ashlock",
+        "https://www.wow-professions.com/forever/npc/brog-hamfist",
+        "https://www.wow-professions.com/forever/npc/thurman-mullby",
+        "https://www.wowhead.com/forever/item=4496"
+      ]
+    },
+    {
+      "id": "bag-brown-leather-satchel",
+      "name": "Brown Leather Satchel (8 slots)",
+      "wh": {
+        "type": "item",
+        "id": 4498
+      },
+      "action": "buy",
+      "category": "container",
+      "level": [
+        8,
+        30
+      ],
+      "why": "8-slot vendor bag. Compare with a Tailor's Red Linen Bag (also 8 slots in Forever), which costs less if you have the cloth.",
+      "where": [
+        {
+          "npc": "Kreg Bilmn",
+          "wh": {
+            "type": "npc",
+            "id": 1691
+          },
+          "zone": "Dun Morogh",
+          "hub": "Kharanos (Thunderbrew Distillery)",
+          "coords": [
+            47.2,
+            52.4
+          ],
+          "price": "25s"
+        },
+        {
+          "npc": "Yanni Stoutheart",
+          "wh": {
+            "type": "npc",
+            "id": 1682
+          },
+          "zone": "Loch Modan",
+          "hub": "Thelsamar (Stoutlager Inn)",
+          "coords": [
+            34.8,
+            48.6
+          ],
+          "price": "25s"
+        },
+        {
+          "npc": "Lindsay Ashlock",
+          "wh": {
+            "type": "npc",
+            "id": 791
+          },
+          "zone": "Redridge Mountains",
+          "hub": "Lakeshire",
+          "coords": [
+            23.7,
+            47.4
+          ],
+          "price": "25s"
+        },
+        {
+          "npc": "Neal Allen",
+          "wh": {
+            "type": "npc",
+            "id": 1448
+          },
+          "zone": "Wetlands",
+          "hub": "Menethil Harbor (Menethil Keep)",
+          "coords": [
+            10.7,
+            56.7
+          ],
+          "price": "25s"
+        },
+        {
+          "npc": "Thurman Mullby",
+          "wh": {
+            "type": "npc",
+            "id": 1285
+          },
+          "zone": "Stormwind City",
+          "hub": "Trade District",
+          "coords": [
+            64.7,
+            72.0
+          ],
+          "price": "25s"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/npc/kreg-bilmn",
+        "https://www.wow-professions.com/forever/npc/yanni-stoutheart",
+        "https://www.wow-professions.com/forever/npc/lindsay-ashlock",
+        "https://www.wow-professions.com/forever/npc/neal-allen",
+        "https://www.wow-professions.com/forever/npc/thurman-mullby",
+        "https://www.wowhead.com/forever/item=4498"
+      ]
+    },
+    {
+      "id": "bag-heavy-brown-bag",
+      "name": "Heavy Brown Bag (10 slots)",
+      "wh": {
+        "type": "item",
+        "id": 4497
+      },
+      "action": "buy",
+      "category": "container",
+      "level": [
+        20,
+        45
+      ],
+      "why": "10-slot vendor bag for when you have spare gold. Only some general goods vendors stock it (not the Kharanos or Thelsamar ones).",
+      "where": [
+        {
+          "npc": "Neal Allen",
+          "wh": {
+            "type": "npc",
+            "id": 1448
+          },
+          "zone": "Wetlands",
+          "hub": "Menethil Harbor (Menethil Keep)",
+          "coords": [
+            10.7,
+            56.7
+          ],
+          "price": "2g"
+        },
+        {
+          "npc": "Thurman Mullby",
+          "wh": {
+            "type": "npc",
+            "id": 1285
+          },
+          "zone": "Stormwind City",
+          "hub": "Trade District",
+          "coords": [
+            64.7,
+            72.0
+          ],
+          "price": "2g"
+        },
+        {
+          "npc": "Sarah Raycroft",
+          "zone": "Hillsbrad Foothills",
+          "hub": "Southshore",
+          "coords": [
+            49.1,
+            55.1
+          ],
+          "price": "2g"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/npc/neal-allen",
+        "https://www.wow-professions.com/forever/npc/thurman-mullby",
+        "https://www.wow-professions.com/forever/npc/sarah-raycroft",
+        "https://www.wowhead.com/forever/item=4497"
+      ]
+    },
+    {
+      "id": "bag-red-linen-bag",
+      "name": "Pattern: Red Linen Bag (8-slot bag)",
+      "wh": {
+        "type": "item",
+        "id": 5771
+      },
+      "action": "buy",
+      "category": "container",
+      "level": [
+        10,
+        25
+      ],
+      "why": "With Tailoring 50, this pattern makes an 8-slot bag in Forever (6 in Classic) from 4 Bolts of Linen Cloth, Fine Thread and Red Dye. Make one for every empty slot.",
+      "where": [
+        {
+          "npc": "Gina MacGregor",
+          "wh": {
+            "type": "npc",
+            "id": 843
+          },
+          "zone": "Westfall",
+          "hub": "Sentinel Hill",
+          "coords": [
+            57.6,
+            54.0
+          ],
+          "price": "2s"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/npc/gina-macgregor",
+        "https://www.wowhead.com/forever/item=5771",
+        "https://www.wowhead.com/forever/item=5762"
+      ]
+    },
+    {
+      "id": "bag-linen-reagent-bag",
+      "name": "Pattern: Linen Reagent Bag",
+      "wh": {
+        "type": "item",
+        "id": 253665
+      },
+      "action": "buy",
+      "category": "container",
+      "level": [
+        5,
+        30
+      ],
+      "why": "Tailoring 5 pattern for a 6-slot reagent bag. It goes in your new 5th (reagent) bag slot and holds cloth, dust and other materials, so they stop clogging your normal bags.",
+      "where": [
+        {
+          "npc": "Poranna Snowbraid",
+          "wh": {
+            "type": "npc",
+            "id": 5154
+          },
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "coords": [
+            43.3,
+            28.5
+          ],
+          "price": "1s 50c"
+        },
+        {
+          "npc": "Rann Flamespinner",
+          "wh": {
+            "type": "npc",
+            "id": 1474
+          },
+          "zone": "Loch Modan",
+          "hub": "Thelsamar",
+          "coords": [
+            36.0,
+            46.0
+          ],
+          "price": "1s 50c"
+        },
+        {
+          "npc": "Franklin Hamar",
+          "wh": {
+            "type": "npc",
+            "id": 3091
+          },
+          "zone": "Redridge Mountains",
+          "hub": "Lakeshire",
+          "coords": [
+            22.1,
+            45.4
+          ],
+          "price": "1s 50c"
+        },
+        {
+          "npc": "Jennabink Powerseam",
+          "wh": {
+            "type": "npc",
+            "id": 1454
+          },
+          "zone": "Wetlands",
+          "hub": "Menethil Harbor",
+          "coords": [
+            8.1,
+            55.9
+          ],
+          "price": "1s 50c"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/npc/poranna-snowbraid",
+        "https://www.wow-professions.com/forever/npc/rann-flamespinner",
+        "https://www.wow-professions.com/forever/npc/franklin-hamar",
+        "https://www.wow-professions.com/forever/npc/jennabink-powerseam",
+        "https://www.wowhead.com/forever/item=253665",
+        "https://www.wowhead.com/forever/item=253664",
+        "https://us.forums.blizzard.com/en/wow/t/2394758"
+      ]
+    },
+    {
+      "id": "use-canvas-latchbag",
+      "name": "Canvas Latchbag (free 6-slot bag)",
+      "wh": {
+        "type": "item",
+        "id": 277977
+      },
+      "action": "use",
+      "category": "container",
+      "level": [
+        4,
+        10
+      ],
+      "why": "New Gnome/Dwarf quest \"Grund and Gozwin\" at Anvilmar in Coldridge Valley rewards this 6-slot bag. Do it before you leave the starting area and equip it right away.",
+      "confidence": "community",
+      "sources": [
+        "https://leprestore.com/guides/world-of-warcraft-forever/wow-forever-bag-locations/",
+        "https://www.youtube.com/watch?v=RJrjf2Hqa1M",
+        "https://www.wowhead.com/forever/item=277977"
+      ]
+    },
+    {
+      "id": "use-old-blanchys-feed-pouch",
+      "name": "Old Blanchy's Feed Pouch (8 slots)",
+      "wh": {
+        "type": "item",
+        "id": 1537
+      },
+      "action": "use",
+      "category": "container",
+      "level": [
+        10,
+        20
+      ],
+      "why": "Reward from \"Poor Old Blanchy\" (Verna Furlbrow, as you enter Westfall): an 8-slot bag in Forever. Worth doing if your route passes Westfall.",
+      "confidence": "community",
+      "sources": [
+        "https://leprestore.com/guides/world-of-warcraft-forever/wow-forever-bag-locations/",
+        "https://www.wowhead.com/forever/item=1537"
+      ]
+    },
+    {
+      "id": "use-hunting-satchel",
+      "name": "Hunting Satchel (10 slots)",
+      "wh": {
+        "type": "item",
+        "id": 270017
+      },
+      "action": "use",
+      "category": "container",
+      "level": [
+        15,
+        25
+      ],
+      "why": "A Loch Modan quest that ends at the Farstrider Lodge gives this 10-slot bag on top of its other reward. The quest has an elite step, so bring a friend if you are at the minimum level.",
+      "confidence": "community",
+      "sources": [
+        "https://leprestore.com/guides/world-of-warcraft-forever/wow-forever-bag-locations/",
+        "https://www.wowhead.com/forever/item=270017"
+      ]
+    },
+    {
+      "id": "use-old-toolbox",
+      "name": "Old Toolbox (12 slots)",
+      "wh": {
+        "type": "item",
+        "id": 221498
+      },
+      "action": "use",
+      "category": "container",
+      "level": [
+        14,
+        30
+      ],
+      "why": "The \"Stepping Stones\" step of the Cozy Sleeping Bag chain (Pocket Litter near Sun Rock Retreat, Stonetalon) gives a 12-slot bag – one of the best early bags in the game.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/cozy-sleeping-bag/",
+        "https://leprestore.com/guides/world-of-warcraft-forever/wow-forever-bag-locations/",
+        "https://www.wowhead.com/forever/item=221498"
+      ]
+    },
+    {
+      "id": "use-reagent-bag-slot",
+      "name": "Your 5th bag slot (reagent bag)",
+      "action": "use",
+      "category": "container",
+      "level": [
+        1,
+        60
+      ],
+      "why": "Forever adds a 5th bag slot that only takes reagent bags. Start with a Linen Reagent Bag for cloth and dust; once shards pile up, warlocks can put a soul bag there instead, so shards stop eating normal slots.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/news/changes-to-bags-banks-in-world-of-warcraft-forever/",
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+        "https://us.forums.blizzard.com/en/wow/t/2394758",
+        "https://us.forums.blizzard.com/en/wow/t/2368623"
+      ]
+    },
+    {
+      "id": "use-quest-soul-bag",
+      "name": "Small Soul Pouch / Box of Souls",
+      "wh": {
+        "type": "item",
+        "id": 22243
+      },
+      "action": "use",
+      "category": "container",
+      "level": [
+        20,
+        40
+      ],
+      "why": "Warlock-only soul bags (14 and 16 slots in Forever's item data). In older versions they came from the level 20/30 demon quests (\"The Binding\"); nobody has confirmed where Forever gives them, so equip one in the reagent slot if a quest offers it.",
+      "confidence": "theory",
+      "sources": [
+        "https://www.wowhead.com/forever/item=22243",
+        "https://www.wowhead.com/forever/item=22244",
+        "https://warcraft.wiki.gg/wiki/Small_Soul_Pouch"
+      ]
+    },
+    {
+      "id": "buy-soul-pouch",
+      "name": "Pattern: Soul Pouch (24-slot soul bag)",
+      "wh": {
+        "type": "item",
+        "id": 21358
+      },
+      "action": "buy",
+      "category": "container",
+      "level": [
+        40,
+        60
+      ],
+      "why": "Tailoring 215 pattern for a 24-slot warlock soul bag. It needs 6 Bolts of Runecloth (Runecloth drops from about level 50), so most warlocks make it late. A soul bag holds only shards.",
+      "where": [
+        {
+          "npc": "Stitch Pinwizzle",
+          "zone": "Riverglades",
+          "hub": "Powderfuse Port",
+          "coords": [
+            77.3,
+            51.4
+          ],
+          "price": "1g 20s"
+        },
+        {
+          "npc": "Vizzklick",
+          "zone": "Tanaris",
+          "hub": "Gadgetzan",
+          "coords": [
+            51.0,
+            27.4
+          ],
+          "price": "1g 20s"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/npc/stitch-pinwizzle",
+        "https://www.wow-professions.com/forever/npc/vizzklick",
+        "https://www.wowhead.com/forever/item=21358",
+        "https://www.wowhead.com/forever/item=21340",
+        "https://warcraft.wiki.gg/wiki/Forever_tailoring_patterns"
+      ]
+    },
+    {
+      "id": "bank-your-bank",
+      "name": "Your bank (about 96 slots)",
+      "action": "bank",
+      "category": "container",
+      "level": [
+        1,
+        60
+      ],
+      "why": "Forever's default bank is much bigger (a Blizzard designer said \"96 slots or something like that\"). Mounts and transmog appearances are collections, so they no longer take bag or bank space.",
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/news/changes-to-bags-banks-in-world-of-warcraft-forever/"
+      ]
+    },
+    {
+      "id": "buy-flint-and-tinder",
+      "name": "Flint and Tinder",
+      "wh": {
+        "type": "item",
+        "id": 4471
+      },
+      "action": "buy",
+      "category": "profession",
+      "level": [
+        5,
+        60
+      ],
+      "why": "With Cooking learned, Flint and Tinder plus Simple Wood make a Basic Campfire kit you place from your bags. You only need one Flint and Tinder (it isn't used up), so buy one and keep it.",
+      "where": [
+        {
+          "npc": "Kreg Bilmn",
+          "wh": {
+            "type": "npc",
+            "id": 1691
+          },
+          "zone": "Dun Morogh",
+          "hub": "Kharanos (Thunderbrew Distillery)",
+          "coords": [
+            47.2,
+            52.4
+          ],
+          "price": "1s 35c"
+        },
+        {
+          "npc": "Emrul Riknussun",
+          "wh": {
+            "type": "npc",
+            "id": 5160
+          },
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "coords": [
+            60.0,
+            37.6
+          ],
+          "price": "1s 35c"
+        },
+        {
+          "npc": "Yanni Stoutheart",
+          "wh": {
+            "type": "npc",
+            "id": 1682
+          },
+          "zone": "Loch Modan",
+          "hub": "Thelsamar (Stoutlager Inn)",
+          "coords": [
+            34.8,
+            48.6
+          ],
+          "price": "1s 35c"
+        },
+        {
+          "npc": "Gloria Femmel",
+          "wh": {
+            "type": "npc",
+            "id": 3085
+          },
+          "zone": "Redridge Mountains",
+          "hub": "Lakeshire",
+          "coords": [
+            21.7,
+            43.6
+          ],
+          "price": "1s 35c"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/cooking-leveling-guide",
+        "https://www.warcrafttavern.com/forever/guides/camping/",
+        "https://www.wow-professions.com/forever/npc/kreg-bilmn",
+        "https://www.wow-professions.com/forever/npc/emrul-riknussun",
+        "https://www.wow-professions.com/forever/npc/yanni-stoutheart",
+        "https://www.wow-professions.com/forever/npc/gloria-femmel"
+      ]
+    },
+    {
+      "id": "buy-simple-wood",
+      "name": "Simple Wood",
+      "wh": {
+        "type": "item",
+        "id": 4470
+      },
+      "action": "buy",
+      "category": "profession",
+      "level": [
+        5,
+        60
+      ],
+      "why": "The wood for Basic Campfire kits. Carry a few kits so you can camp (Cooking, Tailoring Spirit banner and other profession buffs) anywhere.",
+      "where": [
+        {
+          "npc": "Kreg Bilmn",
+          "wh": {
+            "type": "npc",
+            "id": 1691
+          },
+          "zone": "Dun Morogh",
+          "hub": "Kharanos (Thunderbrew Distillery)",
+          "coords": [
+            47.2,
+            52.4
+          ],
+          "price": "38c"
+        },
+        {
+          "npc": "Emrul Riknussun",
+          "wh": {
+            "type": "npc",
+            "id": 5160
+          },
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "coords": [
+            60.0,
+            37.6
+          ],
+          "price": "38c"
+        },
+        {
+          "npc": "Tilli Thistlefuzz",
+          "wh": {
+            "type": "npc",
+            "id": 5158
+          },
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "coords": [
+            60.8,
+            44.1
+          ],
+          "price": "38c"
+        },
+        {
+          "npc": "Yanni Stoutheart",
+          "wh": {
+            "type": "npc",
+            "id": 1682
+          },
+          "zone": "Loch Modan",
+          "hub": "Thelsamar (Stoutlager Inn)",
+          "coords": [
+            34.8,
+            48.6
+          ],
+          "price": "38c"
+        },
+        {
+          "npc": "Gloria Femmel",
+          "wh": {
+            "type": "npc",
+            "id": 3085
+          },
+          "zone": "Redridge Mountains",
+          "hub": "Lakeshire",
+          "coords": [
+            21.7,
+            43.6
+          ],
+          "price": "38c"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/cooking-leveling-guide",
+        "https://www.warcrafttavern.com/forever/guides/camping/",
+        "https://www.wow-professions.com/forever/npc/kreg-bilmn",
+        "https://www.wow-professions.com/forever/npc/emrul-riknussun",
+        "https://www.wow-professions.com/forever/npc/tilli-thistlefuzz",
+        "https://www.wow-professions.com/forever/npc/yanni-stoutheart",
+        "https://www.wow-professions.com/forever/npc/gloria-femmel"
+      ]
+    },
+    {
+      "id": "buy-star-wood-thick-logs",
+      "name": "Star Wood / Thick Logs (bigger campfires)",
+      "wh": {
+        "type": "item",
+        "id": 11291
+      },
+      "action": "buy",
+      "category": "profession",
+      "level": [
+        30,
+        60
+      ],
+      "why": "Bigger campfires hold more camp objects: the Journeyman fire (Cooking 140) uses Star Wood (45s), the Expert fire (Cooking 220) uses Thick Logs (20g each). Only buy them once your Cooking is high enough.",
+      "where": [
+        {
+          "npc": "Emrul Riknussun",
+          "wh": {
+            "type": "npc",
+            "id": 5160
+          },
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "coords": [
+            60.0,
+            37.6
+          ],
+          "price": "45s / 20g"
+        },
+        {
+          "npc": "Gloria Femmel",
+          "wh": {
+            "type": "npc",
+            "id": 3085
+          },
+          "zone": "Redridge Mountains",
+          "hub": "Lakeshire",
+          "coords": [
+            21.7,
+            43.6
+          ],
+          "price": "45s / 20g"
+        },
+        {
+          "npc": "Lindsay Ashlock",
+          "wh": {
+            "type": "npc",
+            "id": 791
+          },
+          "zone": "Redridge Mountains",
+          "hub": "Lakeshire",
+          "coords": [
+            23.7,
+            47.4
+          ],
+          "price": "45s (Star Wood)"
+        },
+        {
+          "npc": "Neal Allen",
+          "wh": {
+            "type": "npc",
+            "id": 1448
+          },
+          "zone": "Wetlands",
+          "hub": "Menethil Harbor (Menethil Keep)",
+          "coords": [
+            10.7,
+            56.7
+          ],
+          "price": "45s (Star Wood)"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/npc/emrul-riknussun",
+        "https://www.wow-professions.com/forever/npc/gloria-femmel",
+        "https://www.wow-professions.com/forever/npc/lindsay-ashlock",
+        "https://www.wow-professions.com/forever/npc/neal-allen",
+        "https://www.warcrafttavern.com/forever/guides/camping/",
+        "https://www.wowhead.com/forever/item=272941"
+      ]
+    },
+    {
+      "id": "buy-coarse-thread",
+      "name": "Coarse Thread",
+      "wh": {
+        "type": "item",
+        "id": 2320
+      },
+      "action": "buy",
+      "category": "profession",
+      "level": [
+        1,
+        20
+      ],
+      "why": "Tailoring 30–55 is about 28 Linen Belts, each needing one Coarse Thread. Golorn in Kharanos sells it, so you don't have to wait for Ironforge.",
+      "where": [
+        {
+          "npc": "Golorn Frostbeard",
+          "wh": {
+            "type": "npc",
+            "id": 1692
+          },
+          "zone": "Dun Morogh",
+          "hub": "Kharanos",
+          "coords": [
+            46.6,
+            53.5
+          ],
+          "price": "10c"
+        },
+        {
+          "npc": "Poranna Snowbraid",
+          "wh": {
+            "type": "npc",
+            "id": 5154
+          },
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "coords": [
+            43.3,
+            28.5
+          ],
+          "price": "10c"
+        },
+        {
+          "npc": "Rann Flamespinner",
+          "wh": {
+            "type": "npc",
+            "id": 1474
+          },
+          "zone": "Loch Modan",
+          "hub": "Thelsamar",
+          "coords": [
+            36.0,
+            46.0
+          ],
+          "price": "10c"
+        },
+        {
+          "npc": "Drac Roughcut",
+          "wh": {
+            "type": "npc",
+            "id": 1465
+          },
+          "zone": "Loch Modan",
+          "hub": "Thelsamar (Stoutlager Inn)",
+          "coords": [
+            35.6,
+            49.0
+          ],
+          "price": "10c"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/tailoring-leveling-guide",
+        "https://www.wow-professions.com/forever/npc/golorn-frostbeard",
+        "https://www.wow-professions.com/forever/npc/poranna-snowbraid",
+        "https://www.wow-professions.com/forever/npc/rann-flamespinner",
+        "https://www.wow-professions.com/forever/npc/drac-roughcut"
+      ]
+    },
+    {
+      "id": "buy-fine-thread",
+      "name": "Fine Thread",
+      "wh": {
+        "type": "item",
+        "id": 2321
+      },
+      "action": "buy",
+      "category": "profession",
+      "level": [
+        10,
+        30
+      ],
+      "why": "Used for Red Linen Bags, Woolen Capes (Tailoring 80–95) and most green cloth crafts in the teens. Buy 20–40 at a time.",
+      "where": [
+        {
+          "npc": "Poranna Snowbraid",
+          "wh": {
+            "type": "npc",
+            "id": 5154
+          },
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "coords": [
+            43.3,
+            28.5
+          ],
+          "price": "1s"
+        },
+        {
+          "npc": "Rann Flamespinner",
+          "wh": {
+            "type": "npc",
+            "id": 1474
+          },
+          "zone": "Loch Modan",
+          "hub": "Thelsamar",
+          "coords": [
+            36.0,
+            46.0
+          ],
+          "price": "1s"
+        },
+        {
+          "npc": "Gina MacGregor",
+          "wh": {
+            "type": "npc",
+            "id": 843
+          },
+          "zone": "Westfall",
+          "hub": "Sentinel Hill",
+          "coords": [
+            57.6,
+            54.0
+          ],
+          "price": "1s"
+        },
+        {
+          "npc": "Franklin Hamar",
+          "wh": {
+            "type": "npc",
+            "id": 3091
+          },
+          "zone": "Redridge Mountains",
+          "hub": "Lakeshire",
+          "coords": [
+            22.1,
+            45.4
+          ],
+          "price": "1s"
+        },
+        {
+          "npc": "Sheri Zipstitch",
+          "wh": {
+            "type": "npc",
+            "id": 2669
+          },
+          "zone": "Duskwood",
+          "hub": "Darkshire",
+          "coords": [
+            75.8,
+            45.5
+          ],
+          "price": "1s"
+        },
+        {
+          "npc": "Jennabink Powerseam",
+          "wh": {
+            "type": "npc",
+            "id": 1454
+          },
+          "zone": "Wetlands",
+          "hub": "Menethil Harbor",
+          "coords": [
+            8.1,
+            55.9
+          ],
+          "price": "1s"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/tailoring-leveling-guide",
+        "https://www.wow-professions.com/forever/npc/poranna-snowbraid",
+        "https://www.wow-professions.com/forever/npc/rann-flamespinner",
+        "https://www.wow-professions.com/forever/npc/gina-macgregor",
+        "https://www.wow-professions.com/forever/npc/franklin-hamar",
+        "https://www.wow-professions.com/forever/npc/sheri-zipstitch",
+        "https://www.wow-professions.com/forever/npc/jennabink-powerseam"
+      ]
+    },
+    {
+      "id": "buy-dyes",
+      "name": "Red Dye (and other dyes)",
+      "wh": {
+        "type": "item",
+        "id": 2604
+      },
+      "action": "buy",
+      "category": "profession",
+      "level": [
+        10,
+        40
+      ],
+      "why": "Red Dye goes into Red Linen Bags and the Crimson Silk crafts (Tailoring 150–190 needs about 90). Other dyes are only needed when a pattern asks for them.",
+      "where": [
+        {
+          "npc": "Golorn Frostbeard",
+          "wh": {
+            "type": "npc",
+            "id": 1692
+          },
+          "zone": "Dun Morogh",
+          "hub": "Kharanos",
+          "coords": [
+            46.6,
+            53.5
+          ],
+          "price": "50c"
+        },
+        {
+          "npc": "Poranna Snowbraid",
+          "wh": {
+            "type": "npc",
+            "id": 5154
+          },
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "coords": [
+            43.3,
+            28.5
+          ],
+          "price": "50c"
+        },
+        {
+          "npc": "Rann Flamespinner",
+          "wh": {
+            "type": "npc",
+            "id": 1474
+          },
+          "zone": "Loch Modan",
+          "hub": "Thelsamar",
+          "coords": [
+            36.0,
+            46.0
+          ],
+          "price": "50c"
+        },
+        {
+          "npc": "Franklin Hamar",
+          "wh": {
+            "type": "npc",
+            "id": 3091
+          },
+          "zone": "Redridge Mountains",
+          "hub": "Lakeshire",
+          "coords": [
+            22.1,
+            45.4
+          ],
+          "price": "50c"
+        },
+        {
+          "npc": "Gina MacGregor",
+          "wh": {
+            "type": "npc",
+            "id": 843
+          },
+          "zone": "Westfall",
+          "hub": "Sentinel Hill",
+          "coords": [
+            57.6,
+            54.0
+          ],
+          "price": "50c"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/tailoring-leveling-guide",
+        "https://www.wow-professions.com/forever/npc/golorn-frostbeard",
+        "https://www.wow-professions.com/forever/npc/poranna-snowbraid",
+        "https://www.wow-professions.com/forever/npc/rann-flamespinner",
+        "https://www.wow-professions.com/forever/npc/franklin-hamar",
+        "https://www.wow-professions.com/forever/npc/gina-macgregor"
+      ]
+    },
+    {
+      "id": "buy-silken-thread",
+      "name": "Silken Thread",
+      "wh": {
+        "type": "item",
+        "id": 4291
+      },
+      "action": "buy",
+      "category": "profession",
+      "level": [
+        25,
+        45
+      ],
+      "why": "Needed for the Crimson Silk Pantaloons (Tailoring 170–190) and Mageweave Bags. Every Tailoring supply vendor sells it.",
+      "where": [
+        {
+          "npc": "Poranna Snowbraid",
+          "wh": {
+            "type": "npc",
+            "id": 5154
+          },
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "coords": [
+            43.3,
+            28.5
+          ],
+          "price": "5s"
+        },
+        {
+          "npc": "Rann Flamespinner",
+          "wh": {
+            "type": "npc",
+            "id": 1474
+          },
+          "zone": "Loch Modan",
+          "hub": "Thelsamar",
+          "coords": [
+            36.0,
+            46.0
+          ],
+          "price": "5s"
+        },
+        {
+          "npc": "Franklin Hamar",
+          "wh": {
+            "type": "npc",
+            "id": 3091
+          },
+          "zone": "Redridge Mountains",
+          "hub": "Lakeshire",
+          "coords": [
+            22.1,
+            45.4
+          ],
+          "price": "5s"
+        },
+        {
+          "npc": "Sheri Zipstitch",
+          "wh": {
+            "type": "npc",
+            "id": 2669
+          },
+          "zone": "Duskwood",
+          "hub": "Darkshire",
+          "coords": [
+            75.8,
+            45.5
+          ],
+          "price": "5s"
+        },
+        {
+          "npc": "Jennabink Powerseam",
+          "wh": {
+            "type": "npc",
+            "id": 1454
+          },
+          "zone": "Wetlands",
+          "hub": "Menethil Harbor",
+          "coords": [
+            8.1,
+            55.9
+          ],
+          "price": "5s"
+        },
+        {
+          "npc": "Edna Mullby",
+          "wh": {
+            "type": "npc",
+            "id": 1286
+          },
+          "zone": "Stormwind City",
+          "hub": "Trade District",
+          "coords": [
+            64.7,
+            71.3
+          ],
+          "price": "5s"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/tailoring-leveling-guide",
+        "https://www.wow-professions.com/forever/npc/poranna-snowbraid",
+        "https://www.wow-professions.com/forever/npc/rann-flamespinner",
+        "https://www.wow-professions.com/forever/npc/franklin-hamar",
+        "https://www.wow-professions.com/forever/npc/sheri-zipstitch",
+        "https://www.wow-professions.com/forever/npc/jennabink-powerseam",
+        "https://www.wow-professions.com/forever/npc/edna-mullby"
+      ]
+    },
+    {
+      "id": "buy-cerulean-dye",
+      "name": "Cerulean Dye (Auction House)",
+      "wh": {
+        "type": "item",
+        "id": 249409
+      },
+      "action": "buy",
+      "category": "profession",
+      "level": [
+        20,
+        30
+      ],
+      "why": "New alchemist-made dye. The Merchant's Favor Shadow Gown pattern needs 6, and they cost about 2g each in the beta. Buy them on the Auction House only when you are ready to craft the gown.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://us.forums.blizzard.com/en/wow/t/2385559",
+        "https://www.wowhead.com/forever/item=249409"
+      ]
+    },
+    {
+      "id": "buy-copper-rod",
+      "name": "Copper Rod",
+      "wh": {
+        "type": "item",
+        "id": 6217
+      },
+      "action": "buy",
+      "category": "profession",
+      "level": [
+        5,
+        15
+      ],
+      "why": "Enchanting's first craft is a Runed Copper Rod (Copper Rod + Mote of Magic), and you need the rod to enchant anything. You only need one; don't buy it on the Auction House.",
+      "where": [
+        {
+          "npc": "Tilli Thistlefuzz",
+          "wh": {
+            "type": "npc",
+            "id": 5158
+          },
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "coords": [
+            60.8,
+            44.1
+          ],
+          "price": "1s 24c"
+        },
+        {
+          "npc": "Golorn Frostbeard",
+          "wh": {
+            "type": "npc",
+            "id": 1692
+          },
+          "zone": "Dun Morogh",
+          "hub": "Kharanos",
+          "coords": [
+            46.6,
+            53.5
+          ],
+          "price": "1s 24c"
+        },
+        {
+          "npc": "Drac Roughcut",
+          "wh": {
+            "type": "npc",
+            "id": 1465
+          },
+          "zone": "Loch Modan",
+          "hub": "Thelsamar (Stoutlager Inn)",
+          "coords": [
+            35.6,
+            49.0
+          ],
+          "price": "1s 24c"
+        },
+        {
+          "npc": "Gina MacGregor",
+          "wh": {
+            "type": "npc",
+            "id": 843
+          },
+          "zone": "Westfall",
+          "hub": "Sentinel Hill",
+          "coords": [
+            57.6,
+            54.0
+          ],
+          "price": "1s 24c"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/enchanting-leveling-guide",
+        "https://www.wow-professions.com/forever/npc/tilli-thistlefuzz",
+        "https://www.wow-professions.com/forever/npc/golorn-frostbeard",
+        "https://www.wow-professions.com/forever/npc/drac-roughcut",
+        "https://www.wow-professions.com/forever/npc/gina-macgregor"
+      ]
+    },
+    {
+      "id": "buy-mote-of-magic",
+      "name": "Mote of Magic",
+      "wh": {
+        "type": "item",
+        "id": 247786
+      },
+      "action": "buy",
+      "category": "profession",
+      "level": [
+        5,
+        20
+      ],
+      "why": "New Forever Enchanting reagent. About 19 take you from skill 1 to 20 (Runed Copper Rod, then Enchant Bracer – Inferior Stamina). Dun Morogh has no Enchanting supply vendor, so buy them next to the trainer in Ironforge.",
+      "where": [
+        {
+          "npc": "Tilli Thistlefuzz",
+          "wh": {
+            "type": "npc",
+            "id": 5158
+          },
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "coords": [
+            60.8,
+            44.1
+          ],
+          "price": "10c"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/enchanting-leveling-guide",
+        "https://www.wow-professions.com/forever/npc/tilli-thistlefuzz",
+        "https://www.wowhead.com/forever/item=247786"
+      ]
+    },
+    {
+      "id": "buy-empty-vial",
+      "name": "Empty Vial + Mild Spices",
+      "wh": {
+        "type": "item",
+        "id": 3371
+      },
+      "action": "buy",
+      "category": "profession",
+      "level": [
+        5,
+        30
+      ],
+      "why": "For First Aid healing potions (Minor Healing Potion = Peacebloom + Mild Spices + Empty Vial). Golorn in Kharanos sells both.",
+      "where": [
+        {
+          "npc": "Golorn Frostbeard",
+          "wh": {
+            "type": "npc",
+            "id": 1692
+          },
+          "zone": "Dun Morogh",
+          "hub": "Kharanos",
+          "coords": [
+            46.6,
+            53.5
+          ],
+          "price": "20c for 5 vials, 10c for 5 spices"
+        },
+        {
+          "npc": "Gwina Stonebranch",
+          "wh": {
+            "type": "npc",
+            "id": 5138
+          },
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "coords": [
+            55.3,
+            59.1
+          ],
+          "price": "20c for 5 vials"
+        },
+        {
+          "npc": "Drac Roughcut",
+          "wh": {
+            "type": "npc",
+            "id": 1465
+          },
+          "zone": "Loch Modan",
+          "hub": "Thelsamar (Stoutlager Inn)",
+          "coords": [
+            35.6,
+            49.0
+          ],
+          "price": "20c for 5 vials"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/first-aid-leveling-guide",
+        "https://www.wow-professions.com/forever/npc/golorn-frostbeard",
+        "https://www.wow-professions.com/forever/npc/gwina-stonebranch",
+        "https://www.wow-professions.com/forever/npc/drac-roughcut"
+      ]
+    },
+    {
+      "id": "buy-leaded-vial",
+      "name": "Leaded Vial",
+      "wh": {
+        "type": "item",
+        "id": 3372
+      },
+      "action": "buy",
+      "category": "profession",
+      "level": [
+        25,
+        45
+      ],
+      "why": "For Enchanting around skill 150–225: Minor Mana Oil and Lesser Wizard Oil both need one per oil. Not needed before then.",
+      "where": [
+        {
+          "npc": "Gwina Stonebranch",
+          "wh": {
+            "type": "npc",
+            "id": 5138
+          },
+          "zone": "Ironforge",
+          "hub": "The Great Forge",
+          "coords": [
+            55.3,
+            59.1
+          ],
+          "price": "2s for 5"
+        },
+        {
+          "npc": "Edna Mullby",
+          "wh": {
+            "type": "npc",
+            "id": 1286
+          },
+          "zone": "Stormwind City",
+          "hub": "Trade District",
+          "coords": [
+            64.7,
+            71.3
+          ],
+          "price": "2s for 5"
+        },
+        {
+          "npc": "Christopher Hewen",
+          "wh": {
+            "type": "npc",
+            "id": 8934
+          },
+          "zone": "Westfall",
+          "hub": "Sentinel Hill",
+          "coords": [
+            52.2,
+            52.9
+          ],
+          "price": "2s for 5"
+        },
+        {
+          "npc": "Kersok Prond",
+          "wh": {
+            "type": "npc",
+            "id": 1456
+          },
+          "zone": "Wetlands",
+          "hub": "Menethil Harbor (Deepwater Tavern)",
+          "coords": [
+            10.4,
+            60.6
+          ],
+          "price": "2s for 5"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/enchanting-leveling-guide",
+        "https://www.wow-professions.com/forever/npc/gwina-stonebranch",
+        "https://www.wow-professions.com/forever/npc/edna-mullby",
+        "https://www.wow-professions.com/forever/npc/christopher-hewen",
+        "https://www.wow-professions.com/forever/npc/kersok-prond"
+      ]
+    },
+    {
+      "id": "use-novices-practice-wand",
+      "name": "Novice's Practice Wand",
+      "wh": {
+        "type": "item",
+        "id": 247789
+      },
+      "action": "use",
+      "category": "gear",
+      "level": [
+        1,
+        5
+      ],
+      "why": "New Enchanting recipe at skill 1 (4 damage per second). Better than hitting things with your staff until you can use a Lesser Magic Wand at level 5.",
+      "confidence": "community",
+      "sources": [
+        "https://warcraft.wiki.gg/wiki/Forever_enchanting_formulas",
+        "https://www.wowhead.com/forever/item=247789"
+      ]
+    },
+    {
+      "id": "buy-lesser-magic-wand",
+      "name": "Lesser Magic Wand",
+      "wh": {
+        "type": "item",
+        "id": 11287
+      },
+      "action": "buy",
+      "category": "gear",
+      "level": [
+        5,
+        13
+      ],
+      "why": "Best early wand (11.3 damage per second, level 5). No vendor sells it: make it with Enchanting (skill 10) or buy it from an Enchanter or the Auction House as soon as you hit 5.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+        "https://warcraft.wiki.gg/wiki/Forever_enchanting_formulas",
+        "https://www.wowhead.com/forever/item=11287"
+      ]
+    },
+    {
+      "id": "buy-greater-magic-wand",
+      "name": "Greater Magic Wand",
+      "wh": {
+        "type": "item",
+        "id": 11288
+      },
+      "action": "buy",
+      "category": "gear",
+      "level": [
+        13,
+        22
+      ],
+      "why": "Upgrade at level 13 (17.5 damage per second), Enchanting skill 70. Use it until you get the Gravestone Scepter from Blackfathom Deeps.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+        "https://warcraft.wiki.gg/wiki/Forever_enchanting_formulas",
+        "https://www.wowhead.com/forever/item=11288"
+      ]
+    },
+    {
+      "id": "keep-current-wand",
+      "name": "Your current wand",
+      "action": "keep",
+      "category": "gear",
+      "level": [
+        1,
+        60
+      ],
+      "why": "Your wand is your main damage while your DoTs tick, at least until level 30. Never sell it until you have equipped the replacement. Since Oct 15 you must stand still for 0.5 sec before it fires.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://us.forums.blizzard.com/en/wow/t/2360696",
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+      ]
+    },
+    {
+      "id": "keep-gravestone-scepter",
+      "name": "Gravestone Scepter",
+      "wh": {
+        "type": "item",
+        "id": 7001
+      },
+      "action": "keep",
+      "category": "gear",
+      "level": [
+        22,
+        40
+      ],
+      "why": "Reward from \"Blackfathom Villainy\" in Blackfathom Deeps: 29 damage per second plus Shadow damage, the best wand you can get before level 30. Keep it until you find a clearly better wand.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+        "https://www.warcrafttavern.com/forever/guides/dungeons/",
+        "https://www.wowhead.com/forever/item=7001"
+      ]
+    },
+    {
+      "id": "sell-ammo",
+      "name": "Arrows and shot (ammo)",
+      "action": "sell",
+      "category": "junk",
+      "level": [
+        1,
+        60
+      ],
+      "why": "Warlocks shoot wands, which need no ammo. General supply vendors list Rough Arrows and Light Shot – skip them, and sell any ammo you loot.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+        "https://www.wow-professions.com/forever/npc/kreg-bilmn",
+        "https://www.wow-professions.com/forever/npc/yanni-stoutheart"
+      ]
+    },
+    {
+      "id": "buy-ritual-reagents",
+      "name": "Infernal Stone / Demonic Figurine",
+      "wh": {
+        "type": "item",
+        "id": 5565
+      },
+      "action": "buy",
+      "category": "reagent",
+      "level": [
+        50,
+        60
+      ],
+      "why": "In Classic, Inferno (50) and Ritual of Doom (60) used these vendor reagents. Both items still exist in Forever, but the beta stopped at 30, so it's unconfirmed. The Legacy perk Reagent Economy removes buyable class reagents (it doesn't remove Soul Shard costs).",
+      "confidence": "theory",
+      "sources": [
+        "https://www.wowhead.com/forever/item=5565",
+        "https://www.wowhead.com/forever/item=16583",
+        "https://www.warcrafttavern.com/forever/guides/legacy/",
+        "https://us.forums.blizzard.com/en/wow/t/2360696"
+      ]
+    },
+    {
+      "id": "keep-soul-shards",
+      "name": "Soul Shards (keep 3–5)",
+      "wh": {
+        "type": "item",
+        "id": 6265
+      },
+      "action": "keep",
+      "category": "class",
+      "level": [
+        10,
+        60
+      ],
+      "why": "Shards pay for Voidwalker/Succubus/Felhunter summons, Healthstones, Soulstones and Ritual of Summoning. They don't stack in Forever, so 3–5 is enough: one for an emergency demon, one Healthstone, one Soulstone, one or two for summons.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+        "https://us.forums.blizzard.com/en/wow/t/2368623",
+        "https://us.forums.blizzard.com/en/wow/t/2389364"
+      ]
+    },
+    {
+      "id": "destroy-extra-soul-shards",
+      "name": "Extra Soul Shards (above 5)",
+      "wh": {
+        "type": "item",
+        "id": 6265
+      },
+      "action": "destroy",
+      "category": "class",
+      "level": [
+        10,
+        60
+      ],
+      "why": "Drain Soul can give a shard on every tick, and the Soul Harvest talent makes you drain a lot, so shards flood your bags. Delete everything above about 5 (some players use a delete macro). You can always drain more.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://us.forums.blizzard.com/en/wow/t/2373621",
+        "https://us.forums.blizzard.com/en/wow/t/2389364",
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+      ]
+    },
+    {
+      "id": "keep-healthstone",
+      "name": "Healthstone",
+      "wh": {
+        "type": "item",
+        "id": 5512
+      },
+      "action": "keep",
+      "category": "class",
+      "level": [
+        10,
+        60
+      ],
+      "why": "Make one with Create Healthstone (level 10) and always carry it: a free instant heal on its own cooldown, separate from potions.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+        "https://www.wowhead.com/forever/item=5512"
+      ]
+    },
+    {
+      "id": "keep-soulstone",
+      "name": "Soulstone",
+      "wh": {
+        "type": "item",
+        "id": 5232
+      },
+      "action": "keep",
+      "category": "class",
+      "level": [
+        18,
+        60
+      ],
+      "why": "Create Soulstone (level 18) stores a soul so you or a friend can come back to life after dying. Put it on yourself before risky pulls; it costs a Soul Shard and has a 30-minute cooldown.",
+      "confidence": "official",
+      "sources": [
+        "https://www.wowhead.com/forever/item=5232",
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+      ]
+    },
+    {
+      "id": "keep-quest-letters",
+      "name": "Quest letters, notes and class-quest items",
+      "action": "keep",
+      "category": "quest",
+      "level": [
+        1,
+        60
+      ],
+      "why": "Destroying an item a quest gave you (a letter, book or instructions, like the warlock's Tainted Memorandum) abandons that quest in Forever. Keep them until the quest is done.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://us.forums.blizzard.com/en/wow/t/2388218"
+      ]
+    },
+    {
+      "id": "keep-hearthstone",
+      "name": "Hearthstone",
+      "wh": {
+        "type": "item",
+        "id": 6948
+      },
+      "action": "keep",
+      "category": "gear",
+      "level": [
+        1,
+        60
+      ],
+      "why": "Teleports you to the inn you set as home (talk to an innkeeper to change it). Never delete it.",
+      "confidence": "official",
+      "sources": [
+        "https://www.wowhead.com/forever/item=6948"
+      ]
+    },
+    {
+      "id": "keep-dark-iron-map",
+      "name": "Dark Iron Map",
+      "wh": {
+        "type": "item",
+        "id": 274268
+      },
+      "action": "keep",
+      "category": "quest",
+      "level": [
+        10,
+        18
+      ],
+      "why": "Dropped by Dark Iron Spies in Dun Morogh (\"Nip 'Em in the Bud\"). It starts \"Underground Map\" for Earthseer Farsen, which leads into the new Hall of Thanes dungeon under Ironforge.",
+      "where": [
+        {
+          "npc": "Earthseer Farsen",
+          "zone": "Dun Morogh",
+          "coords": [
+            64.8,
+            58.5
+          ]
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/dungeons/",
+        "https://www.wowhead.com/forever/item=274268"
+      ]
+    },
+    {
+      "id": "keep-bloodied-insignia",
+      "name": "Bloodied Insignia",
+      "wh": {
+        "type": "item",
+        "id": 268535
+      },
+      "action": "keep",
+      "category": "quest",
+      "level": [
+        16,
+        22
+      ],
+      "why": "Drops in the new Ruins of Lordaeron dungeon and starts the Alliance quest \"Bloodied Insignia\": collect 10 and bring them to General Marcus Jonathan in Stormwind.",
+      "where": [
+        {
+          "npc": "General Marcus Jonathan",
+          "zone": "Stormwind City"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/dungeons/",
+        "https://www.wowhead.com/forever/item=268535",
+        "https://www.wowhead.com/forever/quest=95195"
+      ]
+    },
+    {
+      "id": "keep-crest-of-lordaeron",
+      "name": "Crest of Lordaeron",
+      "wh": {
+        "type": "item",
+        "id": 268579
+      },
+      "action": "keep",
+      "category": "quest",
+      "level": [
+        16,
+        22
+      ],
+      "why": "Another Ruins of Lordaeron quest starter: bring it to Lady Dena Kennedy in Stormwind.",
+      "where": [
+        {
+          "npc": "Lady Dena Kennedy",
+          "zone": "Stormwind City"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/dungeons/",
+        "https://www.wowhead.com/forever/item=268579",
+        "https://www.wowhead.com/forever/quest=95189"
+      ]
+    },
+    {
+      "id": "keep-head-of-kelris",
+      "name": "Head of Kelris",
+      "wh": {
+        "type": "item",
+        "id": 5881
+      },
+      "action": "keep",
+      "category": "quest",
+      "level": [
+        22,
+        28
+      ],
+      "why": "Quest item for \"Blackfathom Villainy\" (Blackfathom Deeps). Turn it in to Dawnwatcher Selgorm in Darnassus for the Gravestone Scepter wand – don't vendor it.",
+      "where": [
+        {
+          "npc": "Dawnwatcher Selgorm",
+          "zone": "Darnassus"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/dungeons/",
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+        "https://www.wowhead.com/forever/item=5881"
+      ]
+    },
+    {
+      "id": "keep-titan-relic",
+      "name": "Titan Relic",
+      "wh": {
+        "type": "item",
+        "id": 270865
+      },
+      "action": "keep",
+      "category": "quest",
+      "level": [
+        24,
+        33
+      ],
+      "why": "Drops from the Relic Guardian in the new Excavation Site: Wetlands dungeon (about 27% chance) and starts \"Lost Relic Carry\" for Prospector Whelgar at the Wetlands excavation site.",
+      "where": [
+        {
+          "npc": "Prospector Whelgar",
+          "zone": "Wetlands",
+          "hub": "Whelgar's Excavation Site"
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/dungeons/",
+        "https://www.wowhead.com/forever/item=270865",
+        "https://www.wowhead.com/forever/quest=95810"
+      ]
+    },
+    {
+      "id": "keep-library-books",
+      "name": "Library books",
+      "action": "keep",
+      "category": "quest",
+      "level": [
+        1,
+        60
+      ],
+      "why": "Old books found around the world. Hand each one in to Garion Wendell in Stormwind (you can turn them in one at a time); 10/20/25 books unlock a necklace, a ring and an off-hand. A deleted book can't be looted again.",
+      "where": [
+        {
+          "npc": "Garion Wendell",
+          "wh": {
+            "type": "npc",
+            "id": 211033
+          },
+          "zone": "Stormwind City",
+          "hub": "Mage Quarter (Mage Tower)",
+          "coords": [
+            49.0,
+            86.3
+          ]
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/library-books/",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards",
+        "https://www.wowhead.com/forever/npc=211033"
+      ]
+    },
+    {
+      "id": "keep-waylaid-crate",
+      "name": "Waylaid Crate",
+      "wh": {
+        "type": "item",
+        "id": 248549
+      },
+      "action": "keep",
+      "category": "profession",
+      "level": [
+        10,
+        60
+      ],
+      "why": "Not junk! Right-click to read the label, fill it with one listed bundle (e.g. 40 Linen Cloth) and hand the sealed crate to Marcy Baker at Three Corners for Merchant's Favor – the currency for Tailoring/Enchanting patterns. Many beta players deleted these by mistake.",
+      "where": [
+        {
+          "npc": "Marcy Baker",
+          "wh": {
+            "type": "npc",
+            "id": 256390
+          },
+          "zone": "Redridge Mountains",
+          "hub": "Three Corners (Azeroth Commerce Authority camp)",
+          "coords": [
+            9.7,
+            71.0
+          ]
+        }
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+        "https://us.forums.blizzard.com/en/wow/t/2357989",
+        "https://us.forums.blizzard.com/en/wow/t/2385559",
+        "https://www.wowhead.com/forever/item=248549"
+      ]
+    },
+    {
+      "id": "keep-linen-cloth",
+      "name": "Linen Cloth",
+      "wh": {
+        "type": "item",
+        "id": 2589
+      },
+      "action": "keep",
+      "category": "profession",
+      "level": [
+        1,
+        20
+      ],
+      "why": "Tailoring 1–55 needs about 65, bandages need more, and an Apprentice Textiles crate takes 40 (or 20 Bolts of Linen for an Apprentice Fabrics crate). Never vendor it while leveling.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/tailoring-leveling-guide",
+        "https://www.wow-professions.com/forever/first-aid-leveling-guide",
+        "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+        "https://www.wowhead.com/forever/item=2589"
+      ]
+    },
+    {
+      "id": "keep-wool-cloth",
+      "name": "Wool Cloth",
+      "wh": {
+        "type": "item",
+        "id": 2592
+      },
+      "action": "keep",
+      "category": "profession",
+      "level": [
+        12,
+        30
+      ],
+      "why": "Tailoring 55–140 eats about 460 Wool (bolts, capes, shoulders, Gloves of Meditation), and Wool can also fill a Journeyman Textiles crate. Keep every piece.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/tailoring-leveling-guide",
+        "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+        "https://us.forums.blizzard.com/en/wow/t/2364225",
+        "https://www.wowhead.com/forever/item=2592"
+      ]
+    },
+    {
+      "id": "bank-silk-cloth",
+      "name": "Silk Cloth",
+      "wh": {
+        "type": "item",
+        "id": 4306
+      },
+      "action": "bank",
+      "category": "profession",
+      "level": [
+        24,
+        45
+      ],
+      "why": "Tailoring 100–190 needs over 700 Silk, more than you can carry, so bank it as it drops. 40 Silk also fills a Journeyman Textiles crate. Only sell Silk once your Tailoring is past it.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/tailoring-leveling-guide",
+        "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+        "https://us.forums.blizzard.com/en/wow/t/2364225",
+        "https://www.wowhead.com/forever/item=4306"
+      ]
+    },
+    {
+      "id": "bank-mageweave-cloth",
+      "name": "Mageweave Cloth",
+      "wh": {
+        "type": "item",
+        "id": 4338
+      },
+      "action": "bank",
+      "category": "profession",
+      "level": [
+        35,
+        50
+      ],
+      "why": "Tailoring 140–225 needs about 900 Mageweave (it drops from level 40 mobs). Bank it; an Expert Textiles crate takes 40.",
+      "confidence": "community",
+      "sources": [
+        "https://www.wow-professions.com/forever/tailoring-leveling-guide",
+        "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+        "https://www.wowhead.com/forever/item=4338"
+      ]
+    },
+    {
+      "id": "bank-crate-bundles",
+      "name": "One crate bundle (e.g. 40 Linen or 20 Bolts of Linen)",
+      "action": "bank",
+      "category": "profession",
+      "level": [
+        10,
+        40
+      ],
+      "why": "Crates drop at random, so keep one full bundle banked: then you can fill a crate the moment you loot it. Tailors get double value from Fabrics crates (20 Bolts of Linen = 10 Favor).",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce"
+      ]
+    },
+    {
+      "id": "keep-strange-dust",
+      "name": "Strange Dust",
+      "wh": {
+        "type": "item",
+        "id": 10940
+      },
+      "action": "keep",
+      "category": "profession",
+      "level": [
+        5,
+        25
+      ],
+      "why": "Disenchanted from greens. Vendors pay 1 copper, so never sell it to an NPC: Enchanting up to about 110 uses hundreds, and 20 dust fill an Apprentice Curiosities crate.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/enchanting-leveling-guide",
+        "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+        "https://www.wowhead.com/forever/item=10940"
+      ]
+    },
+    {
+      "id": "keep-cozy-sleeping-bag",
+      "name": "Cozy Sleeping Bag",
+      "wh": {
+        "type": "item",
+        "id": 211527
+      },
+      "action": "keep",
+      "category": "consumable",
+      "level": [
+        14,
+        60
+      ],
+      "why": "Reward of a level-14+ quest chain (Westfall → Barrens → Stonetalon → Loch Modan → Hillsbrad). Lie on it for 3 minutes for up to +3% XP; it stacks with Well Fed and camp buffs. Keep it forever.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/cozy-sleeping-bag/",
+        "https://www.warcrafttavern.com/forever/guides/experience/",
+        "https://www.wowhead.com/forever/item=211527"
+      ]
+    },
+    {
+      "id": "keep-student-fodder",
+      "name": "Student Fodder",
+      "wh": {
+        "type": "item",
+        "id": 216619
+      },
+      "action": "keep",
+      "category": "consumable",
+      "level": [
+        14,
+        60
+      ],
+      "why": "From the Cozy Sleeping Bag chain. It heals you fully and restores some mana (5-minute cooldown). In Forever it no longer gives XP, but it is a great emergency snack.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/cozy-sleeping-bag/",
+        "https://www.wowhead.com/forever/item=216619"
+      ]
+    },
+    {
+      "id": "sell-gray-items",
+      "name": "Gray (poor quality) items",
+      "action": "sell",
+      "category": "junk",
+      "level": [
+        1,
+        60
+      ],
+      "why": "Gray items only exist to be sold. Sell them every time you pass a vendor – it's your main early income.",
+      "confidence": "community",
+      "sources": [
+        "https://mobalytics.gg/wow-forever/profile/rampagewow-1zhvs5/guides/wow-forever-what-to-keep-sell-or-auction"
+      ]
+    },
+    {
+      "id": "sell-starting-gear",
+      "name": "Starting gear you replaced",
+      "action": "sell",
+      "category": "junk",
+      "level": [
+        1,
+        3
+      ],
+      "why": "Sell your starting clothes once you have a replacement so you can afford Immolate and your next spell ranks.",
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+      ]
+    },
+    {
+      "id": "sell-off-armor",
+      "name": "Mail, plate and leather armor; shields, axes, maces, bows, guns",
+      "action": "sell",
+      "category": "gear",
+      "level": [
+        1,
+        60
+      ],
+      "why": "Warlocks wear cloth and use daggers, one-handed swords, staves and wands. Forever's transmog only matches the same armor type, so other armor is useless to you: sell it, or put green ones on the Auction House.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://us.forums.blizzard.com/en/wow/t/2362711",
+        "https://mobalytics.gg/wow-forever/profile/rampagewow-1zhvs5/guides/wow-forever-what-to-keep-sell-or-auction"
+      ]
+    },
+    {
+      "id": "sell-crafted-wands",
+      "name": "Wands you crafted for skill-ups",
+      "action": "sell",
+      "category": "gear",
+      "level": [
+        5,
+        60
+      ],
+      "why": "Don't craft wands to sell to vendors: on Oct 1 crafted wands were set to 1 copper, and on Oct 8 Enchanting wands got small fixed prices (Lesser Magic Wand 1s 10c, Greater 2s) – less than the materials.",
+      "confidence": "official",
+      "sources": [
+        "https://us.forums.blizzard.com/en/wow/t/2360696",
+        "https://us.forums.blizzard.com/en/wow/t/2384061",
+        "https://www.youtube.com/watch?v=NDdiw-q_-qw"
+      ]
+    },
+    {
+      "id": "sell-crafted-whites",
+      "name": "White (common) Tailoring crafts",
+      "action": "sell",
+      "category": "gear",
+      "level": [
+        1,
+        40
+      ],
+      "why": "Linen Belts, bolts you don't need and other white crafts can't be disenchanted. Vendor them, but don't expect profit: profession items' sell prices were cut on Oct 16.",
+      "confidence": "official",
+      "sources": [
+        "https://us.forums.blizzard.com/en/wow/t/2360696",
+        "https://www.wow-professions.com/forever/tailoring-leveling-guide"
+      ]
+    },
+    {
+      "id": "use-disenchant-greens",
+      "name": "Green items you replaced",
+      "action": "use",
+      "category": "gear",
+      "level": [
+        5,
+        60
+      ],
+      "why": "As an Enchanter, disenchant soulbound greens and your own green crafts instead of vendoring them: the dust is worth more and feeds your Enchanting.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/enchanting-leveling-guide",
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+        "https://us.forums.blizzard.com/en/wow/t/2360696"
+      ]
+    },
+    {
+      "id": "auction-boe-greens",
+      "name": "Bind-on-Equip greens you won't wear",
+      "action": "auction",
+      "category": "gear",
+      "level": [
+        10,
+        60
+      ],
+      "why": "Players buy caster greens (Intellect, Spirit, Spell Power, e.g. \"of the Elder\") on the Auction House because leveling casters want spell power. List BoE greens there first; disenchant whatever doesn't sell.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://us.forums.blizzard.com/en/wow/t/2384881",
+        "https://us.forums.blizzard.com/en/wow/t/2387562",
+        "https://mobalytics.gg/wow-forever/profile/rampagewow-1zhvs5/guides/wow-forever-what-to-keep-sell-or-auction"
+      ]
+    },
+    {
+      "id": "auction-unfillable-crates",
+      "name": "Waylaid Crates you can't fill",
+      "action": "auction",
+      "category": "profession",
+      "level": [
+        10,
+        60
+      ],
+      "why": "Crates that want ore, herbs, bars or engineering parts are hard for a Tailor/Enchanter to fill. Other players buy crates on the Auction House, so list them instead of deleting them.",
+      "confidence": "community",
+      "sources": [
+        "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+        "https://us.forums.blizzard.com/en/wow/t/2357989"
+      ]
+    },
+    {
+      "id": "auction-leftover-strange-dust",
+      "name": "Leftover Strange Dust and Lesser Magic Essence",
+      "wh": {
+        "type": "item",
+        "id": 10940
+      },
+      "action": "auction",
+      "category": "profession",
+      "level": [
+        20,
+        60
+      ],
+      "why": "Once your Enchanting has moved past them, sell the leftovers on the Auction House (vendors pay 1 copper) or use 20 Strange Dust to fill an Apprentice Curiosities crate. An Ironforge vendor also sells Strange Dust (8s for 3), so don't list it above that.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.wow-professions.com/forever/enchanting-leveling-guide",
+        "https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce",
+        "https://www.wow-professions.com/forever/npc/tilli-thistlefuzz",
+        "https://www.wowhead.com/forever/item=10938"
+      ]
+    },
+    {
+      "id": "auction-scarce-materials",
+      "name": "Scarce materials (Pristine Leather, Frilled Lichen)",
+      "action": "auction",
+      "category": "profession",
+      "level": [
+        10,
+        25
+      ],
+      "why": "Only if you gather on this or another character: these new materials seemed to drop only for characters level 25 or below in the beta and were among the best sellers. Collect and sell them before you outlevel 25.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://us.forums.blizzard.com/en/wow/t/2379537",
+        "https://us.forums.blizzard.com/en/wow/t/2395556",
+        "https://www.wowhead.com/forever/item=249427"
+      ]
+    },
+    {
+      "id": "auction-trade-safely",
+      "name": "Gold from strangers (trade window)",
+      "action": "auction",
+      "category": "junk",
+      "level": [
+        1,
+        60
+      ],
+      "why": "Sell through the Auction House, not the trade window, and never buy gold or accept gold from strangers. Accounts linked to gold selling get a Temporary Economy Hold that locks trade, mail and the Auction House.",
+      "confidence": "official",
+      "sources": [
+        "https://us.forums.blizzard.com/en/wow/t/2381433",
+        "https://us.forums.blizzard.com/en/wow/t/2368705"
+      ]
+    },
+    {
+      "id": "bank-researchers-night-light",
+      "name": "Researcher's Night Light (library reward)",
+      "wh": {
+        "type": "item",
+        "id": 277260
+      },
+      "action": "bank",
+      "category": "gear",
+      "level": [
+        30,
+        40
+      ],
+      "why": "The 25-book library reward can be claimed at level 30, but all three choices need level 40 to equip. Bank the off-hand (+12 Stamina, +7 Fire damage) until 40.",
+      "confidence": "official",
+      "sources": [
+        "https://us.forums.blizzard.com/en/wow/t/2360696",
+        "https://www.wowhead.com/forever/item=277260",
+        "https://www.method.gg/wow-forever/wow-forever-all-library-books-locations-and-rewards"
+      ]
+    },
+    {
+      "id": "bank-cosmetic-items",
+      "name": "Fun, holiday and cosmetic items",
+      "action": "bank",
+      "category": "junk",
+      "level": [
+        1,
+        60
+      ],
+      "why": "Bank toys and holiday items instead of carrying them. Transmog appearances and mounts are account collections in Forever, so once an outfit's look is collected you don't need to keep the item itself.",
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/news/changes-to-bags-banks-in-world-of-warcraft-forever/",
+        "https://us.forums.blizzard.com/en/wow/t/2362711"
+      ]
+    },
+    {
+      "id": "destroy-gray-when-full",
+      "name": "Cheapest gray item (when your bags are full)",
+      "action": "destroy",
+      "category": "junk",
+      "level": [
+        1,
+        60
+      ],
+      "why": "Out in the world with full bags? Destroy the gray item with the lowest sell price (shown in its tooltip) so you can loot quest items and cloth. Never destroy quest items, crates or books to make room.",
+      "confidence": "community",
+      "sources": [
+        "https://us.forums.blizzard.com/en/wow/t/2375981",
+        "https://mobalytics.gg/wow-forever/profile/rampagewow-1zhvs5/guides/wow-forever-what-to-keep-sell-or-auction",
+        "https://us.forums.blizzard.com/en/wow/t/2388218"
+      ]
+    }
+  ]
+}
