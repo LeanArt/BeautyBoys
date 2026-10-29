@@ -1,0 +1,153 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../lib/site';
+import { guides } from '../lib/guides';
+---
+
+<Base title={site.name}>
+  <section class="hero">
+    <p class="eyebrow">WoW: Forever · launches November 4</p>
+    <h1>Your first character in WoW: Forever, one step at a time.</h1>
+    <p class="lede">
+      A free leveling companion for people who've never played World of Warcraft. Pick a character, follow the route, tick
+      off steps as you go, and always know what to keep, sell and buy.
+    </p>
+    <p class="countdown" id="countdown" data-launch={site.launch} hidden></p>
+    <div class="cta">
+      <a class="btn primary" href="/start/">New to WoW? Start here</a>
+      <a class="btn" href="/guides/gnome-warlock/route/">Jump into the Gnome Warlock route</a>
+    </div>
+  </section>
+
+  <h2>Pick your character</h2>
+  <div class="grid">
+    {
+      guides.map((g) => (
+        <a class="card guide-card" href={`/guides/${g.id}/`}>
+          <p class="eyebrow">
+            {g.faction} · {g.status === 'ready' ? 'available' : 'coming later'}
+          </p>
+          <h3>
+            {g.race} {g.className}
+          </h3>
+          <p class="muted">{g.blurb}</p>
+        </a>
+      ))
+    }
+    <div class="card guide-card planned">
+      <p class="eyebrow">More races &amp; classes</p>
+      <h3>Coming after launch</h3>
+      <p class="muted">The site is built so each new race and class is just new data. Tell us which one you want next.</p>
+    </div>
+  </div>
+
+  <h2>What's inside</h2>
+  <div class="grid features">
+    <a class="card" href="/guides/gnome-warlock/route/">
+      <h3>Step-by-step route</h3>
+      <p class="muted">Hub by hub with the key quests, trainers, demons and dungeons. Progress saves in your browser.</p>
+    </a>
+    <a class="card" href="/bags/">
+      <h3>Bag advisor</h3>
+      <p class="muted">What to keep, sell, bank or buy at your level – and which vendor has it.</p>
+    </a>
+    <a class="card" href="/guides/gnome-warlock/professions/">
+      <h3>Professions &amp; alts</h3>
+      <p class="muted">The right professions for your main, and which extra characters can feed them.</p>
+    </a>
+    <a class="card" href="/systems/">
+      <h3>Forever's new systems</h3>
+      <p class="muted">Camping, Legacy points, the Cozy Sleeping Bag, Merchant's Favor – explained without jargon.</p>
+    </a>
+    <a class="card" href="/library-books/">
+      <h3>Library books checklist</h3>
+      <p class="muted">All the books with map coordinates, and what the turn-ins give you.</p>
+    </a>
+    <a class="card" href="/glossary/">
+      <h3>Glossary</h3>
+      <p class="muted">DoT, aggro, rested XP, BoP… every word gamers throw around, in plain English.</p>
+    </a>
+  </div>
+
+  <h2>How much to trust what you read</h2>
+  <div class="card">
+    <p>
+      The game isn't out yet. Everything here comes from the beta (Sept 17 – Oct 22, 2026), Blizzard's own notes, and
+      the guides and players who tested it. Every step carries a badge:
+    </p>
+    <ul class="trust">
+      <li><span class="pill badge-official">official</span> Blizzard said it, or it's in the game data.</li>
+      <li><span class="pill badge-beta-tested">beta-tested</span> Several beta players or guides saw the same thing.</li>
+      <li><span class="pill badge-community">community</span> One guide or player says so – likely right, not double-checked.</li>
+      <li>
+        <span class="pill badge-theory">theory</span> Nobody could test it: the beta stopped at level 30. Levels 30–60 will be
+        updated as soon as people get there.
+      </li>
+    </ul>
+  </div>
+</Base>
+
+<script>
+  const el = document.getElementById('countdown');
+  if (el) {
+    const launch = new Date(el.dataset.launch ?? '').getTime();
+    const tick = () => {
+      const ms = launch - Date.now();
+      if (Number.isNaN(launch)) return;
+      el.hidden = false;
+      if (ms <= 0) {
+        el.textContent = 'WoW: Forever is live. Go get that Imp!';
+        return;
+      }
+      const d = Math.floor(ms / 86400000);
+      const h = Math.floor((ms % 86400000) / 3600000);
+      const m = Math.floor((ms % 3600000) / 60000);
+      el.textContent = `Launch in ${d}d ${h}h ${m}m · ${new Date(launch).toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })} your time`;
+    };
+    tick();
+    setInterval(tick, 30000);
+  }
+</script>
+
+<style>
+  .hero {
+    padding: 2.5rem 0 1rem;
+  }
+  .hero h1 {
+    max-width: 18ch;
+  }
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+  }
+  .countdown {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--fel);
+    background: var(--fel-soft);
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    margin: 0.5rem 0 0;
+  }
+  .guide-card h3 {
+    margin: 0.2rem 0 0.4rem;
+    font-size: 1.4rem;
+  }
+  .guide-card.planned {
+    border-style: dashed;
+    box-shadow: none;
+  }
+  .features h3 {
+    margin: 0 0 0.3rem;
+  }
+  .trust {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+</style>

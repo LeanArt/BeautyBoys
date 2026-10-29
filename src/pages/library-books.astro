@@ -1,0 +1,179 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Badge from '../components/Badge.astro';
+import Sources from '../components/Sources.astro';
+import RefItem from '../components/RefItem.astro';
+import ChecklistBar from '../components/ChecklistBar.astro';
+import { libraryBooks } from '../lib/data';
+import { wayCommand } from '../lib/wow';
+
+const data = libraryBooks();
+const faction = 'alliance';
+const books = (data?.books ?? []).filter((b) => b.faction === 'both' || b.faction === faction);
+
+// Group by zone, zones ordered by their lowest suggested level.
+const zones = [...new Set(books.map((b) => b.zone))]
+  .map((zone) => {
+    const list = books.filter((b) => b.zone === zone).sort((a, b) => (a.level ?? 0) - (b.level ?? 0));
+    return { zone, list, minLevel: Math.min(...list.map((b) => b.level ?? 60)) };
+  })
+  .sort((a, b) => a.minLevel - b.minLevel || a.zone.localeCompare(b.zone));
+---
+
+<Base title="Library books" description="Every WoW: Forever library book an Alliance player can collect, with coordinates and turn-in rewards.">
+  <PageHead eyebrow="Collect as you level" title="Library books">
+    Old books are scattered across Azeroth. Pick them up as you pass by and hand them in for a necklace, a ring and an
+    off-hand. Tick each one when you have it.
+  </PageHead>
+
+  {
+    !data ? (
+      <div class="callout warn">
+        <p>The book list is being filled in. Check back soon.</p>
+      </div>
+    ) : (
+      <Fragment>
+        <div class="grid">
+          <div class="card">
+            <h3>Where to hand them in</h3>
+            <ul>
+              {data.turnIn.map((n) => (
+                <li>
+                  <RefItem r={n} />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Rewards</h3>
+            <ul>
+              {data.rewards.map((r) => (
+                <li>
+                  <strong>{r.books} books</strong>
+                  {r.level && <span class="muted"> (level {r.level}+)</span>}:{' '}
+                  {r.choices.map((c, i) => (
+                    <Fragment>
+                      {i > 0 && ' or '}
+                      <RefItem r={c} />
+                    </Fragment>
+                  ))}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <ChecklistBar levelJump={false} />
+
+        <div class="callout small">
+          <p>
+            <strong>Tip:</strong> "Copy all" puts every waypoint for a zone on your clipboard. In game, type{' '}
+            <code>/ttpaste</code> (TomTom) and paste them all at once.
+          </p>
+        </div>
+
+        {zones.map(({ zone, list }) => {
+          const all = list.map((b) => wayCommand(b.zone, b.coords, b.title ?? `Library book (${b.location})`)).join('\n');
+          return (
+            <section class="zone" data-group>
+              <header>
+                <h2>{zone}</h2>
+                <span class="pill" data-group-count>
+                  0/{list.length}
+                </span>
+                <button type="button" class="btn small" data-copy={all}>
+                  Copy all /way
+                </button>
+              </header>
+              {list.map((b) => (
+                <div class="step book" id={b.id} data-lmin={b.level ?? 1} data-lmax={60}>
+                  <label class="check">
+                    <input type="checkbox" data-step={b.id} />
+                    <span class="visually-hidden">Mark book {b.title ?? b.location} collected</span>
+                  </label>
+                  <div>
+                    <RefItem
+                      r={{ name: b.title ?? 'Library book', zone: b.zone, coords: b.coords, note: b.location }}
+                    />
+                    <div class="meta">
+                      {b.level && <span class="pill level">Lv {b.level}+</span>}
+                      <Badge c={b.confidence} />
+                    </div>
+                    {b.note && <p class="small muted">{b.note}</p>}
+                    <Sources urls={b.sources} />
+                  </div>
+                </div>
+              ))}
+            </section>
+          );
+        })}
+      </Fragment>
+    )
+  }
+</Base>
+
+<script>
+  import { initProgress } from '../scripts/progress';
+  initProgress('library-books');
+</script>
+
+<style>
+  .card h3 {
+    margin-top: 0;
+  }
+  .zone {
+    margin-top: 1.2rem;
+  }
+  .zone header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+  .zone h2 {
+    margin: 0;
+    font-size: 1.35rem;
+  }
+  .zone.complete [data-group-count] {
+    color: var(--fel);
+    background: var(--fel-soft);
+  }
+  .book {
+    display: grid;
+    grid-template-columns: 2.2rem 1fr;
+    gap: 0.4rem;
+    padding: 0.6rem 0.5rem;
+    border-bottom: 1px dashed var(--border);
+  }
+  .book.done {
+    opacity: 0.5;
+  }
+  :global(.hide-done) .book.done {
+    display: none;
+  }
+  .book:global(.flash) {
+    background: var(--accent-soft);
+  }
+  .check {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.1rem;
+  }
+  .check input {
+    width: 1.35rem;
+    height: 1.35rem;
+    accent-color: var(--fel);
+  }
+  .meta {
+    display: flex;
+    gap: 0.3rem;
+    margin-top: 0.25rem;
+  }
+  .book[data-now='future'] {
+    opacity: 0.75;
+  }
+</style>

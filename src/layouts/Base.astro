@@ -1,0 +1,208 @@
+---
+import '../styles/global.css';
+import { site, nav } from '../lib/site';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = site.tagline } = Astro.props;
+const path = Astro.url.pathname;
+const fullTitle = title === site.name ? `${site.name} – ${site.tagline}` : `${title} · ${site.name}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {site.noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@600;700&display=swap" rel="stylesheet" />
+    <script is:inline>
+      // Apply saved theme before paint to avoid a flash.
+      try {
+        const t = localStorage.getItem('waypoint:v1:theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+    <script is:inline>
+      const whTooltips = { colorLinks: true, iconizeLinks: true, renameLinks: false };
+    </script>
+    <script is:inline src="https://wow.zamimg.com/js/tooltips.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap bar">
+        <a class="brand" href="/">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"
+            ><path
+              d="M12 2c-3.9 0-7 3.1-7 7 0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"
+              fill="currentColor"></path></svg
+          >
+          <span>{site.name}</span>
+        </a>
+        <div class="tools">
+          <label class="level-widget" title="Your character's level – pages highlight what matters now">
+            <span>My level</span>
+            <input id="my-level" type="number" min="1" max="60" inputmode="numeric" placeholder="–" />
+          </label>
+          <button class="btn small theme-btn" id="theme-btn" type="button" aria-label="Switch color theme">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"
+              ><path d="M12 3a9 9 0 1 0 0 18V3z" fill="currentColor"></path><circle
+                cx="12"
+                cy="12"
+                r="8.25"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"></circle></svg
+            >
+          </button>
+        </div>
+      </div>
+      <nav class="wrap site-nav" aria-label="Main">
+        <ul>
+          {
+            nav.map((n) => (
+              <li>
+                <a href={n.href} aria-current={path === n.href ? 'page' : undefined}>
+                  {n.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="wrap">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>
+          <strong>{site.name}</strong> is a fan-made guide built from beta data (Sept 17 – Oct 22, 2026). Facts carry a
+          badge: <span class="pill badge-official">official</span>
+          <span class="pill badge-beta-tested">beta-tested</span>
+          <span class="pill badge-community">community</span>
+          <span class="pill badge-theory">theory</span>. Data last updated {site.dataUpdated}.
+        </p>
+        <p class="small muted">
+          Not affiliated with or endorsed by Blizzard Entertainment. World of Warcraft and Warcraft are trademarks of
+          Blizzard Entertainment, Inc. Item tooltips by <a href="https://www.wowhead.com/forever">Wowhead</a>.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      import { initLevel } from '../scripts/level';
+      import { initTheme } from '../scripts/theme';
+      import { initCopy } from '../scripts/copy';
+      initLevel();
+      initTheme();
+      initCopy();
+    </script>
+  </body>
+</html>
+
+<style>
+  .skip {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: var(--surface);
+    padding: 0.5rem 1rem;
+    z-index: 100;
+  }
+  .skip:focus {
+    left: 1rem;
+  }
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.3rem;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .brand svg {
+    color: var(--accent);
+  }
+  .tools {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .level-widget {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .level-widget input {
+    width: 4.2rem;
+    padding: 0.25rem 0.4rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  .site-nav ul {
+    display: flex;
+    gap: 0.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0.2rem 0 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  .site-nav a {
+    display: block;
+    white-space: nowrap;
+    font-size: 0.88rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .site-nav a:hover {
+    color: var(--text);
+    background: var(--surface-2);
+  }
+  .site-nav a[aria-current='page'] {
+    color: var(--accent);
+    background: var(--accent-soft);
+    font-weight: 600;
+  }
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0 3rem;
+    font-size: 0.9rem;
+    background: var(--surface-2);
+  }
+</style>

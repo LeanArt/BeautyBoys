@@ -1,0 +1,238 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHead from '../../../components/PageHead.astro';
+import GuideNav from '../../../components/GuideNav.astro';
+import Badge from '../../../components/Badge.astro';
+import Sources from '../../../components/Sources.astro';
+import RefItem from '../../../components/RefItem.astro';
+import { guides, type Guide } from '../../../lib/guides';
+import { classFor } from '../../../lib/data';
+import { wowheadUrl, levelLabel } from '../../../lib/wow';
+
+export function getStaticPaths() {
+  return guides.filter((g) => g.status === 'ready').map((guide) => ({ params: { guide: guide.id }, props: { guide } }));
+}
+
+const { guide } = Astro.props as { guide: Guide };
+const cls = classFor(guide.id);
+if (!cls) throw new Error(`Missing class data for ${guide.id}`);
+const { spec } = cls;
+
+// Running total of points per tree, so the table can show "Affliction 21" etc.
+let total = 0;
+const rows = spec.talents.map((t) => {
+  const [a, b] = t.level;
+  total += b - a + 1;
+  return { ...t, total };
+});
+---
+
+<Base title={`Talents, spells & demons – ${guide.race} ${guide.className}`}>
+  <PageHead eyebrow={`${guide.race} ${guide.className}`} title="Talents, spells & demons">
+    What to put your talent points into, which demon to use, and what to press.
+  </PageHead>
+  <GuideNav guide={guide} />
+
+  <ul class="toc">
+    <li><a class="pill" href="#talents">Talent plan</a></li>
+    <li><a class="pill" href="#rotation">What to press</a></li>
+    <li><a class="pill" href="#demons">Demons</a></li>
+    <li><a class="pill" href="#spells">Spells by level</a></li>
+    <li><a class="pill" href="#shards">Soul Shards</a></li>
+    <li><a class="pill" href="#dual">Dual spec</a></li>
+  </ul>
+
+  <section id="talents">
+    <h2>Talent plan: {spec.name}</h2>
+    <p>{spec.summary}</p>
+    <div class="callout warn small">
+      <p>{spec.note}</p>
+    </div>
+    <p>
+      <Badge c={spec.confidence} />
+      <a class="small" href="https://www.wowhead.com/forever/talent-calc" target="_blank" rel="noopener">
+        Open Wowhead's Forever talent calculator ↗
+      </a>
+    </p>
+    <div class="table-wrap">
+      <table class="talents">
+        <thead>
+          <tr><th>Level</th><th>Talent</th><th>Points</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          {
+            rows.map((t) => (
+              <tr data-lmin={t.level[0]} data-lmax={t.level[1]}>
+                <td>
+                  <span class="pill level">{levelLabel(t.level)}</span>
+                </td>
+                <td>
+                  {t.wh ? (
+                    <a href={wowheadUrl(t.wh)} target="_blank" rel="noopener">
+                      <strong>{t.talent}</strong>
+                    </a>
+                  ) : (
+                    <strong>{t.talent}</strong>
+                  )}
+                  <div class="muted small">{t.tree}</div>
+                </td>
+                <td class="nowrap">{t.ranks}</td>
+                <td>{t.why}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <Sources urls={spec.sources} />
+
+    <h3>Other ways to play</h3>
+    <div class="grid">
+      {
+        spec.alternatives.map((a) => (
+          <div class="card">
+            <h4>{a.name}</h4>
+            <p>{a.summary}</p>
+            <Badge c={a.confidence} />
+            <Sources urls={a.sources} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="rotation">
+    <h2>What to press</h2>
+    <div class="grid">
+      {
+        cls.rotations.map((r) => (
+          <div class="card" data-lmin={r.level[0]} data-lmax={r.level[1]}>
+            <h4>{r.title}</h4>
+            <ol>
+              {r.steps.map((s) => (
+                <li>{s}</li>
+              ))}
+            </ol>
+            <Badge c={r.confidence} />
+            <Sources urls={r.sources} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="demons">
+    <h2>Demons</h2>
+    <div class="grid">
+      {
+        cls.demons.map((d) => (
+          <div class="card" data-lmin={d.level} data-lmax={d.level + 9}>
+            <p class="eyebrow">Level {d.level}</p>
+            <h4>
+              {d.wh ? (
+                <a href={wowheadUrl(d.wh)} target="_blank" rel="noopener">
+                  {d.name}
+                </a>
+              ) : (
+                d.name
+              )}
+            </h4>
+            <p>
+              <strong>How:</strong> {d.how}
+            </p>
+            <p>
+              <strong>Use:</strong> {d.use}
+            </p>
+            <Badge c={d.confidence} />
+            <Sources urls={d.sources} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="spells">
+    <h2>New spells by level</h2>
+    <p class="muted">{cls.spellsNote}</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Level</th><th>You can learn</th></tr></thead>
+        <tbody>
+          {
+            cls.spells.map((row) => (
+              <tr data-lmin={row.level} data-lmax={row.level + 1}>
+                <td>
+                  <span class="pill level">Lv {row.level}</span>
+                </td>
+                <td class="spells">
+                  {row.spells.map((s) => (
+                    <span class="spell">
+                      <RefItem r={s} />
+                    </span>
+                  ))}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="small"><Badge c="official" /> levels from the Forever ability list.</p>
+    <Sources urls={['https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)', 'https://www.warcrafttavern.com/forever/guides/warlock-leveling/']} />
+  </section>
+
+  <section id="shards">
+    <h2>Soul Shards</h2>
+    <ul>
+      {cls.shards.map((s) => <li>{s}</li>)}
+    </ul>
+    <Sources
+      urls={[
+        'https://us.forums.blizzard.com/en/wow/t/2389364',
+        'https://us.forums.blizzard.com/en/wow/t/2368623',
+        'https://www.warcrafttavern.com/forever/guides/warlock/',
+      ]}
+    />
+  </section>
+
+  <section id="dual">
+    <h2>Dual spec at level {cls.dualSpec.level}</h2>
+    <div class="card">
+      <p>{cls.dualSpec.body}</p>
+      <p><strong>Cost:</strong> {cls.dualSpec.cost}</p>
+      <Badge c={cls.dualSpec.confidence} />
+      <Sources urls={cls.dualSpec.sources} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nowrap {
+    white-space: nowrap;
+  }
+  tr[data-now='current'] td {
+    background: var(--accent-soft);
+  }
+  tr[data-now='past'] {
+    opacity: 0.55;
+  }
+  .card[data-now='current'] {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+  }
+  .card .eyebrow + h4 {
+    margin-top: 0.2rem;
+  }
+  .spells {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1rem;
+  }
+  .talents td:first-child {
+    white-space: nowrap;
+  }
+</style>

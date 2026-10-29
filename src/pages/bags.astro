@@ -1,0 +1,326 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Badge from '../components/Badge.astro';
+import Sources from '../components/Sources.astro';
+import RefItem from '../components/RefItem.astro';
+import { bags } from '../lib/data';
+import { wowheadUrl, levelLabel } from '../lib/wow';
+import { reportHref } from '../lib/site';
+
+const data = bags();
+
+const ACTIONS = [
+  { id: 'keep', label: 'Keep', hint: 'Hold on to it' },
+  { id: 'buy', label: 'Buy', hint: 'Worth paying for' },
+  { id: 'sell', label: 'Sell', hint: 'Sell to any vendor' },
+  { id: 'auction', label: 'Auction', hint: 'Sell to players' },
+  { id: 'bank', label: 'Bank', hint: 'Store for later' },
+  { id: 'use', label: 'Use', hint: 'Use it up' },
+  { id: 'destroy', label: 'Destroy', hint: 'Free the slot' },
+] as const;
+
+const CATEGORIES: Record<string, string> = {
+  consumable: 'Food, drink & potions',
+  reagent: 'Reagents',
+  quest: 'Quest items',
+  profession: 'Profession materials',
+  gear: 'Gear',
+  junk: 'Junk',
+  container: 'Bags',
+  class: 'Warlock items',
+};
+
+const items = data?.items ?? [];
+const counts = Object.fromEntries(ACTIONS.map((a) => [a.id, items.filter((i) => i.action === a.id).length]));
+const usedCategories = Object.keys(CATEGORIES).filter((c) => items.some((i) => i.category === c));
+---
+
+<Base title="Bag advisor" description="What to keep, sell, bank or buy in WoW: Forever – by level, with vendors and coordinates.">
+  <PageHead eyebrow="Gnome Warlock · all levels" title="Bag advisor">
+    Bags fill up fast. Here's what to keep, sell, bank or buy at your level – and where to buy it.
+  </PageHead>
+
+  <div class="grid rules">
+    <div class="card"><strong>Grey item?</strong> Sell it to any vendor. Always.</div>
+    <div class="card"><strong>Letter, note or odd object from a quest?</strong> Keep it until the quest is done – deleting it abandons the quest.</div>
+    <div class="card"><strong>Cloth?</strong> Keep it. Tailoring eats it, and Waylaid Crates want it.</div>
+    <div class="card"><strong>Mail or plate armor?</strong> You can't wear it. Sell it, or auction it if it's green or better.</div>
+  </div>
+
+  {
+    !data ? (
+      <div class="callout warn">
+        <p>The bag advisor is being filled in. Check back soon.</p>
+      </div>
+    ) : (
+      <Fragment>
+        <form class="filters card" id="bag-filters" onsubmit="return false">
+          <div class="row">
+            <label>
+              <span class="small muted">Search</span>
+              <input type="search" name="q" placeholder="e.g. cloth, wand, crate" autocomplete="off" />
+            </label>
+            <label>
+              <span class="small muted">Category</span>
+              <select name="cat">
+                <option value="">All</option>
+                {usedCategories.map((c) => (
+                  <option value={c}>{CATEGORIES[c]}</option>
+                ))}
+              </select>
+            </label>
+            <label class="inline">
+              <input type="checkbox" name="mine" checked />
+              <span class="small">Only my level</span>
+            </label>
+          </div>
+          <div class="chips" role="group" aria-label="What to do with it">
+            {ACTIONS.filter((a) => counts[a.id] > 0).map((a) => (
+              <button type="button" class={`btn small chip act-${a.id}`} data-act={a.id} aria-pressed="false" title={a.hint}>
+                {a.label} <span class="muted">{counts[a.id]}</span>
+              </button>
+            ))}
+          </div>
+          <p class="small muted" id="bag-status" aria-live="polite" />
+        </form>
+
+        <div class="items" id="bag-items">
+          {items.map((i) => (
+            <article
+              class={`item card act-${i.action}`}
+              data-act={i.action}
+              data-cat={i.category}
+              data-lmin={i.level[0]}
+              data-lmax={i.level[1]}
+              data-text={`${i.name} ${i.why} ${(i.where ?? []).map((w) => `${w.npc} ${w.zone} ${w.hub ?? ''}`).join(' ')}`.toLowerCase()}
+            >
+              <header>
+                <span class={`action act-${i.action}`}>{ACTIONS.find((a) => a.id === i.action)?.label}</span>
+                <h3>
+                  {i.wh ? (
+                    <a href={wowheadUrl(i.wh)} target="_blank" rel="noopener">
+                      {i.name}
+                    </a>
+                  ) : (
+                    i.name
+                  )}
+                </h3>
+              </header>
+              <div class="meta">
+                <span class="pill level">{levelLabel(i.level)}</span>
+                <span class="pill">{CATEGORIES[i.category]}</span>
+                <Badge c={i.confidence} />
+              </div>
+              <p>{i.why}</p>
+              {i.where && i.where.length > 0 && (
+                <ul class="where">
+                  {i.where.map((w) => (
+                    <li>
+                      <RefItem
+                        r={{ name: w.npc, wh: w.wh, zone: w.zone, coords: w.coords }}
+                      />
+                      <span class="muted small">
+                        {' '}
+                        {[w.hub, w.zone].filter(Boolean).join(', ')}
+                        {w.price && ` · ${w.price}`}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <div class="foot">
+                <Sources urls={i.sources} />
+                <a class="small muted" href={reportHref(`bag advisor "${i.name}"`)} target="_blank" rel="noopener">
+                  Report a problem
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p class="empty callout" id="bag-empty" hidden>
+          Nothing matches. Try another action, clear the search, or untick "Only my level".
+        </p>
+      </Fragment>
+    )
+  }
+</Base>
+
+<script>
+  import { getLevel, LEVEL_EVENT } from '../scripts/level';
+  import { load, save } from '../scripts/storage';
+
+  const form = document.getElementById('bag-filters') as HTMLFormElement | null;
+  if (form) {
+    const cards = [...document.querySelectorAll<HTMLElement>('#bag-items .item')];
+    const chips = [...form.querySelectorAll<HTMLButtonElement>('[data-act]')];
+    const q = form.elements.namedItem('q') as HTMLInputElement;
+    const cat = form.elements.namedItem('cat') as HTMLSelectElement;
+    const mine = form.elements.namedItem('mine') as HTMLInputElement;
+    const status = document.getElementById('bag-status')!;
+    const empty = document.getElementById('bag-empty')!;
+
+    const saved = load<{ acts: string[]; cat: string; mine: boolean }>('bags-filter', { acts: [], cat: '', mine: true });
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(saved.acts.includes(c.dataset.act!))));
+    cat.value = saved.cat;
+    mine.checked = saved.mine;
+
+    function apply() {
+      const acts = chips.filter((c) => c.getAttribute('aria-pressed') === 'true').map((c) => c.dataset.act!);
+      const text = q.value.trim().toLowerCase();
+      const level = getLevel();
+      const useLevel = mine.checked && level !== null;
+      let shown = 0;
+      for (const card of cards) {
+        const ok =
+          (acts.length === 0 || acts.includes(card.dataset.act!)) &&
+          (!cat.value || card.dataset.cat === cat.value) &&
+          (!text || card.dataset.text!.includes(text)) &&
+          (!useLevel || (level! >= Number(card.dataset.lmin) && level! <= Number(card.dataset.lmax)));
+        card.hidden = !ok;
+        if (ok) shown++;
+      }
+      empty.hidden = shown > 0;
+      status.textContent =
+        `Showing ${shown} of ${cards.length}` +
+        (mine.checked ? (level === null ? ' – set "My level" at the top to filter by level' : ` for level ${level}`) : '');
+      save('bags-filter', { acts, cat: cat.value, mine: mine.checked });
+    }
+
+    chips.forEach((c) =>
+      c.addEventListener('click', () => {
+        c.setAttribute('aria-pressed', String(c.getAttribute('aria-pressed') !== 'true'));
+        apply();
+      }),
+    );
+    q.addEventListener('input', apply);
+    cat.addEventListener('change', apply);
+    mine.addEventListener('change', apply);
+    document.addEventListener(LEVEL_EVENT, apply);
+    apply();
+  }
+</script>
+
+<style>
+  .rules .card {
+    font-size: 0.92rem;
+    box-shadow: none;
+  }
+  .filters {
+    display: grid;
+    gap: 0.7rem;
+    margin: 1.5rem 0 1rem;
+  }
+  .filters .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem 1rem;
+    align-items: flex-end;
+  }
+  .filters label {
+    display: grid;
+    gap: 0.2rem;
+  }
+  .filters label.inline {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding-bottom: 0.4rem;
+  }
+  .filters input[type='search'] {
+    width: min(100%, 18rem);
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .items {
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  }
+  .item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-top: 4px solid var(--border);
+  }
+  .item p {
+    margin: 0;
+  }
+  .item header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .item h3 {
+    margin: 0;
+    font-size: 1.08rem;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .action {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.1rem 0.45rem;
+    border-radius: 4px;
+    color: var(--surface);
+    background: var(--muted);
+    flex-shrink: 0;
+  }
+  .act-keep.action,
+  .item.act-keep {
+    --c: var(--info);
+  }
+  .act-buy.action,
+  .item.act-buy {
+    --c: var(--fel);
+  }
+  .act-sell.action,
+  .item.act-sell {
+    --c: var(--muted);
+  }
+  .act-auction.action,
+  .item.act-auction {
+    --c: var(--gold);
+  }
+  .act-bank.action,
+  .item.act-bank {
+    --c: var(--accent);
+  }
+  .act-use.action,
+  .item.act-use {
+    --c: var(--fel);
+  }
+  .act-destroy.action,
+  .item.act-destroy {
+    --c: var(--danger);
+  }
+  .action {
+    background: var(--c);
+  }
+  .item {
+    border-top-color: var(--c);
+  }
+  .where {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.92rem;
+  }
+  .foot {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1rem;
+    align-items: baseline;
+  }
+  .item[data-now='current'] {
+    outline: none;
+  }
+</style>

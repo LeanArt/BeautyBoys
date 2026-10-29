@@ -1,0 +1,115 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+
+const terms: [string, string][] = [
+  ['Addon', 'A free add-on that changes the game interface – map markers, waypoints, bag sorting. See the starter pack on the Start page.'],
+  ['Aggro', "A monster's attention. Whoever has aggro gets attacked. You want your demon to have it, not you."],
+  ['Alt', 'Any extra character on your account besides your main one.'],
+  ['AoE', 'Area of effect – a spell that hits everything in an area, like Rain of Fire or Hellfire.'],
+  ['Auction House (AH)', 'Where players buy and sell items to each other. Found in capital cities.'],
+  ['Bane', "Forever's new name for the warlock's Agony and Doom spells. A Bane doesn't take up your curse slot."],
+  ['BoE / BoP', 'Binds on Equip / Binds on Pickup. A BoE item can be traded until you wear it; a BoP item is yours the moment you loot it.'],
+  ['Buff / Debuff', 'A helpful effect on you (buff) or a harmful one (debuff), shown as icons near your portrait.'],
+  ['Camp', 'A campfire you build in the wild. Sitting by it gives buffs; profession objects add more. Unlocked around level 5.'],
+  ['Capstone', 'The big talent at the bottom of a talent tree – for Affliction, Wrack at level 40.'],
+  ['CC (crowd control)', 'Spells that stop a monster for a while, like Fear or Banish.'],
+  ['Channel / channeled spell', "A spell you keep casting while it works, like Drain Life. Moving cancels it."],
+  ['Cooldown (CD)', 'The wait before you can use something again.'],
+  ['Corpse run', 'Running back to your body as a ghost after you die.'],
+  ['DoT', 'Damage over time: a spell that hurts the target every few seconds, like Corruption.'],
+  ['Drain-tank', 'Letting a monster hit you (or your demon) while you heal yourself with Drain Life. Affliction warlocks do this from about level 25–30.'],
+  ['Dual spec', 'A second set of talents you can switch to. Available at level 40.'],
+  ['Dungeon / instance', 'A private area for your group of up to five players, with tougher monsters and better loot.'],
+  ['Elite', 'A monster with a gold dragon around its portrait. Much stronger than normal – bring a friend.'],
+  ['Hearthstone', 'An item that teleports you to the inn you set as home. Long cooldown.'],
+  ['Kite', 'Keeping a monster away from you while you damage it, e.g. by Fearing it or running while your DoTs tick.'],
+  ['Legacy points', "Forever's account-wide achievement points. Spend them on perks at a class trainer. Max 16 per character at launch."],
+  ['Life Tap', 'Warlock spell that turns your health into mana. In Forever it gets stronger with Spirit.'],
+  ["Merchant's Favor", 'A currency from filling Waylaid Crates. Buys special recipes at the Azeroth Commerce Authority in Redridge.'],
+  ['Mob', 'Any monster or enemy creature.'],
+  ['Proc', 'A random chance effect that triggers by itself, like Nightfall giving you a free instant Shadow Bolt.'],
+  ['Pull', 'Starting a fight with a monster, usually from range so it comes to you.'],
+  ['Quest hub', 'A town or camp with several quest givers. The route moves you from hub to hub.'],
+  ['Rank (spell rank)', 'A stronger version of a spell you already know. Trainers sell new ranks as you level.'],
+  ['Respec', 'Resetting your talent points so you can spend them again. Costs gold at a class trainer.'],
+  ['Rested XP', 'Bonus XP you build while logged out in an inn. Kills give double XP until it runs out.'],
+  ['Ruleset', "Forever's replacement for realms: Normal, PvP, RP or RP-PvP. Permanent once you pick it."],
+  ['Soul Shard', "A warlock reagent you get with Drain Soul. Needed for demons, Healthstones and more. They don't stack."],
+  ['Spec', 'Your specialization – the talent tree you put most points into (Affliction, Demonology or Destruction).'],
+  ['Tagging', 'The first player (or group) to hit a monster gets the kill credit and loot. Group up to share it.'],
+  ['Tank / Healer / DPS', 'The three group roles: takes hits / keeps people alive / deals damage. Warlocks are DPS.'],
+  ['TomTom', 'An addon that shows an arrow to map coordinates. Paste a /way command from this guide to use it.'],
+  ['Trainer', 'An NPC who teaches spells or professions for gold. Visit your class trainer every even level.'],
+  ['Vendor', 'An NPC who buys your items and sells supplies. Right-click them to open their shop.'],
+  ['Wand', 'A ranged weapon casters shoot for free (no mana). A warlock\'s best friend until about level 30.'],
+  ['Waylaid Crate', 'A crate that drops from monsters. Fill it with the listed materials and hand it in for Merchant\'s Favor. Don\'t delete it.'],
+  ['/way', 'A TomTom command, e.g. /way Dun Morogh 47.2 53.6 Gimrizz. Paste it into chat to get an arrow to that spot.'],
+  ['World instance', 'A copy of a busy area, used to spread players out. Grouping with a friend moves you into the same copy.'],
+];
+
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+---
+
+<Base title="Glossary" description="Plain-English explanations of World of Warcraft words for brand-new players.">
+  <PageHead eyebrow="Words gamers use" title="Glossary">
+    Every word you'll hear in chat or read in guides, explained without more jargon.
+  </PageHead>
+
+  <label class="search">
+    <span class="visually-hidden">Filter terms</span>
+    <input type="search" id="gloss-q" placeholder="Filter, e.g. aggro" autocomplete="off" />
+  </label>
+
+  <dl class="gloss" id="gloss">
+    {
+      terms.map(([t, d]) => (
+        <div class="entry" id={slug(t)} data-text={`${t} ${d}`.toLowerCase()}>
+          <dt>{t}</dt>
+          <dd>{d}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</Base>
+
+<script>
+  const q = document.getElementById('gloss-q') as HTMLInputElement | null;
+  const entries = [...document.querySelectorAll<HTMLElement>('#gloss .entry')];
+  q?.addEventListener('input', () => {
+    const v = q.value.trim().toLowerCase();
+    entries.forEach((e) => (e.hidden = !!v && !e.dataset.text!.includes(v)));
+  });
+</script>
+
+<style>
+  .search input {
+    width: min(100%, 22rem);
+    margin: 0.5rem 0 1rem;
+  }
+  .gloss {
+    display: grid;
+    gap: 0.6rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    margin: 0;
+  }
+  .entry {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.7rem 0.9rem;
+  }
+  .entry:target {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  dt {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  dd {
+    margin: 0.2rem 0 0;
+    color: var(--muted);
+  }
+</style>

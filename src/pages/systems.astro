@@ -1,0 +1,314 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Badge from '../components/Badge.astro';
+import Sources from '../components/Sources.astro';
+
+const S = {
+  devNotes: 'https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696',
+  camping: 'https://news.blizzard.com/en-us/article/24301516/gather-around-the-campfire-in-world-of-warcraft-forever',
+  legacy: 'https://news.blizzard.com/en-us/article/24307383/get-to-know-the-world-of-warcraft-forever-legacy-system',
+  rulesets: 'https://news.blizzard.com/en-us/article/24302070/updated-10-22-choose-your-ruleset-in-world-of-warcraft-forever',
+  deepDive: 'https://news.blizzard.com/en-us/article/24303313/world-of-warcraft-forever-deep-dive-panel-recap',
+  dungeons: 'https://worldofwarcraft.blizzard.com/en-us/news/24301455',
+  aggrend: 'https://us.forums.blizzard.com/en/wow/t/2376010',
+  dungeonXp: 'https://us.forums.blizzard.com/en/wow/t/2395335',
+  outdoorsBug: 'https://us.forums.blizzard.com/en/wow/t/2353288',
+  wtCamp: 'https://www.warcrafttavern.com/forever/guides/camping/',
+  wtXp: 'https://www.warcrafttavern.com/forever/guides/experience/',
+  wtBag: 'https://www.warcrafttavern.com/forever/guides/cozy-sleeping-bag/',
+  wtLegacy: 'https://www.warcrafttavern.com/forever/guides/legacy/',
+  wtRide: 'https://www.warcrafttavern.com/forever/guides/riding/',
+  mf: 'https://www.wow-professions.com/forever/merchants-favor-durotar-supply-azeroth-commerce',
+  mfFeedback: 'https://us.forums.blizzard.com/en/wow/t/feedback-the-azeroth-commerce-authority-is-a-horribly-implemented-good-idea/2385559',
+  crates: 'https://us.forums.blizzard.com/en/wow/t/2357989',
+  holds: 'https://us.forums.blizzard.com/en/wow/t/temporary-economy-holds-for-rmt/2381433',
+  mounts: 'https://us.forums.blizzard.com/en/wow/t/warlock-and-paladin-class-mounts/2370227',
+  methodMount: 'https://www.method.gg/wow-forever/how-to-get-a-mount-in-wow-forever-cost-requirement-and-mount-options',
+  wiki: 'https://warcraft.wiki.gg/wiki/World_of_Warcraft:_Forever',
+  dualSpec: 'https://us.forums.blizzard.com/en/wow/t/dual-talent-specilization-wow-forever/2391901',
+  sleepingBagForum: 'https://us.forums.blizzard.com/en/wow/t/blizzard-why-cant-we-have-this-on-retail/2363906',
+};
+
+const sections = [
+  ['xp', 'XP boosts'],
+  ['camping', 'Camping'],
+  ['sleeping-bag', 'Cozy Sleeping Bag'],
+  ['legacy', 'Legacy points'],
+  ['merchants-favor', "Merchant's Favor"],
+  ['dungeons', 'Dungeons'],
+  ['mounts', 'Mounts & riding'],
+  ['dual-spec', 'Dual spec & respecs'],
+  ['world', 'Rulesets & world instances'],
+  ['safety', 'Gold & account safety'],
+];
+---
+
+<Base title="Forever systems" description="Camping, Legacy points, the Cozy Sleeping Bag, Merchant's Favor and other WoW: Forever systems explained for new players.">
+  <PageHead eyebrow="What's new in Forever" title="Forever systems, explained">
+    Forever adds systems that even veteran players don't know yet. Here's what each one is, whether you should care,
+    and what to do about it.
+  </PageHead>
+
+  <ul class="toc">
+    {
+      sections.map(([id, label]) => (
+        <li>
+          <a class="pill" href={`#${id}`}>
+            {label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <section id="xp">
+    <h2>XP boosts that stack</h2>
+    <p>
+      Leveling takes a while – roughly the same pace as the original game. These bonuses all stack, so using them
+      together adds up to hours saved.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Boost</th><th>What it does</th><th>How to get it</th><th>Trust</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Rested XP</strong></td>
+            <td>Double XP from kills until it runs out. You build it while logged out in an inn or city.</td>
+            <td>Log out at an inn. Builds 5% of a level per 8 hours, up to 1.5 levels.</td>
+            <td><Badge c="official" /></td>
+          </tr>
+          <tr>
+            <td><strong>Well Fed</strong></td>
+            <td>About +5% XP from kills for ~15 minutes (lost if you die).</td>
+            <td>Eat cooked food. Learn Cooking – you need it for camping anyway.</td>
+            <td><Badge c="beta-tested" /></td>
+          </tr>
+          <tr>
+            <td><strong>Cozy Sleeping Bag</strong></td>
+            <td>Up to +3% XP; survives death; counts as a rested area. 1-hour cooldown.</td>
+            <td>A scavenger hunt from level 14 – <a href="#sleeping-bag">see below</a>.</td>
+            <td><Badge c="beta-tested" /></td>
+          </tr>
+          <tr>
+            <td><strong>Camp Tent</strong></td>
+            <td>Gives you rested XP worth 5% of a level (once per hour).</td>
+            <td>A Leatherworker's camp object – ask a friend or guildmate.</td>
+            <td><Badge c="official" /></td>
+          </tr>
+          <tr>
+            <td><strong>Well Rested</strong> (Legacy perk)</td>
+            <td>Rested XP builds faster and caps higher.</td>
+            <td>Spend Legacy points – <a href="#legacy">see below</a>.</td>
+            <td><Badge c="official" /></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <Sources urls={[S.wtXp, S.camping, S.deepDive, S.sleepingBagForum]} />
+  </section>
+
+  <section id="camping">
+    <h2>Camping</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>What it is</h3>
+        <p>
+          Build a campfire anywhere in the wild, sit by it for about a minute, and get a bundle of buffs that lasts around an
+          hour. Your professions add objects to the camp – a Tailor's banner, an Enchanter's lute – each adding its own buff.
+        </p>
+      </div>
+      <div class="card">
+        <h3>How to unlock it</h3>
+        <p>
+          Around level 5, talk to the welcoming campfire in <strong>Kharanos</strong> for the quest <em>The Great Outdoors</em>.
+          You need the Cooking profession, Flint and Tinder, and Simple Wood (sold by trade-goods vendors).
+        </p>
+        <p class="small">
+          <strong>Bugged quest?</strong> In the beta it often didn't complete. Fix: abandon it, log out and back in, take it
+          again, then type <code>/sit</code> by the fire and wait about a minute.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Rules worth knowing</h3>
+        <ul>
+          <li>A basic campfire has room for 3 objects (Cooking can upgrade to 5 and 10).</li>
+          <li>Profession objects start at skill 20 in that profession.</li>
+          <li>Camp buffs don't stack with the matching class buff (e.g. a priest's Fortitude beats the First Aid Kit).</li>
+          <li>Friends can share a camp – the more professions, the more buffs.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>For a Gnome Warlock</h3>
+        <p>
+          <strong>Tailoring's Faction Banner</strong> gives Spirit, and Spirit now powers Life Tap. Cooking's campfire is the
+          base. A friend with Leatherworking (Camp Tent) or Herbalism (Intellect candle) makes the camp even better.
+        </p>
+      </div>
+    </div>
+    <p class="small"><Badge c="official" /> mechanics · <Badge c="beta-tested" /> quest location and bug fix</p>
+    <Sources urls={[S.camping, S.wtCamp, S.outdoorsBug, S.devNotes]} />
+  </section>
+
+  <section id="sleeping-bag">
+    <h2>Cozy Sleeping Bag</h2>
+    <p>
+      A short scavenger hunt (level 14+) that ends with a sleeping bag you keep forever: lie on it for a few minutes to
+      stack up to +3% XP, and it survives death. It also hands out Student Fodder and some campfire supplies along the way.
+    </p>
+    <p>
+      The trail runs across several zones (Westfall → the Barrens → Stonetalon → Loch Modan → Hillsbrad in the version we
+      trust most). The route page tells you when you're nearby.
+    </p>
+    <div class="callout warn small">
+      <p>
+        Sources disagree on where the hunt starts – Westfall's Alexston Farmstead in most guides, Loch Modan in some beta
+        forum posts. Check at launch.
+      </p>
+    </div>
+    <p class="small"><Badge c="community" /></p>
+    <Sources urls={[S.wtBag, S.sleepingBagForum]} />
+  </section>
+
+  <section id="legacy">
+    <h2>Legacy points</h2>
+    <p>
+      Forever's replacement for achievements. You earn points for milestones – a character reaching 25, 45 and 60, a
+      crafting profession reaching 150, 225 and 300, and more. Points are shared by your whole account, but each character
+      spends its own (at a class trainer) on perks.
+    </p>
+    <div class="grid">
+      <div class="card">
+        <h3>The rules</h3>
+        <ul>
+          <li>Your first point usually arrives at <strong>level 25</strong> or <strong>150 skill</strong> in Tailoring or Enchanting.</li>
+          <li>Each character can spend at most <strong>16 points</strong> at launch.</li>
+          <li>Gathering professions (Mining, Herbalism, Skinning) earn no points.</li>
+          <li>Open the Legacy window with <kbd>Y</kbd> or the shield icon.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Good perks for leveling</h3>
+        <ul>
+          <li><strong>Talented</strong> – talent points up to 5 levels earlier. Strongest on your <em>next</em> character.</li>
+          <li><strong>Well Rested</strong> – more rested XP.</li>
+          <li><strong>Thrill of Adventure</strong> – a little health and mana back after kills.</li>
+          <li><strong>Reagent Economy</strong> – no need to buy class reagents.</li>
+          <li><strong>Frequent Flier</strong> – cheaper, faster flight paths.</li>
+        </ul>
+        <p class="small muted">Our suggestion, not a tested rule – the best mix will settle after launch.</p>
+      </div>
+    </div>
+    <p class="small"><Badge c="official" /> rules · <Badge c="community" /> perk picks</p>
+    <Sources urls={[S.legacy, S.wtLegacy]} />
+  </section>
+
+  <section id="merchants-favor">
+    <h2>Merchant's Favor &amp; Waylaid Crates</h2>
+    <p>
+      <strong>Waylaid Crates</strong> drop from monsters and look like junk – they aren't. Each crate asks for one bundle of
+      materials (for example 40 Linen Cloth). Fill it, then hand it in at the <strong>Azeroth Commerce Authority</strong>
+      camp at Three Corners in Redridge Mountains (talk to Marcy Baker). You get <strong>Merchant's Favor</strong>, a
+      currency for recipes trainers don't teach.
+    </p>
+    <ul>
+      <li>Your first shipment gives a big chunk of Favor (about 50); later ones give about 5–20 depending on tier.</li>
+      <li>
+        For you: Tailoring's <strong>Shadow set</strong> (30 Favor per piece, levels 12–25) and Enchanting's
+        <strong>Soulstaff</strong> and <strong>Orb of Souls</strong> (45 Favor, level 25) are strong leveling gear.
+      </li>
+      <li>The returns are low, and beta players were unhappy about it – treat it as a bonus, not a plan.</li>
+    </ul>
+    <p class="small"><Badge c="beta-tested" /></p>
+    <Sources urls={[S.mf, S.crates, S.mfFeedback]} />
+  </section>
+
+  <section id="dungeons">
+    <h2>Dungeons while leveling</h2>
+    <div class="callout fel">
+      <p>
+        <strong>Run each dungeon once, with all its quests, then go back to questing.</strong> Monster XP inside dungeons was
+        cut sharply in the beta and Blizzard said it will stay that way – the XP is in the dungeon quests.
+      </p>
+    </div>
+    <ul>
+      <li>Collect every quest for a dungeon before you go in. Some start far away.</li>
+      <li>Group with players near your level – a much higher-level player in the group reduces your XP.</li>
+      <li>
+        New dungeons for Alliance players on the way up: <strong>Hall of Thanes</strong> (13–18, under Ironforge),
+        <strong>Excavation Site</strong> (24–29, Wetlands), <strong>City of Dalaran</strong> (28–33), <strong>The Drowned City</strong>
+        (35–40), <strong>Krol'dok Stronghold</strong> (40–45), <strong>Alcaz Prison</strong> (48–53), <strong>Blackmaw Hold</strong>
+        (55–60) and <strong>Shaper's Terrace</strong> (58–60).
+      </li>
+    </ul>
+    <p class="small"><Badge c="official" /></p>
+    <Sources urls={[S.dungeons, S.aggrend, S.dungeonXp]} />
+  </section>
+
+  <section id="mounts">
+    <h2>Mounts &amp; riding</h2>
+    <ul>
+      <li>Riding is learned at <strong>level 40</strong>. In Forever the mount comes with the riding skill – the cost moved into training.</li>
+      <li>Beta players saw <strong>100 gold</strong> for the first riding skill (some say 90g), and <strong>1,000 gold</strong> for fast riding at 60. Start saving early.</li>
+      <li>Gnome mounts (Mechanostriders) are at Steelgrill's Depot in Dun Morogh.</li>
+      <li>
+        Warlocks traditionally get a free Felsteed from a class quest at 40. Blizzard hasn't confirmed how that works in
+        Forever – check your trainer at 40.
+      </li>
+      <li>There's no flying anywhere in Forever.</li>
+    </ul>
+    <p class="small"><Badge c="community" /> costs · <Badge c="official" /> mount comes with riding</p>
+    <Sources urls={[S.deepDive, S.wtRide, S.methodMount, S.mounts]} />
+  </section>
+
+  <section id="dual-spec">
+    <h2>Dual spec &amp; respecs</h2>
+    <ul>
+      <li>At <strong>level 40</strong> you can buy a second set of talents from your class trainer and switch between them outside combat.</li>
+      <li>The cost isn't confirmed: the wiki says 10 gold, some beta players saw more.</li>
+      <li>Changing talents ("respec") costs gold at a class trainer. The price climbs each time and slowly drops back down.</li>
+    </ul>
+    <p class="small"><Badge c="community" /></p>
+    <Sources urls={[S.wiki, S.dualSpec, S.devNotes]} />
+  </section>
+
+  <section id="world">
+    <h2>Rulesets &amp; world instances</h2>
+    <ul>
+      <li>There are no realms. You pick a ruleset – Normal, PvP, RP or RP-PvP – and everyone on it shares one world. Hardcore comes later.</li>
+      <li>Your ruleset is permanent: characters can't move between them.</li>
+      <li>
+        Busy areas are split into copies called <strong>world instances</strong>. Joining a group can move you into your
+        group's copy – if a friend seems missing, invite them to a group.
+      </li>
+      <li>Grouping, dungeons and raids only work with players on the same ruleset and faction.</li>
+    </ul>
+    <p class="small"><Badge c="official" /></p>
+    <Sources urls={[S.rulesets, S.devNotes]} />
+  </section>
+
+  <section id="safety">
+    <h2>Gold &amp; account safety</h2>
+    <div class="callout danger">
+      <p>
+        <strong>Never buy gold, and don't accept gold from strangers.</strong> Blizzard places "Temporary Economy Holds" on
+        accounts tied to bought gold – no trading, mail or Auction House while it's investigated. Gold "gifts" from
+        strangers are a common way gold sellers move money.
+      </p>
+    </div>
+    <p class="small"><Badge c="official" /></p>
+    <Sources urls={[S.holds]} />
+  </section>
+</Base>
+
+<style>
+  section {
+    scroll-margin-top: 7rem;
+  }
+  .grid .card h3 {
+    margin-top: 0;
+  }
+  td {
+    min-width: 7rem;
+  }
+</style>

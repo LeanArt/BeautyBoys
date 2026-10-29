@@ -1,0 +1,18 @@
+---
+import type { Confidence } from '../lib/data';
+
+interface Props {
+  c: Confidence;
+}
+
+const TITLES: Record<Confidence, string> = {
+  official: 'From Blizzard or in-game data',
+  'beta-tested': 'Seen in the beta by several players or guides',
+  community: 'One guide or player claim – not cross-checked yet',
+  theory: 'Not testable yet – the beta stopped at level 30',
+};
+
+const { c } = Astro.props;
+---
+
+<span class={`pill badge-${c}`} title={TITLES[c]}>{c}</span>

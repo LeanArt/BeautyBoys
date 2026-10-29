@@ -1,0 +1,65 @@
+---
+// A named thing (quest, NPC, item) with an optional Wowhead tooltip link and /way button.
+import { wowheadUrl, wayCommand } from '../lib/wow';
+import { md } from '../lib/md';
+import type { Ref } from '../lib/data';
+
+interface Props {
+  r: Ref & { giver?: string; role?: string };
+  zone?: string; // fallback zone for /way when the ref has coords but no zone
+}
+
+const { r, zone } = Astro.props;
+const wayZone = r.zone ?? zone;
+const way = r.coords && wayZone ? wayCommand(wayZone, r.coords, r.name) : null;
+---
+
+<span class="ref">
+  {
+    r.wh ? (
+      <a class="ref-name" href={wowheadUrl(r.wh)} target="_blank" rel="noopener">
+        {r.name}
+      </a>
+    ) : (
+      <span class="ref-name">{r.name}</span>
+    )
+  }
+  {r.role && <span class="muted"> – {r.role}</span>}
+  {r.giver && <span class="muted"> · from {r.giver}</span>}
+  {r.coords && <span class="coords">{r.coords[0].toFixed(1)}, {r.coords[1].toFixed(1)}</span>}
+  {
+    way && (
+      <button type="button" class="btn small way" data-copy={way} title={`Copy TomTom waypoint: ${way}`}>
+        /way
+      </button>
+    )
+  }
+  {r.note && <span class="ref-note" set:html={md(r.note)} />}
+</span>
+
+<style>
+  .ref {
+    display: inline;
+  }
+  .ref-name {
+    font-weight: 600;
+  }
+  .coords {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-left: 0.35rem;
+  }
+  .way {
+    margin-left: 0.35rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    padding: 0.05rem 0.4rem;
+    vertical-align: 1px;
+  }
+  .ref-note {
+    display: block;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+</style>

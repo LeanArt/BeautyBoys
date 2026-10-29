@@ -1,0 +1,17 @@
+{
+  "name": "waypoint-forever-guide",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "verify:wowhead": "node scripts/verify-wowhead.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.18.2",
+    "zod": "^3.25.76"
+  }
+}

@@ -1,0 +1,886 @@
+{
+  "updated": "2026-10-29",
+  "guide": "gnome-warlock",
+  "racials": [
+    {
+      "name": "Eureka!",
+      "effect": "Active, 2-minute cooldown. For 8 seconds your direct damage and healing spells cost 10% less and deal about 10% more. It does nothing for damage-over-time ticks, but channeled spells (Drain Life, Drain Soul, Wrack) do count.",
+      "forYou": "Press it after your DoTs are up and you start draining – or when you need a burst on a dangerous mob. Don't save it; it's back every 2 minutes.",
+      "confidence": "official",
+      "sources": [
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696",
+        "https://warcraft.wiki.gg/wiki/Eureka!"
+      ]
+    },
+    {
+      "name": "Expansive Mind",
+      "effect": "Passive: +5% maximum mana.",
+      "forYou": "A slightly bigger mana pool means fewer Life Taps and less drinking.",
+      "confidence": "official",
+      "sources": [
+        "https://warcraft.wiki.gg/wiki/Expansive_Mind"
+      ]
+    },
+    {
+      "name": "Escape Artist",
+      "effect": "Active, 2-minute cooldown. Removes slows and roots and makes you immune to them for 3 seconds.",
+      "forYou": "Use it when something roots or slows you so you can run, Fear, or get out of a pack.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://warcraft.wiki.gg/wiki/Escape_Artist",
+        "https://www.warcrafttavern.com/forever/guides/warlock/"
+      ]
+    },
+    {
+      "name": "Engineering Specialization",
+      "effect": "Passive: Engineering gadgets fail or backfire 20% less often.",
+      "forYou": "Only matters if you take Engineering (the PvP-flavoured profession choice).",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://warcraft.wiki.gg/wiki/Engineering_Specialization"
+      ]
+    }
+  ],
+  "spec": {
+    "name": "Affliction",
+    "summary": "Affliction puts damage-over-time spells (DoTs) on enemies and drains their life to heal yourself. It needs the least drinking and eating between fights, so it is the easiest way to level. Every guide we checked agrees.",
+    "note": "This point-by-point order is our own merge of the published leveling orders (Conquest Capped, wowforever.gg, Method, Warcraft Tavern, Icy Veins, Kargoz), updated for the October 15 talent changes. Levels 10–30 were tested in the beta; everything above 30 is theory until launch. You get your first talent point at level 10 (earlier with the Legacy perk Talented).",
+    "talents": [
+      {
+        "level": [
+          10,
+          14
+        ],
+        "tree": "Affliction",
+        "talent": "Improved Corruption",
+        "wh": {
+          "type": "spell",
+          "id": 17810
+        },
+        "ranks": "5/5",
+        "why": "Makes Corruption instant and hit harder. Every guide takes it first."
+      },
+      {
+        "level": [
+          15,
+          17
+        ],
+        "tree": "Affliction",
+        "talent": "Suppression",
+        "wh": {
+          "type": "spell",
+          "id": 18174
+        },
+        "ranks": "3/5",
+        "why": "More spell hit, so your DoTs miss less often."
+      },
+      {
+        "level": [
+          18,
+          19
+        ],
+        "tree": "Affliction",
+        "talent": "Grim Reach",
+        "ranks": "2/2",
+        "why": "+20% range on Affliction spells: pull from further away and kite more easily. Improved Life Tap is an equally good pick here."
+      },
+      {
+        "level": [
+          20,
+          22
+        ],
+        "tree": "Affliction",
+        "talent": "Improved Drains",
+        "ranks": "3/3",
+        "why": "Drain Life and Drain Soul hit harder for each of your Affliction effects on the target."
+      },
+      {
+        "level": [
+          23,
+          25
+        ],
+        "tree": "Affliction",
+        "talent": "Fel Concentration",
+        "wh": {
+          "type": "spell",
+          "id": 17783
+        },
+        "ranks": "3/3",
+        "why": "Stops your drains from being pushed back when you're hit, so you can 'drain-tank' mobs. Wands got weaker in the beta, so drains matter earlier."
+      },
+      {
+        "level": [
+          26,
+          27
+        ],
+        "tree": "Affliction",
+        "talent": "Nightfall",
+        "wh": {
+          "type": "spell",
+          "id": 18094
+        },
+        "ranks": "2/2",
+        "why": "Your DoTs and drains sometimes give you a free instant Shadow Bolt."
+      },
+      {
+        "level": [
+          28,
+          29
+        ],
+        "tree": "Affliction",
+        "talent": "Improved Bane of Agony",
+        "wh": {
+          "type": "spell",
+          "id": 18827
+        },
+        "ranks": "2/2",
+        "why": "More damage from Bane of Agony, which you put on every mob."
+      },
+      {
+        "level": [
+          30,
+          30
+        ],
+        "tree": "Affliction",
+        "talent": "Siphon Life",
+        "wh": {
+          "type": "spell",
+          "id": 18265
+        },
+        "ranks": "1/1",
+        "why": "Another DoT that heals you. Required for Wrack at 40."
+      },
+      {
+        "level": [
+          31,
+          33
+        ],
+        "tree": "Affliction",
+        "talent": "Soul Siphon",
+        "ranks": "3/3",
+        "why": "Your drains get stronger for every Affliction effect on the target."
+      },
+      {
+        "level": [
+          34,
+          34
+        ],
+        "tree": "Affliction",
+        "talent": "Suppression",
+        "wh": {
+          "type": "spell",
+          "id": 18174
+        },
+        "ranks": "4/5",
+        "why": "4 points means you basically never miss mobs of your own level – and it unlocks the next talent row."
+      },
+      {
+        "level": [
+          35,
+          39
+        ],
+        "tree": "Affliction",
+        "talent": "Shadow Mastery",
+        "wh": {
+          "type": "spell",
+          "id": 18271
+        },
+        "ranks": "5/5",
+        "why": "+10% Shadow damage – nearly all of your damage."
+      },
+      {
+        "level": [
+          40,
+          40
+        ],
+        "tree": "Affliction",
+        "talent": "Wrack",
+        "wh": {
+          "type": "spell",
+          "id": 1316697
+        },
+        "ranks": "1/1",
+        "why": "The new Affliction capstone: a channel that drains the target and makes your other Shadow DoTs hit 10% harder. It replaces Shadow Bolt as your filler. (Older guides call it \"Drain Hope\".)"
+      },
+      {
+        "level": [
+          41,
+          43
+        ],
+        "tree": "Affliction",
+        "talent": "Pandemic",
+        "ranks": "3/3",
+        "why": "Your DoT and drain critical hits do much more damage. Skipped earlier because crits are rare at low level."
+      },
+      {
+        "level": [
+          44,
+          45
+        ],
+        "tree": "Affliction",
+        "talent": "Improved Life Tap",
+        "wh": {
+          "type": "spell",
+          "id": 18182
+        },
+        "ranks": "2/2",
+        "why": "+20% mana from Life Tap. Less downtime."
+      },
+      {
+        "level": [
+          46,
+          50
+        ],
+        "tree": "Affliction",
+        "talent": "Malevolence",
+        "ranks": "5/5",
+        "why": "+5% Shadow crit – DoTs can crit in Forever, so this adds up with Pandemic."
+      },
+      {
+        "level": [
+          51,
+          55
+        ],
+        "tree": "Demonology",
+        "talent": "Demonic Embrace",
+        "ranks": "5/5",
+        "why": "+15% Stamina: more health to Life Tap and survive mistakes."
+      },
+      {
+        "level": [
+          56,
+          58
+        ],
+        "tree": "Demonology",
+        "talent": "Fel Vitality",
+        "ranks": "3/3",
+        "why": "More health and mana for your demon, and more mana for you."
+      },
+      {
+        "level": [
+          59,
+          60
+        ],
+        "tree": "Demonology",
+        "talent": "Demonic Aegis",
+        "ranks": "2/2",
+        "why": "Demon Armor gets 30% stronger. Alternative: put these last 10 points toward Demonic Sacrifice instead (Icy Veins' route)."
+      }
+    ],
+    "alternatives": [
+      {
+        "name": "Demonology",
+        "summary": "Your demon does more of the work. Comfortable once you have Demonic Brand (around level 26–30) and Soul Link at 30; it costs more mana. Kargoz rates it as strong as Affliction on one or two targets. Tip: never use Searing Pain before you have Demonic Brand – it pulls the mob onto you.",
+        "confidence": "beta-tested",
+        "sources": [
+          "https://conquestcapped.com/guides/wow-forever/wow-forever-warlock-leveling/",
+          "https://www.youtube.com/watch?v=VI3h379QvSY"
+        ]
+      },
+      {
+        "name": "Destruction",
+        "summary": "Big direct fire damage, but you'll drink after nearly every fight. Weak for solo questing, good in dungeons from level 40 with Incinerate. Best used as your second spec (see dual spec).",
+        "confidence": "beta-tested",
+        "sources": [
+          "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+        ]
+      }
+    ],
+    "confidence": "community",
+    "sources": [
+      "https://conquestcapped.com/guides/wow-forever/wow-forever-warlock-leveling/",
+      "https://wowforever.gg/en/builds/warlock-affliction-leveling/",
+      "https://www.method.gg/wow-forever/wow-forever-warlock-leveling-guide-and-talents",
+      "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+      "https://www.youtube.com/watch?v=Z1089BICDCA",
+      "https://news.blizzard.com/en-us/article/24310968/world-of-warcraft-forever-class-deep-dives-rogue-and-warlock"
+    ]
+  },
+  "dualSpec": {
+    "level": 40,
+    "cost": "10 gold (per the wiki – some beta players reported more; check at launch)",
+    "body": "At level 40 your class trainer sells a second talent setup. Switch between them anywhere outside combat. A good pair: Affliction for questing, Destruction (Incinerate) for dungeons and groups.",
+    "confidence": "community",
+    "sources": [
+      "https://warcraft.wiki.gg/wiki/World_of_Warcraft:_Forever",
+      "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+      "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696"
+    ]
+  },
+  "spellsNote": "Training costs aren't published anywhere yet. Install the free 'What's Training? (Forever)' addon – it shows what your trainer has and what it costs. Visit a warlock trainer every even level.",
+  "spells": [
+    {
+      "level": 1,
+      "spells": [
+        {
+          "name": "Shadow Bolt",
+          "wh": {
+            "type": "spell",
+            "id": 686
+          }
+        },
+        {
+          "name": "Demon Skin",
+          "wh": {
+            "type": "spell",
+            "id": 687
+          }
+        },
+        {
+          "name": "Immolate",
+          "wh": {
+            "type": "spell",
+            "id": 348
+          }
+        },
+        {
+          "name": "Summon Imp",
+          "wh": {
+            "type": "spell",
+            "id": 688
+          },
+          "note": "class quest"
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "spells": [
+        {
+          "name": "Corruption",
+          "wh": {
+            "type": "spell",
+            "id": 172
+          }
+        },
+        {
+          "name": "Curse of Weakness",
+          "wh": {
+            "type": "spell",
+            "id": 702
+          }
+        }
+      ]
+    },
+    {
+      "level": 6,
+      "spells": [
+        {
+          "name": "Life Tap",
+          "wh": {
+            "type": "spell",
+            "id": 1454
+          }
+        },
+        {
+          "name": "Shadow Bolt (rank 2)"
+        }
+      ]
+    },
+    {
+      "level": 8,
+      "spells": [
+        {
+          "name": "Bane of Agony",
+          "wh": {
+            "type": "spell",
+            "id": 980
+          }
+        },
+        {
+          "name": "Fear",
+          "wh": {
+            "type": "spell",
+            "id": 5782
+          }
+        }
+      ]
+    },
+    {
+      "level": 10,
+      "spells": [
+        {
+          "name": "Drain Soul",
+          "wh": {
+            "type": "spell",
+            "id": 1120
+          }
+        },
+        {
+          "name": "Create Healthstone",
+          "wh": {
+            "type": "spell",
+            "id": 6201
+          }
+        },
+        {
+          "name": "Summon Voidwalker",
+          "wh": {
+            "type": "spell",
+            "id": 697
+          },
+          "note": "class quest"
+        }
+      ]
+    },
+    {
+      "level": 12,
+      "spells": [
+        {
+          "name": "Health Funnel",
+          "wh": {
+            "type": "spell",
+            "id": 755
+          }
+        }
+      ]
+    },
+    {
+      "level": 14,
+      "spells": [
+        {
+          "name": "Drain Life",
+          "wh": {
+            "type": "spell",
+            "id": 689
+          }
+        },
+        {
+          "name": "Curse of Recklessness",
+          "wh": {
+            "type": "spell",
+            "id": 704
+          }
+        }
+      ]
+    },
+    {
+      "level": 16,
+      "spells": [
+        {
+          "name": "Unending Breath",
+          "wh": {
+            "type": "spell",
+            "id": 5697
+          }
+        }
+      ]
+    },
+    {
+      "level": 18,
+      "spells": [
+        {
+          "name": "Create Soulstone",
+          "wh": {
+            "type": "spell",
+            "id": 693
+          }
+        },
+        {
+          "name": "Searing Pain",
+          "wh": {
+            "type": "spell",
+            "id": 5676
+          }
+        }
+      ]
+    },
+    {
+      "level": 20,
+      "spells": [
+        {
+          "name": "Demon Armor",
+          "wh": {
+            "type": "spell",
+            "id": 706
+          }
+        },
+        {
+          "name": "Rain of Fire",
+          "wh": {
+            "type": "spell",
+            "id": 5740
+          }
+        },
+        {
+          "name": "Ritual of Summoning",
+          "wh": {
+            "type": "spell",
+            "id": 698
+          }
+        },
+        {
+          "name": "Curse of the Elements"
+        },
+        {
+          "name": "Summon Succubus / Incubus",
+          "wh": {
+            "type": "spell",
+            "id": 712
+          },
+          "note": "class quest"
+        }
+      ]
+    },
+    {
+      "level": 22,
+      "spells": [
+        {
+          "name": "Eye of Kilrogg",
+          "wh": {
+            "type": "spell",
+            "id": 126
+          }
+        }
+      ]
+    },
+    {
+      "level": 24,
+      "spells": [
+        {
+          "name": "Drain Mana",
+          "wh": {
+            "type": "spell",
+            "id": 5138
+          }
+        },
+        {
+          "name": "Sense Demons",
+          "wh": {
+            "type": "spell",
+            "id": 5500
+          }
+        }
+      ]
+    },
+    {
+      "level": 26,
+      "spells": [
+        {
+          "name": "Curse of Tongues",
+          "wh": {
+            "type": "spell",
+            "id": 1714
+          }
+        },
+        {
+          "name": "Detect Invisibility",
+          "wh": {
+            "type": "spell",
+            "id": 132
+          }
+        }
+      ]
+    },
+    {
+      "level": 28,
+      "spells": [
+        {
+          "name": "Banish",
+          "wh": {
+            "type": "spell",
+            "id": 710
+          }
+        },
+        {
+          "name": "Create Firestone",
+          "wh": {
+            "type": "spell",
+            "id": 6366
+          },
+          "note": "now a weapon imbue"
+        }
+      ]
+    },
+    {
+      "level": 30,
+      "spells": [
+        {
+          "name": "Hellfire",
+          "wh": {
+            "type": "spell",
+            "id": 1949
+          }
+        },
+        {
+          "name": "Subjugate Demon",
+          "wh": {
+            "type": "spell",
+            "id": 1098
+          }
+        },
+        {
+          "name": "Summon Felhunter",
+          "wh": {
+            "type": "spell",
+            "id": 691
+          },
+          "note": "class quest"
+        }
+      ]
+    },
+    {
+      "level": 32,
+      "spells": [
+        {
+          "name": "Shadow Ward",
+          "wh": {
+            "type": "spell",
+            "id": 6229
+          }
+        }
+      ]
+    },
+    {
+      "level": 36,
+      "spells": [
+        {
+          "name": "Create Spellstone",
+          "wh": {
+            "type": "spell",
+            "id": 2362
+          },
+          "note": "now a weapon imbue"
+        }
+      ]
+    },
+    {
+      "level": 40,
+      "spells": [
+        {
+          "name": "Howl of Terror",
+          "wh": {
+            "type": "spell",
+            "id": 5484
+          }
+        },
+        {
+          "name": "Summon Felsteed",
+          "wh": {
+            "type": "spell",
+            "id": 5784
+          },
+          "note": "class quest – your mount"
+        }
+      ]
+    },
+    {
+      "level": 42,
+      "spells": [
+        {
+          "name": "Death Coil",
+          "wh": {
+            "type": "spell",
+            "id": 6789
+          }
+        }
+      ]
+    },
+    {
+      "level": 48,
+      "spells": [
+        {
+          "name": "Soul Fire",
+          "wh": {
+            "type": "spell",
+            "id": 6353
+          }
+        }
+      ]
+    },
+    {
+      "level": 50,
+      "spells": [
+        {
+          "name": "Inferno",
+          "wh": {
+            "type": "spell",
+            "id": 1122
+          }
+        }
+      ]
+    },
+    {
+      "level": 60,
+      "spells": [
+        {
+          "name": "Bane of Doom",
+          "wh": {
+            "type": "spell",
+            "id": 603
+          }
+        },
+        {
+          "name": "Summon Dreadsteed",
+          "wh": {
+            "type": "spell",
+            "id": 23161
+          },
+          "note": "class quest"
+        }
+      ]
+    }
+  ],
+  "demons": [
+    {
+      "id": "imp",
+      "name": "Imp",
+      "wh": {
+        "type": "spell",
+        "id": 688
+      },
+      "level": 1,
+      "how": "Starting class quest from Alamar Grimm in Coldridge Valley (inside Anvilmar).",
+      "use": "Ranged damage and the Blood Pact stamina buff. Fine until 10; still useful in groups later.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)",
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+      ]
+    },
+    {
+      "id": "voidwalker",
+      "name": "Voidwalker",
+      "wh": {
+        "type": "spell",
+        "id": 697
+      },
+      "level": 10,
+      "how": "Class quest from the warlock trainers in Ironforge (Forlorn Cavern). The chain ends with you binding the Voidwalker at a summoning circle.",
+      "use": "Your tank: it holds mobs while you DoT them. The safest demon for questing, and still the pick for pulling two mobs or elite quests later.",
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+        "https://www.method.gg/wow-forever/wow-forever-warlock-leveling-guide-and-talents"
+      ]
+    },
+    {
+      "id": "sayaad",
+      "name": "Succubus or Incubus",
+      "wh": {
+        "type": "spell",
+        "id": 712
+      },
+      "level": 20,
+      "how": "Class quest in Stormwind: \"Devourer of Souls\" (Succubus) or the new \"What Is Love?\" (Incubus – players found it easier). Talents call both of them \"Sayaad\".",
+      "use": "Highest single-target damage. From about 30, drain-tank with it: let it hit, you drain.",
+      "confidence": "beta-tested",
+      "sources": [
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-warlock-leveling/",
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+      ]
+    },
+    {
+      "id": "felhunter",
+      "name": "Felhunter",
+      "wh": {
+        "type": "spell",
+        "id": 691
+      },
+      "level": 30,
+      "how": "Quest \"Seeking Strahad\" sends you from the capital to Strahad Farsan in Ratchet (the Barrens).",
+      "use": "Removes magic effects and silences casters. Great against caster mobs and in PvP.",
+      "confidence": "community",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+      ]
+    },
+    {
+      "id": "felsteed",
+      "name": "Felsteed (mount)",
+      "wh": {
+        "type": "spell",
+        "id": 5784
+      },
+      "level": 40,
+      "how": "Quest \"Summon Felsteed\" from Strahad Farsan in Ratchet, per the Forever ability list. Blizzard hasn't confirmed whether warlocks still get a free class mount or whether it skips the 100 gold riding cost – check your trainer at 40 and keep 100g ready.",
+      "use": "Your first mount (60% faster).",
+      "confidence": "community",
+      "sources": [
+        "https://warcraft.wiki.gg/wiki/Warlock_abilities_(Forever)",
+        "https://www.method.gg/wow-forever/how-to-get-a-mount-in-wow-forever-cost-requirement-and-mount-options",
+        "https://us.forums.blizzard.com/en/wow/t/warlock-and-paladin-class-mounts/2370227"
+      ]
+    }
+  ],
+  "rotations": [
+    {
+      "level": [
+        1,
+        4
+      ],
+      "title": "Levels 1–4",
+      "steps": [
+        "Shadow Bolt to pull.",
+        "Immolate while the bolt is flying.",
+        "Finish in melee if you're out of mana – it's fine at this level."
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/"
+      ]
+    },
+    {
+      "level": [
+        4,
+        10
+      ],
+      "title": "Levels 4–10",
+      "steps": [
+        "Send the Imp in.",
+        "Bane of Agony (from 8) and Corruption.",
+        "Immolate if the mob still has a lot of health.",
+        "Shoot your wand until it dies. Get a wand as early as you can."
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+        "https://www.youtube.com/watch?v=Z1089BICDCA"
+      ]
+    },
+    {
+      "level": [
+        10,
+        30
+      ],
+      "title": "Levels 10–30 (Affliction)",
+      "steps": [
+        "Send the Voidwalker in and let it take a hit.",
+        "Bane of Agony → Corruption → Immolate (if it's a tough mob) → Siphon Life once you have it.",
+        "Wand it down. Use Drain Life if you're hurt.",
+        "Life Tap whenever your health is higher than your mana – then drain or eat to get health back.",
+        "Two mobs? DoT one and Fear it, kill the other with your demon, then come back."
+      ],
+      "confidence": "beta-tested",
+      "sources": [
+        "https://www.warcrafttavern.com/forever/guides/warlock-leveling/",
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-warlock-leveling/"
+      ]
+    },
+    {
+      "level": [
+        30,
+        60
+      ],
+      "title": "Level 30+ (drain-tank)",
+      "steps": [
+        "Demon in → Bane of Agony → Corruption → a curse (each Affliction effect makes your drains stronger).",
+        "Channel Drain Life until the mob dies (wand if you're at full health).",
+        "From 40: use Wrack as your filler once the DoTs are up. Free instant Shadow Bolt (Nightfall)? Cast it.",
+        "Pop Eureka! when you start a long drain – it boosts channels, not DoT ticks."
+      ],
+      "confidence": "theory",
+      "sources": [
+        "https://conquestcapped.com/guides/wow-forever/wow-forever-warlock-leveling/",
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-26/2360696"
+      ]
+    }
+  ],
+  "shards": [
+    "Drain Soul gives a Soul Shard: each tick has a rising chance, and you're guaranteed one if the mob dies while you drain it.",
+    "Soul Shards don't stack, so they eat bag space. Keep 3–5 and delete the rest.",
+    "Shards pay for: summoning Voidwalker/Succubus/Incubus/Felhunter, Healthstone, Soulstone, Ritual of Summoning, Shadowburn. The Imp is free.",
+    "Put a soul bag in the new 5th reagent-bag slot once you can make or buy one (Tailoring's Soul Pouch is at skill 215).",
+    "Summoning stones don't summon in Forever – your Ritual of Summoning (level 20, needs two helpers) is the only way. Groups will love you; keep a spare shard."
+  ]
+}

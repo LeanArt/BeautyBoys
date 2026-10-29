@@ -1,0 +1,290 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Badge from '../../components/Badge.astro';
+import Sources from '../../components/Sources.astro';
+
+const addons = [
+  {
+    name: 'TomTom',
+    url: 'https://www.curseforge.com/wow/addons/tomtom',
+    why: 'Puts an arrow on screen. Needed for the /way buttons on this site: copy, paste into chat, follow the arrow.',
+  },
+  {
+    name: 'Questie',
+    url: 'https://www.curseforge.com/wow/addons/questie',
+    why: 'Shows quest givers and objectives on your map. Has a Forever version.',
+  },
+  {
+    name: "What's Training? (Forever)",
+    url: 'https://www.curseforge.com/wow/addons/whats-training-forever',
+    why: 'Lists what your trainer will teach you and what it costs – so you know how much gold to keep.',
+  },
+  {
+    name: 'Auctionator',
+    url: 'https://www.curseforge.com/wow/addons/auctionator',
+    why: 'Makes the Auction House easy: one-click selling at a sensible price.',
+  },
+  {
+    name: 'Bagnator',
+    url: 'https://www.curseforge.com/wow/addons/bagnator',
+    why: 'Turns your bags into one big, searchable window.',
+  },
+  {
+    name: 'Leatrix Plus',
+    url: 'https://www.curseforge.com/wow/addons/leatrix-plus',
+    why: 'Lots of small comfort settings (auto-repair, faster looting, quieter chat).',
+  },
+];
+
+const mistakes = [
+  ['Pulling too many monsters at once.', 'Fight one or two at a time. Your Voidwalker can hold two; three is how corpse runs start.'],
+  ['Running the same dungeon again and again.', 'Monster XP inside dungeons was cut hard. Run each dungeon once with all its quests, then go back to questing.'],
+  ['Deleting letters or notes a quest gave you.', 'In Forever, destroying an item a quest gave you abandons the quest. Keep them until the quest is done.'],
+  ['Deleting Waylaid Crates.', "They look like junk. Fill them with the listed materials and hand them in for Merchant's Favor (see Forever systems)."],
+  ['Forgetting to train.', 'New spells every even level. A warlock without the newest rank of a spell is a weaker warlock.'],
+  ['Leveling without a wand.', 'Until about level 30 a wand is your main way to finish monsters off without spending mana. Get one early.'],
+  ["Ignoring free XP bonuses.", 'Rested XP, food and the Cozy Sleeping Bag stack up. Log out in an inn, eat before fights, sit by campfires.'],
+  ['Spending Legacy points without thinking.', 'You can only spend 16 at launch. Read the Legacy section before you spend any.'],
+  ['Accepting gold from strangers.', 'Blizzard freezes trading, mail and the Auction House on accounts linked to bought gold. "Free" gold can lock you out.'],
+];
+---
+
+<Base title="Start here" description="Everything a brand-new player needs before and during the first hour of WoW: Forever.">
+  <PageHead eyebrow="New to World of Warcraft?" title="Start here">
+    Ten minutes of reading that save hours of confusion. Then head to the route and tick off your first steps.
+  </PageHead>
+
+  <ul class="toc">
+    <li><a class="pill" href="#what">What is Forever?</a></li>
+    <li><a class="pill" href="#before">Before launch</a></li>
+    <li><a class="pill" href="#first-hour">Your first hour</a></li>
+    <li><a class="pill" href="#addons">Addons</a></li>
+    <li><a class="pill" href="#mistakes">Mistakes to avoid</a></li>
+    <li><a class="pill" href="#using">Using this site</a></li>
+  </ul>
+
+  <section id="what">
+    <h2>What is WoW: Forever?</h2>
+    <p>
+      A new, permanent version of World of Warcraft set in the original 2004-era world, with modern comforts and a lot
+      of new content. It comes with a normal WoW subscription or game time – no extra purchase needed.
+    </p>
+    <ul>
+      <li><strong>Level cap 60, forever.</strong> No expansions will raise it.</li>
+      <li>
+        <strong>The world stays dangerous.</strong> There's no level scaling: a level-30 zone is deadly at level 20.
+      </li>
+      <li>
+        <strong>Over 1,000 new quests</strong>, new zones (like Riverglades), new dungeons and new systems such as camping
+        and Legacy points.
+      </li>
+      <li>It's not the same as "Classic". Old guides and videos for Classic are often wrong here.</li>
+    </ul>
+    <p class="small"><Badge c="official" /></p>
+    <Sources
+      urls={[
+        'https://news.blizzard.com/en-us/article/24302093/',
+        'https://warcraft.wiki.gg/wiki/World_of_Warcraft:_Forever',
+        'https://worldofwarcraft.blizzard.com/en-us/news/24315280/new-players-starter-guide-welcome-to-world-of-warcraft-forever',
+      ]}
+    />
+  </section>
+
+  <section id="before">
+    <h2>Before launch (Nov 4, 3 p.m. PST)</h2>
+    <ol class="checklist">
+      <li>
+        <strong>Get game time.</strong> A WoW subscription or game time covers Forever. Install the Battle.net app and
+        download the game ahead of launch.
+      </li>
+      <li>
+        <strong>Pick a ruleset – this choice is permanent.</strong> There are no realms to pick; you choose a ruleset and
+        everyone on it shares one big world. We recommend <strong>Normal</strong>: nobody can attack you unless you want
+        to fight. (PvP lets other players attack you in most zones and locks your account to one faction.)
+      </li>
+      <li>
+        <strong>Choose your name.</strong> Characters in Forever have a first name and a surname, unique across your region.
+      </li>
+      <li>
+        <strong>Create a Gnome Warlock.</strong> Alliance, any appearance. You'll start in Coldridge Valley, a snowy valley
+        in Dun Morogh.
+      </li>
+      <li><strong>Install TomTom and Questie</strong> (see addons below) so the guide's waypoints work.</li>
+      <li>
+        <strong>Expect queues on launch day.</strong> Beta players saw long login queues, and starting areas will be
+        packed. Group up with others hunting the same monsters – only the first person to hit a monster gets credit,
+        unless you're in a group.
+      </li>
+    </ol>
+    <p class="small"><Badge c="official" /></p>
+    <Sources
+      urls={[
+        'https://news.blizzard.com/en-us/article/24302070/updated-10-22-choose-your-ruleset-in-world-of-warcraft-forever',
+        'https://worldofwarcraft.blizzard.com/en-us/news/24303866',
+        'https://us.forums.blizzard.com/en/wow/t/mob-tagging-needs-to-be-reverted-to-the-same-as-retail/2352890',
+        'https://eu.forums.blizzard.com/en/wow/t/22000-login-queue-during-the-beta-%E2%80%94-what-happens-at-launch/629259',
+      ]}
+    />
+  </section>
+
+  <section id="first-hour">
+    <h2>Your first hour</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Moving &amp; talking</h3>
+        <p>
+          Move with <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>, hold the right mouse button to steer. Right-click
+          people and objects to talk, loot or use them.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Useful keys</h3>
+        <p>
+          <kbd>M</kbd> map · <kbd>L</kbd> quest log · <kbd>B</kbd> bags · <kbd>C</kbd> character · <kbd>P</kbd> spells ·
+          <kbd>N</kbd> talents · <kbd>Esc</kbd> menu. Check Options → Keybindings if one doesn't work.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Quest markers</h3>
+        <p>
+          A yellow <strong>!</strong> above someone means a new quest. A yellow <strong>?</strong> means you can hand one
+          in. A grey <strong>!</strong> means the quest is too high for you – come back later.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Monster colors</h3>
+        <p>
+          Hover a monster: <span class="lvl grey">grey</span> gives no XP, <span class="lvl green">green</span> is easy,
+          <span class="lvl yellow">yellow</span> is fair, <span class="lvl orange">orange</span> is hard,
+          <span class="lvl red">red</span> will probably kill you.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Inns &amp; your Hearthstone</h3>
+        <p>
+          Talk to an innkeeper to make that inn your "home". Your Hearthstone teleports you back there (it has a long
+          cooldown, so use it wisely). Logging out in an inn earns <strong>rested XP</strong> – double XP from kills for a while.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Dying</h3>
+        <p>
+          It happens. You become a ghost: run back to your body and click "Resurrect". Your gear loses a little
+          durability – repair it at any blacksmith or armor vendor.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Trainers</h3>
+        <p>
+          You don't learn spells automatically. Visit a warlock trainer every even level (2, 4, 6…) and pay a little gold
+          for new spells and stronger ranks.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Your demon</h3>
+        <p>
+          Warlocks fight with a demon pet. Send it in first (pet bar → Attack) so monsters hit it instead of you. You get
+          new demons from class quests at 10, 20 and 30.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="addons">
+    <h2>Addon starter pack</h2>
+    <p>
+      Addons are free add-ons that improve the game's interface. Install them with the CurseForge app or by hand. Forever
+      uses the modern WoW addon system, so old "Classic" addons won't load – pick versions that list WoW: Forever support.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Addon</th><th>Why</th></tr></thead>
+        <tbody>
+          {
+            addons.map((a) => (
+              <tr>
+                <td>
+                  <a href={a.url} target="_blank" rel="noopener">
+                    {a.name}
+                  </a>
+                </td>
+                <td>{a.why}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="small"><Badge c="beta-tested" /></p>
+    <Sources urls={['https://wowforeverguides.com/leveling/addons', 'https://www.youtube.com/watch?v=lgtzH7bG5Vw']} />
+  </section>
+
+  <section id="mistakes">
+    <h2>Mistakes to avoid</h2>
+    <ol class="mistakes">
+      {
+        mistakes.map(([m, fix]) => (
+          <li>
+            <strong>{m}</strong> {fix}
+          </li>
+        ))
+      }
+    </ol>
+    <p class="small"><Badge c="beta-tested" /></p>
+    <Sources
+      urls={[
+        'https://www.youtube.com/watch?v=vLF-nCuyzMo',
+        'https://us.forums.blizzard.com/en/wow/t/2376010',
+        'https://us.forums.blizzard.com/en/wow/t/2388218',
+        'https://us.forums.blizzard.com/en/wow/t/temporary-economy-holds-for-rmt/2381433',
+      ]}
+    />
+  </section>
+
+  <section id="using">
+    <h2>How to use this site</h2>
+    <div class="callout fel">
+      <ol>
+        <li>Type your level into <strong>My level</strong> at the top. Every page highlights what matters right now.</li>
+        <li>Open the <a href="/guides/gnome-warlock/route/">route</a> on a phone or second screen and tick steps off as you go. Progress stays in this browser.</li>
+        <li>The <code>/way</code> buttons copy a waypoint. Paste it into the game chat and TomTom shows an arrow.</li>
+        <li>Hover item, quest and spell names for in-game tooltips.</li>
+        <li>Check the badge on each step – <em>theory</em> means nobody could test it yet.</li>
+      </ol>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .checklist li,
+  .mistakes li {
+    margin-bottom: 0.6rem;
+  }
+  kbd + kbd {
+    margin-left: 2px;
+  }
+  .lvl {
+    font-weight: 700;
+    padding: 0 0.2rem;
+    border-radius: 3px;
+  }
+  .lvl.grey {
+    color: #8a8a8a;
+  }
+  .lvl.green {
+    color: #2e9b2e;
+  }
+  .lvl.yellow {
+    color: #b59400;
+  }
+  .lvl.orange {
+    color: #d26b00;
+  }
+  .lvl.red {
+    color: #d12f2f;
+  }
+  .grid .card h3 {
+    margin-top: 0;
+  }
+</style>

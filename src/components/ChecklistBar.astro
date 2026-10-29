@@ -1,0 +1,73 @@
+---
+interface Props {
+  levelJump?: boolean;
+}
+
+const { levelJump = true } = Astro.props;
+---
+
+<div class="checklist-bar card">
+  <div class="progress">
+    <div class="track"><div class="fill" data-progress-bar></div></div>
+    <span class="small muted" data-progress-text>Loading progress…</span>
+  </div>
+  <div class="actions">
+    <button class="btn small primary" type="button" data-action="resume">Resume where I left off</button>
+    {levelJump && <button class="btn small" type="button" data-action="my-level">Jump to my level</button>}
+    <button class="btn small" type="button" data-action="hide-done" aria-pressed="false">Hide done</button>
+  </div>
+  <details class="backup">
+    <summary class="small">Move progress to another device</summary>
+    <p class="small muted">
+      Progress is saved in this browser only. Make a backup code here and paste it into the same box on your phone or
+      other computer.
+    </p>
+    <textarea data-backup-code aria-label="Backup code" spellcheck="false"></textarea>
+    <div class="actions">
+      <button class="btn small" type="button" data-action="backup">Make backup code</button>
+      <button class="btn small" type="button" data-action="restore">Restore from code</button>
+      <button class="btn small" type="button" data-action="reset">Untick everything</button>
+    </div>
+    <p class="small" data-backup-status aria-live="polite"></p>
+  </details>
+</div>
+
+<style>
+  .checklist-bar {
+    display: grid;
+    gap: 0.7rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .progress {
+    display: grid;
+    gap: 0.3rem;
+  }
+  .track {
+    height: 10px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--fel), var(--accent));
+    transition: width 0.3s;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .backup summary {
+    cursor: pointer;
+    color: var(--muted);
+  }
+  .backup textarea {
+    margin: 0.4rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    min-height: 3.5rem;
+  }
+</style>
