@@ -1,0 +1,105 @@
+---
+// One fast-route step: a dense waymark row (same contract as StepCard, so progress.ts and level.ts drive it).
+// Contract: li.step[id][data-lmin][data-lmax][data-title][data-way] + input[data-step] (Waymark).
+// The row title is the instruction itself ("Accept **X** and **Y**"); the action word sits in the facts row.
+import Icon from './Icon.astro';
+import Waymark from './Waymark.astro';
+import Trust from './Trust.astro';
+import RefItem from './RefItem.astro';
+import WayButton from './WayButton.astro';
+import { md } from '../lib/md';
+import { wayCommand, coordLabel } from '../lib/wow';
+import { FAST_DO, QUEST_OP, fastLevel } from '../lib/fastKinds';
+import type { FastStep } from '../lib/data';
+
+interface Props {
+  step: FastStep;
+  lmax: number; // whole level until which this step is "current" (the next step's level)
+}
+
+const { step, lmax } = Astro.props;
+const kind = FAST_DO[step.do];
+const lmin = Math.floor(step.lvl);
+const place = [step.at, step.zone].filter(Boolean).join(', ');
+
+// Key waypoint: the step's own coords, else the first ref with coordinates.
+const refs = [...(step.npcs ?? []), ...(step.quests ?? []), ...(step.mobs ?? []), ...(step.items ?? [])];
+const keyRef = step.coords ? { name: step.at ?? step.text.replace(/\*\*/g, ''), coords: step.coords, zone: step.zone } : refs.find((r) => r.coords);
+const keyZone = keyRef ? keyRef.zone ?? step.zone : undefined;
+const keyLabel = (keyRef?.name ?? '').slice(0, 60);
+const keyWay = keyRef?.coords && keyZone ? wayCommand(keyZone, keyRef.coords, keyLabel) : undefined;
+const plain = step.text.replace(/\*\*|\*/g, '');
+
+const quests = step.quests ?? [];
+const groups = [
+  { label: 'People', refs: step.npcs ?? [], kind: 'npc' as const },
+  { label: 'Enemies', refs: (step.mobs ?? []).map((m) => ({ ...m, role: m.lvl ? `Level ${m.lvl[0] === m.lvl[1] ? m.lvl[0] : `${m.lvl[0]}–${m.lvl[1]}`}` : undefined })), kind: 'npc' as const },
+  { label: 'Items', refs: step.items ?? [], kind: 'item' as const },
+].filter((g) => g.refs.length > 0);
+---
+
+<li
+  class:list={['step', 'fast', `kind-${step.do === 'class' ? 'class' : step.do}`, { theory: step.confidence === 'theory' }]}
+  id={step.id}
+  data-lmin={lmin}
+  data-lmax={Math.max(lmin, lmax)}
+  data-title={plain.length > 90 ? `${plain.slice(0, 88)}…` : plain}
+  data-way={keyWay}
+  data-way-label={keyRef?.coords ? coordLabel(keyRef.coords) : undefined}
+>
+  <Waymark id={step.id} glyph={kind.glyph} label={`Mark "${plain}" done`} />
+  <div class="step-main">
+    <p class="next-flag"><span class="tag next">Next step</span></p>
+    <p class="step-title fast-text"><span set:html={md(step.text)} /> <span class="tag done">Done</span></p>
+    <div class="facts">
+      <span class="tag lv num">{fastLevel(step.lvl)}</span>
+      <span class="kind">{kind.word}</span>
+      {
+        place && (
+          <span class="place">
+            <Icon name="pin" size={16} />
+            {place}
+          </span>
+        )
+      }
+      {step.optional && <span class="tag optional">Optional</span>}
+      {keyWay && keyRef?.coords && <WayButton way={keyWay} coords={keyRef.coords} class="key" />}
+      <Trust c={step.confidence} urls={step.sources} report={`fast route step "${plain}" (${step.id})`} />
+    </div>
+    <div class="detail">
+      {step.note && <p class="body" set:html={md(step.note)} />}
+      {
+        quests.length > 0 && (
+          <div class="refs">
+            <h4 class="refs-label">Quests</h4>
+            <ul class="ref-list">
+              {quests.map((q) => (
+                <li>
+                  <RefItem r={q} zone={step.zone} kind="quest" detail={QUEST_OP[q.op]} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+      {
+        groups.map((g) => (
+          <div class="refs">
+            <h4 class="refs-label">{g.label}</h4>
+            <ul class="ref-list">
+              {g.refs.map((r) => (
+                <li>
+                  <RefItem r={r} zone={step.zone} kind={g.kind} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+      <label class="btn mark-done" for={`chk-${step.id}`} aria-hidden="true"><Icon name="check" size={16} />Mark done</label>
+    </div>
+    <button class="btn quiet step-toggle" type="button" data-action="details" aria-expanded="false"
+      ><span data-details-label>Show details</span><Icon name="chevron-down" size={16} class="chev" /></button
+    >
+  </div>
+</li>

@@ -223,3 +223,71 @@ export const LibraryBooks = z.object({
   rewards: z.array(z.object({ books: z.number().int(), level: z.number().int().optional(), choices: z.array(Ref) })),
   books: z.array(LibraryBook).min(1),
 });
+
+// ---------- Fast route (step-by-step fastest 1–60) ----------
+// A separate, much finer route than Route: one step = one stop or one action, RestedXP style.
+// `lvl` is the character level you should have when you reach the step (decimals allowed: 7.5 = halfway into 7).
+const FastLvl = z.number().min(1).max(60);
+
+export const FastQuest = Ref.extend({ op: z.enum(['accept', 'do', 'turnin', 'skip']) });
+export const FastMob = Ref.extend({ lvl: z.tuple([FastLvl, FastLvl]).optional() });
+
+export const FastStepDo = z.enum([
+  'accept', 'turnin', 'quest', 'kill', 'loot', 'grind', 'travel', 'fly', 'boat', 'hearth', 'bind',
+  'train', 'class', 'dungeon', 'buy', 'sell', 'system', 'tip', 'milestone',
+]);
+
+export const FastStep = z.object({
+  id: Id,
+  do: FastStepDo,
+  text: z.string().min(3), // imperative, short; **bold** quest names
+  lvl: FastLvl,
+  zone: z.string(),
+  at: z.string().optional(), // hub or landmark
+  coords: Coords.optional(),
+  quests: z.array(FastQuest).optional(),
+  npcs: z.array(NpcRef).optional(),
+  mobs: z.array(FastMob).optional(),
+  items: z.array(Ref).optional(),
+  note: z.string().optional(),
+  optional: z.boolean().optional(),
+  confidence: Confidence,
+  sources: Sources,
+});
+
+export const FastLeg = z.object({
+  id: Id,
+  title: z.string(),
+  short: z.string(),
+  level: z.tuple([FastLvl, FastLvl]),
+  zones: z.array(z.string()).min(1),
+  summary: z.string(),
+  why: z.string(), // why this order is the fastest
+  estTime: z.string().optional(),
+  start: z.string(),
+  end: z.string(),
+  skipped: z.array(z.object({ name: z.string(), wh: WowheadRef.optional(), why: z.string() })).optional(),
+  steps: z.array(FastStep).min(1),
+  openQuestions: z.array(z.string()).optional(),
+  sources: Sources,
+});
+
+// A fork in the road where the route picks one option over another, with the evidence.
+export const FastDecision = z.object({
+  level: z.tuple([FastLvl, FastLvl]),
+  fork: z.string(), // "Westfall or Darkshore at 15–20?"
+  choice: z.string(),
+  why: z.string(),
+  confidence: Confidence,
+  sources: Sources,
+});
+
+export const FastRoute = z.object({
+  guide: Id,
+  updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  summary: z.string(),
+  estTime: z.string().optional(),
+  assumptions: z.array(z.string()).min(1),
+  decisions: z.array(FastDecision).optional(),
+  legs: z.array(FastLeg).min(1),
+});

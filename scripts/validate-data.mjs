@@ -11,6 +11,7 @@ const dataDir = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'data
 // File name prefix -> schema
 const schemas = [
   ['route-', S.Route],
+  ['fast-route-', S.FastRoute],
   ['bags', S.Bags],
   ['professions-', S.Professions],
   ['library-books', S.LibraryBooks],

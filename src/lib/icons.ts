@@ -1,6 +1,6 @@
 // Names of the glyphs in src/components/Icons.astro (the sprite). Keep the two in sync.
 export const ICON_NAMES = [
-  'mark', 'signpost', 'quest', 'turnin', 'flame', 'book', 'gate', 'anvil', 'rune', 'coin', 'lantern', 'star',
+  'mark', 'signpost', 'quest', 'turnin', 'flame', 'book', 'gate', 'anvil', 'rune', 'coin', 'lantern', 'star', 'sword', 'home',
   'pin', 'person', 'pouch', 'crosshair', 'copy', 'check', 'next',
   'keep', 'bank', 'sell', 'auction', 'buy', 'use', 'destroy',
   'info', 'warn', 'danger', 'unknown',

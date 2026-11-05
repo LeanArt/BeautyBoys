@@ -749,6 +749,15 @@ html.ley-ready .step::after { transition: transform var(--dur-ley) var(--ease-ou
 :is(html.view-compact, .view-compact) .step:not(.open) .facts .way.key { display: inline-flex; }
 :is(html.view-compact, .view-compact) .step .step-toggle { display: inline-flex; }
 :is(html.view-compact, .view-compact) .step-main { padding-block: 10px 12px; }
+/* fast route rows (FastStepRow): the instruction is the title, normal weight with bold quest names */
+.step.fast .step-main { padding-block: 10px 12px; display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; }
+.step.fast .step-main > :is(.next-flag, .step-title, .detail) { grid-column: 1 / -1; }
+.step.fast .step-main > .facts { grid-column: 1; }
+.step.fast .step-main > .step-toggle { grid-column: 2; align-self: end;  margin-top: 4px; }   /* compact: same line as the level */
+.step.fast .step-title { font: 400 var(--fs-md)/1.45 var(--font-body); text-wrap: pretty; }
+.step.fast .step-title strong { font-weight: 700; }
+.step.fast.done .step-title { font-weight: 400; }
+.step.fast .facts { margin-top: 6px; }
 /* hide done */
 html.hide-done .step.done { display: none; }
 @media (max-width: 599px) { .leg { margin-inline: calc(-1 * var(--gutter)); } .leg .step-main { padding-right: var(--gutter); }

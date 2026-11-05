@@ -21,8 +21,12 @@ export type Ref = z.infer<typeof S.Ref>;
 export type Step = z.infer<typeof S.Step>;
 export type Bracket = z.infer<typeof S.Bracket>;
 export type BagItem = z.infer<typeof S.BagItem>;
+export type FastStep = z.infer<typeof S.FastStep>;
+export type FastLeg = z.infer<typeof S.FastLeg>;
+export type FastRoute = z.infer<typeof S.FastRoute>;
 
 export const routeFor = (guide: string) => load(`route-${guide}`, S.Route);
+export const fastRouteFor = (guide: string) => load(`fast-route-${guide}`, S.FastRoute);
 export const classFor = (guide: string) => load(`class-${guide}`, S.ClassData);
 export const professionsFor = (guide: string) => load(`professions-${guide}`, S.Professions);
 export const bags = () => load('bags', S.Bags);
