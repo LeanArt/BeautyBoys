@@ -27,6 +27,7 @@ Everything guide-specific lives in `src/data/*.json`, validated by the zod schem
 | File | What |
 |---|---|
 | `route-<guide>.json` | Level brackets → hub-and-zone steps with key quests, NPCs, items, coords |
+| `fast-route-<guide>.json` | The fastest 1–60 route, step by step, in parts (one checklist page per part); research in `research/fast-route/` |
 | `class-<guide>.json` | Racials, talent plan, spells by level, demons, rotations, shard tips |
 | `professions-<guide>.json` | Profession milestones, cross-profession needs, support alts |
 | `bags.json` | Bag advisor: keep / sell / bank / buy / auction / destroy, by level, with vendors |
