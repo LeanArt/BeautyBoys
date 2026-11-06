@@ -1,0 +1,182 @@
+---
+// Fastest route, overview: how the route works, the legs at a glance (with your progress per leg),
+// and the forks where it chooses. Each leg has its own checklist page ([leg].astro).
+import Base from '../../../../layouts/Base.astro';
+import PageHead from '../../../../components/PageHead.astro';
+import GuideNav from '../../../../components/GuideNav.astro';
+import GuidePager from '../../../../components/GuidePager.astro';
+import Callout from '../../../../components/Callout.astro';
+import Trust from '../../../../components/Trust.astro';
+import { guides, type Guide } from '../../../../lib/guides';
+import { fastRouteFor } from '../../../../lib/data';
+import { formatDate } from '../../../../lib/wow';
+import { md } from '../../../../lib/md';
+import { wholeLevels, levelRange, legHref, legScope, legTime, dungeonsOf } from '../../../../lib/fastRoute';
+
+export function getStaticPaths() {
+  return guides.filter((g) => g.status === 'ready').map((guide) => ({ params: { guide: guide.id }, props: { guide } }));
+}
+
+const { guide } = Astro.props as { guide: Guide };
+const route = fastRouteFor(guide.id);
+const base = `/guides/${guide.id}/`;
+const legs = route?.legs ?? [];
+const all = legs.flatMap((l) => l.steps);
+const counts = {
+  steps: all.length,
+  turnins: all.reduce((n, s) => n + (s.quests ?? []).filter((q) => q.op === 'turnin').length, 0),
+  dungeons: legs.flatMap(dungeonsOf).filter((d) => !d.optional).length,
+};
+const theoryFrom = legs.find((l) => l.steps.filter((s) => s.confidence === 'theory').length > l.steps.length / 2)?.level[0];
+---
+
+<Base
+  title={`Fastest route: ${guide.race} ${guide.className}`}
+  description={`Step-by-step fastest 1–60 leveling route for the ${guide.race} ${guide.className} in WoW: Forever: quests, mobs, dungeons and travel in order.`}
+  guide={guide.id}
+>
+  <Fragment slot="head">
+    <PageHead
+      title="Fastest leveling route"
+      trail={[{ href: base, label: `${guide.race} ${guide.className} guide` }]}
+      facts={route
+        ? [
+            { label: 'Updated', value: formatDate(route.updated) },
+            { label: 'Steps', value: `${counts.steps} in ${legs.length} parts` },
+            ...(route.estTime ? [{ label: 'Time to 60', value: route.estTime }] : []),
+          ]
+        : []}
+      levelPrompt
+    >
+      Every stop from 1 to 60, in the order that wastes the least time: which quests to pick up, what to kill, when to
+      run a dungeon and when to move on. It comes in {legs.length || 'ten'} parts; each part is its own checklist.
+    </PageHead>
+    <GuideNav guide={guide} />
+  </Fragment>
+
+  {
+    !route ? (
+      <Callout variant="warn">
+        <p>The fastest route is being researched. Check back soon, or use the <a href={`${base}route/`}>hub-by-hub route</a>.</p>
+      </Callout>
+    ) : (
+      <Fragment>
+        <p class="fast-start">
+          <a class="btn primary" href={legHref(guide.id, legs[0])}>Start at level 1</a>
+          <span>or pick the part for your level below.</span>
+        </p>
+
+        <Callout variant="info" label="How this route works">
+          <div set:html={`<p>${md(route.summary)}</p>`} />
+          <ul class="fast-assumptions">
+            {route.assumptions.map((a) => (
+              <li set:html={md(a)} />
+            ))}
+          </ul>
+          <p>
+            Want the bigger picture instead? The <a href={`${base}route/`}>hub-by-hub route</a> explains each area in plain
+            words. These pages are the turn-by-turn version.
+          </p>
+        </Callout>
+
+        <section class="fast-glance" aria-labelledby="parts">
+          <h2 id="parts">The route in {legs.length} parts</h2>
+          <p>
+            {counts.steps} steps, {counts.turnins} quest turn-ins and {counts.dungeons} dungeon runs (plus a few optional ones).
+            {theoryFrom !== undefined && (
+              <Fragment>
+                {' '}From level {Math.floor(theoryFrom)} most steps are <strong>Theory</strong>. Launch players have only
+                just got that far, so these steps follow the fastest Classic route, adjusted for what Forever changed.
+              </Fragment>
+            )}
+          </p>
+          <div class="table-wrap">
+            <table class="data stack" role="table">
+              <thead role="rowgroup">
+                <tr role="row">
+                  <th role="columnheader" scope="col" class="c-lv">Level</th>
+                  <th role="columnheader" scope="col">Part</th>
+                  <th role="columnheader" scope="col">Dungeons</th>
+                  <th role="columnheader" scope="col">Time</th>
+                  <th role="columnheader" scope="col" class="c-num">Done</th>
+                </tr>
+              </thead>
+              <tbody role="rowgroup">
+                {legs.map((l) => {
+                  const w = wholeLevels(l.level);
+                  const d = dungeonsOf(l);
+                  return (
+                    <tr role="row" data-lmin={w[0]} data-lmax={w[1]}>
+                      <td role="cell" class="c-lv">
+                        <span class="tag num">Lv {levelRange(w)}</span>
+                        <span class="tag now">Now</span>
+                      </td>
+                      <td role="cell" class="c-main">
+                        <a href={legHref(guide.id, l)}>{l.short}</a>
+                        <span class="sub">{l.zones.join(', ')}</span>
+                      </td>
+                      <td role="cell" data-label="Dungeons:">
+                        {d.length ? d.map((x) => (x.optional ? `${x.name} (optional)` : x.name)).join(', ') : 'None'}
+                      </td>
+                      <td role="cell" class="c-time" data-label="Time:">{legTime(l)}</td>
+                      <td role="cell" class="c-num count" data-leg-progress={legScope(guide.id, l.id)} data-total={l.steps.length}>
+                        0/{l.steps.length}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {route.decisions && route.decisions.length > 0 && (
+          <section class="fast-forks" aria-labelledby="forks">
+            <h2 id="forks">Where this route chooses</h2>
+            <p>
+              At these points there is more than one good road. This is what we picked and why, so you can make a different
+              call if your situation is different: a group of friends, a crowded zone, a hotfix.
+            </p>
+            <ol class="fork-list">
+              {route.decisions.map((d) => (
+                <li class="fork">
+                  <p class="fork-q">
+                    <span class="tag num">Lv {levelRange(wholeLevels(d.level))}</span>
+                    <span>{d.fork}</span>
+                  </p>
+                  <p class="fork-a"><strong>Our pick:</strong> {d.choice}</p>
+                  <p class="fork-why" set:html={md(d.why)} />
+                  <Trust c={d.confidence} urls={d.sources} report={`fastest route decision "${d.fork}"`} />
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
+      </Fragment>
+    )
+  }
+  <GuidePager guide={guide} />
+</Base>
+
+<script>
+  import { load } from '../../../../scripts/storage';
+  // Your ticks per part, read from each part's own checklist.
+  document.querySelectorAll<HTMLElement>('[data-leg-progress]').forEach((el) => {
+    const n = load<string[]>(`progress:${el.dataset.legProgress}`, []).length;
+    el.textContent = `${n}/${el.dataset.total}`;
+  });
+</script>
+
+<style>
+  .fast-start { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 0 0 var(--sp-6); color: var(--ink-2); }
+  .fast-assumptions { margin: 8px 0; padding-left: 1.2em; }
+  .fast-assumptions li { margin: 6px 0; }
+  .fast-glance, .fast-forks { margin: var(--sp-10) 0; }
+  .fork-list { list-style: none; margin: var(--sp-4) 0 0; padding: 0; }
+  .fork { padding: var(--sp-5) 0; border-top: 1px solid var(--rule); }
+  .fork:first-child { border-top: 0; }
+  .fork p { margin: 0 0 6px; max-width: 64ch; }
+  .fork-q { font-weight: 700; display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+  @media (min-width: 600px) { .c-time { white-space: nowrap; } }
+  .fork-why { font-size: var(--fs-sm); color: var(--ink-2); }
+</style>

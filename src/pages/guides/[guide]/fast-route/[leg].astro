@@ -1,0 +1,179 @@
+---
+// Fastest route, one part (leg): its steps as a checklist. Each leg page has its own progress scope.
+import Base from '../../../../layouts/Base.astro';
+import PageHead from '../../../../components/PageHead.astro';
+import GuideNav from '../../../../components/GuideNav.astro';
+import FastStepRow from '../../../../components/FastStepRow.astro';
+import Leg from '../../../../components/Leg.astro';
+import ChecklistBar from '../../../../components/ChecklistBar.astro';
+import Callout from '../../../../components/Callout.astro';
+import Icon from '../../../../components/Icon.astro';
+import { guides, type Guide } from '../../../../lib/guides';
+import { fastRouteFor, type FastLeg } from '../../../../lib/data';
+import { formatDate, wowheadUrl } from '../../../../lib/wow';
+import { md } from '../../../../lib/md';
+import { reportHref } from '../../../../lib/site';
+import { wholeLevels, levelRange, fastBase, legHref, legScope, legTime, legSections } from '../../../../lib/fastRoute';
+
+export function getStaticPaths() {
+  return guides
+    .filter((g) => g.status === 'ready')
+    .flatMap((guide) => (fastRouteFor(guide.id)?.legs ?? []).map((leg) => ({ params: { guide: guide.id, leg: leg.id }, props: { guide, leg } })));
+}
+
+const { guide, leg } = Astro.props as { guide: Guide; leg: FastLeg };
+const route = fastRouteFor(guide.id)!;
+const legs = route.legs;
+const i = legs.findIndex((l) => l.id === leg.id);
+const prev = legs[i - 1];
+const next = legs[i + 1];
+const w = wholeLevels(leg.level);
+const steps = leg.steps;
+// A step stays "current" for your level until the next step's level (the next leg's first step for the last one).
+const lmax = (k: number) => Math.floor(steps[k + 1]?.lvl ?? next?.steps[0]?.lvl ?? steps[k].lvl);
+const theory = steps.filter((s) => s.confidence === 'theory').length;
+const fast = fastBase(guide.id);
+---
+
+<Base
+  title={`${leg.short} (Lv ${levelRange(w)}): fastest route`}
+  description={`Step-by-step fastest route for the ${guide.race} ${guide.className}, levels ${levelRange(w)}: ${leg.zones.join(', ')}.`}
+  rail="md"
+  dock
+  guide={guide.id}
+>
+  <Fragment slot="head">
+    <PageHead
+      title={leg.title}
+      trail={[
+        { href: `/guides/${guide.id}/`, label: `${guide.race} ${guide.className} guide` },
+        { href: fast, label: 'Fastest route' },
+      ]}
+      facts={[
+        { label: 'Part', value: `${i + 1} of ${legs.length}` },
+        { label: 'Levels', value: levelRange(w) },
+        { label: 'Steps', value: `${steps.length}` },
+        { label: 'Time', value: legTime(leg) },
+        { label: 'Updated', value: formatDate(route.updated) },
+      ]}
+      levelPrompt
+    >
+      <span set:html={md(leg.summary)} />
+    </PageHead>
+    <GuideNav guide={guide} />
+  </Fragment>
+
+  <ChecklistBar slot="rail" sections={legSections(guide.id, route, leg.id)} />
+
+  <Leg id={leg.id} level={w} title={`Part ${i + 1}: ${leg.short}`} zones={leg.zones} total={steps.length}>
+    <Fragment slot="extras">
+      <dl class="facts-dl leg-route-facts">
+        <div><dt>You start</dt><dd>{leg.start}</dd></div>
+        <div><dt>You end</dt><dd>{leg.end}</dd></div>
+        {leg.estTime && <div><dt>Time</dt><dd>{leg.estTime}</dd></div>}
+      </dl>
+      {
+        theory > steps.length / 2 && (
+          <Callout variant="untested" compact>
+            <p>{theory} of {steps.length} steps here are Theory: nobody has confirmed them in Forever yet.</p>
+          </Callout>
+        )
+      }
+      <details class="bracket-extras">
+        <summary>
+          Why this order{leg.skipped?.length ? `, and the ${leg.skipped.length} quests we skip` : ''}
+          <Icon name="chevron-down" size={16} class="chev" />
+        </summary>
+        <div class="extras-body">
+          <p set:html={md(leg.why)} />
+          {
+            leg.skipped && leg.skipped.length > 0 && (
+              <Fragment>
+                <p class="extras-label">Skipped on purpose</p>
+                <ul class="inline-refs">
+                  {leg.skipped.map((s) => (
+                    <li>
+                      <span class="ref-inline">
+                        {s.wh ? (
+                          <a href={wowheadUrl(s.wh)} target="_blank" rel="noopener">
+                            {s.name}
+                          </a>
+                        ) : (
+                          s.name
+                        )}
+                      </span>
+                      <span class="skip-why">{s.why}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Fragment>
+            )
+          }
+          {
+            leg.openQuestions && leg.openQuestions.length > 0 && (
+              <Fragment>
+                <p class="extras-label">Still unknown</p>
+                <ul class="open-qs">
+                  {leg.openQuestions.map((q) => (
+                    <li set:html={md(q)} />
+                  ))}
+                </ul>
+              </Fragment>
+            )
+          }
+          <p>
+            <a class="report-link" href={reportHref(`fastest route, part ${i + 1} (${leg.short})`)} target="_blank" rel="noopener">
+              <Icon name="flag" size={16} />
+              Something wrong in this part? Report it
+            </a>
+          </p>
+        </div>
+      </details>
+    </Fragment>
+    {steps.map((s, k) => <FastStepRow step={s} lmax={lmax(k)} />)}
+  </Leg>
+
+  <nav class="pager" aria-label="Parts of the fastest route">
+    <a class="pager-prev" href={prev ? legHref(guide.id, prev) : fast} rel="prev">
+      <Icon name="chevron-left" />
+      <span class="pager-text">
+        <span class="pager-dir">{prev ? `Part ${i}` : 'Back to'}</span>
+        <span class="pager-name">{prev ? prev.short : 'Route overview'}</span>
+      </span>
+    </a>
+    <a class="pager-next" href={next ? legHref(guide.id, next) : fast} rel="next">
+      <span class="pager-text">
+        <span class="pager-dir">{next ? `Part ${i + 2}` : 'Level 60'}</span>
+        <span class="pager-name">{next ? next.short : 'Route overview'}</span>
+      </span>
+      <Icon name="chevron-right" />
+    </a>
+  </nav>
+</Base>
+
+<script>
+  import { initProgress } from '../../../../scripts/progress';
+  import { load, save } from '../../../../scripts/storage';
+  const [, guide = 'unknown', , leg = 'unknown'] = location.pathname.split('/').filter(Boolean);
+  const scope = `fast-route:${guide}:${leg}`;
+  // ~100 steps per part: start in Compact view (instruction, level, /way) unless the reader chose otherwise.
+  if (load<string | null>(`view:${scope}`, null) === null) save(`view:${scope}`, 'compact');
+  initProgress(scope);
+  // The rail lists every part; fill in the other parts' counts from their own checklists.
+  document.querySelectorAll<HTMLElement>('[data-count-for]').forEach((el) => {
+    const id = el.dataset.countFor!;
+    if (id === leg || document.getElementById(id)) return;
+    const total = el.textContent?.split('/')[1]?.trim() ?? '';
+    const n = load<string[]>(`progress:fast-route:${guide}:${id}`, []).length;
+    el.textContent = `${n}/${total}`;
+    el.closest('li')?.toggleAttribute('data-complete', total !== '' && n === Number(total));
+  });
+</script>
+
+<style>
+  .leg-route-facts { flex-direction: column; gap: 4px; max-width: 64ch; margin-top: 8px; }
+  .leg-route-facts dd { color: var(--ink-2); }
+  .skip-why { color: var(--ink-3); }
+  .open-qs { margin: 4px 0; padding-left: 1.2em; }
+  .open-qs li { margin: 4px 0; }
+</style>

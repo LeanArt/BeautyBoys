@@ -10,6 +10,7 @@ interface Section {
   label: string;
   level?: [number, number];
   total: number;
+  href?: string; // another page's section (default: #id on this page)
   demo?: { done: number; now?: 'past' | 'current' | 'future' };
 }
 
@@ -75,7 +76,7 @@ const countText = demo ? `${doneAll} of ${total} ${noun} done` : undefined;
             sections.map((s) => (
               <li data-complete={s.demo && s.demo.done === s.total ? '' : undefined}>
                 <a
-                  href={`#${s.id}`}
+                  href={s.href ?? `#${s.id}`}
                   data-lmin={demo ? undefined : s.level?.[0]}
                   data-lmax={demo ? undefined : s.level?.[1]}
                   data-now={s.demo?.now}

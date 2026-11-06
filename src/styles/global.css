@@ -594,7 +594,7 @@ html[data-level] .level-prompt:not(.always) { display: none; }
                color: var(--ink-2); font: 600 var(--fs-sm)/1.2 var(--font-body); text-decoration: none; white-space: nowrap;
                border-bottom: 3px solid transparent; }
 .guide-nav a:hover { color: var(--ink); border-bottom-color: var(--rule); }
-.guide-nav a[aria-current='page'] { color: var(--ink); border-bottom-color: var(--ink); }
+.guide-nav a[aria-current] { color: var(--ink); border-bottom-color: var(--ink); }
 .guide-nav a:focus-visible { outline-offset: -3px; }
 /* Edge fade only on a side with more links off-screen (GuideNav.astro sets data-more="start|end|both") */
 .guide-nav[data-more='end']   { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent); }

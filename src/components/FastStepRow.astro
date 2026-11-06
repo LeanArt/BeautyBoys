@@ -1,5 +1,6 @@
 ---
-// One fast-route step: a dense waymark row (same contract as StepCard, so progress.ts and level.ts drive it).
+// One fast-route step: a dense waymark row (kept light: a leg page has ~100 of them, so the
+// "Report it" link lives once in the leg header, not on every row) (same contract as StepCard, so progress.ts and level.ts drive it).
 // Contract: li.step[id][data-lmin][data-lmax][data-title][data-way] + input[data-step] (Waymark).
 // The row title is the instruction itself ("Accept **X** and **Y**"); the action word sits in the facts row.
 import Icon from './Icon.astro';
@@ -64,7 +65,7 @@ const groups = [
       }
       {step.optional && <span class="tag optional">Optional</span>}
       {keyWay && keyRef?.coords && <WayButton way={keyWay} coords={keyRef.coords} class="key" />}
-      <Trust c={step.confidence} urls={step.sources} report={`fast route step "${plain}" (${step.id})`} />
+      <Trust c={step.confidence} urls={step.sources} />
     </div>
     <div class="detail">
       {step.note && <p class="body" set:html={md(step.note)} />}

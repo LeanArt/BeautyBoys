@@ -263,7 +263,8 @@ export const FastLeg = z.object({
   zones: z.array(z.string()).min(1),
   summary: z.string(),
   why: z.string(), // why this order is the fastest
-  estTime: z.string().optional(),
+  time: z.string().optional(), // short label for tables, e.g. "2–2.5 h"
+  estTime: z.string().optional(), // the estimate with its basis
   start: z.string(),
   end: z.string(),
   skipped: z.array(z.object({ name: z.string(), wh: WowheadRef.optional(), why: z.string() })).optional(),
